@@ -1,0 +1,126 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+body{
+    background-color: #F9FCFE;
+}
+nav .logo {
+    display: flex;
+    align-items: center;
+    margin: 0 24px;
+    cursor: pointer;
+}
+.logo .menu-icon {
+    font-size: 24px;
+    margin-right: 14px;
+    cursor: pointer;
+}
+.logo-name{
+    display: flex;
+    justify-content: space-around;
+    font-family: "KoPubWorld Dotum Bold", serif;
+
+}
+
+.logo-name h2{
+    display: inline;
+    font-family: "KoPubWorld Dotum Bold", serif;
+    font-weight: bold;
+    color: #00A3FF;
+
+}
+nav .sidebar {
+    position: fixed;
+    height: 75%;
+    width: 270px;
+    padding: 20px 0;
+    transition: all 0.4s ease;
+    font-family: "KoPubWorld Dotum Bold", serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar .sidebar-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 2px;
+    float: left;
+}
+.sidebar-content{
+    margin-left: -20px;
+}
+.sidebar-content .list {
+    list-style: none;
+    padding: 15px 15px;
+}
+
+.list .nav-link { /*테이블 목록, 즐겨찾기 목록, 삭제 목록 바탕*/
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px 4px 0 5px;
+    background-color: #39bbff;
+    border-radius: 5px;
+}
+
+.lists .nav-link:hover {
+    color: #00A3FF;
+}
+.nav-link .link { /*테이블 목록, 즐겨찾기 목록, 삭제 목록*/
+    font-family: "KoPubWorld Dotum Bold", serif;
+    font-size: 24px;
+    color: #ffffff;
+    padding-left: 5px;
+}
+.nav-link .link:hover {
+    font-family: "KoPubWorld Dotum Bold", serif;
+    font-size: 24px;
+    padding-left: 5px;
+}
+
+.list .nav-link{ /*버튼*/
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-link h4 {
+    display: inline-block;
+    transform: rotate(180deg);
+    /*transition: transform 0.3s ease; !* 애니메이션 지속 시간 및 이징 함수 설정 *!*/
+}
+.nav-link h4:hover{
+    color: #00A3FF;
+
+}
+.nav-link.open h4 {
+    transform: rotate(-90deg); /* 열린 상태일 때 텍스트를 오른쪽으로 90도 회전 */
+}
+
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+    color: #000000;
+}
+.menu{
+    width: 100%;
+    margin: 0 auto;
+    max-height: 0;
+    overflow: hidden;
+    /*transition: max-height 0.3s ease;*/
+}
+.menu.open {
+    max-height: 100%; /* 최대 높이 설정 (원하는 값으로 조절) */
+}
+.logo .sideBarLogo{
+    display: flex;
+    justify-content: space-around;
+    color: #00A3FF;
+}
+

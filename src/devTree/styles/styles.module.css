@@ -1,0 +1,239 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.changeCommitBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    width: 50%;
+    margin: 3% auto 0;
+}
+.selectBox{
+    width: 25%;
+    background-color: #FFFFFF;
+}
+.selectTitleBox{
+    background-color: #EDEDED;
+    padding: 10px;
+    border: 1px solid #6B6B6B;
+    margin: 0;
+}
+.selectData{
+    margin: 0;
+    border: 1px solid #6B6B6B;
+    max-height: 120px;
+    overflow: auto;
+}
+.changeTableBox{
+    width: 75%;
+    border: 1px solid #6B6B6B;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.changeColumnName{
+    width: 200px;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0 auto 0;
+    border: 1px solid #777777;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dataBox{
+    width: 200px;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+.td {
+    margin: 0;
+    padding: 0;
+}
+.columnNames{
+    width: 200px;
+}
+.redBox{
+    background-color: #FFE4E4;
+}
+.greenBox{
+    background-color: #E0FFD2;
+}
+
+/*히스토리 사이드 바 UI*/
+.HistorySideBar{
+    width: 300px;
+    height: 540px;
+    background-color: #00A3FF;
+    margin: 20px 0 0 60px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 3px 3px lightgray;
+
+}
+.ProjectSelectBox{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 300px;
+    height: 40px;
+    margin: 0px 0 0 60px;
+    border-radius: 10px 10px 10px 10px;
+    padding: 0 30px 0 30px;
+
+}
+.HistorySideMenuState{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 20px;
+    width: 260px;
+    padding: 10px 20px 10px 20px;
+    margin: 20px 20px 0px 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+}
+.HistorySideMenuHistory{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 20px;
+    width: 260px;
+    padding: 10px 20px 10px 20px;
+    margin: 20px 20px 0px 20px;
+    background-color: #47BDFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+}
+.HistorySideMenuSearch{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 20px;
+    width: 260px;
+    padding: 10px 20px 10px 20px;
+    margin: 20px 20px 0px 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+}
+.HistorySideMenuReqeust{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 20px;
+    width: 260px;
+    padding: 10px 20px 10px 20px;
+    margin: 20px 20px 0px 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    border-radius: 10px 10px 10px 10px;
+}
+.HistorySideBarMenu{
+    padding-top: 1px;
+}
+/*히스토리 상단 버튼*/
+.HistoryBtn{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 150px;
+    text-align : center;
+    padding: 3px 10px 3px 10px;
+    background-color: #D8E0E9;
+    border-radius: 30px 30px 30px 30px;
+    margin-right: 30px;
+    color: #80898D;
+}
+.HistoryBtns{
+    float: left;
+}
+/*히스토리 상단 버튼 화이트 있는 버전*/
+.HistoryBtnWhite{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 30px;
+    text-align : center;
+    background-color: #ffffff;
+    float: right;
+    font-size: 12px;
+    color: #000;
+    border-radius: 30px 30px 30px 30px;
+    margin-top: 2px;
+}
+/*히스토리 캔버스 레이아웃*/
+.buttonContainerF{
+    left: 430px;
+    position: absolute;
+}
+.buttonContainerT{
+    left: 1130px;
+    position: absolute;
+}
+/*히스토리 페이지*/
+.HistoryCanverLayOut{
+    margin-top: 57px;
+}
+.HistoryCanverBack{
+    position: absolute;
+    top: 150px;
+}
+.HistoryCanver{
+    background-color: #EEF1F6;
+    height: 780px;
+    width: 85%;
+    padding-top: 10px;
+    margin: 30px 0 50px 400px;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0px 3px 3px lightgray;
+}
+/*히스토리 표 ui*/
+.CommitChartBack{
+    background-color: #FFFFFF;
+    border: #000 solid 1px;
+    margin: 30px auto;
+    height: 300px;    width: 90%;
+    overflow: auto;
+    scroll-snap-type: both mandatory;
+}
+.CommitChart{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 100%;
+    text-align: center;
+}
+.CommitChartTitleNow{
+    border-bottom: #000000 solid 1px;
+    border-right: #000000 solid 1px;
+    width: 50px;    height: 20px;
+    font-size: 12px;
+}
+.CommitChartTitleMsg{
+    border-bottom: #000000 solid 1px;
+    border-right: #000000 solid 1px;
+    width: 460px;    height: 20px;
+    font-size: 15px;
+}
+.CommitChartTitleDate{
+    border-bottom: #000000 solid 1px;
+    border-right: #000000 solid 1px;
+    width: 120px;    height: 20px;
+    font-size: 15px;
+}
+.CommitChartTitleWriter{
+    border-bottom: #000000 solid 1px;
+    border-right: #000000 solid 1px;
+    width: 120px;    height: 20px;
+    font-size: 15px;
+}
+.CommitChartTitleNum{
+    border-bottom: #000000 solid 1px;
+    font-size: 15px;
+    width: 120px;    height: 20px;
+}
+.CommitChartContent{
+    height: 30px;
+    border-bottom: #000000 solid 1px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+.CommitChartContentActive {
+    background-color: #BFE8FF;
+    height: 30px;
+    border-bottom: #000000 solid 1px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,9 @@
+.downloadBox{
+    margin: 0 auto;
+    text-align: right;
+}
+.downloadText{
+    padding-right: 2%;
+    font-family: "KoPubWorld Dotum Bold", serif ;
+    cursor: pointer;
+}

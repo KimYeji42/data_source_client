@@ -1,0 +1,61 @@
+
+@font-face {
+    font-family: "koko";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+
+.card{
+    margin: 20px;
+    border: 1px solid #ddd;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    font-family: "koko", serif;
+}
+.cardImageContainer {
+    margin: 20px 5px 10px 5px;
+    text-align: center;
+}
+
+.cardImage {
+    border-radius: 3px;
+    width: 80%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cardContent {
+    width: 80%;
+    margin : 0 auto;
+    padding: 15px;
+}
+
+.cardTitle {
+    margin-top: 0;
+}
+
+.cardDescription {
+    margin-bottom: 0;
+}
+.cardButtonContainer{
+    margin: 10px;
+    float: right;
+}
+.cardButton {
+    background-color: #00A3FF; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    float: right;
+}
+.card :hover{
+    cursor : pointer;
+}

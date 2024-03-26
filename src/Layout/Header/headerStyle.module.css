@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+html{font-size: 20px;}
+body{font-size: 1rem;}
+
+.All{
+    font-family: "GmarketSansTTFBold", serif;
+    width: 99%;
+    height: 4rem;
+}
+
+.container{
+    display: flex;
+    padding: 15px;
+}
+
+.logo {
+    margin: 0 auto 10px 1.5rem;
+    font-size: 3.2em;
+    color: #00A3FF;
+    text-shadow: 0.05rem 0.05rem 0 ,
+    -0.05rem -0.05rem 0 ,
+    0.05rem -0.05rem 0 ,
+    -0.05rem 0.05rem 0 ;
+}
+
+.bar{
+    display: flex;
+    width: 70%;
+    height: 2.5rem;
+    margin-top: 0.04rem;
+    font-size: 1.125rem;
+}
+
+.info{ /**/
+    margin-top: 0.7rem;
+    align-items: center;
+    height: 100%;
+    width: 20%;
+    display: flex;
+    gap: 2rem;
+    margin-left: 20rem;
+}
+
+.navLink { /**/
+    margin-top: 0.7rem;
+    display: flex;
+    height: 100%;
+    width: 37%;
+    align-items: center;
+    gap:3rem;
+    margin-left: 10rem;
+}
+
+.navLink li{
+        list-style-type: none;
+        flex: 1;
+        text-align: center;
+        padding: 0.3rem;
+        cursor: pointer;
+}
+
+.navLink a{
+    text-decoration: none;
+    color: #000;
+}
+
+.active {
+    background-color: #00A3FF;
+    align-items: center;
+    text-align: center;
+    color:white;
+    padding: 0.2rem;
+    width: 5em;
+    height: 2rem;
+    border-radius: 15px;
+}
+
+/*반응형*/
+@media screen and (max-width:1640px) {
+    html{font-size: 18px;}
+    body{font-size: 1rem;}
+}
+
+@media screen and (max-width:1540px) {
+    html{font-size: 16px;}
+    body{font-size: 1rem;}
+}
+
+@media screen and (max-width:1440px) {
+    html{font-size: 15px;}
+    body{font-size: 1rem;}
+}
+
+@media screen and (max-width:1340px) {
+    html{font-size: 14px;}
+    body{font-size: 1rem;}
+}

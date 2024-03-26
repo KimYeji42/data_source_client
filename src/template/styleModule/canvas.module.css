@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "koko";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+
+
+.all{ /*테이블,리스트, 트리 공통*/
+    width:70%;
+    margin-left:370px;
+    margin-top: auto;
+    background-color: #EEF1F6;
+    box-shadow: 3px 3px 10px #7c7c7c;
+    border-radius: 10px;
+    height: 570px;
+    overflow-x:auto;
+}
+
+/*테이블*/
+.tableGrid{
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+/*트리*/
+.treeGrid{
+    padding: 20px 0 0 30px;
+}
+/*리스트 메뉴*/
+.listGrid{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 90px 0 90px;
+}
+
+/*카드*/
+.cardGrid {
+    margin:auto 50px 10px 370px;
+    background-color: #EEF1F6;
+    width: 70%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 3개의 카드 */
+    gap: 5px;
+    max-height: 750px; /* 높이 제한 */
+    overflow-y: auto; /* 세로 스크롤바 */
+}
