@@ -1,10 +1,10 @@
 import MemberBoxLayout from "../layout/MemberBoxLayout";
-import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function TeamProfilePage(){
+export default function TeamProfilePage() {
     const { projectId } = useParams();
-    const [teamProfiles , setTeamProfiles] = useState()
+    const [teamProfiles, setTeamProfiles] = useState(null);
 
     const fetchData = async () => {
         try {
@@ -15,19 +15,20 @@ export default function TeamProfilePage(){
                 }
             });
             const responseData = await response.json();
-            console.log(responseData)
+            console.log(responseData);
             setTeamProfiles(responseData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
+
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, []);
 
-    return(
+    return (
         <div>
-            <MemberBoxLayout data={teamProfiles}/>
+            {teamProfiles && <MemberBoxLayout data={teamProfiles} projectID={projectId} />}
         </div>
-    )
+    );
 }

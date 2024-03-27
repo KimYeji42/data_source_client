@@ -1,4 +1,4 @@
-import SideBarListLayOut from "./SideBarListLayOut";
+ import SideBarListLayOut from "./SideBarListLayOut";
 import { useEffect, useState } from "react";
 
 export default function SideBarContentLayOut({ tableStatus }) {
