@@ -1,11 +1,11 @@
-import DataBaseListLayOut from "../layout/TableListLayOut";
-import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import TableBoxLayout from "../layout/TableBoxLayout";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
-export default function DataBaseShowCasePage() {
+export default function CreateTablePage(){
     const { dataBaseID } = useParams();
-    const [dataBaseData, setDataBaseData] = useState(null); // 초기값을 null로 설정하여 데이터가 없는 상태를 표시합니다
+
+    const [dataBaseData , setDataBaseData] = useState(null)
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/database/${dataBaseID}`, {
@@ -21,14 +21,14 @@ export default function DataBaseShowCasePage() {
             console.error('Error fetching data:', error);
         }
     };
+
     useEffect(() => {
         fetchData();
     }, []);
 
-    return (
+    return(
         <div>
-            <SideBarComponent />
-            {dataBaseData && <DataBaseListLayOut data={dataBaseData} />} {/* 데이터가 존재할 때만 렌더링 */}
+            {dataBaseData &&  <TableBoxLayout data={dataBaseData}/>} {/* 데이터가 존재할 때만 렌더링 */}
         </div>
-    );
+    )
 }

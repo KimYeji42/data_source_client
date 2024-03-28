@@ -1,11 +1,15 @@
 import styles from "../styles.module.css";
-import {Image} from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
-export default function ProjectTeamUI({membersData , deleteUserHandler}){
-    return(
+export default function ProjectTeamUI({ membersData, deleteUserHandler, createEmail }) {
+    return (
         membersData.map((user, index) => (
             <div key={index} className={styles.member}>
-                <button onClick={() => deleteUserHandler(index)} className={styles.customButton}> </button>
+                {user.email === createEmail ? (
+                    <button disabled className={styles.customButton}> </button>
+                ) : (
+                    <button onClick={() => deleteUserHandler(index)} className={styles.customButton}> </button>
+                )}
                 <Image src={"image/user.png"} />
                 <div>
                     <h4>{user.name}</h4>

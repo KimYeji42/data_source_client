@@ -3,24 +3,24 @@ import styles from '../styles.module.css';
 import ProjectTeamLayOut from './ProjectTeamLayOut';
 import MemberSearchLayOut from './MemberSearchLayOut';
 import Profile from '../../../Profile';
-import ModalLayOut from './ModalLayOut';
+import ModalLayOut from './SendModalLayOut';
 import ErrorModal from './ErrorModalLayOut';
 import profile from "../../../Profile";
-import TablePage from "../../../devSource/Components/page/TablePage";
+import SuccessModalLayout from "./SuccessModalLayout";
 
 export default function CreateProjectFormLayout() {
+
     const [name, setName] = useState("");
     const [comment, setComment] = useState("");
     const [dataBaseName , setDataBaseName] = useState(" ");
 
     const [teamList, setTeamList] = useState(new Set([profile])); // Set으로 초기화
     const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(true);
-    const [data, setData] = useState("");
+    const [isSendModalOpen , setIsSendModalOpen] = useState(false)
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-
     const [error, setError] = useState("");
-
+    const [success , setSuccess] = useState("")
     const toggleMemberGroupSearchBar = () => {
         setShowMemberGroupSearchBar(prevState => !prevState);
     };
@@ -45,17 +45,15 @@ export default function CreateProjectFormLayout() {
         setTeamList(newTeamList);
     };
 
-    const modalBtnOnClickHandler = () => {
-        setIsSuccessModalOpen(false);
-        setIsErrorModalOpen(false);
-    };
-
+    const modalOpenHandler = () =>{
+        setIsSendModalOpen(true)
+    }
     const createBtnOnClickHandler = async () => {
         let obj = {
             name: name,
             comment: comment,
             profileID: Profile.id,
-            dataBaseName : dataBaseName,
+            dataBaseName: dataBaseName,
             teamProfile: [...teamList] // Set을 배열로 변환하여 전달
         };
 
@@ -67,51 +65,45 @@ export default function CreateProjectFormLayout() {
                 },
                 body: JSON.stringify(obj)
             });
+            const responseData = await response.json();
             if (response.ok) {
-                const responseData = await response.text();
                 console.log('Data sent successfully:', responseData);
-                console.log(responseData)
-                setData(responseData);
-                setIsSuccessModalOpen(true);
+                console.log(responseData.message);
+                setSuccess(responseData.message)
+                setIsSuccessModalOpen(true)
             } else {
-                const errorData = await response.json();
-                setError(errorData.message);
-                setIsErrorModalOpen(true);
+                throw new Error(responseData.message); // 에러를 던져서 catch 블록에서 처리하도록 함
             }
-            console.log(obj)
+            console.log(obj);
         } catch (error) {
             console.error('Error sending data:', error);
-            setError('네트워크 오류로 요청을 보낼 수 없습니다.');
+            setError(error.message);
             setIsErrorModalOpen(true);
         }
-    };
-
-    const handleCreate = () => {
-        setIsSuccessModalOpen(false);
-    };
-
-
-    const redirectToProjects = () => {
-        // history.push('/projects'); // projects 페이지로 이동
-        console.log("클릭")
     };
 
     return (
         <div>
             <ModalLayOut
-                data={data}
-                isOpen={isSuccessModalOpen}
-                onClose={() => setIsSuccessModalOpen(false)}
-                onCreate={handleCreate}
-                onReset={modalBtnOnClickHandler}
-                onClick = {redirectToProjects}
-                clickLink={"/projects"}
+                data={"프로젝트를 생성하시겠습니까?"}
+                isOpen={isSendModalOpen}
+                onClose={() => setIsSendModalOpen(false)}
+                onClickEvent={createBtnOnClickHandler}
+
             />
 
             <ErrorModal
                 isOpen={isErrorModalOpen}
                 onClose={() => setIsErrorModalOpen(false)}
                 error={error}
+
+            />
+
+            <SuccessModalLayout
+                isOpen={isSuccessModalOpen}
+                onClose={() => setIsSuccessModalOpen(false)}
+                data={success}
+                clickLink={"/projects"}
             />
 
             {showMemberGroupSearchBar && <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers}/>}
@@ -140,7 +132,7 @@ export default function CreateProjectFormLayout() {
 
             <ProjectTeamLayOut membersData={[...teamList]} deleteUserHandler={deleteUserHandler}/>
 
-            <button type="button" onClick={createBtnOnClickHandler} className={`btn btn-primary ${styles.createButton}` }>프로젝트 생성</button>
+            <button type="button" onClick={modalOpenHandler} className={`btn btn-primary ${styles.createButton}` }>프로젝트 생성</button>
         </div>
     );
 }

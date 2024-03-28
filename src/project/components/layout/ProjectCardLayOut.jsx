@@ -39,6 +39,7 @@ export default function ProjectCardLayOut(){
         <div className={styles.cardLayOutBox}>
             {data.map((item) => (
                 <CardUI
+                    item={item}
                     key={item.id}
                     name={item.name}
                     comment={item.comment}

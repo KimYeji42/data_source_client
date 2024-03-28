@@ -1,15 +1,14 @@
-import React from 'react';
-import styles from '../styles.module.css';
-import {Link} from "react-router-dom"; // 스타일 파일 import
+import styles from "../styles.module.css";
+import React from "react";
+import {Link} from "react-router-dom";
 
-const Modal = ({ isOpen, onClose, data ,onClick , clickLink}) => {
-    const handleCreate = () => {
+export default function SuccessModalLayout({ isOpen, onClose, data  , clickLink}){
+    const successHandler = () =>{
         onClose(); // 모달을 닫음
-        onClick();
-    };
-
+    }
     // isOpen이 false이면 모달을 렌더링하지 않음
     if (!isOpen) return null;
+
 
     return (
         <div className={styles.modalOverlay}>
@@ -23,11 +22,11 @@ const Modal = ({ isOpen, onClose, data ,onClick , clickLink}) => {
                 )}
 
                 <div className={styles.modalBtnBox}>
-                    <Link to={clickLink}> <button onClick={handleCreate} className={styles.modalConfirmBtn}> 확인 </button> </Link>
+                    <Link to={clickLink}>
+                        <button onClick={successHandler} className={styles.modalConfirmBtn}> 확인 </button>
+                    </Link>
                 </div>
             </div>
         </div>
-    );
-};
-
-export default Modal;
+    )
+}

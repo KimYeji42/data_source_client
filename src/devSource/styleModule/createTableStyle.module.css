@@ -1,0 +1,277 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.tableBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    margin: 5% auto;
+    width: 60%;
+    padding: 10px;
+}
+.title{
+    font-size: 34px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+}
+
+.namesContainer{
+    height: 15%;
+    margin-top: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nameTable{
+    height: 100%;
+    width: 49%;
+}
+
+.tableName{
+    height: 43%;
+    font-size: 22px;
+    width: 50%;
+    margin-left: 2px;
+}
+
+.insertTableName{
+    margin-top: 5px;
+    width: 90%;
+    height: 52%;
+    margin-left: 10px;
+}
+
+.insertBox{
+    height: 41px;
+    margin-left: 2px;
+    margin-top: 2px;
+    width: 100%;
+}
+.insertBox input{
+    width: 100%;
+}
+
+.insertTable{
+    border:2px solid #777777;
+    height: 41px;
+    width: 350px;
+    border-radius: 10px;
+    margin-top: 2%;
+
+}
+
+.insertDB{
+    height: 41px;
+    border-radius: 10px;
+    background-color: #E8E8E8;
+    margin-top: 2%;
+}
+
+.insertTable:focus{
+    border: none;
+}
+
+.explanationContainer{
+    height: 15%;
+    width: 100%;
+    margin-top: 3%;
+}
+.explanationContainer{
+    width: 100%;
+
+}
+.insertExplanation{
+    border:2px solid #777777;
+    height: 41px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.explanationBox{
+    font-size: 22px;
+    display: flex;
+    width: 200px;
+    margin-left: 2px;
+}
+
+.add{
+    font-size: 14px;
+    color:#707070;
+    height: 20px;
+    float: right;
+    margin-top: 3%;
+}
+
+.selectHeader{
+    width: 100%;
+    margin: 3% auto;
+}
+
+.selectHeaderTable{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border-collapse: collapse;
+    margin: 0 auto;
+    border: 1px solid #777777;
+
+}
+
+.selectHeaderTable th{
+    background-color: #E8E8E8;
+    border: 1px solid #777777;
+    padding: 5px;
+    text-align: center;
+}
+
+.selectHeaderTable td{
+    border: 1px solid #777777;
+    padding: 2px;
+    text-align: center;
+}
+
+.inputColumnName{
+    border:none;
+}
+
+.inputDataType {
+    border-color: #A4A4A4;
+    width: 100%;
+}
+.inputDataType option{
+    color: #939393;
+}
+
+.typeNo{
+    margin:2px 5px 2px 0;
+    float: right;
+    text-align: center;
+}
+
+.types{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border:1px solid #777777;
+    height: auto;
+    width: 160px;
+}
+
+.types td{
+    background-color: white;
+    border: 1px solid #777777;
+    padding: 2px;
+    text-align: center;
+    width: 160px;
+}
+.checkBox{
+    height: 15px;
+    width: 15px;
+    margin: 0 auto;
+
+}
+.dictionary{
+    width: 100%;
+}
+
+.searchContainer{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    margin: 0 auto;
+    border:1px solid #b0b0b0;
+    border-radius: 15px;
+    background-color: white;
+}
+.searchTitle{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.searchName{
+    height: 50px;
+    margin: 10px auto;
+    position: relative;
+}
+.searchName img{
+    position: absolute;
+    left: 20px;
+    top: 40%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.sn{
+   border:2px solid #00A3FF;
+    border-radius: 10px;
+    height: 80%;
+    font-size: 12px;
+    width: 90%;
+    text-align: center;
+}
+
+
+.buttonBox{
+    width: 180px;
+    height: 60px;
+    border:1px solid #00A3FF;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #00A3FF;
+    color:white;
+    margin-top: 5%;
+    float: right;
+}
+
+.attribute{
+    /*border:1px solid black;*/
+    height: 230px;
+    width: 80%;
+    margin: 10px auto 0;
+    overflow-y:auto ;
+}
+
+.listBox{
+    color: #525252;
+    font-size: 14px;
+
+}
+.searchBox{
+   /* border:1px solid red;*/
+    width: 260px;
+    height: auto;
+    margin-left: auto;
+    position: absolute;
+    bottom: 300px;
+    right: 130px;
+}
+
+.searchButton{
+    border-radius: 5px;
+    background-color: #F3F3F3;
+    border-color: #B5B5B5;
+    color: #707070;
+    float: right;
+    margin-right: 10px;
+}
+.buttonBig{
+    text-align: right;
+    padding: 10px;
+}
+
+.buttonBig button{
+    border:none;
+    background-color: #ffffff;
+}
+.joinData{
+    text-align: left;
+    cursor: pointer;
+
+}
+.cancelBtn{
+    color: red;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #B5B5B5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

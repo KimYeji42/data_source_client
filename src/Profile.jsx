@@ -1,7 +1,7 @@
 const Profile = {
         id: 1,
-        username: "홍길동",
-        phoneNumber: "010-1234-5678",
+        name: "주동호",
+        phoneNumber: "010-7761-8482",
         email: "honggildong@example.com",
         password: "password123"
 };

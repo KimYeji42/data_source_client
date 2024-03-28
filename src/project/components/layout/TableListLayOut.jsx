@@ -3,11 +3,13 @@ import CenterTitleUI from "../uI/CenterTitleUI";
 import LinkUI from "../uI/LinkUI";
 import DataBaseBoxLayOut from "./DataBaseBoxLayOut";
 
-export default function DataBaseListLayOut(){
+
+export default function TableListLayout({data}){
+
     return(
         <div className={styles.dataBaseMenuBox}>
-            <CenterTitleUI text={"[ 프로젝트 이름 ]"}/>
-            <LinkUI text={"테이블 추가하기"}/>
+            <CenterTitleUI text={data.projectName}/>
+            <LinkUI text={"테이블 추가하기"} redirect={`/createTable/${data.id}`}/>
             <DataBaseBoxLayOut/>
         </div>
     )

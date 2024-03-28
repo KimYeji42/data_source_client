@@ -162,6 +162,7 @@
 }
 .cardIcon {
     margin: 20px;
+    cursor: pointer;
 }
 .cardLink{
     color: #000000;
@@ -231,6 +232,7 @@
     border-radius: 5px;
 }
 .modalCloseBtn{
+    margin: 5px;
     background-color: #ff0000; /* 배경색 */
     border: none; /* 테두리 없음 */
     color: white; /* 텍스트 색상 */
@@ -238,7 +240,6 @@
     font-weight: bold; /* 폰트 굵기 */
     outline: none; /* 포커스 효과 제거 */
     cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
-    margin-bottom: 20px;
     border-radius: 5px;
 }
 .modalBtnBox{

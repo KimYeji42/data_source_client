@@ -12,6 +12,7 @@ import TeamProfilePage from "../project/components/page/TeamProfilePage";
 import CommitSearchPage from "../devTree/Components/page/CommitSearchPage";
 import HistoryViewPage from "../devTree/Components/page/HistoryViewPage";
 import RestAPIBuilderPage from "../project/components/page/RestAPIBuilderPage";
+import CreateTablePage from "../devSource/Components/page/CreateTablePage";
 
 
 export default function AppRouter() {
@@ -24,8 +25,8 @@ export default function AppRouter() {
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
                     <Route path='/main' element={<MainPage />} />
-                    <Route path='/createProject' element={<CreateProjectPage />} />
-                    <Route path='/tables' element={<DataBaseShowCasePage />} />
+                    <Route path='/createProject/:dataBaseID' element={<CreateProjectPage />} />
+                    <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />
                     <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
@@ -36,6 +37,7 @@ export default function AppRouter() {
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
+                    <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
                     <Route path='/restApi' element={<RestAPIBuilderPage/>}/>
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />

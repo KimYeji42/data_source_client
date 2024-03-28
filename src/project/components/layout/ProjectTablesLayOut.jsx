@@ -13,7 +13,8 @@ export default function ProjectTablesLayOut({project}){
                 } >
                 <TablesUI data={project.tables}/>
             </div>
-            <ProjectViewCardUI link={'/tables'} cardTitle={"Tables"} iconImage={<Image src="../image/Tables.png"  className={styles.TablesIcon}/>} buttonTitle={"DevTool 접속하기"} style={{position: 'relative'}}/>
+            <ProjectViewCardUI link={`/tables/${project.dataBaseID}`} cardTitle={"Tables"} iconImage={<Image src="../image/Tables.png"  className={styles.TablesIcon}/>} buttonTitle={"DevTool 접속하기"} style={{position: 'relative'}}/>
+
         </div>
     )
 }
