@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 
 export default function CreateTablePage(){
     const { dataBaseID } = useParams();
-
     const [dataBaseData , setDataBaseData] = useState(null)
     const fetchData = async () => {
         try {

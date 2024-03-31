@@ -7,7 +7,7 @@ import { Button } from "./ButtonUI";
 import Button_UI from "./Button_UI";
 import { Image } from "react-bootstrap";
 
-export default function ColumnUI({ columns , reloadData , updateData , setUpdateData ,createData , setCreateData }) {
+export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID }) {
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
@@ -15,14 +15,14 @@ export default function ColumnUI({ columns , reloadData , updateData , setUpdate
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
         let obj = {
-            tableID : 1,
+            tableID : tableID,
             createData : createData,
             updateData : updateData,
-            deleteRow : deleteRowIndex
+            deleteData : deleteRowIndex
         };
         console.log(obj)
         try {
-            const response = await fetch('http://localhost:8080/api/table/modifiedTable', {
+            const response = await fetch('http://localhost:8080/api/data', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

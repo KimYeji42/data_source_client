@@ -25,7 +25,7 @@ export default function AppRouter() {
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
                     <Route path='/main' element={<MainPage />} />
-                    <Route path='/createProject/:dataBaseID' element={<CreateProjectPage />} />
+                    <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />
@@ -33,7 +33,7 @@ export default function AppRouter() {
                     <Route path='/templates' element={<TemplateShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />\
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
-                    <Route path='/table' element={<TablePage />} />
+                    <Route path='/table/:tableID' element={<TablePage />} />
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />

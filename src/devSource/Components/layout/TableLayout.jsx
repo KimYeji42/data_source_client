@@ -1,26 +1,26 @@
 import {useEffect, useState} from "react";
 import ColumnUI from "../ui/ColumnUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
+import {useParams} from "react-router-dom";
 
 export default function TableLayout(){
+    const {tableID} = useParams()
     const [tableData, setTable] = useState(new Map());
-    const [tableID, setTableID] = useState(1);
     const [createData , setCreateData] = useState([]) //추가 부분 리스트
     const [updateData , setUpDateData] = useState([]) //수정 부분 리스트
     const fetchColumData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/table/${tableID}`, {
+            const response = await fetch(`http://localhost:8080/api/column/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             });
             const responseData = await response.json();
-
-            const tableMap = new Map(Object.entries(responseData.table));
+            console.log(responseData)
+            const tableMap = new Map(Object.entries(responseData.tableInfo));
             //받은 데이터를 자바스크립트 Map객체로 변환
             setTable(tableMap)
-
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -41,6 +41,7 @@ export default function TableLayout(){
                 setUpdateData={setUpDateData}
                 createData = {createData}
                 setCreateData = {setCreateData}
+                tableID={tableID}
             />
         </div>
     );

@@ -2,6 +2,7 @@ import styles from '../../styleModule/createTableStyle.module.css';
 import React, { useState, useEffect } from "react";
 import JoinColumnUI from "../ui/JoinColumnUI";
 import ButtonUI from "../../../project/components/uI/ButtonUI";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 const initialRowState = {
     id: 1,
@@ -10,12 +11,15 @@ const initialRowState = {
     pk: false,
     fk: false,
     uk: false,
+    isNotNull : false,
     joinTable: {}
 };
 
 export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
     const [rows, setRows] = useState([initialRowState]);
     const [creationTimes, setCreationTimes] = useState([Date.now()]);
+    const [error, setError] = useState("");
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
 
     function handleSelectChange(event, index) {
         const { name, value, type, checked } = event.target;
@@ -23,10 +27,23 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
         if (type === 'checkbox') {
             updatedRows[index][name] = checked;
         } else {
+            //중복 값 을 체크 후
+            const isDuplicateName = updatedRows.some((row, i) => {
+                const existingValue = row[name].toLowerCase();
+                const newValue = value.toLowerCase(); // 새 값 소문자 변환
+                return i !== index && existingValue === newValue;
+            });
+
+            if (isDuplicateName) {
+                setError("컬럼값이 중복되었습니다.")
+                setIsErrorModalOpen(true)
+                return;
+            }
             updatedRows[index][name] = value;
         }
         setRows(updatedRows);
     }
+
 
 
     useEffect(() => {
@@ -37,10 +54,11 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
         const newRow = {
             id: rows.length + 1,
             columnName: '',
-            dataType: 'int',
+            dataType: 'VARCHAR',
             pk: false,
             fk: false,
             uk: false,
+            isNotNull : false,
             joinTable: {}
         };
         setRows([...rows, newRow]);
@@ -58,6 +76,12 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
 
     return (
         <div>
+            <ErrorModal
+                isOpen={isErrorModalOpen}
+                onClose={() => setIsErrorModalOpen(false)}
+                error={error}
+
+            />
             <div className={styles.buttonBig}>
                 <button onClick={handleAddRow} style={{marginRight: '2px'}}>+</button>
                 <button onClick={handleDeleteRow}>-</button>
@@ -71,6 +95,7 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                     <th>PK</th>
                     <th>FK</th>
                     <th>UK</th>
+                    <th>NOT NULL</th>
                     <th>조인</th>
                 </tr>
                 </thead>
@@ -100,6 +125,10 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                         </td>
                         <td style={{width: '50px'}}>
                             <input type="checkbox" name="uk" checked={row.uk}
+                                   onChange={(e) => handleSelectChange(e, index)} className={styles.checkBox}/>
+                        </td>
+                        <td style={{width: '50px'}}>
+                            <input type="checkbox" name="isNotNull" checked={row.isNotNull}
                                    onChange={(e) => handleSelectChange(e, index)} className={styles.checkBox}/>
                         </td>
                         <td style={{width: '400px'}}>

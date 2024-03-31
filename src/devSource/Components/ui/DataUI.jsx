@@ -38,12 +38,6 @@ export default function DataUI({
         setUpdateData(updatedChangeData); // 업데이트된 데이터를 설정
     };
 
-    const consoleAllData = () => {
-        createData.forEach((item, index) => {
-            console.log(item);
-        });
-    };
-
 
     const handleInputChange = (event, index,item) => {
         const newData = [...data];

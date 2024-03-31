@@ -2,7 +2,6 @@ import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
 export default function BoxUI({ header, date, comment, imageSrc, item, setActiveTable, activeTable }) {
     const handleClick = (item) => {
-        console.log("클릭");
         setActiveTable(item);
     };
 
@@ -18,7 +17,7 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
 
                 <div className={styles.dataBaseLogo}>
                     <div className={styles.cardIcon}>
-                        <Image src={"image/star.png"}/><Image src={"image/trash.png"}/>
+                        <Image src={"/image/Star.png"}/><Image src={"/image/trash.png"}/>
                     </div>
                 </div>
             </div>
