@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import DataUI from "./DataUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import up from '../../Image/upButton.png';
@@ -6,11 +6,19 @@ import down from '../../Image/downButton.png';
 import { Button } from "./ButtonUI";
 import Button_UI from "./Button_UI";
 import { Image } from "react-bootstrap";
+import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID }) {
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
+    const [isSendModalOpen , setIsSendModalOpen] = useState(false)
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [error, setError] = useState("");
+    const [success , setSuccess] = useState("")
 
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
@@ -20,6 +28,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             updateData : updateData,
             deleteData : deleteRowIndex
         };
+
         console.log(obj)
         try {
             const response = await fetch('http://localhost:8080/api/data', {
@@ -34,11 +43,15 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 const responseData = await response.json();
                 console.log('Data sent successfully:', responseData);
                 setCreateData([])
+                setSuccess(responseData.message)
+                setIsSuccessModalOpen(true)
+
             } else {
                 const errorData = await response.json();
                 console.log(errorData)
+                setError(errorData.message);
+                setIsErrorModalOpen(true);
             }
-
         } catch (error) {
             console.error('Error sending data:', error);
         }
@@ -71,9 +84,11 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const handleReload = () => {
         window.location.reload()
     };
+
     const handlePushData = () =>{
         setClickCount(clickCount +1)
     }
+
     return (
         <div>
             <div className={styles.button}>
@@ -84,7 +99,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                     <div className={styles.rightIcon}>
                         <Button_UI image={Button[1].image} onClick={handlePushData}/>
                         <Button_UI image={Button[2].image} onClick={handleDeleteData}/>
-                        <Button_UI image={Button[3].image} onClick={submitModifiedTable}/>
+                        <Button_UI image={Button[3].image} onClick={() => setIsSendModalOpen(true)}/>
                         <Button_UI image={Button[4].image} />
                         <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
                     </div>
@@ -130,6 +145,27 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                     </tbody>
                 </table>
             </div>
+            <
+                SuccessModalLayout
+                isOpen={isSuccessModalOpen}
+                onClose={() => setIsSuccessModalOpen(false)}
+                data={success}
+                clickLink={`/table/${tableID}`}
+            />
+            <
+                ErrorModal
+                isOpen={isErrorModalOpen}
+                onClose={() => setIsErrorModalOpen(false)}
+                error={error}
+                clickLink={`/table/${tableID}`}
+            />
+            <SendModalLayOut
+                data={"데이터를 변경 하시겠습니까?"}
+                isOpen={isSendModalOpen}
+                onClose={() => setIsSendModalOpen(false)}
+                onClickEvent={submitModifiedTable}
+            />
+
         </div>
     );
 }

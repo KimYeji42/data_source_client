@@ -1,7 +1,8 @@
 import React from 'react';
-import styles from '../styles.module.css'; // 스타일 파일 import
+import styles from '../styles.module.css';
+import {Link} from "react-router-dom"; // 스타일 파일 import
 
-const ErrorModal = ({ isOpen, onClose, error }) => {
+const ErrorModal = ({ isOpen, onClose, error ,clickLink}) => {
     const handleConfirm = () => {
         onClose(); // 모달을 닫음
     };
