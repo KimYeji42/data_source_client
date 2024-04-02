@@ -20,6 +20,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
 
+
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
         let obj = {
@@ -42,10 +43,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('Data sent successfully:', responseData);
-                setCreateData([])
                 setSuccess(responseData.message)
                 setIsSuccessModalOpen(true)
-
             } else {
                 const errorData = await response.json();
                 console.log(errorData)
@@ -60,6 +59,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const handleDeleteData = () => {
         if (selectedRowIndex !== -1) {
             setDeleteRowIndex([...deleteRowIndex, selectedRowIndex]);
+
         }else {
             if (clickCount !== -1){
                 setClickCount(clickCount - 1)
@@ -138,6 +138,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                         createData = {createData}
                                         setCreateData = {setCreateData}
                                         columnSize = {index}
+
                                     />
                                 </td>
                             ))}
@@ -151,6 +152,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
                 clickLink={`/table/${tableID}`}
+                onClickEvent={handleReload}
             />
             <
                 ErrorModal

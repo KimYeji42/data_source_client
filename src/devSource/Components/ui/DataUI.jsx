@@ -5,12 +5,13 @@ import NewDataUI from "./NewDataUI";
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
                                    tableMap , updateData , setUpdateData ,createData , setCreateData,
-                                })
-{
+                                }) {
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
-    function columnDataSet(){
+    // setDeleteColumn(deleteRow.map((index) => data[index])) //삭제 컬럼 데이터 넣는 부분임 이부분 넣고 수정해야됨..!
+
+    function columnDataSet() {
         setData(tableMap.get(column))
         // console.log(data)
     }
@@ -38,8 +39,7 @@ export default function DataUI({
         setUpdateData(updatedChangeData); // 업데이트된 데이터를 설정
     };
 
-
-    const handleInputChange = (event, index,item) => {
+    const handleInputChange = (event, index, item) => {
         const newData = [...data];
         newData[index].data = event.target.value;
         setData(newData); // 변경된 데이터 업데이트
@@ -47,7 +47,7 @@ export default function DataUI({
 
     // 새로운 데이터 추가 시 호출되는 함수
     const handleAddData = (newData) => {
-        setData([...data, { id: data.length + 1, data: newData }]);
+        setData([...data, {id: data.length + 1, data: newData}]);
     };
 
     return (
@@ -92,7 +92,6 @@ export default function DataUI({
                         dataLine={index} // 줄의 인덱스를 전달
                     />
                 ))}
-
                 </tbody>
             </table>
         </div>

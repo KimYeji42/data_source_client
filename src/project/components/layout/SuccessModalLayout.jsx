@@ -2,9 +2,10 @@ import styles from "../styles.module.css";
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function SuccessModalLayout({ isOpen, onClose, data  , clickLink}){
+export default function SuccessModalLayout({ isOpen, onClose, data  , clickLink , onClickEvent}){
     const successHandler = () =>{
-        onClose(); // 모달을 닫음
+        onClickEvent?.();
+        onClose();
     }
     // isOpen이 false이면 모달을 렌더링하지 않음
     if (!isOpen) return null;

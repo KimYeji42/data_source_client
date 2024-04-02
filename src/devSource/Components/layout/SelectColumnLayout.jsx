@@ -7,7 +7,7 @@ import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 const initialRowState = {
     id: 1,
     columnName: '',
-    dataType: 'int',
+    dataType: 'VARCHAR',
     pk: false,
     fk: false,
     uk: false,
@@ -24,10 +24,12 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
     function handleSelectChange(event, index) {
         const { name, value, type, checked } = event.target;
         const updatedRows = [...rows];
+
         if (type === 'checkbox') {
             updatedRows[index][name] = checked;
+        } else if (name === "dataType") {
+            updatedRows[index][name] = value;
         } else {
-            //중복 값 을 체크 후
             const isDuplicateName = updatedRows.some((row, i) => {
                 const existingValue = row[name].toLowerCase();
                 const newValue = value.toLowerCase(); // 새 값 소문자 변환
@@ -35,15 +37,16 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
             });
 
             if (isDuplicateName) {
-                setError("컬럼값이 중복되었습니다.")
-                setIsErrorModalOpen(true)
+                setError("컬럼값이 중복되었습니다.");
+                setIsErrorModalOpen(true);
                 return;
             }
+
             updatedRows[index][name] = value;
         }
+
         setRows(updatedRows);
     }
-
 
 
     useEffect(() => {
