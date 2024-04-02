@@ -19,7 +19,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
-
+    const [deleteData , setDeleteData] = useState([])
 
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
@@ -27,7 +27,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             tableID : tableID,
             createData : createData,
             updateData : updateData,
-            deleteData : deleteRowIndex
+            deleteData : deleteData
         };
 
         console.log(obj)
@@ -59,14 +59,27 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const handleDeleteData = () => {
         if (selectedRowIndex !== -1) {
             setDeleteRowIndex([...deleteRowIndex, selectedRowIndex]);
+            const columnDataToDelete = []; // 선택된 행의 데이터를 수집할 배열
 
-        }else {
-            if (clickCount !== -1){
-                setClickCount(clickCount - 1)
+            // 각 열의 데이터를 수집하여 배열에 추가
+            for (const [columnName, columnData] of columns.entries()) {
+                console.log(columnName)
+                columnDataToDelete.push(columnData[selectedRowIndex]);
+            }
+
+            // deleteData 상태 업데이트
+            setDeleteData([...deleteData, columnDataToDelete]);
+
+        } else {
+            if (clickCount !== -1) {
+                setClickCount(clickCount - 1);
             }
         }
-    };
+    }
+
     const handleRollBackData = () => {
+        console.log(deleteData);
+
         if (selectedRowIndex !== -1) {
             if (deleteRowIndex.includes(selectedRowIndex)) {
                 const updatedDeleteRow

@@ -9,8 +9,6 @@ export default function DataUI({
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
 
-    // setDeleteColumn(deleteRow.map((index) => data[index])) //삭제 컬럼 데이터 넣는 부분임 이부분 넣고 수정해야됨..!
-
     function columnDataSet() {
         setData(tableMap.get(column))
         // console.log(data)
