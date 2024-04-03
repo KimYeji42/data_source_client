@@ -134,7 +134,7 @@
 .link{
     color: #000000;
     text-decoration: none; /* 밑줄 제거 */
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+        font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
 .cardBox{
     margin: 15px 10px;

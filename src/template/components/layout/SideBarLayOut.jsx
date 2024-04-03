@@ -8,11 +8,13 @@ import CardCanvasLayOut from "./CardCanvasLayOut";
 import cardExampleData from "../data/cardExampleData";
 import ListMenuCanvas from "./ListMenuCanvasLayOut";
 import cardObjectData from "../data/cardObjectData";
+import {useParams} from "react-router-dom";
 
 export default function SideBarLayOut() {
+    const {tableID} = useParams()
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [columnData , setColumnData] = useState({})
-    const [tableID , setTableID] = useState(1)
+
     const handleButtonClick = (category) => {
         console.log("Clicked category:", category); // 클릭된 카테고리를 콘솔에 출력
         setSelectedComponent(category); // 선택된 카테고리 설정
@@ -20,7 +22,7 @@ export default function SideBarLayOut() {
 
     const fetchColumData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/column/${tableID}`, {
+            const response = await fetch(`http://localhost:8080/api/column/list/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -55,17 +57,16 @@ export default function SideBarLayOut() {
             {/* 선택된 카테고리에 따라 해당 컴포넌트 렌더링 */}
             {selectedComponent === 'Card' &&
                 <CardCanvasLayOut
-                    exampleData={cardExampleData}
-                    cardObjectData={cardObjectData}
+                    tableID={tableID}
                     columnData={columnData}
                 />}
-
             {selectedComponent === 'List' &&
                 <ListMenuCanvas
                     columnData={columnData}
                 />}
 
-            {selectedComponent === 'Table' && <TableCanvasLayOut/> }
+            {selectedComponent === 'Table' && <TableCanvasLayOut/>
+            }
 
             {selectedComponent === 'Tree' && <TreeCanvasLayOut
                 columnData = {columnData}

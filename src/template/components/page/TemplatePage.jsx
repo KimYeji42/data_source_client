@@ -4,7 +4,6 @@ export default function TemplatePage(){
         <div>
             {/*<Header/>*/}
             <SideBarLayOut/>
-
         </div>
     );
 }

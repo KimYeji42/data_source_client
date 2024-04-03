@@ -28,7 +28,7 @@ export default function AppRouter() {
                     <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
-                    <Route path='/template' element={<TemplatePage />} />
+                    <Route path='/template/:tableID' element={<TemplatePage />} />
                     <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
                     <Route path='/templates' element={<TemplateShowCasePage />} />
                     <Route path='/template' element={<TemplatePage />} />\

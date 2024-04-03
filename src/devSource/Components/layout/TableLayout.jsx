@@ -1,10 +1,9 @@
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import ColumnUI from "../ui/ColumnUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import {useParams} from "react-router-dom";
 
-export default function TableLayout(){
-    const {tableID} = useParams()
+export default function TableLayout({tableID}){
     const [tableData, setTable] = useState(new Map());
     const [createData , setCreateData] = useState([]) //추가 부분 리스트
     const [updateData , setUpDateData] = useState([]) //수정 부분 리스트

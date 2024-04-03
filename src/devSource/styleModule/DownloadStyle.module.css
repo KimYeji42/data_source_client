@@ -1,6 +1,8 @@
 .downloadBox{
     margin: 0 auto;
-    text-align: right;
+    text-align: left;
+    width: 60%;
+    padding: 10px;
 }
 .downloadText{
     padding-right: 2%;

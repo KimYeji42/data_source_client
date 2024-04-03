@@ -158,6 +158,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                         </tr>
                     </tbody>
                 </table>
+
+
             </div>
             <
                 SuccessModalLayout
