@@ -1,50 +1,82 @@
 import styles from '../../styleModule/canvas.module.css';
 import DataContainerUI from "../uI/CardDataContainerUI";
 import { useState } from "react";
-export default function CardCanvasLayOut({ tableID , columnData }){
-    const [data , setData] = useState([]);
-    const [templateData , setTemplateData] = useState(new Map());
+import CardDesignUI from "../uI/CardDesignUI";
 
-    const fetchData = async (columnData) => {
+export default function CardCanvasLayOut({ tableID , columnData }) {
+    const [data , setData] = useState([]);
+    const [templateData , setTemplateData] = useState([])
+    const convertTemplateData = async (obj) => {
+        console.log(obj)
         try {
-            const response = await fetch(`http://localhost:8080/api/database/${tableID}/${columnData}`, {
-                method: 'GET',
+            const response = await fetch(`http://localhost:8080/api/template/card`, {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(obj) // JSON 문자열로 변환하여 전달
             });
             const responseData = await response.json();
-            console.log(responseData);
+            console.log(responseData)
+            setTemplateData(responseData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
-    const dataConvertTemplateData = () => {
+    const dataConvertCardTemplateData = async () => {
         console.log(data)
-        data.forEach((item, index) => {
-            fetchData(item);
-        });
+        if (data.title !== undefined || data.description !== undefined){
+            let obj = {
+                tableID: tableID,
+                title: data.Title, // selectData로 변경
+                description: data.description // selectData로 변경
+            }
+
+            await convertTemplateData(obj); // convertTemplateData가 완료될 때까지 기다림
+
+            console.log(templateData)
+        }
+
     };
-
-
-    return(
+    const exampleData = [
+        {
+        title: "Example Title",
+        description:"Example description"
+    }
+    ]
+    return (
         <div className={styles.cardGrid}>
-            {/*{data.map((item, index) => (*/}
-            {/*    <CardDesign*/}
-            {/*        key={index}*/}
-            {/*        title={item.data}*/}
-            {/*        image={"https://via.placeholder.com/300x200"}*/}
-            {/*        description={item.description}*/}
-            {/*    />*/}
-            {/*))}*/}
+            {templateData.length > 0 ? (
+                templateData.map((item, index) => (
+                    <CardDesignUI
+                        key={index}
+                        title={item.title.data}
+                        image={"https://via.placeholder.com/300x200"}
+                        description={item.description.data}
+                    />
+                ))
+            ) : (
+                exampleData.map((item, index) => (
+                    <CardDesignUI
+                        key={index}
+                        title={item.title}
+                        image={"https://via.placeholder.com/300x200"}
+                        description={item.description}
+                    />
+                ))
+            )}
+
+
+
 
             <DataContainerUI
-                dataChangeHandler={dataConvertTemplateData}
+                dataChangeHandler={dataConvertCardTemplateData}
                 setSelectedValues={setData}
                 columnData ={columnData}
                 data={data}
             />
         </div>
-    )
+    );
+
 }

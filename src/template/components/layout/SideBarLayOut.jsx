@@ -62,6 +62,7 @@ export default function SideBarLayOut() {
                 />}
             {selectedComponent === 'List' &&
                 <ListMenuCanvas
+                    tableID={tableID}
                     columnData={columnData}
                 />}
 

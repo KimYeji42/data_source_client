@@ -5,8 +5,7 @@ import { useEffect, useState } from "react";
 import ListDataContainerUI from "../uI/ListDataContainerUI";
 import listMenuExampleData from "../data/ListMenuExampleData";
 
-export default function ListMenuCanvas({ columnData }) {
-    const [tableID, setTableID] = useState(1);
+export default function ListMenuCanvas({ columnData , tableID }) {
     const [listMenuData, setListMenuData] = useState(null);
     const [loading, setLoading] = useState(false);
 
@@ -21,6 +20,7 @@ export default function ListMenuCanvas({ columnData }) {
                 body: JSON.stringify({ tableID: tableID, menuColumns: menuList })
             });
             const responseData = await response.json();
+            console.log(responseData)
             setListMenuData(responseData);
         } catch (error) {
             console.error('Error fetching filtered data:', error);
@@ -45,7 +45,7 @@ export default function ListMenuCanvas({ columnData }) {
                     <ListMenuComponent title="Check Menu" menus={listMenuData} />
                 )}
                 {!loading && !listMenuData && (
-                    <ListMenuComponent title="Check Menu" menus={listMenuExampleData} />
+                    <ListMenuComponent title="Check Menu" menus={[]} />
                 )}
             </div>
         </div>

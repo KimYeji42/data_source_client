@@ -53,6 +53,7 @@
      font-family: "KoPubWorld Dotum Bold", serif;
      margin-top: 10px;
      font-weight: bold; /* 글씨를 두껍게 만듭니다 */
+
  }
 
 .button{
@@ -91,4 +92,5 @@
 .checkBoxTitle{
     padding: 0;
     margin: 0;
+    font-size: 18px;
 }

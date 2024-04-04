@@ -7,13 +7,16 @@ export default function CardDataContainerUI({ columnData, setSelectedValues , da
     const [selectData, setSelectData] = useState({});
 
     const handleChange = (title, value) => {
+        console.log(selectData)
         setSelectData({ ...selectData, [title]: value });
     };
 
-    const buttonClickAction = () => {
-        dataChangeHandler();
-        setSelectedValues(selectData);
+    const buttonClickAction = async () => {
+        await setSelectedValues(selectData); // 선택된 데이터를 부모 컴포넌트에 전달 후에 기다림
+        await dataChangeHandler(); // 데이터 변환 함수 호출 후에 기다림
     };
+
+
     let items = [ "Title" , "description"]; // items 변수명 변경
 
     return (
