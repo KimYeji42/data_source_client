@@ -40,9 +40,6 @@ function TreeComponent({ title, tables }) {
                 </div>
 
             </div>
-
-
-
             {tables.map((table) => (
                 <div key={table.id} className="table">
                     <div className="table-header">

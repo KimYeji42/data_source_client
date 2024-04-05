@@ -72,9 +72,13 @@
 }
 .closeBox{
     font-family: "KoPubWorld Dotum Bold", serif;
-    width: 15%;
-    margin-top: 3%;
-    float: right;
+    width: 80%;
+    margin: 2% auto 0 ;
+    display: flex;
+    justify-content: space-between;
+}
+.templateDownBox{
+    margin-left: 12%;
 }
 .checkBox {
     width: 90%;

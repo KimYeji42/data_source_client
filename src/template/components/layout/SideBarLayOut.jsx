@@ -5,10 +5,9 @@ import styles from '../../styleModule/sidebarStyle.module.css';
 import TableCanvasLayOut from "./TableCanvasLayOut";
 import TreeCanvasLayOut from "./TreeCanvasLayOut";
 import CardCanvasLayOut from "./CardCanvasLayOut";
-import cardExampleData from "../data/cardExampleData";
 import ListMenuCanvas from "./ListMenuCanvasLayOut";
-import cardObjectData from "../data/cardObjectData";
 import {useParams} from "react-router-dom";
+import LinkUI from "../../../project/components/uI/LinkUI";
 
 export default function SideBarLayOut() {
     const {tableID} = useParams()
@@ -51,7 +50,11 @@ export default function SideBarLayOut() {
                 ))}
             </div>
             <div className={styles.closeBox}>
-                <p>닫기</p>
+                <div className={styles.templateDownBox}>
+                    <LinkUI text={"테이블로 돌아가기"} redirect={`/table/${tableID}`}/>
+                </div>
+                <LinkUI text={"템플릿 다운로드"} />
+
             </div>
 
             {/* 선택된 카테고리에 따라 해당 컴포넌트 렌더링 */}
@@ -66,12 +69,16 @@ export default function SideBarLayOut() {
                     columnData={columnData}
                 />}
 
-            {selectedComponent === 'Table' && <TableCanvasLayOut/>
+            {selectedComponent === 'Table'
+                && <TableCanvasLayOut/>
             }
 
-            {selectedComponent === 'Tree' && <TreeCanvasLayOut
+            {selectedComponent === 'Tree' &&
+                <TreeCanvasLayOut
                 columnData = {columnData}
-            />}
+                tableID={tableID}
+
+                />}
 
         </div>
     );

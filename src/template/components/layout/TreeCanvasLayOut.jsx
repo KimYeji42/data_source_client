@@ -6,8 +6,8 @@ import TreeDataContainerUI from "../uI/TreeDataContainerUI";
 import ListMenuComponent from "./ListMenuLayOut";
 import listMenuExampleData from "../data/ListMenuExampleData";
 
-export default function TreeCanvasLayOut({ columnData }) {
-    const [tableID, setTableID] = useState(1);
+export default function TreeCanvasLayOut({ columnData , tableID}) {
+
     const [loading, setLoading] = useState(false);
     const [treeData, setTreeData] = useState(null);
 
@@ -19,7 +19,11 @@ export default function TreeCanvasLayOut({ columnData }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ tableID: tableID, menuColumns: menuList })
+                body: JSON.stringify({
+                    tableID: tableID,
+                    menuColumns: menuList
+                }
+                )
             });
             const responseData = await response.json();
             setTreeData(responseData);

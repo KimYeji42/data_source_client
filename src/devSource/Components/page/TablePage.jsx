@@ -18,7 +18,7 @@ export default function TablePage() {
                     <TableTitleUI title={"[ 프로젝트명 ]"} subTitle={"-[테이블명] Table"}/>
                </div>
                 <div>
-                    <LinkUI text={"REST API 활용하기"}/>
+                    <LinkUI text={"REST API 활용하기"} redirect={"/apiBuilder"}/>
                     <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`}/>
                 </div>
                 <TableLayout tableID={tableID}/>

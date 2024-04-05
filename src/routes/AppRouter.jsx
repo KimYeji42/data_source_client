@@ -11,8 +11,8 @@ import TablePage from "../devSource/Components/page/TablePage";
 import TeamProfilePage from "../project/components/page/TeamProfilePage";
 import CommitSearchPage from "../devTree/Components/page/CommitSearchPage";
 import HistoryViewPage from "../devTree/Components/page/HistoryViewPage";
-import RestAPIBuilderPage from "../project/components/page/RestAPIBuilderPage";
 import CreateTablePage from "../devSource/Components/page/CreateTablePage";
+import RestAPIBuilderPage from "../devSource/Components/page/RestAPIBuilderPage";
 
 
 export default function AppRouter() {
@@ -38,7 +38,7 @@ export default function AppRouter() {
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
-                    <Route path='/restApi' element={<RestAPIBuilderPage/>}/>
+                    <Route path='/apiBuilder' element={<RestAPIBuilderPage/>}/>
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>

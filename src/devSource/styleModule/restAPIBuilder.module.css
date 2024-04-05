@@ -1,0 +1,48 @@
+.centerContainer{
+    width: 70%;
+    margin: 8% auto 0;
+    font-family: "KoPubWorld Dotum Bold", serif;
+}
+.urlContainer{
+    margin-top: 3%;
+    padding: 30px;
+}
+.urlContainer h5{
+    color: #00A3FF;
+}
+.urlContainer p{
+    padding: 20px;
+}
+.toggleContainer {
+    margin-top: 2%;
+    cursor: pointer;
+    text-align: right;
+    display: inline-block;
+    float: right;
+}
+.urlContainer {
+    opacity: 0; /* 초기에는 숨김 */
+    transition: opacity 0.5s; /* 투명도 속성에 대한 애니메이션 */
+}
+
+.urlContainer.visible {
+    opacity: 1; /* 보이도록 설정 */
+    transition: opacity 0.5s; /* 투명도 속성에 대한 애니메이션 */
+}
+
+.copyButton {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #00A3FF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    float: right;
+
+}
+
+.copyButton:hover {
+    background-color: #0056b3;
+}
