@@ -68,7 +68,7 @@ export default function TableBoxLayout({data}) {
                     </div>
                     <div className={styles.nameTable}>
                         <TableNameUI name="데이터베이스명"/>
-                        <InsertDBNameUI data={data}/>
+                        <InsertDBNameUI data={data.name}/>
                     </div>
                 </div>
 
