@@ -1,6 +1,6 @@
 import TitleUI from "../../../project/components/uI/TitleUI";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css"
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import RestApiUrlLayout from "../layout/RestApiUrlLayout";
 import RestApiProjectInfoLayout from "../layout/RestApiProjectInfoLayout";
 import {useParams} from "react-router-dom";
@@ -13,12 +13,13 @@ export default function RestAPIBuilderPage(){
         fetchData()
         setIsExpanded(!isExpanded); // 토글 상태 변경
     };
+
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/builder/${tableID}`, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 }
             });
             const responseData = await response.json();

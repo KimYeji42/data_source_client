@@ -1,0 +1,48 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../../default/font/GmarketSansTTFBold.ttf");
+}
+.joinTitle{
+    color: #00A3FF;
+    font-weight: bold; /* 글꼴 두껍게 */
+    font-size: 2rem;
+    font-family: "GmarketSansTTFBold", serif;
+
+}
+.joinContainer {
+    width: 40%;
+    margin: 5% auto;
+    text-align: center;
+    font-family: "KoPubWorld Dotum Bold", serif;
+    padding: 3%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 추가 */
+    border-radius: 3px;
+}
+.joinInputBox{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #C1C1C1;
+    padding: 23px;
+    width: 70%;
+}
+.joinBtn {
+    margin-top: 5%;
+    background-color: #00A3FF; /* 파란색 배경 */
+    color: #ffffff; /* 흰색 글씨 */
+    padding: 10px 20px; /* 버튼 내부 여백 */
+    border: none; /* 테두리 없음 */
+    border-radius: 5px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; /* 마우스 오버 시 커서 모양 변경 */
+    font-size: 16px; /* 글꼴 크기 */
+    font-weight: bold; /* 글꼴 두껍게 */
+    transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 전환 효과 */
+    width: 60%;
+}
+
+.joinBtn:hover {
+    background-color: #0056b3; /* 마우스 호버 시 파란색이 조금 진한 색으로 변경 */
+}
