@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../styles.module.css';
-import {Link} from "react-router-dom"; // 스타일 파일 import
 
 const ErrorModal = ({ isOpen, onClose, error ,clickLink}) => {
     const handleConfirm = () => {

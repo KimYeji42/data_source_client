@@ -2,19 +2,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './headerStyle.module.css';
 import {useState} from "react";
 
-
 function Header({  currentUser, isLoggedIn }) {
 
-        const [activeItem, setActiveItem] = useState(null);
+    const [activeItem, setActiveItem] = useState(null);
 
-        const handleClick = (itemId) => {
-            setActiveItem(itemId);
-        };
+    const handleClick = (itemId) => {
+        setActiveItem(itemId);
+    };
 
     return (
         <div className={styles.All}>
                 <div className={styles.container}>
-                    <div className={styles.logo} >DevSource</div>
+                    <div className={styles.logo} >No DB Service</div>
                         <div className={styles.bar}>
                             <div className={styles.navLink}>
                                 <li
