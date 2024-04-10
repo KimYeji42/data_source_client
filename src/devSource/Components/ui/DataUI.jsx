@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 import NewDataUI from "./NewDataUI";
 
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
-                                   tableMap , updateData , setUpdateData ,createData , setCreateData,
-                                }) {
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData, tableID ,
+                                   blobData, setBlobData
+                              })
+{
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
+
 
     function columnDataSet() {
         setData(tableMap.get(column))
@@ -47,6 +50,7 @@ export default function DataUI({
     const handleAddData = (newData) => {
         setData([...data, {id: data.length + 1, data: newData}]);
     };
+
 
     return (
         <div>
@@ -88,6 +92,9 @@ export default function DataUI({
                         setCreateData={setCreateData}
                         column={column}
                         dataLine={index} // 줄의 인덱스를 전달
+                        tableID={tableID}
+                        blobData={blobData}
+                        setBlobData={setBlobData}
                     />
                 ))}
                 </tbody>
