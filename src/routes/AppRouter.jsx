@@ -14,6 +14,7 @@ import HistoryViewPage from "../devTree/Components/page/HistoryViewPage";
 import CreateTablePage from "../devSource/Components/page/CreateTablePage";
 import RestAPIBuilderPage from "../devSource/Components/page/RestAPIBuilderPage";
 import JoinPage from "../authentication/components/page/JoinPage";
+import BlobCloudPage from "../devSource/Components/page/BlobCloudPage";
 
 
 export default function AppRouter() {
@@ -40,6 +41,8 @@ export default function AppRouter() {
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
                     <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
+                    <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
+
                     <Route path='/auth/join' element={<JoinPage/>}/>
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
