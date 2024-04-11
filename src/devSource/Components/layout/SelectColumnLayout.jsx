@@ -111,10 +111,9 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                         <td style={{width: '300px'}}>
                             <select name="dataType" value={row.dataType} onChange={(e) => handleSelectChange(e, index)}
                                     className={styles.inputDataType}>
-                                <option value="TEXT">VARCHAR</option>
+                                <option value="TEXT">TEXT</option>
                                 <option value="INTEGER">INTEGER</option>
-                                <option value="DATE">DATE</option>
-                                <option value="BOOLEAN">BOOLEAN</option>
+                                <option value="REAL">REAL</option>
                             </select>
                         </td>
                         <td style={{width: '50px'}}>
