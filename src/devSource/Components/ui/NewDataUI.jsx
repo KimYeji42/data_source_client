@@ -1,20 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
 
-export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine }) {
-    const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill("")); // 새로운 배열
+export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine, tableID, setBlobData}) {
+    const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill(""));
+    const [type, setType] = useState("");
 
-    // 각 컬럼의 새로운 데이터 입력값
     const handleNewDataInputChange = (event, columnIndex) => {
         const updatedValues = [...newDataValues];
         updatedValues[columnIndex] = event.target.value;
         setNewDataValues(updatedValues);
     };
 
-    const handleInputBlur = (event, index, value) => {
-        const updatedCreateData = [...createData]; // createData 배열의 복사본 생성
+    const handleFileInputChange = (event, index) => {
+        const file = event.target.files[0];
+        const updatedValues = [...newDataValues];
+        // 새로운 데이터베이스의 원본 파일 이름이랑 비교하여 값을 저장!
+        updatedValues[index] = file ? file.name : ""; // 파일 이름만 저장
+        setNewDataValues(updatedValues);
 
-        // 기존 값이 있는 경우 해당 아이템을 배열에서 제거
+        // Blob 데이터 업데이트
+        setBlobData(prevBlobData => {
+            const updatedBlobData = [...prevBlobData];
+            updatedBlobData[index] =
+                {   columnLine: index ,
+                    columnName: column,
+                    file: file
+                }; // 컬럼 이름과 파일을 객체로 저장
+            return updatedBlobData;
+        });
+    };
+
+    const handleInputBlur = (event, index, value) => {
+        const updatedCreateData = [...createData];
+
         const existingIndex = updatedCreateData.findIndex(item => item.columnLine === dataLine && item.columnName === column);
 
         if (existingIndex !== -1) {
@@ -26,26 +44,54 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
             columnName: column,
             columnLine: dataLine
         };
-
-        updatedCreateData.push(obj); // 새로운 아이템을 추가
-        setCreateData(updatedCreateData); // 업데이트된 데이터를 설정
+        updatedCreateData.push(obj);
+        setCreateData(updatedCreateData);
     };
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/column/type/${column}/${tableID}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const dataType = await response.text();
+            setType(dataType);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <tr>
-            {/* 각 컬럼에 대한 입력란 생성 */}
-            {newDataValues.map((value, index) => (
-                <td key={index} className={styles.newDataClass}>
-                    <input
-                        className={styles.newDataInput}
-                        type="text"
-                        value={value}
-                        onBlur={(event) => handleInputBlur(event, index, value)} // 입력창을 떠날 때 호출
-                        onChange={(event) => handleNewDataInputChange(event, index)}
-                        placeholder="NULL"
-                    />
-                </td>
-            ))}
+            {type === 'BLOB' ? (
+                newDataValues.map((value, index) => (
+                    <td key={index} className={styles.newDataClass}>
+                        <input
+                            className={styles.newDataInput}
+                            type="file"
+                            onBlur={(event) => handleInputBlur(event, index, value)}
+                            onChange={(event) => handleFileInputChange(event, index)} // 파일 선택 시 호출
+                        />
+                    </td>
+                ))
+            ) : (
+                newDataValues.map((value, index) => (
+                    <td key={index} className={styles.newDataClass}>
+                        <input
+                            className={styles.newDataInput}
+                            type="text"
+                            value={value}
+                            onBlur={(event) => handleInputBlur(event, index, value)}
+                            onChange={(event) => handleNewDataInputChange(event, index)}
+                            placeholder="NULL"
+                        />
+                    </td>
+                ))
+            )}
         </tr>
     );
 }
