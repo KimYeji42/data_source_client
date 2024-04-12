@@ -15,8 +15,10 @@ export default function RestAPIBuilderPage(){
     };
 
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/builder/${tableID}`, {
+            const response = await fetch(`${apiUrl}/api/builder/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

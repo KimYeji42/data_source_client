@@ -12,9 +12,10 @@ export default function TreeCanvasLayOut({ columnData , tableID}) {
     const [treeData, setTreeData] = useState(null);
 
     const fetchTreeTemplatedData = async (menuList) => {
+        const apiUrl = process.env.REACT_APP_API_URL;
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:8080/api/template/tree`, {
+            const response = await fetch(`${apiUrl}/api/template/tree`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

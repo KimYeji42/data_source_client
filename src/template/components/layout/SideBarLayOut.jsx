@@ -20,8 +20,10 @@ export default function SideBarLayOut() {
     };
 
     const fetchColumData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/column/list/${tableID}`, {
+            const response = await fetch(`${apiUrl}/api/column/list/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

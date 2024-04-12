@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './headerStyle.module.css';
 import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function Header({  currentUser, isLoggedIn }) {
 
@@ -36,6 +37,13 @@ function Header({  currentUser, isLoggedIn }) {
                                     onClick={() => handleClick('devTree')}
                                 >
                                     DevTree
+                                </li>
+                                <li
+                                    id="Image"
+                                    className={activeItem === 'image' ? styles.active : ''}
+                                    onClick={() => handleClick('image')}
+                                >
+                                    Image
                                 </li>
                             </div>
 

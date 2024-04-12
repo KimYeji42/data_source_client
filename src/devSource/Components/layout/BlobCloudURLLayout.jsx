@@ -2,9 +2,8 @@ import styles from "../../styleModule/BlobCloud.module.css";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 import React, {useState} from "react";
 
-export default function BlobCloudURLLayout(){
-    const [url , setUrl] = useState()
-    const [fullUrl , setFullUrl] = useState("exampleFullUrl")
+export default function BlobCloudURLLayout({url , fullUrl}){
+
     const handleCopyClick = (url) => {
         navigator.clipboard.writeText(url); // 클립보드에 URL 복사
     };

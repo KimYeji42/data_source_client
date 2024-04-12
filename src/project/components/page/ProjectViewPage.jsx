@@ -16,8 +16,10 @@ export default function ProjectViewPage(){
     }, []);
 
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/project/detail/${projectId}`, {
+            const response = await fetch(`${apiUrl}/api/project/detail/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

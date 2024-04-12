@@ -7,8 +7,10 @@ export default function DataBaseShowCasePage() {
     const { dataBaseID } = useParams();
     const [dataBaseData, setDataBaseData] = useState(null); // 초기값을 null로 설정하여 데이터가 없는 상태를 표시합니다
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/database/${dataBaseID}`, {
+            const response = await fetch(`${apiUrl}/api/database/${dataBaseID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

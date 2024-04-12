@@ -9,9 +9,12 @@ export default function BlobCloudPage() {
     // 이미지 목록을 관리하는 상태
     const [images, setImages] = useState([]);
     const [profileID , setProfileID] = useState(1)
+    const [url , setUrl] = useState()
+    const [fullUrl , setFullUrl] = useState("exampleFullUrl")
     const fetchCloudAllData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
         try {
-            const response = await fetch(`http://localhost:8080/api/blob/files/${profileID}`);
+            const response = await fetch(`${apiUrl}/api/blob/files/${profileID}`);
             if (!response.ok) {
                 throw new Error("서버에서 데이터를 가져오는 데 실패했습니다.");
             }
@@ -32,12 +35,13 @@ export default function BlobCloudPage() {
     const fileUpload = (event) => {
         const file = event.target.files[0]; // 첫 번째 파일만 선택
         const formData = new FormData();
+        const apiUrl = process.env.REACT_APP_API_URL;
 
         // 선택된 파일을 FormData에 추가
         formData.append("file", file); // "file"은 서버에서 파일을 처리하는 데 사용될 키 이름
         formData.append("profileID",profileID)
         // 서버로 FormData 전송
-        fetch("http://localhost:8080/api/blob/upload", {
+        fetch(`${apiUrl}/api/blob/upload`, {
             method: "POST",
             body: formData,
         })
@@ -74,8 +78,8 @@ export default function BlobCloudPage() {
                 <TitleUI title={"[ Photo Cloud ]"} />
             </div>
             {/* 이미지 목록을 전달하여 이미지 레이아웃 컴포넌트 호출 */}
-            <BlobCloudImageLayout images={images} onDelete={handleDelete}/>
-            <BlobCloudURLLayout />
+            {images.length > 0 && <BlobCloudImageLayout images={images} onDelete={handleDelete} setUrl={setUrl}/>}
+            <BlobCloudURLLayout url={url} fullUrl={fullUrl}/>
         </div>
     );
 }

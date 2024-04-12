@@ -10,9 +10,11 @@ export default function ListMenuCanvas({ columnData , tableID }) {
     const [loading, setLoading] = useState(false);
 
     const fetchFilteredData = async (menuList) => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:8080/api/template/list`, {
+            const response = await fetch(`${apiUrl}/api/template/list`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

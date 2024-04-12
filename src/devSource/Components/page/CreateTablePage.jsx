@@ -6,8 +6,10 @@ export default function CreateTablePage(){
     const { dataBaseID } = useParams();
     const [dataBaseData , setDataBaseData] = useState(null)
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/database/${dataBaseID}`, {
+            const response = await fetch(`${apiUrl}/api/database/${dataBaseID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

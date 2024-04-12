@@ -29,8 +29,10 @@ export default function TableBoxLayout({data}) {
             dataBaseID : data.id,
         }
         console.log(obj)
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch('http://localhost:8080/api/table', {
+            const response = await fetch(`${apiUrl}/api/table`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

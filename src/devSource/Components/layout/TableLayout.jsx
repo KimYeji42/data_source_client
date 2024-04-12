@@ -8,8 +8,10 @@ export default function TableLayout({tableID}){
     const [updateData , setUpDateData] = useState([]) //수정 부분 리스트
     const [blobData , setBlobData] = useState([])
     const fetchColumData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/column/${tableID}`, {
+            const response = await fetch(`${apiUrl}/api/column/${tableID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

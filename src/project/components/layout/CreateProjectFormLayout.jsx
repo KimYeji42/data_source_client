@@ -58,7 +58,8 @@ export default function CreateProjectFormLayout() {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/project', {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/project`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

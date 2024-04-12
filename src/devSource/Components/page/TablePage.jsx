@@ -6,7 +6,6 @@ import DownloadUI from "../ui/DownloadUI";
 import React from "react";
 import LinkUI from "../../../project/components/uI/LinkUI";
 import {useParams} from "react-router-dom";
-import ButtonUI from "../../../project/components/uI/ButtonUI";
 
 export default function TablePage() {
     const {tableID} = useParams()

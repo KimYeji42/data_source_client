@@ -34,7 +34,9 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/data', {
+            const apiUrl = process.env.REACT_APP_API_URL;
+
+            const response = await fetch(`${apiUrl}/api/data`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

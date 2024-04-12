@@ -15,8 +15,10 @@ export default function MemberSearchLayout({ searchTitle , teamMemberAddHandler}
     }, []);
 
     const fetchProfiles = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/profile`, {
+            const response = await fetch(`${apiUrl}/api/profile`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

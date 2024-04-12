@@ -21,8 +21,10 @@ export default function CardUI({ name , comment , projectID ,dataBaseName , item
             state : state,
             project : item
         }
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch('http://localhost:8080/api/project/state', {
+            const response = await fetch(`${apiUrl}/api/project/state`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

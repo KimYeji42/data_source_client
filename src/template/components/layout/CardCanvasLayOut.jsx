@@ -8,8 +8,10 @@ export default function CardCanvasLayOut({ tableID , columnData }) {
     const [templateData , setTemplateData] = useState([])
     const convertTemplateData = async (obj) => {
         console.log(obj)
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/template/card`, {
+            const response = await fetch(`${apiUrl}/api/template/card`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

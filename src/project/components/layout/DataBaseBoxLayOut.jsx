@@ -11,8 +11,9 @@ export default function DataBaseBoxLayOut() {
         alert(activeTable.id)
     };
     const getDatabaseTables = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
         try {
-            const response = await fetch(`http://localhost:8080/api/table/${dataBaseID}`, {
+            const response = await fetch(`${apiUrl}/api/table/${dataBaseID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

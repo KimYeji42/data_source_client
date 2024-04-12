@@ -18,8 +18,10 @@ export default function ProjectCardLayOut(){
     }, []);
 
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/project/${profile.id}`, {
+            const response = await fetch(`${apiUrl}/api/project/${profile.id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

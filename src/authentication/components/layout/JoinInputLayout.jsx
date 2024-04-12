@@ -27,8 +27,9 @@ export default function JoinInputLayout(){
             };
 
             try {
+                const apiUrl = process.env.REACT_APP_API_URL;
                 // fetch를 사용하여 POST 요청을 보냄
-                const response = await fetch('http://localhost:8080/api/auth/join', {
+                const response = await fetch(`${apiUrl}/api/auth/join`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

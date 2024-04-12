@@ -7,8 +7,10 @@ export default function TeamProfilePage() {
     const [teamProfiles, setTeamProfiles] = useState(null);
 
     const fetchData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
-            const response = await fetch(`http://localhost:8080/api/teamProfile/${projectId}`, {
+            const response = await fetch(`${apiUrl}/api/teamProfile/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
