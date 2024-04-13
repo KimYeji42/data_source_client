@@ -16,6 +16,7 @@ body{font-size: 1rem;}
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
 }
 
 .mainCircle {
@@ -59,6 +60,7 @@ body{font-size: 1rem;}
     border-color: #00A3FF;
     font-size: 1.3rem;
     font-weight: bold;
+
 }
 
 /*MainBottomLayout*/
@@ -113,7 +115,7 @@ body{font-size: 1rem;}
 }
 
 .mainTopLayout {
-    margin: 3rem 0 5rem 0;
+    margin: 4rem 0 5rem 0;
 }
 
 /*mainPage*/

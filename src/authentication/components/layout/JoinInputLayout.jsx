@@ -40,14 +40,19 @@ export default function JoinInputLayout(){
                 if (response.ok) {
                     const responseData = await response.json();
                     console.log('회원가입 성공:', responseData);
+
                     // 성공적으로 가입되면 다음 페이지로 이동하거나 로직을 처리할 수 있음
                 } else {
                     // 오류 응답 처리
                     const errorData = await response.json();
                     console.error('회원가입 실패:', errorData);
+                    setErrorMessage(errorData.message)
+                    setIsErrorModalOpen(true)
                 }
             } catch (error) {
                 console.error('회원가입 실패:', error);
+                setErrorMessage(error.message)
+                setIsErrorModalOpen(true)
             }
         }else {
             setErrorMessage("비밀번호가 일치하지 않습니다.")

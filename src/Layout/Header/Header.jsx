@@ -1,16 +1,37 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './headerStyle.module.css';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-function Header({  currentUser, isLoggedIn }) {
-
+function Header() {
+    const [currentUser, setCurrentUser] = useState("")
+    const [isLoggedIn , setIsLoggedIn] = useState("")
     const [activeItem, setActiveItem] = useState(null);
 
     const handleClick = (itemId) => {
         setActiveItem(itemId);
     };
-
+    const getCurrentUser = () =>{
+        const username = localStorage.getItem("username")
+        setCurrentUser(username)
+        console.log(currentUser)
+    }
+    const getTokenUser = () =>{
+        const token = localStorage.getItem("token")
+        if (token !== null){
+            setIsLoggedIn(true)
+            getCurrentUser()
+        }
+    }
+    const logoutHandler = () =>{
+        setIsLoggedIn(false)
+        localStorage.removeItem("token")
+        localStorage.removeItem("email")
+        localStorage.removeItem("username")
+    }
+    useEffect(() => {
+        getTokenUser()
+    }, []);
     return (
         <div className={styles.All}>
                 <div className={styles.container}>
@@ -22,14 +43,14 @@ function Header({  currentUser, isLoggedIn }) {
                                     className={activeItem === 'home' ? styles.active : ''}
                                     onClick={() => handleClick('home')}
                                 >
-                                    Home
+                                    <Link to={'/'} >Home</Link>
                                 </li>
                                 <li
                                     id="devTool"
                                     className={activeItem === 'devTool' ? styles.active : ''}
                                     onClick={() => handleClick('devTool')}
                                 >
-                                    DevTool
+                                    <Link to={'/projects'} >DevTool</Link>
                                 </li>
                                 <li
                                     id="devTree"
@@ -43,13 +64,16 @@ function Header({  currentUser, isLoggedIn }) {
                                     className={activeItem === 'image' ? styles.active : ''}
                                     onClick={() => handleClick('image')}
                                 >
-                                    Image
+                                    <Link to={'/blob/cloud'} >Resources</Link>
                                 </li>
                             </div>
 
                             <div className={styles.info}>
-                                <div>{currentUser}ㅇㅇㅇ님</div>
-                                <div >{isLoggedIn ? '로그인 중' : '로그아웃'}</div>
+                                <div>{currentUser} 님</div>
+                                <div>{isLoggedIn ?
+                                    <Link to={'/'} onClick={logoutHandler}>로그아웃</Link> :
+                                    <Link to={'/auth/login'}>로그인</Link>}
+                                </div>
                             </div>
                         </div>
                 </div>

@@ -15,13 +15,17 @@ import CreateTablePage from "../devSource/Components/page/CreateTablePage";
 import RestAPIBuilderPage from "../devSource/Components/page/RestAPIBuilderPage";
 import JoinPage from "../authentication/components/page/JoinPage";
 import BlobCloudPage from "../devSource/Components/page/BlobCloudPage";
+import Header from "../Layout/Header/Header";
+import LoginPage from "../authentication/components/page/LoginPage";
 
 
 export default function AppRouter() {
     return (
         <div className="AppRouter">
             {/* 매핑 */}
+
             <BrowserRouter>
+                <Header/>  {/*/Router 사용응 위해 Header가지고오기*/}
                 <Routes>
                     {/* 루트 경로에 대한 리디렉션 */}
                     <Route path='/' element={<Navigate to="/main" />} />
@@ -44,6 +48,8 @@ export default function AppRouter() {
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
 
                     <Route path='/auth/join' element={<JoinPage/>}/>
+                    <Route path='/auth/login' element={<LoginPage/>}/>
+
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
