@@ -1,0 +1,17 @@
+.toggleButton {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 150px;
+}
+
+.toggleButton.on {
+    background-color: #00A3FF;
+    color: white;
+}
+
+.toggleButton.off {
+    background-color: #000000;
+    color: white;
+}

@@ -25,6 +25,8 @@ function Header() {
     }
     const logoutHandler = () =>{
         setIsLoggedIn(false)
+        setCurrentUser("")
+
         localStorage.removeItem("token")
         localStorage.removeItem("email")
         localStorage.removeItem("username")

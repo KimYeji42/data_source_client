@@ -2,6 +2,7 @@ import styles from "../styles.module.css";
 import { Image } from "react-bootstrap";
 
 export default function ProjectTeamUI({ membersData, deleteUserHandler, createEmail }) {
+
     return (
         membersData.map((user, index) => (
             <div key={index} className={styles.member}>

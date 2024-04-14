@@ -1,26 +1,58 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from '../styles.module.css';
 import ProjectTeamLayOut from './ProjectTeamLayOut';
 import MemberSearchLayOut from './MemberSearchLayOut';
-import Profile from '../../../Profile';
 import ModalLayOut from './SendModalLayOut';
 import ErrorModal from './ErrorModalLayOut';
-import profile from "../../../Profile";
 import SuccessModalLayout from "./SuccessModalLayout";
 
 export default function CreateProjectFormLayout() {
-
+    const [currentProfile , setCurrentProfile] = useState(null)
     const [name, setName] = useState("");
     const [comment, setComment] = useState("");
     const [dataBaseName , setDataBaseName] = useState(" ");
-
-    const [teamList, setTeamList] = useState(new Set([profile])); // Set으로 초기화
+    const [teamList, setTeamList] = useState(new Set([])); // Set으로 초기화
     const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(true);
     const [isSendModalOpen , setIsSendModalOpen] = useState(false)
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
+    const getCreateUser = async () => {
+        const token = localStorage.getItem('token');
+        const apiUrl = process.env.REACT_APP_API_URL;
+
+        try {
+            const response = await fetch(`${apiUrl}/api/profile/current`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch profile data');
+            }
+            const data = await response.json();
+            setCurrentProfile(data);
+        } catch (error) {
+            console.error('Error fetching profile data:', error);
+        }
+    };
+
+    useEffect(() => {
+        getCreateUser();
+    }, []); // 마운트될 때 한 번만 실행
+
+    useEffect(() => {
+        if (currentProfile !== null) {
+            // 중복값이 없는 경우에만 추가
+            if (![...teamList].some(member => member.id === currentProfile.id)) {
+                setTeamList(prevTeamList => new Set([...prevTeamList, currentProfile]));
+            }
+        }
+    }, [currentProfile]); // currentProfile이 변경될 때마다 실행
+
+
     const toggleMemberGroupSearchBar = () => {
         setShowMemberGroupSearchBar(prevState => !prevState);
     };
@@ -52,7 +84,7 @@ export default function CreateProjectFormLayout() {
         let obj = {
             name: name,
             comment: comment,
-            profileID: Profile.id,
+            profileID: currentProfile.id,
             dataBaseName: dataBaseName,
             teamProfile: [...teamList] // Set을 배열로 변환하여 전달
         };
@@ -83,6 +115,7 @@ export default function CreateProjectFormLayout() {
         }
     };
 
+
     return (
         <div>
             <ModalLayOut
@@ -107,7 +140,11 @@ export default function CreateProjectFormLayout() {
                 clickLink={"/projects"}
             />
 
-            {showMemberGroupSearchBar && <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers}/>}
+            {
+                showMemberGroupSearchBar &&
+                currentProfile !== null &&
+                <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers} currentUser={currentProfile}/>
+            }
 
             <div>
                 <div className={styles.titleGroup}>
@@ -131,7 +168,10 @@ export default function CreateProjectFormLayout() {
 
             <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>협업자 추가</button>
 
-            <ProjectTeamLayOut membersData={[...teamList]} deleteUserHandler={deleteUserHandler}/>
+            {currentProfile !== null && (
+                <ProjectTeamLayOut membersData={[...teamList]} deleteUserHandler={deleteUserHandler} currentUser={currentProfile}/>
+            )}
+
 
             <button type="button" onClick={modalOpenHandler} className={`btn btn-primary ${styles.createButton}` }>프로젝트 생성</button>
         </div>
