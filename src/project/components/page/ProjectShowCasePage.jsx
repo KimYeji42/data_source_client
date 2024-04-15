@@ -4,27 +4,18 @@ import ProjectSideBarLayOut from "../layout/ProjectSideBarLayOut";
 import LinkUI from "../uI/LinkUI";
 import TitleUI from "../uI/TitleUI";
 import ToggleButton from "../uI/ToggleButton";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ErrorModal from "../layout/ErrorModalLayOut";
 
-export default function ProjectShowCasePage(){
+export default function ProjectShowCasePage() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
-    const getToken = () =>{
-        const token = localStorage.getItem('token');
-        if (token !== null){
-            fetchData(token)
-            return
-        }
-        setError("로그인 후 진행해주세요!")
-        setErrorModalOpen(true)
-    }
-    const fetchData = async (token) => {
+    const fetchProjectData = async (token,endpoint) => {
         const apiUrl = process.env.REACT_APP_API_URL;
         try {
-            const response = await fetch(`${apiUrl}/api/project`, {
+            const response = await fetch(`${apiUrl}${endpoint}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -47,17 +38,43 @@ export default function ProjectShowCasePage(){
     };
 
     useEffect(() => {
-        getToken()
-    }, []);
+        const token = localStorage.getItem('token');
+        const endpoint = '/api/project/all'; // 팀원모드
 
-    return(
+        if (token !== null) {
+            fetchProjectData(token,endpoint); // 팀장 모드 여부에 따라 다른 데이터를 가져오도록 함
+            return;
+        }
+        setError("로그인 후 진행해주세요!");
+        setErrorModalOpen(true);
+    }, []); // 팀장 모드가 변경될 때마다 데이터를 다시 가져옴
+
+    const changeAllMode = () =>{
+        const token = localStorage.getItem('token');
+        const endpoint = '/api/project/all'; // 팀원모드
+
+        fetchProjectData(token,endpoint)
+    }
+
+    const changeLeaderMode = () =>{
+        const token = localStorage.getItem('token');
+        const endpoint = '/api/project'; // 팀장모드
+
+        fetchProjectData(token , endpoint)
+    }
+    return (
         <div className={styles.projectShowCasePage}>
-            <ProjectSideBarLayOut/>
+            <ProjectSideBarLayOut />
             <div className={styles.showCase}>
-                <TitleUI title={"프로젝트 선택"}/>
-                <ToggleButton onLabel={"팀장"} offLabel={"전체"}/>
-                <LinkUI text={"프로젝트 생성"} redirect={"/createProject"}/>
-                <ProjectCardLayOut data={data}/>
+                <TitleUI title={"프로젝트 선택"} />
+                <ToggleButton
+                    onLabel={"팀장"}
+                    offLabel={"전체"}
+                    onToggleOff={changeAllMode}
+                    onToggleOn={changeLeaderMode}
+                />
+                <LinkUI text={"프로젝트 생성"} redirect={"/createProject"} />
+                <ProjectCardLayOut data={data} />
             </div>
             <ErrorModal
                 error={error}
@@ -65,5 +82,5 @@ export default function ProjectShowCasePage(){
                 isOpen={isErrorModalOpen}
             />
         </div>
-    )
+    );
 }

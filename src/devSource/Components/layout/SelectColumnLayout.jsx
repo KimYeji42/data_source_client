@@ -29,7 +29,10 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
             updatedRows[index][name] = checked;
         } else if (name === "dataType") {
             updatedRows[index][name] = value;
-        } else {
+        } else
+        if (name ==='joinTable')
+            updatedRows[index][name] = value;
+        else {
             const isDuplicateName = updatedRows.some((row, i) => {
                 const existingValue = row[name].toLowerCase();
                 const newValue = value.toLowerCase(); // 새 값 소문자 변환
