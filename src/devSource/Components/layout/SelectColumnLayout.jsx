@@ -12,7 +12,7 @@ const initialRowState = {
     fk: false,
     uk: false,
     isNotNull : false,
-    joinTable: {}
+    joinTable: null
 };
 
 export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
@@ -65,7 +65,7 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
             fk: false,
             uk: false,
             isNotNull : false,
-            joinTable: {}
+            joinTable: null
         };
         setRows([...rows, newRow]);
         setCreationTimes([...creationTimes, Date.now()]);
