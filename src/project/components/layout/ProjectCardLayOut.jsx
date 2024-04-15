@@ -1,6 +1,11 @@
 import CardUI from "../uI/CardUI";
 import styles from "../styles.module.css";
+import {useEffect} from "react";
 export default function ProjectCardLayOut({data} ) {
+    useEffect(() => {
+
+    }, [data]);
+
     return (
         <div className={styles.cardLayOutBox}>
 
