@@ -1,9 +1,33 @@
 import styles from '../../styleModule/createTableStyle.module.css';
 import searchIcon from '../..//Image/glass.png';
-import TableData from "../data/TableData";
+import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 
 export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch }) {
+    const {dataBaseID} = useParams()
+    const [joinTableData , setJoinTableData] = useState(null)
+    const fetchJoinData = async () => {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
+        try {
+            const response = await fetch(`${apiUrl}/api/table/join/${dataBaseID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const responseData = await response.json();
+            console.log(responseData)
+            setJoinTableData(responseData);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+    useEffect(() => {
+        fetchJoinData()
+    }, [dataBaseID]);
+
     const handleRowClick = (item) => {
         handleJoinTableSelect(item);
         setShowSearch(false);
@@ -29,12 +53,12 @@ export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch
                         <div onClick={handleCancelClick}>
                             <p className={styles.cancelBtn}>Cancel</p>
                         </div>
-                        {TableData.map((item, index) => (
+                        {joinTableData && joinTableData.map((item, index) => (
                             <div key={item.id} onClick={() => handleRowClick(item)}>
                                 <div>
-                                    <p className={styles.joinData}>{item.tableName}/{item.pkName}/{item.type}</p>
+                                    <p className={styles.joinData}>{item.tableName}/{item.pkColumnName}/{item.joinColumnDataType}</p>
                                 </div>
-                                {index !== TableData.length - 1 && <hr />}
+                                {index !== joinTableData.length - 1 && <hr />}
                             </div>
                         ))}
                     </div>

@@ -14,6 +14,7 @@ export default function LoginPage() {
     const [ token , setToken] = useState(null)
     const [ responseEmail , setResponseEmail] = useState(null)
     const [responseUsername , setResponseUsername] = useState(null)
+
     const handleLoginSuccess = (token , responseEmail, username) => {
         setToken(token);
         setResponseEmail(responseEmail)

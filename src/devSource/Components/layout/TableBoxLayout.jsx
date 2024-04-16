@@ -48,7 +48,6 @@ export default function TableBoxLayout({data}) {
             } else {
                 throw new Error(responseData.message); // 에러를 던져서 catch 블록에서 처리하도록 함
             }
-            console.log(obj);
         } catch (error) {
             console.error('Error sending data:', error);
             setError(error.message);
