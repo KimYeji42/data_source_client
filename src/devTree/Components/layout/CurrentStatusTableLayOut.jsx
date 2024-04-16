@@ -1,6 +1,5 @@
 import SmallSizeTitleUI from "../ui/SmallSizeTitleUI";
 import styles from "../../styles/styles.module.css"
-import ChangeTableLayout from "./ChangeTableLayout";
 import {useEffect, useState} from "react";
 import CommitInformationUI from "../ui/CommitInformationUI"
 import SelectionChangeTableUI from "../ui/SelectionChangeTableUI";

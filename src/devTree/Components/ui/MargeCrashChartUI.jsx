@@ -1,7 +1,10 @@
 import styles from "../../styles/styles.module.css";
 import React from "react";
 
-export default function MargeCrashChartUI() {
+export default function MargeCrashChartUI({data, index, selectedIndex}) {
+
+    if (selectedIndex != index) return
+
     return(
         <>
             <div className={styles.MergeChartBack}>

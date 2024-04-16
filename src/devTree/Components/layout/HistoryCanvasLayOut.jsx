@@ -4,17 +4,28 @@ import React, {useState} from "react";
 import HistoryButtonWhitever from "../ui/HistoryButtonWhitever";
 import GuidePopupUI from "../ui/GuidePopupUI";
 import MergeCrashModalLayout from "./MergeCrashModalLayout";
+import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
-export default function HistoryCanvasLayOut(){
-    const [isSendModalOpen , setIsSendModalOpen] = useState(false);
+export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectId }){
     const [isMergeModalOpen, setIsMergeModalOpen] = useState(false);
-    const openModal = () => {
-        console.log("안 되냐?");
-    }
-    const openMergeModal = () => {
+    const [isSendModalOpen , setIsSendModalOpen] = useState(false);
+    const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false);
+    const [crashData, setCrashData] = useState(null)
+
+    const openCrashModal = () => {
         setIsMergeModalOpen(true);
         setIsSendModalOpen(false);
     };
+
+    const openSuccessModal = () => {
+        setIsSuccessModalOpen(true);
+        setIsSendModalOpen(false);
+    };
+
+    const crashResponse = (crash) => {
+        setCrashData(crash)
+    }
+
     return(
         <>
             <div className={styles.buttonContainerF}>
@@ -28,14 +39,28 @@ export default function HistoryCanvasLayOut(){
                 <GuidePopupUI
                     isOpen={isSendModalOpen}
                     onClose={() => setIsSendModalOpen(false)}
-                    title1={"선택된 커밋의 변경사항을"}title2={"현재 분기와 병합하시겠습니까?"}
+                    title1={"선택된 커밋의 변경사항을"} title2={"현재 분기와 병합하시겠습니까?"}
                     btnTitle={"merge"}
-                    onModalOpen={openMergeModal} // Merge 모달 열기 함수 전달
+                    onCrashOpen={openCrashModal} // 충돌 모달 열기 함수
+                    onSuccessOpen={openSuccessModal} // 성공 모달 열기 함수
+                    crashResponse={crashResponse} // 충돌 데이터 저장
+                    selectedCommitId={selectedCommitId}
+                    selectedProjectId={selectedProjectId}
                 />
-                {/*<MergeCrashModalLayout isOpen={isSendModalOpen} onClose={()=>setIsSendModalOpen(false)}/>*/}
-            </div>
-            <MergeCrashModalLayout isOpen={isMergeModalOpen} onClose={() => setIsMergeModalOpen(false)} />
 
+                <MergeCrashModalLayout
+                    isOpen={isMergeModalOpen}
+                    onClose={() => setIsMergeModalOpen(false)}
+                    crashData={crashData}
+                />
+
+                <SuccessModalLayout
+                    isOpen={isSuccessModalOpen}
+                    onClose={()=>setIsSuccessModalOpen(false)}
+                    data={"병합에 성공하셨습니다."}
+                    clickLink={'/History'}
+                />
+            </div>
 
         </>
     )

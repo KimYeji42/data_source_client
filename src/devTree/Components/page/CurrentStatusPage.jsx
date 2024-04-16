@@ -1,15 +1,13 @@
 import styles from "../../styles/styles.module.css";
 import HistorySideBar2UI from "../ui/HistorySideBar2UI";
-import React, {useState, useEffect, useRef} from "react";
+import React, {useRef, useState} from "react";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
 import CurrentStatusTableLayOut from "../layout/CurrentStatusTableLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
-import ErrorModalLayOut from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
 export default function CurrentStatusPage() {
     const [selectedProjectId, setSelectedProjectId] = useState(null);
-    const [commitSuccessVisible, setCommitSuccessVisible] = useState(false); // 커밋 성공 메시지 표시 여부 상태
     const commitMessageRef = useRef(null);
     const [commit, setCommit] = useState(null);
     const [isErrorModalOpen , setIsErrorModalOpen] = useState(false)
@@ -53,9 +51,7 @@ export default function CurrentStatusPage() {
                     <CurrentStatusTableLayOut projectId={selectedProjectId}/>
                     <div className={styles.commitBox}>
                         <textarea placeholder={"커밋 메시지를 입력하세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
-                        {commitSuccessVisible && (
-                            <span className={styles.commitSuccess}>커밋완료 ✓ </span>
-                        )}
+
                         <button className={styles.CommitBtn} onClick={commitData}>커밋</button>
                     </div>
                 </div>

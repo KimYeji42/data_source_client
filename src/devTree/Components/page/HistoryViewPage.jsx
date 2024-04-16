@@ -20,7 +20,10 @@ export default function HistoryViewPage(){
     return(
         <div className={styles.HistoryPage}>
             <div className={styles.HistoryCanverLayOut}>
-                <HistoryCanvasLayOut />
+                <HistoryCanvasLayOut
+                    selectedCommitId={selectedCommitId}
+                    selectedProjectId={selectedProjectId}
+                />
             </div>
 
             <div className={styles.HistoryCanverBack} >

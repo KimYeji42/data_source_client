@@ -6,11 +6,9 @@ export default function CommitChartUI({ projectId, onSelect }){
     const [doubleClickRowIndex, setDoubleClickRowIndex] = useState(0); // 초기 값으로 첫 번째 행 선택
 
     const [commits, setCommits] = useState([]); // 초기값을 일반 객체로 설정
-    const [selectedCommitId, setSelectedCommitId] = useState(null);
 
     const handleRowClick = (commitId, index) => { // 커밋 선택
         setSelectedRowIndex(index);
-        setSelectedCommitId(commitId)
         console.log(commitId)
         onSelect(commitId)
     };
@@ -46,7 +44,6 @@ export default function CommitChartUI({ projectId, onSelect }){
     useEffect(() => {
         if (commits.length > 0) {
             const defaultCommitId = commits[0].commitId;
-            setSelectedCommitId(defaultCommitId);
             onSelect(defaultCommitId);
         }
     }, [commits]);
