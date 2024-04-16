@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState} from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
+import JoinTableModalUI from "./JoinTableModalUI";
 
-export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine, tableID, setBlobData}) {
+export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine, type, tableID }) {
     const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill(""));
-    const [type, setType] = useState("");
+    const [selectedJoinValue, setSelectedJoinValue] = useState(null);
+    const [isJoinTableMapperModal, setIsJoinTableMapperModal] = useState(false);
 
     const handleNewDataInputChange = (event, columnIndex) => {
         const updatedValues = [...newDataValues];
@@ -11,23 +13,18 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
         setNewDataValues(updatedValues);
     };
 
-    const handleFileInputChange = (event, index) => {
-        const file = event.target.files[0];
-        const updatedValues = [...newDataValues];
-        // 새로운 데이터베이스의 원본 파일 이름이랑 비교하여 값을 저장!
-        updatedValues[index] = file ? file.name : ""; // 파일 이름만 저장
-        setNewDataValues(updatedValues);
+    const handleJoinTableChange = () => {
+        setIsJoinTableMapperModal(true);
+    };
 
-        // Blob 데이터 업데이트
-        setBlobData(prevBlobData => {
-            const updatedBlobData = [...prevBlobData];
-            updatedBlobData[index] =
-                {   columnLine: index ,
-                    columnName: column,
-                    file: file
-                }; // 컬럼 이름과 파일을 객체로 저장
-            return updatedBlobData;
+    const handleJoinItemClick = (item) => {
+        setSelectedJoinValue(item); // 선택한 값을 상태로 저장
+        const updatedValues = [...newDataValues];
+        updatedValues.forEach((value, index) => {
+            updatedValues[index] = item.id || value;
         });
+        setNewDataValues(updatedValues);//이 값이 들어가고 데이터가 닫혔으면 좋게씀..
+        setIsJoinTableMapperModal(false);
     };
 
     const handleInputBlur = (event, index, value) => {
@@ -48,34 +45,29 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
         setCreateData(updatedCreateData);
     };
 
-    const fetchData = async () => {
-        try {
-            const response = await fetch(`http://localhost:8080/api/column/type/${column}/${tableID}`);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const dataType = await response.text();
-            setType(dataType);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     return (
         <tr>
-            {type === 'BLOB' ? (
+            {type === 'JOIN_Column' ? (
                 newDataValues.map((value, index) => (
                     <td key={index} className={styles.newDataClass}>
                         <input
                             className={styles.newDataInput}
-                            type="file"
+                            type="text"
+                            value={value}
+                            placeholder="NULL"
                             onBlur={(event) => handleInputBlur(event, index, value)}
-                            onChange={(event) => handleFileInputChange(event, index)} // 파일 선택 시 호출
+                            onChange={(event) => handleNewDataInputChange(event, index)}
+                            onFocus={handleJoinTableChange}
+                            readOnly={true}
                         />
+                        {isJoinTableMapperModal &&
+                            <JoinTableModalUI
+                                tableID={tableID}
+                                column={column}
+                                setJoinData={handleJoinItemClick}
+                            />
+                        }
                     </td>
                 ))
             ) : (

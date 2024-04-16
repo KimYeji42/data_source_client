@@ -9,6 +9,7 @@ import { Image } from "react-bootstrap";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+import JoinTableModalUI from "./JoinTableModalUI";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
     const [clickCount, setClickCount] = useState(0);
@@ -23,9 +24,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
 
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
-        for (const blob of blobData) {
-            await submitBlobData(blob.file , blob.columnName , tableID)
-        }
+
         let obj = {
             tableID: tableID,
             createData: createData,
@@ -54,31 +53,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 console.log(errorData);
                 setError(errorData.message);
                 setIsErrorModalOpen(true);
-            }
-        } catch (error) {
-            console.error('Error sending data:', error);
-        }
-    };
-    const submitBlobData = async (blob , column , tableID) => {
-
-        try {
-            const formData = new FormData();
-            formData.append('blobData', blob);
-            formData.append('columnName', column)
-            formData.append('tableID', tableID);
-
-
-            const response = await fetch('http://localhost:8080/api/data/blob', {
-                method: 'POST',
-                body: formData
-            });
-            if (response.ok) {
-                const responseData = await response.json();
-                console.log('Data sent successfully:', responseData);
-
-            } else {
-                const errorData = await response.json();
-                console.log(errorData);
             }
         } catch (error) {
             console.error('Error sending data:', error);
@@ -131,9 +105,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         setClickCount(clickCount +1)
     }
 
-
-
-
     return (
         <div>
             <div className={styles.button}>
@@ -184,15 +155,13 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                         setCreateData = {setCreateData}
                                         columnSize = {index}
                                         tableID={tableID}
-                                        blobData = {blobData}
-                                        setBlobData = {setBlobData}
                                     />
                                 </td>
                             ))}
                         </tr>
+
                     </tbody>
                 </table>
-
 
             </div>
             <

@@ -1,0 +1,24 @@
+.listContainer {
+    width: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px; /* 테두리를 부드럽게 둥글게 처리 */
+    background-color: #fff; /* 배경색 설정 */
+    z-index: 1; /* 다른 요소 위에 표시되도록 z-index 설정 */
+    border: none;
+}
+
+.listItem {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-bottom: 1px solid #777777;
+}
+
+.listItem:hover {
+    background-color: #f9f9f9;
+}

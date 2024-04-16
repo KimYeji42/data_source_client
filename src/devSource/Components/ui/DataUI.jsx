@@ -4,13 +4,26 @@ import NewDataUI from "./NewDataUI";
 
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
-                                   tableMap , updateData , setUpdateData ,createData , setCreateData, tableID ,
-                                   blobData, setBlobData
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData , tableID
                               })
 {
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
+    const [type , setType] = useState("none")
 
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/column/comment/${column}/${tableID}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const dataType = await response.text();
+            console.log(dataType)
+            setType(dataType);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     function columnDataSet() {
         setData(tableMap.get(column))
@@ -19,6 +32,7 @@ export default function DataUI({
 
     useEffect(() => {
         columnDataSet();
+        fetchData();
     }, []);
 
 
@@ -91,10 +105,9 @@ export default function DataUI({
                         createData={createData}
                         setCreateData={setCreateData}
                         column={column}
-                        dataLine={index} // 줄의 인덱스를 전달
+                        dataLine={index}
+                        type={type}// 줄의 인덱스를 전달
                         tableID={tableID}
-                        blobData={blobData}
-                        setBlobData={setBlobData}
                     />
                 ))}
                 </tbody>
