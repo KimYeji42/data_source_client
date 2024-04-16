@@ -9,6 +9,7 @@ import { Image } from "react-bootstrap";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+import JoinTableModalUI from "./JoinTableModalUI";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
     const [clickCount, setClickCount] = useState(0);
@@ -20,7 +21,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
     const [deleteData , setDeleteData] = useState([])
-    const [isJoinTableMapperModal , setIsJoinTableMapperModal] = useState(false)
 
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
@@ -155,7 +155,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                         setCreateData = {setCreateData}
                                         columnSize = {index}
                                         tableID={tableID}
-                                        setJoinTableMapperModal = {setIsJoinTableMapperModal}
                                     />
                                 </td>
                             ))}
@@ -163,11 +162,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
 
                     </tbody>
                 </table>
-                {isJoinTableMapperModal &&
-                    <div>
-                        테이블 모달
-                    </div>
-                }
+
             </div>
             <
                 SuccessModalLayout

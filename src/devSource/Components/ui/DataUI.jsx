@@ -4,12 +4,13 @@ import NewDataUI from "./NewDataUI";
 
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
-                                   tableMap , updateData , setUpdateData ,createData , setCreateData , tableID , setJoinTableMapperModal
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData , tableID
                               })
 {
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
     const [type , setType] = useState("none")
+
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/column/comment/${column}/${tableID}`);
@@ -106,7 +107,7 @@ export default function DataUI({
                         column={column}
                         dataLine={index}
                         type={type}// 줄의 인덱스를 전달
-                        setJoinTableMapperModal = {setJoinTableMapperModal}
+                        tableID={tableID}
                     />
                 ))}
                 </tbody>

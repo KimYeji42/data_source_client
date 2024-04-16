@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import styles from "../../styleModule/ColumnStyle.module.css";
+import JoinTableModalUI from "./JoinTableModalUI";
 
-export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine , type , setJoinTableMapperModal}) {
+export default function NewDataUI({ column, createData, setCreateData, newDataCount, dataLine, type, tableID }) {
     const [newDataValues, setNewDataValues] = useState(new Array(newDataCount).fill(""));
+    const [selectedJoinValue, setSelectedJoinValue] = useState(null);
+    const [isJoinTableMapperModal, setIsJoinTableMapperModal] = useState(false);
 
     const handleNewDataInputChange = (event, columnIndex) => {
         const updatedValues = [...newDataValues];
@@ -10,9 +13,18 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
         setNewDataValues(updatedValues);
     };
 
-    const handleJoinTableChange = (event, index) => {
-        setJoinTableMapperModal(true)
-        console.log("Join 컬럼 클릭")
+    const handleJoinTableChange = () => {
+        setIsJoinTableMapperModal(true);
+    };
+
+    const handleJoinItemClick = (item) => {
+        setSelectedJoinValue(item); // 선택한 값을 상태로 저장
+        const updatedValues = [...newDataValues];
+        updatedValues.forEach((value, index) => {
+            updatedValues[index] = item.id || value;
+        });
+        setNewDataValues(updatedValues);//이 값이 들어가고 데이터가 닫혔으면 좋게씀..
+        setIsJoinTableMapperModal(false);
     };
 
     const handleInputBlur = (event, index, value) => {
@@ -31,9 +43,7 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
         };
         updatedCreateData.push(obj);
         setCreateData(updatedCreateData);
-        setJoinTableMapperModal(false)
     };
-
 
 
     return (
@@ -48,8 +58,16 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
                             placeholder="NULL"
                             onBlur={(event) => handleInputBlur(event, index, value)}
                             onChange={(event) => handleNewDataInputChange(event, index)}
-                            onFocus={(event) => handleJoinTableChange(event, index)}
+                            onFocus={handleJoinTableChange}
+                            readOnly={true}
                         />
+                        {isJoinTableMapperModal &&
+                            <JoinTableModalUI
+                                tableID={tableID}
+                                column={column}
+                                setJoinData={handleJoinItemClick}
+                            />
+                        }
                     </td>
                 ))
             ) : (
