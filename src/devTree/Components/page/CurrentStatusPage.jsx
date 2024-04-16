@@ -3,30 +3,20 @@ import HistorySideBar2UI from "../ui/HistorySideBar2UI";
 import React, {useState, useEffect, useRef} from "react";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
 import CurrentStatusTableLayOut from "../layout/CurrentStatusTableLayOut";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import ErrorModalLayOut from "../../../project/components/layout/ErrorModalLayOut";
+import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
 export default function CurrentStatusPage() {
     const [selectedProjectId, setSelectedProjectId] = useState(null);
     const [commitSuccessVisible, setCommitSuccessVisible] = useState(false); // 커밋 성공 메시지 표시 여부 상태
-
     const commitMessageRef = useRef(null);
-    const [commit, setCommit] = useState(null)
+    const [commit, setCommit] = useState(null);
+    const [isErrorModalOpen , setIsErrorModalOpen] = useState(false)
+    const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false)
 
     const handleSelectProject = (projectId) => {
         setSelectedProjectId(projectId);
-    };
-
-    const handleCommit = async () => {
-        await commitData();
-        if (commit != null) {
-            // 커밋 성공 메시지 표시
-            setCommitSuccessVisible(true);
-            // 5초 후에 커밋 성공 메시지 숨기기
-            setTimeout(() => {
-                setCommitSuccessVisible(false);
-            }, 5000);
-        } else {
-            alert("변경 사항이 없습니다.")
-        }
     };
 
     const commitData = async () => {
@@ -42,9 +32,13 @@ export default function CurrentStatusPage() {
                 }),
             });
             const responseData = await response.json();
+            console.log(`결과값 ${responseData}`)
+            setIsSuccessModalOpen(true)
             setCommit(responseData)
         } catch (error) {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching data:', error.message);
+            console.log(error.message)
+            setIsErrorModalOpen(true)
         }
     };
 
@@ -62,7 +56,7 @@ export default function CurrentStatusPage() {
                         {commitSuccessVisible && (
                             <span className={styles.commitSuccess}>커밋완료 ✓ </span>
                         )}
-                        <button className={styles.CommitBtn} onClick={handleCommit}>커밋</button>
+                        <button className={styles.CommitBtn} onClick={commitData}>커밋</button>
                     </div>
                 </div>
             </div>
@@ -71,7 +65,17 @@ export default function CurrentStatusPage() {
                 onSelect={handleSelectProject}
                 defaultSelectedIndex={0}
             />
-
+            <ErrorModal
+                isOpen={isErrorModalOpen}
+                onClose={()=>setIsErrorModalOpen(false)}
+                error={"커밋할 변경 사항 내역이 없습니다."}
+            />
+            <SuccessModalLayout
+                isOpen={isSuccessModalOpen}
+                onClose={()=>setIsSuccessModalOpen(false)}
+                data={"커밋에 성공하셨습니다."}
+                clickLink={'/History'}
+            />
         </div>
     )
 }
