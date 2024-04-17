@@ -34,7 +34,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
 
         try {
             const apiUrl = process.env.REACT_APP_API_URL;
-
+            console.log(obj)
             const response = await fetch(`${apiUrl}/api/data`, {
                 method: 'POST',
                 headers: {
