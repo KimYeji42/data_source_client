@@ -1,7 +1,7 @@
 import DataBaseListLayOut from "../layout/TableListLayOut";
-import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import SidebarLayout from "../../../Layout/Sidebar/SidebarLayout";
 
 export default function DataBaseShowCasePage() {
     const { dataBaseID } = useParams();
@@ -29,7 +29,7 @@ export default function DataBaseShowCasePage() {
 
     return (
         <div>
-            <SideBarComponent />
+            <SidebarLayout />
             {dataBaseData && <DataBaseListLayOut data={dataBaseData} />} {/* 데이터가 존재할 때만 렌더링 */}
         </div>
     );

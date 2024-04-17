@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+.sideBarContainer{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border:1px solid #C1C1C1;
+    width: 270px;
+    height: 80%;
+    overflow-y: scroll;
+    position: fixed;
+}
+.sideBarBox{
+    width: 100%;
+    height: 550px;
+}
+
+.titleContainer{
+    height: 57px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.titleBox{
+    font-size: 30px;
+    color: #00A3FF;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    padding-left: 20px;
+    padding-top: 12px;
+}
+
+
+.titleBox button{
+   margin-left: 50px;
+    border: none;
+    background-color: transparent;
+    color: #00A3FF;
+}
+
+
+.listBox button{
+    border:none;
+    background-color: transparent;
+    color: #00A3FF;
+    margin-left: 50px;
+}
+
+/*.listTitleContainer{
+    height: 55px;
+    font-size: 22px;
+    background-color: #4EBFFF;
+    color: #FFFFFF;
+    padding-left: 20px;
+    padding-top: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #bebebe;
+    max-height: 150px;
+}*/
+/*
+.smallList{
+    display: block;
+    font-size: 20px;
+    height: 100px;
+    background-color: #249ADD;
+    width: 92%;
+    padding-top: 7px;
+}
+*/
+
+
+.listTitleContainer{
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.smallList{
+    font-size: 18px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+
+.listTitle{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.listTitleContainer.open {
+    height: 150px;
+}
+
+
+

@@ -1,6 +1,6 @@
 import TableLayout from "../layout/TableLayout";
 import TableTitleUI from "../ui/TableTitleUI";
-import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
+import SideBarComponent from "../../../Layout/Sidebar/SidebarLayout"
 import styles from '../../styleModule/ColumnStyle.module.css';
 import DownloadUI from "../ui/DownloadUI";
 import React from "react";
@@ -21,7 +21,7 @@ export default function TablePage() {
                     <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`}/>
                 </div>
                 <TableLayout tableID={tableID}/>
-                <DownloadUI/>
+                <DownloadUI tableID={tableID}/>
             </div>
         </div>
 

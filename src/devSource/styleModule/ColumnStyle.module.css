@@ -18,13 +18,11 @@
     font-family: "koko", serif;
     border: 1px solid #777777;
     background-color: #ffffff;
-    width: auto;
     margin-left: 3px;
 }
 .table thead{
     background-color: #00A3FF;
     border: 1px solid #777777;
-
     color: white;
     text-align: center;
 }
@@ -128,7 +126,7 @@
     background-color: lightblue; /* 기존 데이터의 배경색 */
 }
 .tablePage{
-    width: 85%;
+    width: 95%;
     margin: 0 auto;
 }
 .selectedRow{

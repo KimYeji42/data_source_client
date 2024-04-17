@@ -1,0 +1,30 @@
+body{
+    border:none;
+}
+.accordion-button:not(.collapsed) {
+    background-color: #4EBFFF !important;
+    color: white;
+    box-shadow: none;
+
+}
+.accordion-button {
+    background-color: #4EBFFF !important;
+    color: white;
+    box-shadow: none;
+    border-top-left-radius: 0;
+
+}
+
+button:focus:not(:focus-visible) {
+     outline: none;
+    box-shadow: none;
+}
+.accordion-button::after {
+    content: "▼";
+    font-size: 22px;
+    background-color: #4EBFFF;
+    color: #ffffff;
+}
+.content{
+    color: white;
+}

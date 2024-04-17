@@ -1,5 +1,4 @@
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
-import React, { useState } from "react";
 
 export default function RestApiUrlLayout({isExpanded , localPort , endpoint}) {
     let url = localPort + endpoint

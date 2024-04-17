@@ -1,4 +1,4 @@
-import SideBarComponent from "../../../Layout/SideBar/SideBarComponent";
+import SideBarComponent from "../../../Layout/Sidebar/SidebarLayout";
 
 export default function DataBaseSideBarLayOut(){
     return(
