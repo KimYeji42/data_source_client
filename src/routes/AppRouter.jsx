@@ -11,6 +11,7 @@ import TablePage from "../devSource/Components/page/TablePage";
 import TeamProfilePage from "../project/components/page/TeamProfilePage";
 import CommitSearchPage from "../devTree/Components/page/CommitSearchPage";
 import HistoryViewPage from "../devTree/Components/page/HistoryViewPage";
+import CurrentStatusPage from "../devTree/Components/page/CurrentStatusPage";
 import CreateTablePage from "../devSource/Components/page/CreateTablePage";
 import RestAPIBuilderPage from "../devSource/Components/page/RestAPIBuilderPage";
 import JoinPage from "../authentication/components/page/JoinPage";
@@ -22,8 +23,6 @@ import LoginPage from "../authentication/components/page/LoginPage";
 export default function AppRouter() {
     return (
         <div className="AppRouter">
-            {/* 매핑 */}
-
             <BrowserRouter>
                 <Header/>  {/*/Router 사용응 위해 Header가지고오기*/}
                 <Routes>
@@ -43,6 +42,7 @@ export default function AppRouter() {
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
+                    <Route path='/status' element={<CurrentStatusPage />} />
                     <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
                     <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>

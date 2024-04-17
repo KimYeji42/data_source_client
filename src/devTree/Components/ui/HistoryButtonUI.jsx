@@ -1,9 +1,9 @@
 import styles from "../../styles/styles.module.css";
 
-export default function HistoryButtonUI({title}){
+export default function HistoryButtonUI({title , onClick}){
     return(
         <div className={styles.HistoryBtns}>
-            <div className={styles.HistoryBtn}>{title}</div>
+            <button className={styles.HistoryBtn} onClick={onClick}>{title}</button>
         </div>
     )
 }

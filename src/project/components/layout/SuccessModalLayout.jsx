@@ -2,14 +2,14 @@ import styles from "../styles.module.css";
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default function SuccessModalLayout({ isOpen, onClose, data  , clickLink , onClickEvent}){
+export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, onClickEvent}){
     const successHandler = () =>{
         onClickEvent?.();
         onClose();
     }
+
     // isOpen이 false이면 모달을 렌더링하지 않음
     if (!isOpen) return null;
-
 
     return (
         <div className={styles.modalOverlay}>
