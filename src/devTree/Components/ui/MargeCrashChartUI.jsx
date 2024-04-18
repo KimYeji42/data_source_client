@@ -3,7 +3,7 @@ import React from "react";
 
 export default function MargeCrashChartUI({data, index, selectedIndex}) {
 
-    if (selectedIndex != index) return
+    if (selectedIndex !== index) return
 
     return(
         <>

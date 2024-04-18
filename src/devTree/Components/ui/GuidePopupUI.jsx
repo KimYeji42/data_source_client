@@ -3,7 +3,7 @@ import styles from "../../styles/styles.module.css";
 import MergeCrashModalLayout from "../layout/MergeCrashModalLayout";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
-const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, onSuccessOpen, crashResponse, selectedCommitId, selectedProjectId }) => {
+const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, onSuccessOpen, selectedCommitId, selectedProjectId }) => {
 
     if (!isOpen) return null;
 
@@ -28,8 +28,7 @@ const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, 
                 onSuccessOpen() // 성공 모달창 열기
             } else {
                 console.log('응답 데이터가 JSON입니다:', responseData);
-                crashResponse(responseData)
-                onCrashOpen() // 충돌 모달창 열기
+                await onCrashOpen(responseData) // 충돌 모달창 열기
             }
         } catch (error) {
             console.error('Error fetching data:', error.message);

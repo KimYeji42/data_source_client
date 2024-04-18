@@ -1,7 +1,6 @@
 import styles from "../../styles/styles.module.css";
 import HistoryButtonUI from "../ui/HistoryButtonUI";
 import React, {useState} from "react";
-import HistoryButtonWhitever from "../ui/HistoryButtonWhitever";
 import GuidePopupUI from "../ui/GuidePopupUI";
 import MergeCrashModalLayout from "./MergeCrashModalLayout";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
@@ -10,21 +9,54 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
     const [isMergeModalOpen, setIsMergeModalOpen] = useState(false);
     const [isSendModalOpen , setIsSendModalOpen] = useState(false);
     const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false);
-    const [crashData, setCrashData] = useState(null)
+    const [crashData, setCrashData] = useState(null);
+    const [selectedCrashData, setSelectedCrashData] = useState([]);
 
-    const openCrashModal = () => {
+    const handleRefresh = () => {
+        window.location.reload();
+    };
+
+    const openCrashModal = (crash) => {
+        setCrashData(crash)
         setIsMergeModalOpen(true);
         setIsSendModalOpen(false);
     };
 
     const openSuccessModal = () => {
-        setIsSuccessModalOpen(true);
         setIsSendModalOpen(false);
+        setIsMergeModalOpen(false);
+        setIsSuccessModalOpen(true);
     };
 
-    const crashResponse = (crash) => {
-        setCrashData(crash)
+    const setCrashRequest = async (crash) => {
+        await setSelectedCrashData(crash)
+        mergeData()
     }
+
+    const mergeData = async () => {
+        try {
+            if (!selectedCrashData) return
+            const response = await fetch(`http://localhost:8080/api/merge/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    targetCommitId: selectedCommitId,
+                    projectId: selectedProjectId,
+                    crashList: selectedCrashData
+                }),
+            });
+            const responseData = await response.json();
+
+            if (typeof responseData.message === 'string') {
+                console.log(responseData.message);
+                openSuccessModal()
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error.message);
+        }
+    };
 
     return(
         <>
@@ -43,15 +75,15 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     btnTitle={"merge"}
                     onCrashOpen={openCrashModal} // 충돌 모달 열기 함수
                     onSuccessOpen={openSuccessModal} // 성공 모달 열기 함수
-                    crashResponse={crashResponse} // 충돌 데이터 저장
                     selectedCommitId={selectedCommitId}
                     selectedProjectId={selectedProjectId}
                 />
 
                 <MergeCrashModalLayout
+                    crashData={crashData}
                     isOpen={isMergeModalOpen}
                     onClose={() => setIsMergeModalOpen(false)}
-                    crashData={crashData}
+                    setCrashRequest={setCrashRequest}
                 />
 
                 <SuccessModalLayout
@@ -59,6 +91,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     onClose={()=>setIsSuccessModalOpen(false)}
                     data={"병합에 성공하셨습니다."}
                     clickLink={'/History'}
+                    onClickEvent={handleRefresh}
                 />
             </div>
 

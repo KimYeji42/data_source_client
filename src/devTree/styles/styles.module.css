@@ -109,6 +109,7 @@
     cursor: pointer;
 }
 .dataBox{
+    position: relative;
     width: 200px;
     height: 50px;
     padding: 10px;
@@ -488,7 +489,7 @@
     font-size: 22px;
 }
 .modalSelectBox{
-    width: 200px; height: 200px;
+    width: 1000px;
 }
 .modalselectTitleBox{
     background-color: #EDEDED;
@@ -503,18 +504,34 @@
     border: 1px solid #6B6B6B;
     overflow: auto;
     background-color: #FFFFFF;
-    height: 160px;
+    /*height: 160px;*/
     padding-top: 10px;
 }
 .madalLayout{
     float: right;
-    /*width: 100%;*/
-    display: flex;
+    /*display: flex;*/
     /*justify-content: space-between;*/
+    width: 800px; height: 500px;
+    padding: 10px;
+    overflow: scroll;
+    border: black solid 1px;
 }
 .mergemodalBtnBox{
     float: right;
 
+}
+.mergeTable{
+    border: #777777 solid 1px;
+    border-bottom: none;
+    margin-bottom: 30px;
+}
+.mergeData{
+    border-bottom: #777777 solid 1px;
+}
+.mergeRadio{
+    position: absolute;
+    left: 15px;
+    top: 15px;
 }
 .mergemodal {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
@@ -523,8 +540,8 @@
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
     padding: 30px 50px 0px 50px;
-    max-width: 60%;
-    max-height: 80%;
+    /*max-width: 60%;*/
+    /*max-height: 80%;*/
     overflow: auto;
     position: fixed;
     z-index: 9999;

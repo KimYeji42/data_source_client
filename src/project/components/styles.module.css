@@ -207,6 +207,7 @@
     justify-content: left;
 }
 .modal {
+    z-index: 1;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     background-color: white;
     border-radius: 8px;
