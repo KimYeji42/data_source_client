@@ -10,6 +10,7 @@ import SendModalLayOut from "../../../project/components/layout/SendModalLayOut"
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import JoinTableModalUI from "./JoinTableModalUI";
+import SearchModal from "./SearchModal";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
     const [clickCount, setClickCount] = useState(0);
@@ -21,7 +22,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
     const [deleteData , setDeleteData] = useState([])
-
+    const [isSearchModalOpen , setSearchModalOpen] = useState(false)
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
 
@@ -122,7 +123,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                 <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)}/>
                             )
                         }
-                        <Button_UI image={Button[4].image} />
+                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} />
                         <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
                     </div>
                 </ul>
@@ -191,7 +192,10 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 onClose={() => setIsSendModalOpen(false)}
                 onClickEvent={submitModifiedTable}
             />
-
+            <SearchModal
+                isOpen={isSearchModalOpen}
+                closeModal={() => setSearchModalOpen(false)}
+            />
         </div>
     );
 }
