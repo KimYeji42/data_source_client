@@ -1,5 +1,5 @@
 import styles from '../../styleModule/DownloadStyle.module.css'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function DownloadUI({ tableID }) {

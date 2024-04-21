@@ -20,10 +20,10 @@ button:focus:not(:focus-visible) {
     box-shadow: none;
 }
 .accordion-button::after {
-    content: "▼";
-    font-size: 22px;
+    font-size: 28px;
     background-color: #4EBFFF;
     color: #ffffff;
+    content: "▼";
 }
 .content{
     color: white;
