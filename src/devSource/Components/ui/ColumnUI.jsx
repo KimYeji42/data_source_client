@@ -115,7 +115,13 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                     <div className={styles.rightIcon}>
                         <Button_UI image={Button[1].image} onClick={handlePushData}/>
                         <Button_UI image={Button[2].image} onClick={handleDeleteData}/>
-                        <Button_UI image={Button[3].image} onClick={() => setIsSendModalOpen(true)}/>
+                        {
+                            deleteData.length === 0 && createData.length === 0  && updateData.length === 0?(
+                                <Button_UI image={Button[3].image}/>
+                            ) : (
+                                <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)}/>
+                            )
+                        }
                         <Button_UI image={Button[4].image} />
                         <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
                     </div>

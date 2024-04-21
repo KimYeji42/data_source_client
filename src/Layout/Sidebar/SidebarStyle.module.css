@@ -38,7 +38,7 @@
 
 
 .titleBox button{
-   margin-left: 50px;
+    margin-left: 50px;
     border: none;
     background-color: transparent;
     color: #00A3FF;
@@ -87,6 +87,7 @@
 }
 
 
+
 .listTitle{
     display: flex;
     justify-content: space-between;
@@ -96,6 +97,7 @@
 
 .listTitleContainer.open {
     height: 150px;
+
 }
 
 

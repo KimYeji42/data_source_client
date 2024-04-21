@@ -16,13 +16,13 @@
     margin-top: 1%;
     float: left;
     font-family: "koko", serif;
-    border: 1px solid #777777;
+    border: 1px solid #f0e8ff;
     background-color: #ffffff;
     margin-left: 3px;
 }
 .table thead{
     background-color: #00A3FF;
-    border: 1px solid #777777;
+    border: 1px solid #ffffff;
     color: white;
     text-align: center;
 }
@@ -30,10 +30,9 @@
 .table td
 {
     text-align: center;
-    width: 200px;
+    width: 230px;
     height: 60px;
     padding: 0;
-
 }
 .table tr:nth-child(even){
     background-color: #F9FAFC;

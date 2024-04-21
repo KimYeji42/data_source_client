@@ -4,13 +4,13 @@ import remove from '../../Image/delete.png';
 import save from '../../Image/save.png';
 import search from '../../Image/search.png';
 import back from '../../Image/goBack.png';
-
+import update from '../../Image/updateBtn.png'
 export const Button = [
     {image:refresh},
     {image:add},
     {image:remove},
     {image:save},
     {image:search},
-    {image:back}
-
+    {image:back},
+    {image: update}
 ]
