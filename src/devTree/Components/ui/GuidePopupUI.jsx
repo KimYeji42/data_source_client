@@ -3,7 +3,7 @@ import styles from "../../styles/styles.module.css";
 import MergeCrashModalLayout from "../layout/MergeCrashModalLayout";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
-const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, onSuccessOpen, selectedCommitId, selectedProjectId }) => {
+const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, onSuccessOpen, onErrorOpen, selectedCommitId, selectedProjectId }) => {
 
     if (!isOpen) return null;
 
@@ -23,9 +23,12 @@ const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, 
             });
             const responseData = await response.json();
 
-            if (typeof responseData.message === 'string') {
-                console.log('응답 데이터가 문자열입니다:', responseData);
+            if (responseData.number === 1) {
+                console.log('병합 성공:', responseData);
                 onSuccessOpen() // 성공 모달창 열기
+            } else if(responseData.number === 0) {
+                console.log('병합 실패:', responseData);
+                onErrorOpen() // 실패 모달창 열기
             } else {
                 console.log('응답 데이터가 JSON입니다:', responseData);
                 await onCrashOpen(responseData) // 충돌 모달창 열기

@@ -4,17 +4,19 @@ import React, {useState} from "react";
 import GuidePopupUI from "../ui/GuidePopupUI";
 import MergeCrashModalLayout from "./MergeCrashModalLayout";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectId }){
     const [isMergeModalOpen, setIsMergeModalOpen] = useState(false);
     const [isSendModalOpen , setIsSendModalOpen] = useState(false);
     const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false);
+    const [isErrorModalOpen , setIsErrorModalOpen] = useState(false);
+    const [isMergeComplete , setIsMergeComplete] = useState(false);
+
     const [crashData, setCrashData] = useState(null);
     const [selectedCrashData, setSelectedCrashData] = useState([]);
 
-    const handleRefresh = () => {
-        window.location.reload();
-    };
+    const handleRefresh = () => { window.location.reload(); };
 
     const openCrashModal = (crash) => {
         setCrashData(crash)
@@ -28,6 +30,12 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
         setIsSuccessModalOpen(true);
     };
 
+    const openErrorModal = () => {
+        setIsSendModalOpen(false);
+        setIsMergeModalOpen(false);
+        setIsErrorModalOpen(true);
+    };
+
     const setCrashRequest = async (crash) => {
         await setSelectedCrashData(crash)
         mergeData()
@@ -35,7 +43,9 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
 
     const mergeData = async () => {
         try {
-            if (!selectedCrashData) return
+            if (!selectedCrashData || selectedCrashData.length === 0 || isMergeComplete === true) return
+
+            setIsMergeComplete(true)
             const response = await fetch(`http://localhost:8080/api/merge/`, {
                 method: 'POST',
                 headers: {
@@ -49,8 +59,9 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
             });
             const responseData = await response.json();
 
-            if (typeof responseData.message === 'string') {
-                console.log(responseData.message);
+            if (responseData.number === 1) {
+                console.log(responseData.number);
+                setIsMergeComplete(false)
                 openSuccessModal()
             }
         } catch (error) {
@@ -61,9 +72,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
     return(
         <>
             <div className={styles.buttonContainerF}>
-                <HistoryButtonUI title={"Commit"}/>
-                {/*<HistoryButtonWhitever title={"Merge reqeust"} icon={"↑"} number={"3"} />*/}
-                {/*<HistoryButtonWhitever title={"Update branch"} icon={"↓"} number={""} />*/}
+                <HistoryButtonUI title={"Commit"} clickLink={'/status'}/>
             </div>
             <div className={styles.buttonContainerT}>
                 <HistoryButtonUI title={"Reset"}/>
@@ -75,6 +84,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     btnTitle={"merge"}
                     onCrashOpen={openCrashModal} // 충돌 모달 열기 함수
                     onSuccessOpen={openSuccessModal} // 성공 모달 열기 함수
+                    onErrorOpen={openErrorModal} // 오류 모달 열기
                     selectedCommitId={selectedCommitId}
                     selectedProjectId={selectedProjectId}
                 />
@@ -92,6 +102,12 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     data={"병합에 성공하셨습니다."}
                     clickLink={'/History'}
                     onClickEvent={handleRefresh}
+                />
+
+                <ErrorModal
+                    isOpen={isErrorModalOpen}
+                    onClose={()=>setIsErrorModalOpen(false)}
+                    error={"같은 커밋끼리 병합할 수 없습니다."}
                 />
             </div>
 

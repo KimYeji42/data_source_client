@@ -1,7 +1,5 @@
 import React from "react";
 import styles from "../../styles/styles.module.css";
-import MergeCrashTableUI from "../ui/MergeCrashTableUI";
-import MargeCrashChartUI from "../ui/MargeCrashChartUI";
 import {useState, useEffect} from "react";
 
 const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => {
@@ -9,8 +7,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
 
     useEffect(() => {
         setSelectedValues([]);
-        console.log("병합")
-        console.log(crashData)
+        console.log("충돌 해결:" + crashData)
     }, [crashData]);
 
     if (!isOpen) return null;
@@ -20,14 +17,14 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
     };
 
     // 라디오 버튼 선택 상태를 업데이트하는 함수
-    const handleRadioChange = (event, index) => {
+    const handleRadioChange = async(event, index) => {
         const { name, value } = event.target;
 
         const intIndex = parseInt(index)
         console.log("intIndex : " + intIndex)
 
         // 선택된 값들을 업데이트
-        setSelectedValues(prevSelectedValues => {
+        await setSelectedValues(prevSelectedValues => {
             const updatedValues = [...prevSelectedValues];
             updatedValues[intIndex] = value;
             console.log("updatedValues : " + updatedValues)
@@ -37,8 +34,24 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
 
     // 모든 선택된 값들을 가져오는 함수
     const getAllSelectedValues = () => {
-        // console.log(selectedValues.filter(value => value !== undefined))
-        setCrashRequest(selectedValues.filter(value => value !== undefined));
+        let count = 0;
+        const selectedVal = selectedValues.filter(value => value !== undefined)
+
+        crashData.forEach(mergeCrashResponse => {
+            mergeCrashResponse.data.forEach(mergeCrashColumn => {
+                mergeCrashColumn.data.forEach(mergeCrashData => {
+                    if (mergeCrashData) {
+                        count++;
+                    }
+                });
+            });
+        });
+
+        if (selectedVal.length !== count/2) {
+            alert("사용할 행을 모두 선택해주세요.")
+        } else {
+            setCrashRequest(selectedVal);
+        }
     };
 
     return (
@@ -46,7 +59,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
             <div className={styles.modalOverlay}>
                 <div className={styles.mergemodal}>
                     <p className={styles.mergeGuideTxt}>병합하려는 커밋과 현재 커밋의 테이블에 <span className={styles.mergeGuideTxtBold}>충돌하는 PK</span>가 존재합니다.<br/>충돌 해결 후 다시 시도해 주세요.</p>
-                    <p>※ 사용하지 않을(삭제할) 행을 선택해주세요.</p>
+                    <p>※ 사용할 행을 선택해주세요.</p>
                     <div className={styles.madalLayout}>
 
                         {crashData && crashData.map((mergeCrashResponse, index) => (
@@ -72,7 +85,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
                                                                                          name={`first${index}${dataIndex}`}
                                                                                          className={styles.mergeRadio}
                                                                                          id={`check${index}${dataIndex}`}
-                                                                                         value={mergeCrashData.check.id}
+                                                                                         value={mergeCrashData.target.id}
                                                                                          onChange={(event) => handleRadioChange(event, `${index}${columnIndex}${dataIndex}`)}/>}
                                                             {mergeCrashData.check.data}
                                                         </label>
@@ -81,7 +94,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
                                                                                          name={`first${index}${dataIndex}`}
                                                                                          className={styles.mergeRadio}
                                                                                          id={`target${index}${dataIndex}`}
-                                                                                         value={mergeCrashData.target.id}
+                                                                                         value={mergeCrashData.check.id}
                                                                                          onChange={(event) => handleRadioChange(event, `${index}${columnIndex}${dataIndex}`)}/>}
                                                             {mergeCrashData.target.data}
                                                         </label>
@@ -103,7 +116,6 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
 
             </div>
         </div>
-
     );
 
 }
