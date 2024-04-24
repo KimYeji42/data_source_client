@@ -5,7 +5,7 @@ import CommitInformationUI from "../ui/CommitInformationUI"
 import SelectionChangeTableUI from "../ui/SelectionChangeTableUI";
 import ChangeDataUI from "../ui/ChageDataUI";
 
-export default function CurrentStatusTableLayOut({ projectId }){
+export default function CurrentStatusTableLayOut({ projectId, handleChangData }){
     const [changeData, setChangeData] = useState([]); // 초기값을 일반 객체로 설정
     const [selectedTableId, setSelectedTableId] = useState(null);
 
@@ -23,9 +23,8 @@ export default function CurrentStatusTableLayOut({ projectId }){
                 }
             });
             const responseData = await response.json();
-            setChangeData(responseData);
-            console.log(responseData)
-
+            await setChangeData(responseData);
+            // console.log(responseData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -33,6 +32,7 @@ export default function CurrentStatusTableLayOut({ projectId }){
 
     useEffect(() => {
         changes()
+        handleChangData(changeData)
     }, [projectId]);
 
     useEffect(() => {

@@ -14,7 +14,6 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
     const [isMergeComplete , setIsMergeComplete] = useState(false);
 
     const [crashData, setCrashData] = useState(null);
-    const [selectedCrashData, setSelectedCrashData] = useState([]);
 
     const handleRefresh = () => { window.location.reload(); };
 
@@ -36,14 +35,13 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
         setIsErrorModalOpen(true);
     };
 
-    const setCrashRequest = async (crash) => {
-        await setSelectedCrashData(crash)
-        mergeData()
+    const setCrashRequest = async (target, check) => {
+        mergeData(target, check)
     }
 
-    const mergeData = async () => {
+    const mergeData = async (target, check) => {
         try {
-            if (!selectedCrashData || selectedCrashData.length === 0 || isMergeComplete === true) return
+            if ((!target && !check) || isMergeComplete === true) return
 
             setIsMergeComplete(true)
             const response = await fetch(`http://localhost:8080/api/merge/`, {
@@ -54,7 +52,8 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                 body: JSON.stringify({
                     targetCommitId: selectedCommitId,
                     projectId: selectedProjectId,
-                    crashList: selectedCrashData
+                    crashTargetList: target,
+                    crashCheckList: check,
                 }),
             });
             const responseData = await response.json();

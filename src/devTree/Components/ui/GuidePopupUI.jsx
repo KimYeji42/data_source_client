@@ -18,7 +18,8 @@ const GuidePopupUI = ({ isOpen, onClose, title1, title2, btnTitle, onCrashOpen, 
                 body: JSON.stringify({
                     targetCommitId: selectedCommitId,
                     projectId: selectedProjectId,
-                    crashList: []
+                    crashTargetList: [],
+                    crashCheckList: []
                 }),
             });
             const responseData = await response.json();
