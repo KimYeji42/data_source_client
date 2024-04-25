@@ -1,13 +1,14 @@
 import styles from "../../styles/styles.module.css";
 import HistoryButtonUI from "../ui/HistoryButtonUI";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import MergeGuidePopupUI from "../ui/MergeGuidePopupUI";
 import MergeCrashModalLayout from "./MergeCrashModalLayout";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import ResetGuidePopupUI from "../ui/ResetGuidePopupUI";
 
-export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectId }){
+export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectId, token }){
+    const [takeToken, setTakeToken] = useState(null);
     const [isMergeModalOpen, setIsMergeModalOpen] = useState(false);
     const [isResetModalOpen, setIsResetModalOpen] = useState(false);
     const [isSendModalOpen , setIsSendModalOpen] = useState(false);
@@ -47,12 +48,14 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
     const mergeData = async (target, check) => {
         try {
             if ((!target && !check) || isMergeComplete === true) return
+            else if (takeToken == null) return
 
             setIsMergeComplete(true)
             const response = await fetch(`http://localhost:8080/api/merge/`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${takeToken}` // Token을 Header에 포함
                 },
                 body: JSON.stringify({
                     targetCommitId: selectedCommitId,
@@ -64,7 +67,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
             const responseData = await response.json();
 
             if (responseData.number === 1) {
-                console.log(responseData.number);
+                // console.log(responseData.number);
                 setIsMergeComplete(false)
                 openSuccessModal()
             }
@@ -72,6 +75,10 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
             console.error('Error fetching data:', error.message);
         }
     };
+
+    useEffect(() => {
+        setTakeToken(token)
+    }, [token]);
 
     return(
         <>
@@ -90,6 +97,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     onErrorOpen={openErrorModal} // 오류 모달 열기
                     selectedCommitId={selectedCommitId}
                     selectedProjectId={selectedProjectId}
+                    token={takeToken}
                 />
                 <ResetGuidePopupUI
                     isOpen={isResetModalOpen}
@@ -98,7 +106,6 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     selectedCommitId={selectedCommitId}
                     handleRefresh={handleRefresh}
                 />
-
 
                 <MergeCrashModalLayout
                     crashData={crashData}

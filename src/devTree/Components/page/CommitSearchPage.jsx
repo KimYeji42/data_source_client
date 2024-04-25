@@ -1,12 +1,13 @@
 import styles from "../../styles/styles.module.css";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
 import HistorySideBar2UI from "../ui/HistorySideBar2UI";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import CommitChartUI from "../ui/CommitChartUI";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import CommitSearchUI from "../ui/CommitSearchUI";
 
 export default function CommitSearchPage(){
+    const [token, setToken] = useState(null);
     const [selectedProjectId, setSelectedProjectId] = useState(null);
     const [selectedCommitId, setSelectedCommitId] = useState(null);
 
@@ -17,6 +18,14 @@ export default function CommitSearchPage(){
     const handleSelectCommit = (commitId) => {
         setSelectedCommitId(commitId);
     };
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+
+        if (token !== null) {
+            setToken(token);
+        }
+    }, []);
 
     return (
         <div className={styles.HistoryPage}>
@@ -39,6 +48,7 @@ export default function CommitSearchPage(){
             <HistorySideBar2UI
                 onSelect={handleSelectProject}
                 defaultSelectedIndex={2}
+                token={token}
             />
         </div>
     );

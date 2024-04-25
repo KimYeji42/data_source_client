@@ -30,6 +30,7 @@ function Header() {
         localStorage.removeItem("token")
         localStorage.removeItem("email")
         localStorage.removeItem("username")
+        sessionStorage.removeItem("selectedProjectId")
     }
     useEffect(() => {
         getTokenUser()

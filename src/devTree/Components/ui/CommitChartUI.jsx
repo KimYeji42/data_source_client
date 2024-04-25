@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/styles.module.css";
+import MergeGuidePopupUI from "./GuidePopupUI";
 
 export default function CommitChartUI({ projectId, onSelect }){
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 초기 값으로 첫 번째 행 선택
     const [doubleClickRowIndex, setDoubleClickRowIndex] = useState(0); // 초기 값으로 첫 번째 행 선택
-
     const [commits, setCommits] = useState([]); // 초기값을 일반 객체로 설정
+    const [isCheckoutModalOpen , setIsCheckoutModalOpen] = useState(false);
+    const [nowCheckoutCommitId , setNowCheckoutCommitId] = useState(null);
+    const [checkoutCommitId , setCheckoutCommitId] = useState(null);
 
     const handleRefresh = () => { window.location.reload(); };
 
@@ -14,15 +17,23 @@ export default function CommitChartUI({ projectId, onSelect }){
         onSelect(commitId)
     };
 
+    const handleCheckout = () => {
+        setIsCheckoutModalOpen(false)
+        checkout(checkoutCommitId)
+    }
+
     const handleRowDoubleClick = (index) => { // 체크아웃
-        console.log("더블클릭 체크아웃 : " + commits[index].commitID)
-        checkout(commits[index].commitID)
+        setCheckoutCommitId(commits[index].commitID)
+        if (commits[index].commitID !== nowCheckoutCommitId) {
+            setIsCheckoutModalOpen(true)
+        }
     };
 
-    const handleCheckout = (commits) => {
+    const handleCheckoutPositioning = (commits) => {
         commits.forEach((commit, index) => {
             if (commit.checkout === 1) {
                 setDoubleClickRowIndex(index)
+                setNowCheckoutCommitId(commit.commitID)
             }
         });
     }
@@ -38,7 +49,7 @@ export default function CommitChartUI({ projectId, onSelect }){
             });
             const responseData = await response.json();
             setCommits(responseData);
-            handleCheckout(responseData);
+            handleCheckoutPositioning(responseData);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -112,6 +123,15 @@ export default function CommitChartUI({ projectId, onSelect }){
                     </tbody>
                 </table>
             </div>
+
+            <MergeGuidePopupUI
+                isOpen={isCheckoutModalOpen}
+                onClose={() => setIsCheckoutModalOpen(false)}
+                onRequest={handleCheckout}
+                message1={"선택한 분기로 체크아웃 하시겠습니까?"}
+                message2={"작업 공간도 바뀌게 됩니다."}
+                button={"checkout"}
+            />
         </>
     )
 }

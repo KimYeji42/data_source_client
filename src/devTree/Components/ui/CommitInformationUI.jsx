@@ -2,7 +2,7 @@ import styles from "../../styles/styles.module.css";
 import {useEffect, useState} from "react";
 
 export default function CommitInformationUI({projectId}){
-    const [commit, setCommit] = useState(null); // 로그인 만들면 수정하기
+    const [commit, setCommit] = useState(null);
 
     const checkoutCommit = async () => {
         try {

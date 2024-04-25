@@ -25,6 +25,7 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
             const responseData = await response.json();
             await setChangeData(responseData);
             // console.log(responseData)
+            await handleChangData(responseData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -32,7 +33,6 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
 
     useEffect(() => {
         changes()
-        handleChangData(changeData)
     }, [projectId]);
 
     useEffect(() => {
