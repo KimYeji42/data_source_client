@@ -25,7 +25,7 @@ export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex  }) {
             });
             const responseData = await response.json();
             setProject(responseData);
-            console.log(responseData)
+            // console.log(responseData)
 
         } catch (error) {
             console.error('Error fetching data:', error);

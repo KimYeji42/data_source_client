@@ -42,7 +42,7 @@ export default function ChangeTableLayout({ tableId, commitId}) {
                     {tableData && Object.entries(tableData).map(([key, value], index) => (
                         <td key={index} className={styles.td}>
                             {value.map((item, i) => (
-                                <div key={i} className={`${styles.dataBox} ${item.isAddAction == 0 ? styles.redBox : styles.greenBox}`}>
+                                <div key={i} className={`${styles.dataBox} ${item.isAddAction === 0 ? styles.redBox : styles.greenBox}`}>
                                     {item.data}
                                 </div>
                             ))}

@@ -7,15 +7,25 @@ export default function CommitChartUI({ projectId, onSelect }){
 
     const [commits, setCommits] = useState([]); // 초기값을 일반 객체로 설정
 
+    const handleRefresh = () => { window.location.reload(); };
+
     const handleRowClick = (commitId, index) => { // 커밋 선택
         setSelectedRowIndex(index);
-        console.log(commitId)
         onSelect(commitId)
     };
 
     const handleRowDoubleClick = (index) => { // 체크아웃
-        setDoubleClickRowIndex(index);
+        console.log("더블클릭 체크아웃 : " + commits[index].commitID)
+        checkout(commits[index].commitID)
     };
+
+    const handleCheckout = (commits) => {
+        commits.forEach((commit, index) => {
+            if (commit.checkout === 1) {
+                setDoubleClickRowIndex(index)
+            }
+        });
+    }
 
     const commitData = async () => {
         try {
@@ -28,6 +38,26 @@ export default function CommitChartUI({ projectId, onSelect }){
             });
             const responseData = await response.json();
             setCommits(responseData);
+            handleCheckout(responseData);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    const checkout = async (commitId) => {
+        try {
+            if (!commitId) return;
+            const response = await fetch(`http://localhost:8080/api/checkout/${commitId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const responseText = await response.text();
+
+            console.log(responseText)
+            handleRefresh();
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }

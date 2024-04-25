@@ -13,12 +13,24 @@ export default function CurrentStatusPage() {
     const [isErrorModalOpen , setIsErrorModalOpen] = useState(false)
     const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false)
 
+    const [changeData, setChangeData] = useState([]);
+
     const handleSelectProject = (projectId) => {
         setSelectedProjectId(projectId);
     };
 
+    const handleChangData = async (changeData) => { await setChangeData(changeData) }
+
     const commitData = async () => {
         try {
+            if (!commitMessageRef.current.value) {
+                commitMessageRef.current.focus()
+                return
+            } else if(changeData.length === 0) {
+                setIsErrorModalOpen(true)
+                return
+            }
+
             const response = await fetch(`http://localhost:8080/api/commit/`, {
                 method: 'POST',
                 headers: {
@@ -30,7 +42,7 @@ export default function CurrentStatusPage() {
                 }),
             });
             const responseData = await response.json();
-            console.log(`결과값 ${responseData}`)
+            // console.log(`결과값 ${responseData}`)
             setIsSuccessModalOpen(true)
             setCommit(responseData)
         } catch (error) {
@@ -48,7 +60,7 @@ export default function CurrentStatusPage() {
 
             <div className={styles.HistoryCanverBack}>
                 <div className={styles.HistoryCanver}>
-                    <CurrentStatusTableLayOut projectId={selectedProjectId}/>
+                    <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
                     <div className={styles.commitBox}>
                         <textarea placeholder={"커밋 메시지를 입력하세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
 
