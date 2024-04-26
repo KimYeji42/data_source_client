@@ -193,6 +193,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 onClickEvent={submitModifiedTable}
             />
             <SearchModal
+                columns={columns}
                 isOpen={isSearchModalOpen}
                 closeModal={() => setSearchModalOpen(false)}
             />
