@@ -37,7 +37,7 @@ export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex, toke
     };
 
     useEffect(() => {
-        if (project.length > 0 && selectedProjectId == null) {
+        if (project.length > 0 && sessionStorage.getItem("selectedProjectId") == null) {
             const defaultProjectId = project[0].id; // 첫 번째 프로젝트의 ID를 선택
             setSelectedProjectId(defaultProjectId); // 선택된 프로젝트 ID 설정
             sessionStorage.setItem("selectedProjectId", defaultProjectId);
@@ -50,7 +50,6 @@ export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex, toke
     useEffect(() => {
         projectData();
     }, [token]);
-
 
     const handleClick = (index) => {
         setSelectedIndex(index);

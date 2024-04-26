@@ -5,8 +5,10 @@ import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import React, {useState, useEffect} from "react";
 import HistorySideBar2UI from "../ui/HistorySideBar2UI";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import {useParams} from "react-router-dom";
 
 export default function HistoryViewPage(){
+
     const [selectedProjectId, setSelectedProjectId] = useState(null);
     const [selectedCommitId, setSelectedCommitId] = useState(null);
 
@@ -68,5 +70,4 @@ export default function HistoryViewPage(){
             />
         </div>
     )
-
 }

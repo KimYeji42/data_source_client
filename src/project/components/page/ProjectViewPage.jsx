@@ -10,9 +10,10 @@ import {useParams} from "react-router-dom";
 export default function ProjectViewPage(){
     const { projectId } = useParams();
     const [data, setData] = useState({});
-    const [tables , setTables] = useState([])
+
     useEffect(() => {
         fetchData();
+        sessionStorage.setItem("selectedProjectId", projectId);
     }, []);
 
     const fetchData = async () => {
