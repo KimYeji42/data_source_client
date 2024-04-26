@@ -6,7 +6,96 @@
     width: 70%; /* 원하는 너비로 설정 */
     height: 600px; /* 원하는 높이로 설정 */
     background-color: #ffffff; /* 배경색 설정 */
-    border: 1px solid #dddddd; /* 테두리 설정 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 설정 */
     z-index: 1; /* 다른 요소들 위에 나타나도록 설정 */
+}
+.inputContainer{
+    display: flex;
+    gap: 15px;
+    width: 70%;
+    height: 65px;
+    margin: 60px auto 0;
+    border: 1px solid #777777;
+    border-radius: 5px;
+}
+.inputContainer .searchIcon{
+    padding: 5px;
+    margin: 5px;
+}
+.inputContainer input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #00A3FF;
+    border: none;
+}
+
+.inputContainer input:focus {
+    outline: none;
+    color: black;
+}
+.inputContainer .sendButton {
+    border: 1px solid #00A3FF;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #00A3FF;
+    color: white;
+    width: 120px;
+    float: right;
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    transition: background-color 0.3s; /* 배경색 변경에 트랜지션 효과 추가 */
+    margin: 6px;
+}
+
+.inputContainer .sendButton:hover {
+    background-color: #0080FF; /* 마우스 호버 시 색상 변경 */
+}
+.description{
+    width: 70%;
+    margin: 20px auto;
+    color: #777777;
+    font-weight: bold;
+    padding: 10px;
+}
+.dataContainer{
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #777777;
+    border-radius: 3px;
+    overflow-y: scroll;
+    height: 250px;
+}
+.closeButtonContainer{
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 20px;
+
+}
+.closeButton {
+    float: right;
+    padding: 8px 16px;
+    background-color: #FF0000; 
+    color: #FFFFFF; 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.closeButton:hover {
+    background-color: #CC0000; /* 호버 시 빨간색이 조금 어두운 색으로 변경 */
+}
+.column{
+    width: 150px;
+    text-align: center;
+    padding: 15px;
+    background-color: #00A3FF;
+    color: white;
+}
+.columnData{
+    width: 150px;
+    border-bottom: 1px solid #777777;
+    padding: 10px;
+    text-align: center;
 }
