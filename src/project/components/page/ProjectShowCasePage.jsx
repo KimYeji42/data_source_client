@@ -37,18 +37,6 @@ export default function ProjectShowCasePage() {
         }
     };
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        const endpoint = '/api/project/all'; // 팀원모드
-
-        if (token !== null) {
-            fetchProjectData(token,endpoint); // 팀장 모드 여부에 따라 다른 데이터를 가져오도록 함
-            return;
-        }
-        setError("로그인 후 진행해주세요!");
-        setErrorModalOpen(true);
-    }, []); // 팀장 모드가 변경될 때마다 데이터를 다시 가져옴
-
     const changeAllMode = () =>{
         const token = localStorage.getItem('token');
         const endpoint = '/api/project/all'; // 팀원모드
@@ -62,6 +50,19 @@ export default function ProjectShowCasePage() {
 
         fetchProjectData(token , endpoint)
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        const endpoint = '/api/project/all'; // 팀원모드
+
+        if (token !== null) {
+            fetchProjectData(token,endpoint); // 팀장 모드 여부에 따라 다른 데이터를 가져오도록 함
+            return;
+        }
+        setError("로그인 후 진행해주세요!");
+        setErrorModalOpen(true);
+    }, []); // 팀장 모드가 변경될 때마다 데이터를 다시 가져옴
+
     return (
         <div className={styles.projectShowCasePage}>
             <ProjectSideBarLayOut />

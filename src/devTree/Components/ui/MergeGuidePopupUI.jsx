@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import styles from "../../styles/styles.module.css";
-import MergeCrashModalLayout from "../layout/MergeCrashModalLayout";
-import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 
-const MergeGuidePopupUI = ({ isOpen, onClose, onCrashOpen, onSuccessOpen, onErrorOpen, selectedCommitId, selectedProjectId }) => {
+const MergeGuidePopupUI = ({ isOpen, onClose, onCrashOpen, onSuccessOpen, onErrorOpen, selectedCommitId, selectedProjectId, token }) => {
+    const [takeToken, setTakeToken] = useState(null);
+
+    useEffect(() => {
+        setTakeToken(token)
+    }, [token]);
 
     if (!isOpen) return null;
 
@@ -12,11 +15,13 @@ const MergeGuidePopupUI = ({ isOpen, onClose, onCrashOpen, onSuccessOpen, onErro
             if (!selectedCommitId) {
                 onErrorOpen("선택한 커밋이 없습니다.")
                 return
-            }
+            } else if (takeToken == null) return
+
             const response = await fetch(`http://localhost:8080/api/merge/`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${takeToken}` // Token을 Header에 포함
                 },
                 body: JSON.stringify({
                     targetCommitId: selectedCommitId,

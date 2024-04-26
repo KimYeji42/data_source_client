@@ -3,46 +3,53 @@ import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 
-export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex  }) {
-    const [userId, setUserId] = useState(1); // 로그인 만들면 수정하기
+export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex, token }) {
     const [project, setProject] = useState([]); // 초기값을 일반 객체로 설정
-    const [selectedProjectId, setSelectedProjectId] = useState(null);
+    const [selectedProjectId, setSelectedProjectId] = useState(() => {
+        return sessionStorage.getItem("selectedProjectId") || null;
+    });
     const [selectedIndex, setSelectedIndex] = useState(defaultSelectedIndex);
 
     const handleProjectChange = (e) => {
         const projectId = parseInt(e.target.value);
         setSelectedProjectId(projectId);
-        onSelect(projectId)
+        sessionStorage.setItem("selectedProjectId", projectId);
+        onSelect(projectId);
     };
 
     const projectData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/history/${userId}`, {
+            if (token == null) return;
+
+            const response = await fetch(`http://localhost:8080/api/history`, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Token을 Header에 포함
                 }
             });
             const responseData = await response.json();
             setProject(responseData);
             // console.log(responseData)
-
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
 
     useEffect(() => {
-        projectData();
-    }, [userId]);
-
-    useEffect(() => {
-        if (project.length > 0) {
+        if (project.length > 0 && selectedProjectId == null) {
             const defaultProjectId = project[0].id; // 첫 번째 프로젝트의 ID를 선택
             setSelectedProjectId(defaultProjectId); // 선택된 프로젝트 ID 설정
-            onSelect(defaultProjectId); // 선택된 프로젝트 ID를 onSelect 콜백으로 전달
+            sessionStorage.setItem("selectedProjectId", defaultProjectId);
+            onSelect(defaultProjectId); // 선택된 프로젝트ID를 onSelect 콜백으로 전달
+            return;
         }
+        onSelect(selectedProjectId);
     }, [project]);
+
+    useEffect(() => {
+        projectData();
+    }, [token]);
 
 
     const handleClick = (index) => {
@@ -68,7 +75,6 @@ export default function HistorySideBar2UI({ onSelect, defaultSelectedIndex  }) {
                        onClick={() => handleClick(2)} to="/commit">커밋 검색</Link>
                 </div>
             </div>
-
         </>
 
     );

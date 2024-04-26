@@ -9,13 +9,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
     useEffect(() => {
         setTargetValues([]);
         setCheckValues([]);
-        console.log("충돌 해결 시작:" + crashData)
     }, [crashData]);
-
-    useEffect(() => {
-        console.log("targetValues:", targetValues.filter(value => value !== undefined));
-        console.log("checkValues:", checkValues.filter(value => value !== undefined));
-    }, [targetValues, checkValues]);
 
     if (!isOpen) return null;
 
@@ -29,7 +23,6 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
         const intIndex = parseInt(index)
 
         const isTargetValue = value.startsWith("target-");
-        console.log(isTargetValue)
 
         setCheckValues(prevCheckValues => {
             const updatedCheckValues = [...prevCheckValues];
@@ -42,7 +35,6 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
             updatedTargetValues[intIndex] = isTargetValue ? value.substring(7) : undefined;
             return updatedTargetValues;
         });
-
     };
 
     // 모든 선택된 값들을 가져오는 함수
@@ -53,9 +45,6 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
 
         const selectValLength = selectedTargetVal.length + selectedCheckVal.length
 
-        console.log("selectedTargetVal" + selectedTargetVal)
-        console.log("selectedCheckVal" + selectedCheckVal)
-
         crashData.forEach(mergeCrashResponse => {
             mergeCrashResponse.data.slice(0, 1).forEach(mergeCrashColumn => {
                 mergeCrashColumn.data.forEach(mergeCrashData => {
@@ -65,8 +54,6 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
                 });
             });
         });
-
-        console.log("선택 라디오, 리스트 값" + selectValLength, count)
         if (selectValLength !== count) {
             alert("사용할 행을 모두 선택해주세요.")
         } else {
@@ -88,7 +75,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
                                     <thead>
                                         <tr className={styles.columnNames}>
                                             {mergeCrashResponse.data.map((mergeCrashColumn, columnIndex) => (
-                                                <th className={styles.changeColumnName}>
+                                                <th key={columnIndex} className={styles.changeColumnName}>
                                                     {mergeCrashColumn.columnName}
                                                 </th>
                                             ))}
