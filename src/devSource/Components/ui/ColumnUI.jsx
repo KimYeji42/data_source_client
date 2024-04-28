@@ -9,7 +9,6 @@ import { Image } from "react-bootstrap";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
-import JoinTableModalUI from "./JoinTableModalUI";
 import SearchModal from "./SearchModal";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
@@ -196,6 +195,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 columns={columns}
                 isOpen={isSearchModalOpen}
                 closeModal={() => setSearchModalOpen(false)}
+                tableID={tableID}
             />
         </div>
     );

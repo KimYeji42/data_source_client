@@ -1,4 +1,10 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold.ttf";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+
 .searchModalBox {
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
     position: fixed; /* 페이지 내에서 고정 위치로 설정 */
     top: 50%; /* 상단에서 50% 위치로 이동 */
     left: 50%; /* 왼쪽에서 50% 위치로 이동 */
@@ -65,6 +71,7 @@
     border-radius: 3px;
     overflow-y: scroll;
     height: 250px;
+    display: flex;
 }
 .closeButtonContainer{
     width: 70%;
@@ -87,14 +94,12 @@
     background-color: #CC0000; /* 호버 시 빨간색이 조금 어두운 색으로 변경 */
 }
 .column{
-    width: 150px;
     text-align: center;
     padding: 15px;
     background-color: #00A3FF;
     color: white;
 }
 .columnData{
-    width: 150px;
     border-bottom: 1px solid #777777;
     padding: 10px;
     text-align: center;
