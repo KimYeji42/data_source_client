@@ -18,6 +18,7 @@ import JoinPage from "../authentication/components/page/JoinPage";
 import BlobCloudPage from "../devSource/Components/page/BlobCloudPage";
 import Header from "../Layout/Header/Header";
 import LoginPage from "../authentication/components/page/LoginPage";
+import ERDPage from "../ERD/components/page/ERDPage";
 
 
 export default function AppRouter() {
@@ -46,6 +47,7 @@ export default function AppRouter() {
                     <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
                     <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
+                    <Route path='/erd' element={<ERDPage/>}/>
 
                     <Route path='/auth/join' element={<JoinPage/>}/>
                     <Route path='/auth/login' element={<LoginPage/>}/>
