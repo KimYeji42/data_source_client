@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styles from './SidebarStyle.module.css';
 import './sideBar.css';
 import Accordion from 'react-bootstrap/Accordion';
+import {useParams} from "react-router-dom";
 
 function SidebarBox({ title }) {
     const [isOpen, setIsOpen] = useState(false);
-    const [dataBaseID, setDataBaseID] = useState(1);
+
+    const {dataBaseID} = useParams()
     const [tableList, setTableList] = useState(null);
 
     const handleToggleMenu = () => {
