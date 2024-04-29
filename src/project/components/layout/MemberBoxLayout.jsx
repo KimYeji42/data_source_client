@@ -7,13 +7,25 @@ import ProfileUI from "../uI/ProfileUI";
 import minus from '../../image/redMinus.png';
 import plus from '../../image/bluePlus.png';
 import SearchUserNameUI from "../uI/SearchUserNameUI";
+import SendModalLayOut from "./SendModalLayOut";
 
 export default function MemberBoxLayout({data , projectID}) {
     const [teamProfile , setTeamProfile] = useState(data)
     const [allProfiles , setAllProfiles] = useState([])
+    const [sendMessage , setSendMessage] = useState("")
+    const [isSendModalOpen , setIsSendModalOpen] = useState(false)
     const handleClick = (item) => {
         const newMembers = new Set([...teamProfile]);
-        newMembers.add(item);
+
+        const userObject = {
+            id: item.id,
+            email:item.email,
+            username:item.name,
+            projectID: projectID
+        }
+
+        newMembers.add(userObject);
+
         setTeamProfile([...newMembers]);
     }
     const handleDelete = (item) => {
@@ -21,6 +33,19 @@ export default function MemberBoxLayout({data , projectID}) {
         newMembers.delete(item);
         setTeamProfile([...newMembers]);
     }
+
+    const updateTeamProfile = () =>{
+        var team = ""
+
+        teamProfile.forEach(function(element) {
+            team += element.username || element.name
+            team += "님 \t"
+        });
+
+        setSendMessage(`팀원을 다음과 같이 변경 하시겠습니까? ${team}`)
+        setIsSendModalOpen(true)
+    }
+
     const fetchData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -103,26 +128,42 @@ export default function MemberBoxLayout({data , projectID}) {
 
                         {allProfiles.length > 0 && (
                             <div className={styles.profileBigBox}>
-                                {allProfiles.map((item , index) => (
-                                    <div className={styles.profileBox} key={item.id}>
-                                        <ProfileUI
-                                            img={plus}
-                                            name={item.name}
-                                            email={item.email}
-                                            onClick={() => handleClick(item)}
-                                        />
-                                    </div>
-                                ))}
+                                {allProfiles.map((item , index) => {
+                                    // teamProfile 배열에 있는 이메일과 현재 프로필의 이메일을 비교하여 동일한지 확인
+                                    const isEmailMatched = teamProfile.some(profile => profile.email === item.email);
+
+                                    // teamProfile 배열에 해당 이메일이 없는 경우에만 프로필을 출력
+                                    if (!isEmailMatched) {
+                                        return (
+                                            <div className={styles.profileBox} key={item.id}>
+                                                <ProfileUI
+                                                    img={plus}
+                                                    name={item.name}
+                                                    email={item.email}
+                                                    onClick={() => handleClick(item)}
+                                                />
+                                            </div>
+                                        );
+                                    } else {
+                                        return null; // 이메일이 일치하는 경우 프로필을 출력하지 않음
+                                    }
+                                })}
                             </div>
                         )}
+
 
                     </div>
                 </div>
                 <div className={styles.buttonBox}>
-                    <ButtonUI onClick={sendToUpdateTeamProfile} children={"저장하기"} className={styles.button}/>
+                    <ButtonUI onClick={updateTeamProfile} children={"저장하기"} className={styles.button}/>
                 </div>
             </div>
-
+            <SendModalLayOut
+                data={sendMessage}
+                isOpen={isSendModalOpen}
+                onClose={() => setIsSendModalOpen(false)}
+                onClickEvent={sendToUpdateTeamProfile}
+            />
         </div>
     );
 }

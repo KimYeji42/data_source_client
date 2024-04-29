@@ -17,12 +17,13 @@ export default function TeamProfilePage() {
                 }
             });
             const responseData = await response.json();
-            console.log(responseData);
             setTeamProfiles(responseData);
+
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
+
 
     useEffect(() => {
         fetchData();
