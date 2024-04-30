@@ -4,7 +4,7 @@ import {useState} from "react";
 import NetworkGraph from "../ui/NetworkGraph";
 
 export default function ERDSidebarLayout(){
-    const [selectProjectId, setSelectProjectId] = useState([]);
+    const [selectProjectId, setSelectProjectId] = useState(null);
 
     const selectedProjectId = (projectId) => {
         setSelectProjectId(projectId)

@@ -95,33 +95,44 @@ body {
 
 /*SelectedNodeTableUi*/
 .SelectedNodeTableUi {
-
 }
 
 .SelectedNodeTableBox {
     margin-left: 30px;
     border: 1px solid #c9c9c9;
     border-radius: 6px;
+    background: #00A3FF;
 }
 
 .SelectedTableName {
     justify-content: center;
     text-align: center;
+    padding: 20px 0 0 0;
 }
 
 .SelectedNodeTable {
-    width: 200px;
+    min-width: 200px;
     border-collapse: collapse;
     margin-top: 20px;
-}
-
-.SelectedNodeTable th, .SelectedNodeTable td {
-    border: 1px solid #dddddd;
-    padding: 8px;
+    background: white;
+    border-radius: 0 0 5px 5px;
     text-align: center;
 }
 
-.SelectedNodeTable th {
-    background-color: #f2f2f2;
-    font-weight: bold;
+.SelectedNodeTable thead {
+    border-bottom: 1px solid #dddddd;
+    border-top: 1px solid #dddddd;
+}
+
+.SelectedNodeTable td {
+    padding: 6px 0;
+}
+
+.SelectedNodeTable tr > td:first-child {
+    min-width: 20px;
+    border-right: 1px solid #dddddd;
+}
+
+.SelectedNodeTable tr > td:last-child {
+    min-width: 60px;
 }

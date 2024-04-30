@@ -1,57 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Network } from 'vis-network';
+import React, {useEffect, useRef, useState} from 'react';
+import {Network} from 'vis-network';
 import 'vis-network/styles/vis-network.css';
 import styles from "../../styleModule/styles.module.css";
 import SelectedNodeTableUi from "./SelectedNodeTableUi";
 
 const NetworkGraph = ({ selectedProjectId }) => {
     const networkRef = useRef(null);
-    const [nodes, setNodes] = useState([]);
-    const [edges, setEdges] = useState([]);
     const [selectedNodeId, setSelectedNodeId] = useState(null);
 
-    const diagramData = async () => {
-        try {
-            if (selectedProjectId == null) return;
-
-            const response = await fetch(`http://localhost:8080/diagram/${selectedProjectId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const responseData = await response.json();
-            // console.log(responseData)
-
-            const nodes = responseData.map(diagram => ({
-                id: diagram.id,
-                label: diagram.label
-            }));
-            const edges = responseData.flatMap(diagram =>
-                Array.isArray(diagram.edges) ? // diagram.edges가 배열인지 확인
-                    diagram.edges.map(edge => ({
-                        from: edge.from,
-                        to: edge.to
-                    })) : [] // 배열이 아니면 빈 배열 반환
-            );
-
-            setNodes(nodes);
-            setEdges(edges);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    };
-
-    useEffect(() => {
-        setSelectedNodeId(null);
-        diagramData();
-
-        const container = networkRef.current;
+    const createNetwork = async(nodes, edges) => {
+        console.log("createNetwork")
+        const container = await networkRef.current;
+        console.log(container)
 
         const data = {
             nodes,
             edges
         };
+
         const options = {
             nodes: {
                 shape: 'box',
@@ -73,6 +39,43 @@ const NetworkGraph = ({ selectedProjectId }) => {
                 console.log('선택한 노드 ID : ', selectedNodeId);
             }
         });
+    };
+
+    const diagramData = async (projectId) => {
+        try {
+            if (projectId == null) return;
+
+            const response = await fetch(`http://localhost:8080/diagram/${projectId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const responseData = await response.json();
+            // console.log(responseData)
+
+            const nodes = responseData.map(diagram => ({
+                id: diagram.id,
+                label: diagram.label
+            }));
+            const edges = responseData.flatMap(diagram =>
+                Array.isArray(diagram.edges) ? // diagram.edges가 배열인지 확인
+                    diagram.edges.map(edge => ({
+                        from: edge.from,
+                        to: edge.to
+                    })) : [] // 배열이 아니면 빈 배열 반환
+            );
+            createNetwork(nodes, edges);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        setSelectedNodeId(null);
+        console.log("받아낸 프로젝트 ID:", selectedProjectId);
+        diagramData(selectedProjectId);
     }, [selectedProjectId]);
 
     return (
