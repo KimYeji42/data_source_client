@@ -19,7 +19,6 @@ export default function TablePage() {
                     <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`}/>
                 </div>
                 <DownloadUI tableID={tableID}/>
-
                 <TableLayout tableID={tableID}/>
             </div>
         </div>

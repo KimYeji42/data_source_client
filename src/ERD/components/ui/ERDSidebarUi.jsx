@@ -11,6 +11,7 @@ export default function ERDSidebarUi({ onSelect }) {
     const [token, setToken] = useState(null);
 
     const handleRowClick = (projectId, index) => { // 프로젝트 선택
+        console.log(projectId)
         setSelectedRowIndex(index);
         onSelect(projectId);
     };
