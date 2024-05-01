@@ -52,7 +52,7 @@ export default function ERDSidebarUi({ onSelect }) {
 
     return(
         <div className={styles.erdSidebarUi}>
-            <h2 className={styles.erdSidebarTitle}>my project</h2>
+            <h3 className={styles.erdSidebarTitle}>나의 프로젝트</h3>
             <div className={styles.projectSearchbarBox}>
                 <input type="text" placeholder={"내 프로젝트 검색하기"} className={styles.projectSearchbar}/>
                 <img src='../../image/Search.png'/>

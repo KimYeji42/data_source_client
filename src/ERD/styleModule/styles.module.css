@@ -16,12 +16,14 @@ body {
     font-family: "KoPubWorld Dotum Bold", sans-serif;
     background: #EEEEEE;
     width: 260px;
-    height: 92vh;
+    height: 84vh;
     padding: 20px 10px 10px 10px;
+
 }
 
 .erdSidebarTitle {
     font-family: "GmarketSansTTFBold", sans-serif;
+    text-align: center;
 }
 
 .projectSearchbarBox {
@@ -29,6 +31,7 @@ body {
     width: 240px;
     background: white;
     border: 1px solid #8a8a8a;
+
 }
 
 .projectSearchbar {
@@ -42,11 +45,12 @@ body {
 
 .selectedProjectUl {
     background: white;
-    width: 240px; height: 72vh;
+    width: 240px; height: 54vh;
     list-style: none;
     padding: 10px 0;
     margin: 10px auto 0 auto;
     overflow: auto;
+
 }
 
 .selectedProjectLi {
@@ -66,6 +70,7 @@ body {
     border-bottom: 1px solid #D4D4D4;
     cursor: pointer;
     margin: 0 auto;
+
 }
 
 /*ERDSidebarLayout*/
@@ -99,6 +104,7 @@ body {
 
 .SelectedNodeTableBox {
     margin-left: 30px;
+    margin-top: 10px;
     border: 1px solid #c9c9c9;
     border-radius: 6px;
     background: #00A3FF;
@@ -107,13 +113,13 @@ body {
 .SelectedTableName {
     justify-content: center;
     text-align: center;
-    padding: 20px 0 0 0;
+    padding: 10px;
+    color: white;
 }
 
 .SelectedNodeTable {
     min-width: 200px;
     border-collapse: collapse;
-    margin-top: 20px;
     background: white;
     border-radius: 0 0 5px 5px;
     text-align: center;
@@ -125,7 +131,9 @@ body {
 }
 
 .SelectedNodeTable td {
-    padding: 6px 0;
+    padding: 10px;
+    width: 250px;
+
 }
 
 .SelectedNodeTable tr > td:first-child {
