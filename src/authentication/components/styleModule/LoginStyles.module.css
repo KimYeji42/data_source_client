@@ -14,7 +14,7 @@
 
 }
 .LoginContainer {
-    width: 40%;
+    width: 40%; height: 35rem;
     margin: 5% auto;
     text-align: center;
     font-family: "KoPubWorld Dotum Bold", serif;
@@ -34,7 +34,7 @@
     font-size: 16px; /* 글꼴 크기 */
     font-weight: bold; /* 글꼴 두껍게 */
     transition: background-color 0.3s, color 0.3s; /* 호버 효과를 위한 전환 효과 */
-    width: 60%;
+    width: 63%;
 }
 
 .LoginBtn:hover {
@@ -43,4 +43,9 @@
 .loginBox{
     margin: 30px;
     padding: 10px;
+}
+
+.joinBtn {
+    display: block;
+    margin-top: 30px;
 }

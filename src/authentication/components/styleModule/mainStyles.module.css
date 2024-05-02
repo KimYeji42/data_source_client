@@ -7,8 +7,8 @@
     src: url("../../../default/font/GmarketSansTTFBold.ttf");
 }
 
-html{font-size: 20px;}
-body{font-size: 1rem;}
+/*html{font-size: 18px;}*/
+/*body{font-size: 1rem;}*/
 
 /*MainBottomUI*/
 .mainBox {
@@ -16,25 +16,25 @@ body{font-size: 1rem;}
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 0.1rem;
 }
 
 .mainCircle {
-    width: 18rem; height: 18rem;
+    width: 16.5rem; height: 16.5rem;
     border-radius: 50%;
     padding-top: 2.5rem;
     white-space: pre-line; /*텍스트 줄바꿈*/
 }
 
 .mainStepText {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
     font-weight: bold;
     text-align: center;
     margin: 1.3rem 0;
 }
 
 .mainBigText {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -42,9 +42,9 @@ body{font-size: 1rem;}
 }
 
 .mainSmallText {
-    width: 14.5rem;
+    width: 14rem;
     text-align: center;
-    font-size: 0.97rem;
+    font-size: 0.9rem;
     font-weight: bold;
     margin: .65rem 0;
     padding: .5rem .4rem;
@@ -58,7 +58,7 @@ body{font-size: 1rem;}
     background: white;
     border-radius: 8px;
     border-color: #00A3FF;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: bold;
 
 }
@@ -101,8 +101,7 @@ body{font-size: 1rem;}
 
 /*MainTopLayout*/
 .mainTopText {
-    font-family: 'KoPubWorld Dotum Bold', serif;
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -120,6 +119,7 @@ body{font-size: 1rem;}
 
 /*mainPage*/
 .mainPage {
+    font-family: 'KoPubWorld Dotum Bold', serif;
     background-image: url("../../image/mainBackground.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -130,24 +130,24 @@ body{font-size: 1rem;}
 }
 
 /*반응형*/
-@media screen and (max-width:1640px) {
-    html{font-size: 18px;}
-    body{font-size: 1rem;}
-}
+/*@media screen and (max-width:1640px) {*/
+/*    html{font-size: 18px;}*/
+/*    body{font-size: 1rem;}*/
+/*}*/
 
-@media screen and (max-width:1540px) {
-    html{font-size: 16px;}
-    body{font-size: 1rem;}
-}
+/*@media screen and (max-width:1540px) {*/
+/*    html{font-size: 16px;}*/
+/*    body{font-size: 1rem;}*/
+/*}*/
 
-@media screen and (max-width:1440px) {
-    html{font-size: 14px;}
-    body{font-size: 1rem;}
-}
+/*@media screen and (max-width:1440px) {*/
+/*    html{font-size: 14px;}*/
+/*    body{font-size: 1rem;}*/
+/*}*/
 
-@media screen and (max-width:1340px) {
-    html{font-size: 12px;}
-    body{font-size: 1rem;}
-}
+/*@media screen and (max-width:1340px) {*/
+/*    html{font-size: 12px;}*/
+/*    body{font-size: 1rem;}*/
+/*}*/
 
 

@@ -3,6 +3,7 @@ import styles from "../styleModule/LoginStyles.module.css"
 import InputBoxUI from "../uI/InputBoxUI";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import {Link} from "react-router-dom";
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -72,12 +73,14 @@ export default function LoginPage() {
                 <div className={styles.loginBox}>
                     <InputBoxUI type={"text"} onChange={setEmail} value={email} label={"Email"}/>
                 </div>
+
                 <div className={styles.loginBox}>
                     <InputBoxUI type={"password"} onChange={setPassword} value={password} label={"Password"}/>
-
                 </div>
 
                 <button className={styles.LoginBtn} onClick={sendAuthData}>Login</button>
+
+                <Link to={'/auth/join'} className={styles.joinBtn}>회원가입</Link>
             </div>
             <
                 SuccessModalLayout
