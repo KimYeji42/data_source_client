@@ -12,6 +12,7 @@ export default function MainBottomLayout(){
                         smallText={"자신의 프로젝트 생성"}
                         buttonText={"New Project"}
                         circleColor={"#B3E4FF"}
+                        link={"/projects"}
                     />
                 </span>
                 <span className={styles.mainUiBox2}>
@@ -21,6 +22,7 @@ export default function MainBottomLayout(){
                         smallText={"테이블 생성 및 관리"}
                         buttonText={"Back Data"}
                         circleColor={"#62C6FF"}
+                        link={"/projects"}
                     />
                 </span>
                 <span className={styles.mainUiBox3}>
@@ -30,6 +32,7 @@ export default function MainBottomLayout(){
                         smallText={"템플릿 및 코드 관리"}
                         buttonText={"Front Client"}
                         circleColor={"#4EBFFF"}
+                        link={"/projects"}
                     />
                 </span>
                 <span className={styles.mainUiBox4}>
@@ -39,6 +42,7 @@ export default function MainBottomLayout(){
                         smallText={"웹 서비스 버전 관리"}
                         buttonText={"DevTree"}
                         circleColor={"#00A3FF"}
+                        link={"/history"}
                     />
                 </span>
             </div>

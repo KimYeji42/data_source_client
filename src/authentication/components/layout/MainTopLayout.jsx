@@ -10,7 +10,7 @@ export default function MainTopLayout(){
             <div className={styles.mainTopButtons}>
                 <Link to="/projects"><MainTopButtonUI buttonName={"프로젝트 생성하러 가기"}/></Link>
                 <Link to="/history"><MainTopButtonUI buttonName={"협업 소스 관리하러 가기"}/></Link>
-                <Link to="/#"><MainTopButtonUI buttonName={"ERD 툴 보러가기"}/></Link>
+                <Link to="/erd"><MainTopButtonUI buttonName={"ERD 툴 보러가기"}/></Link>
             </div>
         </div>
     )
