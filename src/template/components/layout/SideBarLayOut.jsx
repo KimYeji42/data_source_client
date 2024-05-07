@@ -8,7 +8,6 @@ import CardCanvasLayOut from "./CardCanvasLayOut";
 import ListMenuCanvas from "./ListMenuCanvasLayOut";
 import {useParams} from "react-router-dom";
 import LinkUI from "../../../project/components/uI/LinkUI";
-
 export default function SideBarLayOut() {
     const {tableID} = useParams()
     const [selectedComponent, setSelectedComponent] = useState(null);
@@ -19,6 +18,42 @@ export default function SideBarLayOut() {
         setSelectedComponent(category); // 선택된 카테고리 설정
     };
 
+    const templateDownloadButtonClickHandler = () =>{
+        let templatePath = ""
+        switch (selectedComponent) {
+            case "Tree":
+                templatePath = "/template/Tree.html"
+                break;
+            case "Table":
+                templatePath = "/template/Table.html"
+                break;
+            case "List":
+                templatePath = "/template/List.html"
+                break;
+            case "Card":
+                templatePath = "/template/Card.html"
+                break;
+            default:
+                alert("템플릿을 클릭한 후 다운로드 해주세요.")
+        }
+        const downloadLink = document.createElement("a");
+        downloadLink.href = templatePath;
+        downloadLink.download = selectedComponent +"_template.html"; // 다운로드될 파일명 설정
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+
+        dataBaseSolutionPDFDownload()//다운로드 솔루션
+    }
+    function dataBaseSolutionPDFDownload(){
+        let templatePath = "/template/solution.pdf"
+        const downloadLink = document.createElement("a");
+        downloadLink.href = templatePath;
+        downloadLink.download = "solution.pdf"; // 다운로드될 파일명 설정
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
     const fetchColumData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -55,8 +90,7 @@ export default function SideBarLayOut() {
                 <div className={styles.templateDownBox}>
                     <LinkUI text={"테이블로 돌아가기"} redirect={`/table/${tableID}`}/>
                 </div>
-                <LinkUI text={"템플릿 다운로드"} />
-
+                <p onClick={templateDownloadButtonClickHandler}><LinkUI text={"템플릿 다운로드"} /></p>
             </div>
 
             {/* 선택된 카테고리에 따라 해당 컴포넌트 렌더링 */}

@@ -32,7 +32,6 @@ body {
     width: 240px;
     background: white;
     border: 1px solid #8a8a8a;
-
 }
 
 .projectSearchbar {
@@ -77,6 +76,8 @@ body {
 /*ERDSidebarLayout*/
 .ERDSidebarLayout {
     display: flex;
+    gap: 20px;
+    margin: 0 auto;
 }
 
 .erdTopBar {
