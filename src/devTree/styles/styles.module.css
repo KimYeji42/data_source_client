@@ -9,9 +9,8 @@
 
 .changeCommitBox{
     font-family: "KoPubWorld Dotum Bold", serif;
-    width: 50%;
     margin: 3% auto 0;
-    height: 300px;    width: 90%;
+    height: 300px;  width: 90%;
 }
 
 .changeCommitBoxUnder{
@@ -232,8 +231,8 @@
 }
 
 /*히스토리 상단 버튼*/
-.HistoryBtn{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+.HistoryBtn {
+    font-family: 'GmarketSansTTFBold', sans-serif;
     width: 170px;
     text-align : center;
     padding: 3px 10px 3px 10px;
@@ -623,6 +622,7 @@
     height: 100%; width: 836px;
 }
 .CommitMsgSearchBox{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
     color: #000;
     width: 705px;
 }
