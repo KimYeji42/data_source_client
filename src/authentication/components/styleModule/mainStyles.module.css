@@ -68,6 +68,7 @@
     position: relative;
     display: flex;
     justify-content: center;
+    min-width: 980px;
 }
 
 .mainUiBox1 {
@@ -114,7 +115,8 @@
 }
 
 .mainTopLayout {
-    margin: 6.5rem 0 3rem 0;
+    margin: 16vh 0 11vh 0;
+    min-width: 980px;
 }
 
 /*mainPage*/
@@ -129,6 +131,7 @@
     background-size: cover;
     background-position: center;
     width: 100%; height: 100vh;
+    min-width: 980px;
     position: absolute;
     z-index: -1;
     top: 0

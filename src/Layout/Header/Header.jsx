@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './headerStyle.module.css';
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
 function Header() {
@@ -38,13 +38,13 @@ function Header() {
     return (
         <div className={styles.All}>
                 <div className={styles.container}>
-                    <div className={styles.logo} >No DB Service</div>
+                    {/*<div className={styles.logo} >No DB Service</div>*/}
+                    <Link to={'/'} >
+                        <img src='image/로고3.png' className={styles.logo}/>
+                    </Link>
 
                     <div className={styles.bar}>
                         <div className={styles.navLink}>
-                            <li>
-                                <Link to={'/'} >Home</Link>
-                            </li>
                             <li>
                                 <Link to={'/projects'} >DevTool</Link>
                             </li>
@@ -53,6 +53,9 @@ function Header() {
                             </li>
                             <li>
                                 <Link to={'/blob/cloud'} >Resources</Link>
+                            </li>
+                            <li>
+                                <Link to={'/erd'} >ERD</Link>
                             </li>
                         </div>
                     </div>

@@ -16,8 +16,9 @@ body {
     font-family: "KoPubWorld Dotum Bold", sans-serif;
     background: #EEEEEE;
     width: 260px;
-    height: 84vh;
+    /*height: 100%;*/
     padding: 20px 10px 10px 10px;
+    height: 81vh;
 
 }
 
@@ -45,7 +46,7 @@ body {
 
 .selectedProjectUl {
     background: white;
-    width: 240px; height: 54vh;
+    width: 240px; height: 63.5vh;
     list-style: none;
     padding: 10px 0;
     margin: 10px auto 0 auto;
@@ -93,7 +94,7 @@ body {
 }
 
 .networkGraph {
-    width: 950px; height: 647px;
+    width: 950px; height: 81vh;
     margin: 0 auto;
     border: 1px solid #c9c9c9;
 }
