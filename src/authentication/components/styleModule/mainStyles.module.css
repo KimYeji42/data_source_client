@@ -20,21 +20,21 @@
 }
 
 .mainCircle {
-    width: 16.5rem; height: 16.5rem;
+    width: 16rem; height: 16rem;
     border-radius: 50%;
     padding-top: 2.5rem;
     white-space: pre-line; /*텍스트 줄바꿈*/
 }
 
 .mainStepText {
-    font-size: 2.1rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin: 1.3rem 0;
 }
 
 .mainBigText {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
     font-weight: bold;
     color: white;
     text-align: center;
@@ -89,7 +89,7 @@
 
 /*MainTopButtonUI*/
 .mainTopButton {
-    width: 13rem; height: 3rem;
+    width: 13rem; height: 2.7rem;
     font-size: .9rem;
     border-radius: 30px;
     border: none;
@@ -101,7 +101,7 @@
 
 /*MainTopLayout*/
 .mainTopText {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     font-weight: bold;
     width: 100%;
     text-align: center;
@@ -114,18 +114,23 @@
 }
 
 .mainTopLayout {
-    margin: 4rem 0 5rem 0;
+    margin: 6.5rem 0 3rem 0;
 }
 
 /*mainPage*/
 .mainPage {
     font-family: 'KoPubWorld Dotum Bold', serif;
+
+}
+
+.mainPageBackground {
     background-image: url("../../image/mainBackground.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     width: 100%; height: 100vh;
     position: absolute;
+    z-index: -1;
     top: 0
 }
 

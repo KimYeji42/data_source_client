@@ -6,8 +6,8 @@ import Header from "../../../Layout/Header/Header";
 export default function MainPage(){
     return(
         <div className={styles.mainPage}>
-            <div>
-                <Header/>
+            <div className={styles.mainPageBackground}>
+                {/*<Header/>*/}
                 <MainTopLayout/>
                 <MainBottomLayout/>
             </div>

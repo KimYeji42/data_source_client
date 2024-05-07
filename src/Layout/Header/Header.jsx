@@ -6,11 +6,11 @@ import {Link} from "react-router-dom";
 function Header() {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
-    const [activeItem, setActiveItem] = useState(null);
+    // const [activeItem, setActiveItem] = useState(null);
 
-    const handleClick = (itemId) => {
-        setActiveItem(itemId);
-    };
+    // const handleClick = (itemId) => {
+    //     setActiveItem(itemId);
+    // };
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
         setCurrentUser(username)
@@ -42,32 +42,16 @@ function Header() {
 
                     <div className={styles.bar}>
                         <div className={styles.navLink}>
-                            <li
-                                id="home"
-                                className={activeItem === 'home' ? styles.active : ''}
-                                onClick={() => handleClick('home')}
-                            >
+                            <li>
                                 <Link to={'/'} >Home</Link>
                             </li>
-                            <li
-                                id="devTool"
-                                className={activeItem === 'devTool' ? styles.active : ''}
-                                onClick={() => handleClick('devTool')}
-                            >
+                            <li>
                                 <Link to={'/projects'} >DevTool</Link>
                             </li>
-                            <li
-                                id="devTree"
-                                className={activeItem === 'devTree' ? styles.active : ''}
-                                onClick={() => handleClick('devTree')}
-                            >
+                            <li>
                                 <Link to={'/history'} >DevTree</Link>
                             </li>
-                            <li
-                                id="Image"
-                                className={activeItem === 'image' ? styles.active : ''}
-                                onClick={() => handleClick('image')}
-                            >
+                            <li>
                                 <Link to={'/blob/cloud'} >Resources</Link>
                             </li>
                         </div>
