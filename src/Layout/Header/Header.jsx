@@ -40,7 +40,7 @@ function Header() {
                 <div className={styles.container}>
                     {/*<div className={styles.logo} >No DB Service</div>*/}
                     <Link to={'/'} >
-                        <img src='image/로고3.png' className={styles.logo}/>
+                        <img src='/image/로고3.png' className={styles.logo}/>
                     </Link>
 
                     <div className={styles.bar}>

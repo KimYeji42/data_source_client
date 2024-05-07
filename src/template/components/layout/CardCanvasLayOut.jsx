@@ -69,9 +69,6 @@ export default function CardCanvasLayOut({ tableID , columnData }) {
                 ))
             )}
 
-
-
-
             <DataContainerUI
                 dataChangeHandler={dataConvertCardTemplateData}
                 setSelectedValues={setData}

@@ -4,7 +4,7 @@ import ButtonUI from "../../../project/components/uI/ButtonUI";
 
 export default function ListDataContainerUI({ columnList , setMenuList}) {
     const [checkedItems, setCheckedItems] = useState([]);
-
+    const [toggleOff , setToggleOff] = useState(false)
     const handleCheckboxChange = (columnName) => {
         if (checkedItems.includes(columnName)) {
             setCheckedItems(prevState => prevState.filter(item => item !== columnName));
@@ -19,7 +19,7 @@ export default function ListDataContainerUI({ columnList , setMenuList}) {
 
     return (
         <div>
-            <div className={styles.CardControlBox}>
+            <div className={toggleOff ? styles.CardControlBoxOff : styles.CardControlBox}>
                 <div className={styles.checkBox}>
                     {columnList.map((column, index) => (
                         <div key={index}>
@@ -34,7 +34,11 @@ export default function ListDataContainerUI({ columnList , setMenuList}) {
                     ))}
                 </div>
                 <ButtonUI className={styles.button} children={"실행"} onClick={buttonClickAction}/>
+                <button className={styles.toggleButton} onClick={() => setToggleOff(!toggleOff)}>
+                    {toggleOff ? "<<" : ">>"}
+                </button>
             </div>
+
         </div>
     );
 }

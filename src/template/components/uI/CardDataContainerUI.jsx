@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export default function CardDataContainerUI({ columnData, setSelectedValues , dataChangeHandler }) {
     const [selectData, setSelectData] = useState({});
-
+    const [toggleOff , setToggleOff] = useState(false)
     const handleChange = (title, value) => {
         console.log(selectData)
         setSelectData({ ...selectData, [title]: value });
@@ -16,24 +16,28 @@ export default function CardDataContainerUI({ columnData, setSelectedValues , da
         await dataChangeHandler(); // 데이터 변환 함수 호출 후에 기다림
     };
 
-
+    const toggleOffEvent = () =>{
+        setToggleOff(!toggleOff); // 토글 상태를 반전시킴
+    }
     let items = [ "Title" , "description"]; // items 변수명 변경
 
     return (
         <div>
-            <div className={styles.CardControlBox}>
-                {items.map((item, index) => ( // items로 변경
+            <div className={toggleOff ? styles.CardControlBoxOff : styles.CardControlBox}>
+                {items.map((item, index) => (
                     <div key={index} className={styles.columnSelect}>
                         <h6 className={styles.selectionTitle}>{item}:</h6>
-                        <select className={styles.option}
-                                onChange={(e) => handleChange(item, e.target.value)}> {/* handleChange 함수에 매개변수 전달 */}
-                            {columnData.map((columnItem , index) =>
+                        <select className={styles.option} onChange={(e) => handleChange(item, e.target.value)}>
+                            {columnData.map((columnItem, index) =>
                                 <option key={index}>{columnItem.name}</option>
                             )}
                         </select>
                     </div>
                 ))}
                 <ButtonUI className={styles.button} children={"실행"} onClick={buttonClickAction} />
+                <button className={styles.toggleButton} onClick={() => setToggleOff(!toggleOff)}>
+                    {toggleOff ? "<<" : " >> "}
+                </button>
             </div>
         </div>
     );

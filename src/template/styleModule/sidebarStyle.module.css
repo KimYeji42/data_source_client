@@ -21,18 +21,44 @@
 .buttonContainer span {
     transform: rotate(270deg);
 }
-.CardControlBox{
+.CardControlBoxOff {
     font-family: "KoPubWorld Dotum Bold", serif;
-    border: 1px solid #000000;
     border-radius: 10px;
-    width: 350px;
+    width: 30px;
     height: 300px;
+    top: 30%;
     position:fixed;
     background-color: #FFFFFF;
-    top: 20%;
-    left: 70%;
+    right: 10%;
     overflow-y: auto;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 }
+.CardControlBoxOff *{
+    display: none;
+}
+.CardControlBoxOff button{
+    display: none;
+}
+.CardControlBoxOff .toggleButton{
+    display: block;
+    text-align: center;
+    height: 200px;
+}
+
+.CardControlBox{
+    font-family: "KoPubWorld Dotum Bold", serif;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    top: 30%;
+    position:fixed;
+    background-color: #FFFFFF;
+    right: 10%;
+    overflow-y: auto;
+    padding: 10px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+}
+
 .columnSelect{
     font-family: "KoPubWorld Dotum Bold", serif;
     display: flex;
@@ -81,7 +107,7 @@
     margin-left: 12%;
 }
 .checkBox {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(30%, 1fr)); /* 한 라인에 3개씩의 열을 가진 그리드를 생성 */
@@ -98,3 +124,10 @@
     margin: 0;
     font-size: 18px;
 }
+
+.toggleButton{
+    background-color: #ffffff;
+    text-align: center;
+    border: none;
+}
+
