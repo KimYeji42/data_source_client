@@ -9,6 +9,7 @@ export default function ERDSidebarUi({ onSelect }) {
     const [error, setError] = useState(null);
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
     const [token, setToken] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const handleRowClick = (projectId, index) => { // 프로젝트 선택
         console.log(projectId)
@@ -50,17 +51,27 @@ export default function ERDSidebarUi({ onSelect }) {
         projectData();
     }, [token]);
 
+    const filteredProjects = project.filter(project =>
+        project.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return(
         <div className={styles.erdSidebarUi}>
             <h3 className={styles.erdSidebarTitle}>나의 프로젝트</h3>
             <div className={styles.projectSearchbarBox}>
-                <input type="text" placeholder={"내 프로젝트 검색하기"} className={styles.projectSearchbar}/>
+                <input
+                    type="text"
+                    placeholder={"내 프로젝트 검색하기"}
+                    className={styles.projectSearchbar}
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
                 <img src='../../image/Search.png'/>
             </div>
 
             <div>
                 <ul className={styles.selectedProjectUl}>
-                    {project && project.map((project, index) => (
+                    {filteredProjects.map((project, index) => (
                         <li key={index}
                             value={project.id}
                             className={
