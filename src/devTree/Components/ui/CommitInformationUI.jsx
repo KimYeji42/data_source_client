@@ -7,7 +7,8 @@ export default function CommitInformationUI({projectId}){
     const checkoutCommit = async () => {
         try {
             if (!projectId) return
-            const response = await fetch(`http://localhost:8080/api/commit/checkout/${projectId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/commit/checkout/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

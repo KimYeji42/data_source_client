@@ -16,7 +16,8 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
     const changes = async () => {
         try {
             if (!projectId) return
-            const response = await fetch(`http://localhost:8080/api/commit/${projectId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/commit/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

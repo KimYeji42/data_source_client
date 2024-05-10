@@ -7,7 +7,8 @@ export default function ChangeTableLayout({ tableId, commitId}) {
     const changeColumData = async () => {
         try {
             if (!tableId || !commitId) return; // tableId가 존재하지 않으면 요청하지 않음
-            const response = await fetch(`http://localhost:8080/api/history/changeData/${tableId}/${commitId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/history/changeData/${tableId}/${commitId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

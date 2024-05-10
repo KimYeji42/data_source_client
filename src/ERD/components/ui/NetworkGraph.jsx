@@ -44,8 +44,8 @@ const NetworkGraph = ({ selectedProjectId }) => {
     const diagramData = async (projectId) => {
         try {
             if (projectId == null) return;
-
-            const response = await fetch(`http://localhost:8080/diagram/${projectId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/diagram/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

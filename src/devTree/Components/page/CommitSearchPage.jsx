@@ -1,6 +1,6 @@
 import styles from "../../styles/styles.module.css";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
-import HistorySideBar2UI from "../ui/HistorySideBar2UI";
+import HistorySideBarUI from "../ui/HistorySideBarUI";
 import React, {useState, useEffect} from "react";
 import CommitChartUI from "../ui/CommitChartUI";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
@@ -45,7 +45,7 @@ export default function CommitSearchPage(){
                     />
                 </div>
             </div>
-            <HistorySideBar2UI
+            <HistorySideBarUI
                 onSelect={handleSelectProject}
                 defaultSelectedIndex={2}
                 token={token}
