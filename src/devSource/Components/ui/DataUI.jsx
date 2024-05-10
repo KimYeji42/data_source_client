@@ -39,7 +39,7 @@ export default function DataUI({
     // 행을 클릭할 때 실행되는 함수
     const handleClick = (index) => {
         if (type === "JOIN_Column"){
-            alert("해당 행은 수정이 불가능합니다.")
+            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터 를 넣어주세요.")
             return
         }
         setEditingIndex(index); // 행을 더블 클릭하여 입력창으로 변경

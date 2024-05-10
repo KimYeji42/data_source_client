@@ -69,12 +69,11 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 console.log(columnName)
                 columnDataToDelete.push(columnData[selectedRowIndex]);
             }
-
             // deleteData 상태 업데이트
             setDeleteData([...deleteData, columnDataToDelete]);
 
         } else {
-            if (clickCount !== -1) {
+            if (clickCount !== 0) { //0이면 수정 불가
                 setClickCount(clickCount - 1);
             }
         }
