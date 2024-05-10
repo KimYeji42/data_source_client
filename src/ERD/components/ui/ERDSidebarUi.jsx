@@ -20,8 +20,8 @@ export default function ERDSidebarUi({ onSelect }) {
     const projectData = async () => {
         try {
             if (token == null) return;
-
-            const response = await fetch(`http://localhost:8080/api/history`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/history`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -18,7 +18,8 @@ export default function ChangeCommitLayOut({ commitId }){
     const ChangeTablesData = async () => {
         try {
             if (!commitId) return;
-            const response = await fetch(`http://localhost:8080/api/history/changeTable/${commitId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/history/changeTable/${commitId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

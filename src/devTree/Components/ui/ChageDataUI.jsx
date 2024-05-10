@@ -37,7 +37,7 @@ export default function ChangeDataUI({ data, index }) {
                 {tableData && Object.entries(tableData).map(([key, value], index) => (
                     <td key={index} className={styles.td}>
                         {value.map((item, i) => (
-                            <div key={i} className={`${styles.dataBox} ${item.isAddAction == 1 ?  styles.greenBox : styles.redBox}`}>
+                            <div key={i} className={`${styles.dataBox} ${item.isAddAction === 1 ?  styles.greenBox : styles.redBox}`}>
                                 {item.data}
                             </div>
                         ))}

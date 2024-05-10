@@ -9,6 +9,7 @@ export default function CommitChartUI({ projectId, onSelect }){
     const [isCheckoutModalOpen , setIsCheckoutModalOpen] = useState(false);
     const [nowCheckoutCommitId , setNowCheckoutCommitId] = useState(null);
     const [checkoutCommitId , setCheckoutCommitId] = useState(null);
+    const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleRefresh = () => { window.location.reload(); };
 
@@ -41,7 +42,7 @@ export default function CommitChartUI({ projectId, onSelect }){
     const commitData = async () => {
         try {
             if (!projectId) return;
-            const response = await fetch(`http://localhost:8080/api/history/commit/${projectId}`, {
+            const response = await fetch(`${apiUrl}/api/history/commit/${projectId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -58,7 +59,7 @@ export default function CommitChartUI({ projectId, onSelect }){
     const checkout = async (commitId) => {
         try {
             if (!commitId) return;
-            const response = await fetch(`http://localhost:8080/api/checkout/${commitId}`, {
+            const response = await fetch(`${apiUrl}/api/checkout/${commitId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

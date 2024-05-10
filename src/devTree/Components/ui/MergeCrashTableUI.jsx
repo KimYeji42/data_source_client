@@ -9,7 +9,6 @@ export default function MergeCrashTableUI({ data, onSelect }){
         console.log(index)
     };
 
-
     return(
         <>
             <div className={styles.modalSelectBox}>

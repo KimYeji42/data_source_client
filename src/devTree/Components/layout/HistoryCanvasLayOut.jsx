@@ -50,8 +50,9 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
             if ((!target && !check) || isMergeComplete === true) return
             else if (takeToken == null) return
 
+            const apiUrl = process.env.REACT_APP_API_URL;
             setIsMergeComplete(true)
-            const response = await fetch(`http://localhost:8080/api/merge/`, {
+            const response = await fetch(`${apiUrl}/api/merge/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
