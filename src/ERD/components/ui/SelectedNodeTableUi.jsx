@@ -8,8 +8,8 @@ export default function SelectedNodeTableUi({ selectedTableId }) {
     const diagramColumnData = async () => {
         try {
             if (selectedTableId == null) return;
-
-            const response = await fetch(`http://localhost:8080/diagram/columns/${selectedTableId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/diagram/columns/${selectedTableId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

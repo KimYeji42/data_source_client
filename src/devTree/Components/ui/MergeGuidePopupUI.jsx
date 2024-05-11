@@ -17,7 +17,8 @@ const MergeGuidePopupUI = ({ isOpen, onClose, onCrashOpen, onSuccessOpen, onErro
                 return
             } else if (takeToken == null) return
 
-            const response = await fetch(`http://localhost:8080/api/merge/`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/merge/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

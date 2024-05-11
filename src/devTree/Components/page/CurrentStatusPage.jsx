@@ -1,5 +1,5 @@
 import styles from "../../styles/styles.module.css";
-import HistorySideBar2UI from "../ui/HistorySideBar2UI";
+import HistorySideBarUI from "../ui/HistorySideBarUI";
 import React, {useEffect, useRef, useState} from "react";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
 import CurrentStatusTableLayOut from "../layout/CurrentStatusTableLayOut";
@@ -35,7 +35,8 @@ export default function CurrentStatusPage() {
                 return
             } else if (token == null) return
 
-            await fetch(`http://localhost:8080/api/commit/`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            await fetch(`${apiUrl}/api/commit/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,7 +80,7 @@ export default function CurrentStatusPage() {
                 </div>
             </div>
 
-            <HistorySideBar2UI
+            <HistorySideBarUI
                 onSelect={handleSelectProject}
                 defaultSelectedIndex={0}
                 token={token}

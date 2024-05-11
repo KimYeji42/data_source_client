@@ -11,7 +11,8 @@ const ResetGuidePopupUI = ({ isOpen, onClose, onErrorOpen, selectedCommitId, han
                 onErrorOpen("선택한 커밋이 없습니다.")
                 return
             }
-            const response = await fetch(`http://localhost:8080/api/reset/${selectedCommitId}`, {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/reset/${selectedCommitId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'

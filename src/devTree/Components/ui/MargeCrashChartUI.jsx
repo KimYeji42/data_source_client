@@ -1,7 +1,7 @@
 import styles from "../../styles/styles.module.css";
 import React from "react";
 
-export default function MargeCrashChartUI({data, index, selectedIndex}) {
+export default function MargeCrashChartUI({index, selectedIndex}) {
 
     if (selectedIndex !== index) return
 

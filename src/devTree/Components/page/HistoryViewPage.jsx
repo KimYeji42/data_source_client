@@ -3,9 +3,8 @@ import CommitChartUI from "../ui/CommitChartUI";
 import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import React, {useState, useEffect} from "react";
-import HistorySideBar2UI from "../ui/HistorySideBar2UI";
+import HistorySideBarUI from "../ui/HistorySideBarUI";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
-import {useParams} from "react-router-dom";
 
 export default function HistoryViewPage(){
 
@@ -57,7 +56,7 @@ export default function HistoryViewPage(){
                 </div>
             </div>
 
-            <HistorySideBar2UI
+            <HistorySideBarUI
                 onSelect={handleSelectProject}
                 defaultSelectedIndex={1}
                 token={token}
