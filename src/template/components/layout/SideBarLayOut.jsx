@@ -18,42 +18,33 @@ export default function SideBarLayOut() {
         setSelectedComponent(category); // 선택된 카테고리 설정
     };
 
-    const templateDownloadButtonClickHandler = () =>{
-        let templatePath = ""
+    const templateDownloadButtonClickHandler = () => {
+        let templatePath = "";
         switch (selectedComponent) {
             case "Tree":
-                templatePath = "/template/Tree.html"
+                templatePath = "/template/Tree.zip";
                 break;
             case "Table":
-                templatePath = "/template/Table.html"
+                templatePath = "/template/Table.zip";
                 break;
             case "List":
-                templatePath = "/template/List.html"
+                templatePath = "/template/List.zip";
                 break;
             case "Card":
-                templatePath = "/template/Card.html"
+                templatePath = "/template/Card.zip";
                 break;
             default:
-                alert("템플릿을 클릭한 후 다운로드 해주세요.")
+                alert("템플릿을 클릭한 후 다운로드 해주세요.");
         }
-        const downloadLink = document.createElement("a");
-        downloadLink.href = templatePath;
-        downloadLink.download = selectedComponent +"_template.html"; // 다운로드될 파일명 설정
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
 
-        dataBaseSolutionPDFDownload()//다운로드 솔루션
-    }
-    function dataBaseSolutionPDFDownload(){
-        let templatePath = "/template/solution.pdf"
         const downloadLink = document.createElement("a");
         downloadLink.href = templatePath;
-        downloadLink.download = "solution.pdf"; // 다운로드될 파일명 설정
+        downloadLink.download = selectedComponent + "_template.zip"; // ZIP 파일로 다운로드될 파일명 설정
         document.body.appendChild(downloadLink);
         downloadLink.click();
         document.body.removeChild(downloadLink);
     }
+
     const fetchColumData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
 
