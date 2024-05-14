@@ -86,6 +86,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
             <div className={styles.buttonContainerF}>
                 <HistoryButtonUI title={"Commit"} clickLink={'/status'}/>
             </div>
+
             <div className={styles.buttonContainerT}>
                 <HistoryButtonUI title={"Reset"} clickLink={'/history'} onClick={() => setIsResetModalOpen(true)}/>
                 <HistoryButtonUI title={"Merge"} clickLink={'/history'} onClick={() => setIsSendModalOpen(true)}/>
@@ -100,6 +101,7 @@ export default function HistoryCanvasLayOut({ selectedCommitId, selectedProjectI
                     selectedProjectId={selectedProjectId}
                     token={takeToken}
                 />
+
                 <ResetGuidePopupUI
                     isOpen={isResetModalOpen}
                     onClose={() => setIsResetModalOpen(false)}

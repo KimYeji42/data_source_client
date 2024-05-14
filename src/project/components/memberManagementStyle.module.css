@@ -18,10 +18,8 @@
 
 }
 .memberTitle{
-
     width: 50%;
     margin: 5% auto 0;
-
 }
 .title{
     text-align: center;
@@ -65,8 +63,6 @@
 .hrStyle{
     border: 1px solid #9b9b9b;
 }
-
-
 .profileBigBox{
     height: 90%;
     margin-bottom: 10px;

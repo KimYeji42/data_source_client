@@ -14,7 +14,7 @@ const ToggleButton = ({ onLabel, offLabel, onToggleOn, onToggleOff }) => {
     };
 
     return (
-        <button className={`${styles.toggleButton} ${isOn ? styles.on : styles.off}`} onClick={handleClick}>
+        <button className={`${styles.toggleButton} ${isOn ? styles.off : styles.on}`} onClick={handleClick}>
             {isOn ? onLabel : offLabel}
         </button>
     );

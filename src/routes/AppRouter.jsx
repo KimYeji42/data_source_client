@@ -48,7 +48,6 @@ export default function AppRouter() {
                     <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
                     <Route path='/erd' element={<ERDPage/>}/>
-
                     <Route path='/auth/join' element={<JoinPage/>}/>
                     <Route path='/auth/login' element={<LoginPage/>}/>
 

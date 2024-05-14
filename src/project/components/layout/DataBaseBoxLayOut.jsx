@@ -155,6 +155,7 @@ export default function DataBaseBoxLayOut() {
                     </Link>
                 )}
             </div>
+
             <SendModalLayOut
                 data={sendModalMessage}
                 onClose={() => setSendModalOpen(false)}

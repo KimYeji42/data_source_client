@@ -19,7 +19,7 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
                 </div>
 
                 <div className={styles.dataBaseLogo}>
-                    <div className={styles.cardIcon}>
+                    <div className={styles.tableIcon}>
                         {
                             item.isFavorite === 1 ?
                                 <Image src={"/image/starOn.png"} onClick={() => starBtnClickHandler(item)}/> :

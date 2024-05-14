@@ -6,6 +6,7 @@ import TitleUI from "../uI/TitleUI";
 import ToggleButton from "../uI/ToggleButton";
 import { useEffect, useState } from "react";
 import ErrorModal from "../layout/ErrorModalLayOut";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function ProjectShowCasePage() {
     const [data, setData] = useState([]);
@@ -64,24 +65,29 @@ export default function ProjectShowCasePage() {
     }, []); // 팀장 모드가 변경될 때마다 데이터를 다시 가져옴
 
     return (
-        <div className={styles.projectShowCasePage}>
-            <ProjectSideBarLayOut />
-            <div className={styles.showCase}>
-                <TitleUI title={"프로젝트 선택"} />
-                <ToggleButton
-                    onLabel={"팀장"}
-                    offLabel={"전체"}
-                    onToggleOff={changeAllMode}
-                    onToggleOn={changeLeaderMode}
+        <div>
+            <HeaderBottom title={"디브 툴 ＞ 프로젝트"}/>
+            <div className={styles.projectShowCasePage}>
+                <div className={styles.showCase}>
+                    <div className={styles.projectTitleContainer}>
+                        <TitleUI title={"프로젝트"} />
+                    </div>
+                    <ToggleButton
+                        onLabel={"팀장"}
+                        offLabel={"전체"}
+                        onToggleOff={changeAllMode}
+                        onToggleOn={changeLeaderMode}
+                    />
+                    <LinkUI text={"프로젝트 생성"} redirect={"/createProject"} />
+                    <ProjectCardLayOut data={data} />
+                </div>
+                <ErrorModal
+                    error={error}
+                    onClose={() => setErrorModalOpen(false)}
+                    isOpen={isErrorModalOpen}
                 />
-                <LinkUI text={"프로젝트 생성"} redirect={"/createProject"} />
-                <ProjectCardLayOut data={data} />
             </div>
-            <ErrorModal
-                error={error}
-                onClose={() => setErrorModalOpen(false)}
-                isOpen={isErrorModalOpen}
-            />
         </div>
+
     );
 }

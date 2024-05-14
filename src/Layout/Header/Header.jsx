@@ -46,13 +46,13 @@ function Header() {
                     <div className={styles.bar}>
                         <div className={styles.navLink}>
                             <li>
-                                <Link to={'/projects'} >DevTool</Link>
+                                <Link to={'/projects'} >Project</Link>
                             </li>
                             <li>
-                                <Link to={'/history'} >DevTree</Link>
+                                <Link to={'/history'} >History</Link>
                             </li>
                             <li>
-                                <Link to={'/blob/cloud'} >Resources</Link>
+                                <Link to={'/blob/cloud'} >Resource</Link>
                             </li>
                             <li>
                                 <Link to={'/erd'} >ERD</Link>
