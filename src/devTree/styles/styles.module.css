@@ -7,110 +7,64 @@
     src: url("../../default/font/GmarketSansTTFBold.ttf");
 }
 
-.changeCommitBox{
+html{font-size: 20px;}
+body{font-size: 1rem;}
+
+.changeCommitBox {
     font-family: "KoPubWorld Dotum Bold", serif;
-    margin: 3% auto 0;
-    height: 300px;  width: 90%;
+    margin: 0 auto 0 auto;
+    padding-top: 3vh;
+    width: 94%; height: 50%;
 }
 
-.changeCommitBoxUnder{
-    margin-top: 30px;
-}
 .selectBox{
-    width: 250px; height: 100px;
-    margin-bottom: 100px;
+    width: 17rem;
+    height: 29vh;
+    border: 1px solid #B2B2B2;
+    border-right: none;
     background-color: #FFFFFF;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 .smailSelectBox{
-    width: 100% ; height: 300px;
+    width: 100%;
 }
 .selectTitleBox{
-    background-color: #EDEDED;
+    background-color: #00A3FF;
+    color: white;
     padding: 10px;
-    border: 1px solid #6B6B6B;
     margin: 0;
-    height: 35px;
-    font-size: 15px;
+    font-size: 1rem;
 }
 .selectData{
-    border: 1px solid #6B6B6B;
-    max-height: 300px;
     overflow: auto;
-    background-color: #FFFFFF;
-    height: 260px;
-    padding-top: 10px;
-}
-.smallselectData{
-    border: 1px solid #707070;
-    max-height: 200px;
-    overflow: auto;
-    background-color: #FFFFFF;
-    height: 160px;
-    padding-top: 10px;
-}
-.informationData{
-    list-style: none;
-    border: 1px solid #707070;
-    max-height: 200px;
-    overflow: auto;
-    background-color: #FFFFFF;
-    height: 160px;
     padding-top: 10px;
 }
 .DataList{
     margin: 5px 0 0 10px;
+    cursor: pointer;
 }
 .changeTableBox{
     width: 75%;
-    height:  295px;
-    border: 1px solid #6B6B6B;
+    border: 1px solid #B2B2B2;
     overflow-y: auto;
     overflow-x: auto;
 }
-.changeTableBoxBig{
-    width: 67%; height: 456px;
-    border: 1px solid #BCBCBC;
-    overflow-y: auto;
-    overflow-x: auto;
-    margin-left: 320px;
-    position: relative; /* 상대적 위치 지정 */
-    top: -269px; /* 원하는 만큼 위로 이동 */
-}
-.CommitMs{
-    width: 90.2%; height: 120px;
-    margin: 10px 10px 10px 55px ;
-    border: #BCBCBC solid 1px;
-    resize: none;
-    padding: 10px 10px 10px 10px;
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-}
-.CommitBtn{
-    width: 200px; height: 40px;
-    border-radius: 10px 10px 10px 10px;
-    background-color: #D9D9D9;
-    border: none;
-    float: right;
-    margin-right: 52px;
-    box-shadow: 0px 5px 5px #BCBCBC;
-    font-size: 18px; font-weight: bold;
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-}
-.changeColumnName{
+
+.changeColumnName {
     width: 200px;
     text-align: center;
     font-size: 20px;
     padding: 10px;
     margin: 0 auto 0;
-    border: 1px solid #777777;
+    border: 1px solid #B2B2B2;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    cursor: pointer;
 }
-.dataBox{
+.dataBox {
     position: relative;
     width: 200px;
-    height: 50px;
     padding: 10px;
     text-align: center;
     margin: 0;
@@ -129,301 +83,277 @@
     background-color: #E0FFD2;
 }
 
-/*히스토리 사이드 바 UI*/
-.HistorySideBar{
-    width: 300px;
-    height: 780px;
-    background-color: #00A3FF;
-    margin: 20px 0 0 30px;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 3px 3px lightgray;
+/*사이드바*/
+.HistorySideBar {
 
 }
-.ProjectSelectBox{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 300px;
-    height: 40px;
-    margin: 0px 0 0 30px;
-    border-radius: 10px 10px 10px 10px;
-    padding: 0 30px 0 30px;
-
+.HistorySideBarMenu {
+    width: 100%; height: 80vh;
+    min-width: 14rem;
+    background: #00A3FF;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
 }
-.HistorySideMenuState{
+.SideMenu{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 160px 10px 20px;
-    margin: 30px 20px 0px 20px;
-    color: #FFFFFF;
+    margin: .7rem 0 0 1rem;
+    padding-left: .5rem;
+    color: rgba(255, 255, 255, 0.76);
     cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
     text-decoration-line: none;
-}
-.HistorySideMenuHistory{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 160px 10px 20px;
-    margin: 30px 20px 0px 20px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
-    position: relative;
-    top: 30px;
-    text-decoration-line: none;
-}
-.CkLink{
-    text-decoration-line: none;
-    color: #FFFFFF;
-}
-.HistorySideMenuSearch{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 160px 10px 20px;
-    margin: 30px 20px 0px 20px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
-    position: relative;
-    top: 60px;
-    text-decoration-line: none;
-
-}
-.HistorySideMenuRequest{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 130px 10px 20px;
-    margin: 30px 20px 0px 20px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
-    position: relative;
-    top: 90px;
-    text-decoration-line: none;
-
-}
-.HistorySideBarMenu{
-    padding-top: 30px;
+    width: 87%; height: 5vh;
+    display: flex;
+    align-items: center;
 }
 .selectedMenuItem {
-    background-color: #47BDFF;
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 160px 10px 20px;
-    margin: 30px 20px 0px 20px;
+    background-color: rgba(255, 255, 255, 0.29);
     color: #FFFFFF;
     cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
-}
-.selectedMenuItem2 {
-    background-color: #47BDFF;
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    font-size: 20px;
-    width: 260px;
-    padding: 10px 130px 10px 20px;
-    margin: 30px 20px 0px 20px;
-    color: #FFFFFF;
-    cursor: pointer;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 
-/*히스토리 상단 버튼*/
+/*상단 버튼 디자인*/
 .HistoryBtn {
-    font-family: 'GmarketSansTTFBold', sans-serif;
-    width: 170px;
-    text-align : center;
-    padding: 3px 10px 3px 10px;
-    background-color: #D8E0E9;
-    border-radius: 30px 30px 30px 30px;
+    font-family: "GmarketSansTTFBold", serif;
+    padding: .2rem 2.5rem;
+    margin-right: 2rem;
+    border-radius: 20px;
+    background: #D8E0E9;
     border: none;
-    margin-right: 20px;
     color: #80898D;
-    cursor: pointer;
-}
-.HistoryBtns{
-    float: left;
-}
-/*히스토리 상단 버튼 화이트 있는 버전*/
-.HistoryBtnWhite{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 30px;
-    text-align : center;
-    background-color: #ffffff;
-    float: right;
-    font-size: 12px;
-    color: #000;
-    border-radius: 30px 30px 30px 30px;
-    margin-top: 2px;
-    cursor: pointer;
 }
 
-/*히스토리 캔버스 레이아웃*/
-.buttonContainerF{
-    left: 400px;
-    position: absolute;
+/*버튼 레이아웃*/
+.HistoryButtonLayOutBox {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
-.buttonContainerT{
-    left: 1100px;
-    position: absolute;
+.ProjectSelectBox {
+    width: 18.5%; height: 2rem;
+    min-width: 14rem;
+    border-radius: 10px;
 }
-/*히스토리 페이지*/
-.HistoryCanverLayOut{
-    margin-top: 57px;
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    width: 77%;
 }
-.HistoryCanverBack{
-    position: absolute;
-    top: 150px;
-    height: 800px;
-    width: 1140px;
-    margin: 30px 0 50px 350px;
+.buttonContainerF {
+    width: 10rem;
 }
-.HistoryPage{
-    margin: auto;
-}
-.HistoryCanver{
-    background-color: #EEF1F6;
-    height: 780px;
-    padding-top: 10px;
-    border-radius: 10px 10px 10px 10px;
-    box-shadow: 0px 3px 3px lightgray;
-}
-.commitBox{
-    position: absolute;
-    bottom: 50px;
-    width: 100%;
-}
-.commitSuccess{
-    float: left;
-    font-weight: 800;
-    color: #5B5B5B;
-    margin: 10px 0px 0px 785px;
-}
-/*히스토리 표 ui*/
-.CommitChartBack{
-    background-color: #FFFFFF;
-    border: #000 solid 1px;
-    margin: 30px auto;
-    height: 300px;    width: 90%;
-    overflow: auto;
-    scroll-snap-type: both mandatory;
-}
-.CommitChart{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 100%;
+.buttonContainerT {
+    width: 25rem;
+    display: flex;
+    justify-content: center;
     text-align: center;
 }
-.CommitChartTitleNow{
-    border-bottom: #000000 solid 1px;
-    border-right: #000000 solid 1px;
-    width: 50px;    height: 20px;
-    font-size: 12px;
+
+/*캔버스*/
+.HistoryCanverBack {
+    width: 100%;
+    margin: 0 auto;
 }
-.CommitChartTitleMsg{
-    border-bottom: #000000 solid 1px;
-    border-right: #000000 solid 1px;
-    width: 460px;    height: 20px;
-    font-size: 15px;
+.HistoryCanver {
+    height: 80vh;
+    background: #EEF1F6;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px #BCBCBC;
 }
-.CommitChartTitleDate{
-    border-bottom: #000000 solid 1px;
-    border-right: #000000 solid 1px;
-    width: 120px;    height: 20px;
-    font-size: 15px;
+
+/*페이지 전체*/
+.HistoryViewPage {
 }
-.CommitChartTitleWriter{
-    border-bottom: #000000 solid 1px;
-    border-right: #000000 solid 1px;
-    width: 120px;    height: 20px;
-    font-size: 15px;
+.HistoryPage {
+    min-width: 1000px; min-height: 700px;
+    width: 90%;
+    margin: 0 auto 0 auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: .47fr 2fr; /* 2개의 열 */
+    grid-template-rows: 3.8vh 82vh; /* 2개의 행 */
 }
-.CommitChartTitleNum{
-    border-bottom: #000000 solid 1px;
-    font-size: 15px;
-    width: 120px;    height: 20px;
+
+/*테이블 표 UI*/
+.CommitChartUI {
+    padding-top: 4vh;
+    height: 40vh;
 }
-.CommitChartContent{
-    height: 30px;
-    border-bottom: #000000 solid 1px;
-    background-color: #FFFFFF;
+.CommitChartBack {
+    overflow: auto;
+    scroll-snap-type: both mandatory;
+    width: 94%; height: 36vh;
+    margin: 0 auto;
+    border: 1px solid #9b9b9b;
+}
+.CommitChartBackSearch {
+    overflow: auto;
+    scroll-snap-type: both mandatory;
+    width: 94%; height: 32vh;
+    margin: 0 auto;
+    border: 1px solid #9b9b9b;
+}
+.CommitChart {
+    margin: 0 auto;
+    background-color: #ffffff;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    text-align: center;
+}
+.CommitChartTitle {
+    position: sticky;
+    top: 0;
+    z-index: 1; /* 다른 요소 위로 표시되도록 z-index 설정 */
+}
+.CommitChartTitle > th {
+    border-bottom: #B2B2B2 solid 1px;
+    border-right: #B2B2B2 solid 1px;
+    font-size: 90%;
+    background: #00A3FF;
+    color: white;
+    height: 2.5rem;
+}
+
+.CommitChartTitleNow { width: 2.7%; }
+.CommitChartTitleMsg { width: 28%; }
+.CommitChartTitleDate { width: 15%; }
+.CommitChartTitleWriter { width: 10%; }
+.CommitChartTitleNum { width: 10%; }
+
+.CommitChartContent {
+    height: 2rem;
+    border-bottom: #B2B2B2 solid 1px;
     cursor: pointer;
 }
 .CommitChartContentActive {
+    height: 2rem;
     background-color: #BFE8FF;
-    height: 30px;
-    border-bottom: #000000 solid 1px;
+    border-bottom: #B2B2B2 solid 1px;
     cursor: pointer;
 }
 
+/*현재 상태 탭*/
+.CurrentStatusTableLayOut {
+    margin: 0 auto;
+    min-width: 760px;
+    padding: 15px;
+    grid-gap: .5rem;
+    display: grid;
+    grid-template-columns: .7fr 2fr; /* 2개의 열 */
+    grid-template-rows: .5vh 57.5vh; /* 2개의 행 */
+}
+.currentSelectBox {
+    width: 100%; height: 24vh;
+    border: 1px solid #B2B2B2;
+    border-right: none;
+    background-color: #FFFFFF;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.noCommitMessage {
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    margin-top: 1vh;
+    padding-left: .5rem;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.changeCommitBoxUnder{
+    margin-top: 3vh;
+}
+.smallselectData{
+}
+.informationData{
+    list-style: none;
+    padding-top: 10px;
+}
+.changeTableBoxBig{
+    width: 99%;
+    height: 55vh;
+    border: 1px solid #CDCDCD;
+    background: white;
+    margin-top: 3vh;
+}
+.CommitMs {
+    border: 1px solid #BABABA;
+    padding-left: 5px;
+    margin: 0 auto;
+    width: 100%; height: 11vh;
+    resize: none;
+    caret-color: black;
+}
+.CommitBtn {
+    width: 11rem; height: 4vh;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: none;
+    float: right;
+    box-shadow: 0 5px 5px #BCBCBC;
+    font-size: 1rem; font-weight: bold;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
 
-/**/
+.commitBox {
+    margin: 0 auto;
+    width: 96%;
+}
+.commitSuccess {
+}
 
+/*커밋 검색 탭*/
+.SearchUI {
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    float: right;
+    width: 100%;
+    height: 4vh;
+    padding: 2.5rem 1.9rem 1.5rem 1.9rem;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
 
-/*.modalContent {*/
-/*    background-color: white;*/
-/*    width: 50%;*/
-/*    margin: 20% auto;*/
-/*    padding: 20px;*/
-/*    border-radius: 8px;*/
-/*}*/
-
-/*.modalFooter {*/
-/*    margin-top: 20px;*/
-/*    display: flex;*/
-/*    justify-content: flex-end; !* 하단 오른쪽에 버튼 정렬 *!*/
-/*}*/
-
-/*.confirmBtn {*/
-/*    background-color: #4caf50; !* 확인 버튼 색상 *!*/
-/*    color: white;*/
-/*    border: none;*/
-/*    padding: 10px 20px;*/
-/*    border-radius: 4px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.cancelBtn {*/
-/*    background-color: #f44336; !* 취소 버튼 색상 *!*/
-/*    color: white;*/
-/*    border: none;*/
-/*    padding: 10px 20px;*/
-/*    border-radius: 4px;*/
-/*    cursor: pointer;*/
-/*}*/
-
-/*.closeBtn {*/
-/*    background-color: transparent;*/
-/*    border: none;*/
-/*    cursor: pointer;*/
-/*    font-size: 20px;*/
-/*    position: absolute;*/
-/*    top: 10px;*/
-/*    right: 10px;*/
-/*}*/
-
+.CommitmsgSelectBox {
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    width: 17%;
+    text-align: center;
+}
+.CommitMsgSearchBox {
+    border: 1px solid #D6D6D6;
+    width: 66%;
+}
+.CommitMsgSearchBtn {
+    width: 12%;
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+    border: none;
+    box-shadow: 0 3px 3px #BCBCBC;
+}
 
 /*모달창*/
-.modal-overlay {
+.modalOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경에 어둡게 투명한 효과 */
+    /*background-color: rgba(0, 0, 0, 0.5); !* 배경에 어둡게 투명한 효과 *!*/
     display: flex;
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
 }
-
 .modal {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     font-size: 18px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-    padding: 40px 70px 0px 70px;
+    padding: 40px 70px 0 70px;
     max-width: 60%;
     max-height: 80%;
     overflow: auto;
@@ -503,13 +433,10 @@
     border: 1px solid #6B6B6B;
     overflow: auto;
     background-color: #FFFFFF;
-    /*height: 160px;*/
     padding-top: 10px;
 }
 .madalLayout{
     float: right;
-    /*display: flex;*/
-    /*justify-content: space-between;*/
     width: 800px; height: 500px;
     padding: 10px;
     overflow: scroll;
@@ -517,7 +444,6 @@
 }
 .mergemodalBtnBox{
     float: right;
-
 }
 .mergeTable{
     border: #777777 solid 1px;
@@ -532,15 +458,13 @@
     left: 15px;
     top: 15px;
 }
-.mergemodal {
+.mergeModal {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     font-size: 18px;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
-    padding: 30px 50px 0px 50px;
-    /*max-width: 60%;*/
-    /*max-height: 80%;*/
+    padding: 30px 50px 0 50px;
     overflow: auto;
     position: fixed;
     z-index: 9999;
@@ -583,7 +507,7 @@
 .MergeChartBack{
     background-color: #FFFFFF;
     border: #6B6B6B solid 1px;
-    margin: 0px 0px 20px 20px;
+    margin: 0 0 20px 20px;
     height: 194px;    width: 500px;
     overflow: auto;
     scroll-snap-type: both mandatory;
@@ -603,35 +527,22 @@
     margin-top: 0; /* 두 번째 tr 요소와 세 번째 tr 요소 사이의 상단 마진 제거 */
 }
 
+@media screen and (max-width:1840px) {
+    html{font-size: 19px;}
+    body{font-size: 1rem;}
+}
 
-/*커밋 검색 페이지*/
-.SearchUI{
-    float: right;
-    width: 90%; height: 50px;
-    margin: 12px 55px 18px 0px;
+@media screen and (max-width:1640px) {
+    html{font-size: 17px;}
+    body{font-size: 1rem;}
 }
-.CommitmsgSelectBox{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 170px;
-    text-align: center;
-    margin: 10px 10px 10px 0px;
+
+@media screen and (max-width:1340px) {
+    html{font-size: 15px;}
+    body{font-size: 1rem;}
 }
-.SearchBar{
-    float: right;
-    margin: 10px 10px 10px 0px;
-    height: 100%; width: 836px;
-}
-.CommitMsgSearchBox{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    color: #000;
-    width: 705px;
-}
-.CommitMsgSearchBtn{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    border-radius: 10px 10px 10px 10px;
-    background-color: #D9D9D9;
-    border: none;
-    box-shadow: 0px 3px 3px #BCBCBC;
-    width: 120px; height: 30px;
-    float: right;
-}
+
+/*@media screen and (max-width:1140px) {*/
+/*    html{font-size: 13px;}*/
+/*    body{font-size: 1rem;}*/
+/*}*/

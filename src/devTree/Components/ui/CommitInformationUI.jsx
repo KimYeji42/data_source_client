@@ -28,6 +28,12 @@ export default function CommitInformationUI({projectId}){
         checkoutCommit();
     }, [projectId]);
 
+    const formatDate = (dateString) => {
+        const dateObject = new Date(dateString);
+        const formattedDate = `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')} 오후 ${dateObject.getHours()}:${dateObject.getMinutes().toString().padStart(2, '0')}`;
+        return formattedDate;
+    };
+
     return (
         <div>
             <div className={styles.smailSelectBox}>
@@ -36,7 +42,7 @@ export default function CommitInformationUI({projectId}){
                         <ul className={styles.informationData} style={{paddingLeft: '10px'}}>
                             <li>커밋 해시코드 : {commit.commitHashCode}</li>
                             <li>작성자 : {commit.createUsername}</li>
-                            <li>날짜 : {commit.createTime}</li>
+                            <li>날짜 : {formatDate(commit.createTime)}</li>
                             <li>커밋 메세지 : {commit.comment}</li>
                         </ul>
                     )}

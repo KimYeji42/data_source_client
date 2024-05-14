@@ -1,7 +1,7 @@
 import styles from "../../styles/styles.module.css";
 import HistorySideBarUI from "../ui/HistorySideBarUI";
 import React, {useEffect, useRef, useState} from "react";
-import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
+import HistoryButtonLayOut from "../layout/HistoryButtonLayOut";
 import CurrentStatusTableLayOut from "../layout/CurrentStatusTableLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
@@ -64,27 +64,26 @@ export default function CurrentStatusPage() {
     }, []);
 
     return (
-        <div className={styles.CurrentPage}>
-            <div className={styles.HistoryCanverLayOut}>
-                <HistoryCanvasLayOut/>
-            </div>
+        <div className={styles.HistoryViewPage}>
+            <div className={styles.HistoryPage}>
+                <HistoryButtonLayOut
+                    onSelect={handleSelectProject}
+                    token={token}
+                />
 
-            <div className={styles.HistoryCanverBack}>
-                <div className={styles.HistoryCanver}>
-                    <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
-                    <div className={styles.commitBox}>
-                        <textarea placeholder={"커밋 메시지를 입력하세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
+                <HistorySideBarUI selected={0}/>
 
-                        <button className={styles.CommitBtn} onClick={() => commitData(token)}>커밋</button>
+                <div className={styles.HistoryCanverBack}>
+                    <div className={styles.HistoryCanver}>
+                        <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
+                        <div className={styles.commitBox}>
+                            <textarea placeholder={"커밋 메시지를 입력해주세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
+                            <button className={styles.CommitBtn} onClick={() => commitData(token)}>커밋</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <HistorySideBarUI
-                onSelect={handleSelectProject}
-                defaultSelectedIndex={0}
-                token={token}
-            />
             <ErrorModal
                 isOpen={isErrorModalOpen}
                 onClose={()=>setIsErrorModalOpen(false)}
