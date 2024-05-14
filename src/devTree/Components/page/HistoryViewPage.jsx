@@ -1,6 +1,6 @@
 import styles from "../../styles/styles.module.css";
 import CommitChartUI from "../ui/CommitChartUI";
-import HistoryCanvasLayOut from "../layout/HistoryCanvasLayOut";
+import HistoryButtonLayOut from "../layout/HistoryButtonLayOut";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import React, {useState, useEffect} from "react";
 import HistorySideBarUI from "../ui/HistorySideBarUI";
@@ -35,32 +35,28 @@ export default function HistoryViewPage(){
     }, []);
 
     return(
-        <div className={styles.HistoryPage}>
-            <div className={styles.HistoryCanverLayOut}>
-                <HistoryCanvasLayOut
+        <div className={styles.HistoryViewPage}>
+            <div className={styles.HistoryPage}>
+                <HistoryButtonLayOut
+                    onSelect={handleSelectProject}
                     selectedCommitId={selectedCommitId}
-                    selectedProjectId={selectedProjectId}
                     token={token}
                 />
-            </div>
 
-            <div className={styles.HistoryCanverBack} >
-                <div className={styles.HistoryCanver}>
-                    <CommitChartUI
-                        projectId={selectedProjectId}
-                        onSelect={handleSelectCommit}
-                    />
-                    <ChangeCommitLayOut
-                        commitId={selectedCommitId}
-                    />
+                <HistorySideBarUI selected={1}/>
+
+                <div className={styles.HistoryCanverBack} >
+                    <div className={styles.HistoryCanver}>
+                        <CommitChartUI
+                            projectId={selectedProjectId}
+                            onSelect={handleSelectCommit}
+                        />
+                        <ChangeCommitLayOut
+                            commitId={selectedCommitId}
+                        />
+                    </div>
                 </div>
             </div>
-
-            <HistorySideBarUI
-                onSelect={handleSelectProject}
-                defaultSelectedIndex={1}
-                token={token}
-            />
 
             <ErrorModal
                 error={error}
