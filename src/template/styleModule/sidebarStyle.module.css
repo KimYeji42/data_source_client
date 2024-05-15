@@ -7,19 +7,21 @@
     position: fixed; /* 상대 위치 설정 */
     top: 200px; /* 상단 여백 */
     font-family: koko, serif;
+    margin-left: 3px;
 }
 
 .buttonContainer button {
     padding: 12px 25px 12px 12px;
     border: none;
-    background-color: #4EBFFF;
-    color: white;
+    border-left : 8px solid #00A3FF;
+    background: #ffffff;
     text-align: left;
     width: 270px; /* 버튼의 너비를 절대값으로 지정합니다 */
     height: 50px; /* 버튼의 높이를 절대값으로 지정합니다 */
+    margin: 3px;
 }
 .buttonContainer span {
-    transform: rotate(270deg);
+    font-size: 13px;
 }
 .CardControlBoxOff {
     font-family: "KoPubWorld Dotum Bold", serif;

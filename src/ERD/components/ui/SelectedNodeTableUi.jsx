@@ -41,7 +41,7 @@ export default function SelectedNodeTableUi({ selectedTableId }) {
                         if (column.type === "PK") {
                             return (
                                 <tr key={index}>
-                                    <td>{column.type}</td>
+                                    <td style={{width : "50px"}}>{column.type}</td>
                                     <td>{column.name}</td>
                                 </tr>
                             );
@@ -54,7 +54,7 @@ export default function SelectedNodeTableUi({ selectedTableId }) {
                         if (column.type !== "PK") {
                             return (
                                 <tr key={index}>
-                                    <td style={{width : "160px"}}>{column.type}</td>
+                                    <td style={{width : "50px"}}>{column.type}</td>
                                     <td>{column.name}</td>
                                 </tr>
                             );

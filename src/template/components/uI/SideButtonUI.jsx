@@ -9,7 +9,7 @@ export default function SideButtonUI({ category, onClick }) {
     return (
         <div className={styles.buttonContainer}>
             <button style={{ display: "flex", justifyContent: "space-between" }} onClick={handleClick}>
-                {category} <span>▼</span>
+                {category} <span>이동</span>
             </button>
         </div>
     );

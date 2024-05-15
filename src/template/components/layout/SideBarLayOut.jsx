@@ -89,7 +89,9 @@ export default function SideBarLayOut() {
                 <CardCanvasLayOut
                     tableID={tableID}
                     columnData={columnData}
-                />}
+                />
+            }
+
             {selectedComponent === 'List' &&
                 <ListMenuCanvas
                     tableID={tableID}

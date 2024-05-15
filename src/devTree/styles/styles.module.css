@@ -85,24 +85,25 @@ body{font-size: 1rem;}
 
 /*사이드바*/
 .HistorySideBar {
-
 }
+
 .HistorySideBarMenu {
-    width: 100%; height: 80vh;
+    width: 100%;
+    height: 80vh;
     min-width: 14rem;
-    background: #00A3FF;
-    border-radius: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
+    background: #E6E6E6;
 }
+
+
+
 .SideMenu{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     margin: .7rem 0 0 1rem;
     padding-left: .5rem;
-    color: rgba(255, 255, 255, 0.76);
+    color: black;
     cursor: pointer;
-    border-radius: 10px;
     text-decoration-line: none;
     width: 87%; height: 5vh;
     display: flex;
@@ -110,9 +111,9 @@ body{font-size: 1rem;}
 }
 .selectedMenuItem {
     background-color: rgba(255, 255, 255, 0.29);
-    color: #FFFFFF;
+    color: #00A3FF;
     cursor: pointer;
-    border-radius: 10px;
+    border-left: 4px solid #00A3FF;
 }
 
 /*상단 버튼 디자인*/
@@ -135,10 +136,20 @@ body{font-size: 1rem;}
     grid-column-end: 3;
 }
 .ProjectSelectBox {
-    width: 18.5%; height: 2rem;
+    font-family: koko, serif;
+    width: 18.5%;
+    height: 2rem;
     min-width: 14rem;
-    border-radius: 10px;
+    padding: 3px 3px 3px 20px;
+    border: none;
+    border-left: 8px solid #00A3FF;
+    transition: border-left 0.3s ease;
 }
+
+.ProjectSelectBox:hover {
+    border-left: 12px solid #00A3FF;
+}
+
 .buttonContainer {
     display: flex;
     justify-content: space-between;
@@ -162,9 +173,9 @@ body{font-size: 1rem;}
 }
 .HistoryCanver {
     height: 80vh;
-    background: #EEF1F6;
-    border-radius: 10px;
-    box-shadow: 0 5px 5px #BCBCBC;
+    border-radius : 3px ;
+    background: #E6E6E6;
+
 }
 
 /*페이지 전체*/
@@ -210,6 +221,7 @@ body{font-size: 1rem;}
     top: 0;
     z-index: 1; /* 다른 요소 위로 표시되도록 z-index 설정 */
 }
+
 .CommitChartTitle > th {
     border-bottom: #B2B2B2 solid 1px;
     border-right: #B2B2B2 solid 1px;
