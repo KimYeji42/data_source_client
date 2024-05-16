@@ -39,6 +39,7 @@ export default function CommitSearchPage(){
 
             <div className={styles.HistoryCanverBack}>
                 <div className={styles.HistoryCanver}>
+                    {/*커밋 검색 컴포넌트*/}
                     <CommitSearchUI/>
                     <CommitChartUI
                         projectId={selectedProjectId}

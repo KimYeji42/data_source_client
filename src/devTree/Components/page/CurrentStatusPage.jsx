@@ -75,10 +75,12 @@ export default function CurrentStatusPage() {
 
                 <div className={styles.HistoryCanverBack}>
                     <div className={styles.HistoryCanver}>
+                        {/*변경 사항, 정보*/}
                         <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
+                        {/*커밋 메세지*/}
                         <div className={styles.commitBox}>
                             <textarea placeholder={"커밋 메시지를 입력해주세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
-                            <button className={styles.CommitBtn} onClick={() => commitData(token)}>커밋</button>
+                            <button className={styles.CommitBtn} onClick={() => commitData(token)}>커 밋</button>
                         </div>
                     </div>
                 </div>

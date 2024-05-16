@@ -10,61 +10,65 @@
 html{font-size: 20px;}
 body{font-size: 1rem;}
 
+/*테이블 변경사항 조회*/
 .changeCommitBox {
     font-family: "KoPubWorld Dotum Bold", serif;
     margin: 0 auto 0 auto;
-    padding-top: 3vh;
-    width: 94%; height: 50%;
+    /*padding-top: 3vh;*/
+    width: 100%;
 }
 
 .selectBox{
-    width: 17rem;
-    height: 29vh;
+    background: white;
+    width: 30%;
+    height: 31vh;
     border: 1px solid #B2B2B2;
     border-right: none;
-    background-color: #FFFFFF;
-    overflow-y: auto;
-    overflow-x: auto;
 }
-.smailSelectBox{
-    width: 100%;
+.commitInformationBox{
+    height: 10.6vh;
+    overflow: auto;
 }
 .selectTitleBox{
     background-color: #00A3FF;
+    height: 4vh;
     color: white;
     padding: 10px;
     margin: 0;
-    font-size: 1rem;
+    font-size: 90%;
 }
 .selectData{
+    margin-bottom: 0;
     overflow: auto;
-    padding-top: 10px;
+    height: 10.6vh;
+    background: white;
+    font-size: .8rem;
 }
 .DataList{
     margin: 5px 0 0 10px;
     cursor: pointer;
 }
 .changeTableBox{
-    width: 75%;
+    background: white;
+    width: 70%;
     border: 1px solid #B2B2B2;
     overflow-y: auto;
     overflow-x: auto;
 }
-
 .changeColumnName {
-    width: 200px;
+    min-width: 150px;
     text-align: center;
-    font-size: 20px;
-    padding: 10px;
+    /*font-size: 20px;*/
+    padding: 7px;
     margin: 0 auto 0;
-    border: 1px solid #B2B2B2;
+    border: 1px solid #e5e5e5;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .dataBox {
     position: relative;
-    width: 200px;
+    min-width: 150px;
     padding: 10px;
     text-align: center;
     margin: 0;
@@ -73,8 +77,11 @@ body{font-size: 1rem;}
     margin: 0;
     padding: 0;
 }
+.changeTableLayout {
+    background: white;
+}
 .columnNames{
-    width: 200px;
+    /*background: #e5e5e5;*/
 }
 .redBox{
     background-color: #FFE4E4;
@@ -89,15 +96,13 @@ body{font-size: 1rem;}
 
 .HistorySideBarMenu {
     width: 100%;
-    height: 80vh;
+    height: 76.5vh;
     min-width: 14rem;
+    border-radius : 3px;
     display: flex;
     flex-direction: column;
-    background: #E6E6E6;
+    background: #e5e5e5;
 }
-
-
-
 .SideMenu{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     margin: .7rem 0 0 1rem;
@@ -118,13 +123,24 @@ body{font-size: 1rem;}
 
 /*상단 버튼 디자인*/
 .HistoryBtn {
-    font-family: "koko", serif;
-    padding: .2rem 2.5rem;
+    font-family: "GmarketSansTTFBold", serif;
+    font-size: 70%;
     margin-right: 2rem;
-    border-radius: 3px;
-    background: #00A3FF;
+    border-radius: 2px;
     border: none;
-    color: white;
+    color: #424242;
+    background-color: #f8f8f8;
+    padding: 5px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer; /* 커서 모양 변경 */
+    transition: background-color 0.3s, transform 0.3s;
+}
+.HistoryBtn:hover {
+    background-color: #d0d0d0;
+}
+.HistoryBtnImg{
+    width: 1.5rem; height: 1.5rem;
+
 }
 
 /*버튼 레이아웃*/
@@ -152,19 +168,19 @@ body{font-size: 1rem;}
 
 .buttonContainer {
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     text-align: center;
     width: 77%;
 }
-.buttonContainerF {
-    width: 10rem;
-}
-.buttonContainerT {
-    width: 25rem;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
+/*.buttonContainerF {*/
+/*    width: 10rem;*/
+/*}*/
+/*.buttonContainerT {*/
+/*    width: 25rem;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    text-align: center;*/
+/*}*/
 
 /*캔버스*/
 .HistoryCanverBack {
@@ -172,51 +188,52 @@ body{font-size: 1rem;}
     margin: 0 auto;
 }
 .HistoryCanver {
-    height: 80vh;
-    border-radius : 3px ;
+    padding: 30px;
+    height: 76.5vh;
+    border-radius : 3px;
     background: #E6E6E6;
-
 }
 
 /*페이지 전체*/
-.HistoryViewPage {
-}
 .HistoryPage {
-    min-width: 1000px; min-height: 700px;
-    width: 90%;
-    margin: 0 auto 0 auto;
+    min-width: 1100px; min-height: 700px;
+    width: 85%;
+    margin: 3vh auto 0 auto;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: .47fr 2fr; /* 2개의 열 */
-    grid-template-rows: 3.8vh 82vh; /* 2개의 행 */
+    grid-template-rows: 3.8vh 78vh; /* 2개의 행 */
 }
 
 /*테이블 표 UI*/
 .CommitChartUI {
-    padding-top: 4vh;
-    height: 40vh;
+    /*padding-top: 3vh;*/
+    padding-bottom: 30px;
 }
 .CommitChartBack {
     overflow: auto;
     scroll-snap-type: both mandatory;
-    width: 94%; height: 36vh;
+    width: 100%; height: 36vh;
     margin: 0 auto;
     border: 1px solid #9b9b9b;
 }
 .CommitChartBackSearch {
     overflow: auto;
     scroll-snap-type: both mandatory;
-    width: 94%; height: 32vh;
+    width: 100%; height: 31vh;
     margin: 0 auto;
     border: 1px solid #9b9b9b;
 }
 .CommitChart {
+    width: 100%; height: 100%;
     margin: 0 auto;
     background-color: #ffffff;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     text-align: center;
 }
 .CommitChartTitle {
+    background: red;
+    height: 2.5rem;
     position: sticky;
     top: 0;
     z-index: 1; /* 다른 요소 위로 표시되도록 z-index 설정 */
@@ -225,17 +242,24 @@ body{font-size: 1rem;}
 .CommitChartTitle > th {
     border-bottom: #B2B2B2 solid 1px;
     border-right: #B2B2B2 solid 1px;
-    font-size: 90%;
     background: #00A3FF;
     color: white;
-    height: 2.5rem;
+
 }
 
-.CommitChartTitleNow { width: 2.7%; }
-.CommitChartTitleMsg { width: 28%; }
-.CommitChartTitleDate { width: 15%; }
-.CommitChartTitleWriter { width: 10%; }
-.CommitChartTitleNum { width: 10%; }
+.CommitChart > tbody {
+    background: white;
+}
+
+.CommitChart > tbody > tr > td {
+    font-size: 90%;
+}
+
+.CommitChartTitleNow { width: 5%; font-size: .6rem; }
+.CommitChartTitleMsg { width: 40%; }
+.CommitChartTitleDate { width: 20%; }
+.CommitChartTitleWriter { width: 15%; }
+.CommitChartTitleNum { width: 15%; }
 
 .CommitChartContent {
     height: 2rem;
@@ -253,11 +277,10 @@ body{font-size: 1rem;}
 .CurrentStatusTableLayOut {
     margin: 0 auto;
     min-width: 760px;
-    padding: 15px;
-    grid-gap: .5rem;
+    grid-gap: 20px;
     display: grid;
     grid-template-columns: .7fr 2fr; /* 2개의 열 */
-    grid-template-rows: .5vh 57.5vh; /* 2개의 행 */
+    grid-template-rows: 50.5vh; /* 2개의 행 */
 }
 .currentSelectBox {
     width: 100%; height: 24vh;
@@ -267,35 +290,29 @@ body{font-size: 1rem;}
     overflow-y: auto;
     overflow-x: hidden;
 }
-.noCommitMessage {
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin-top: 1vh;
-    padding-left: .5rem;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
 .changeCommitBoxUnder{
     margin-top: 3vh;
 }
 .smallselectData{
+    font-size: 90%;
 }
 .informationData{
     list-style: none;
     padding-top: 10px;
+    font-size: 80%;
 }
 .changeTableBoxBig{
-    width: 99%;
-    height: 55vh;
+    width: 100%;
+    height: 51vh;
     border: 1px solid #CDCDCD;
     background: white;
-    margin-top: 3vh;
 }
 .CommitMs {
     font-family: koko, serif;
     border: 1px solid #BABABA;
     padding: 10px;
     margin: 0 auto;
-    width: 100%; height: 11vh;
+    width: 100%; height: 13vh;
     resize: none;
     caret-color: black;
 }
@@ -312,8 +329,8 @@ body{font-size: 1rem;}
 }
 
 .commitBox {
-    margin: 0 auto;
-    width: 96%;
+    margin: 30px auto 0 auto;
+
 }
 .commitSuccess {
 }
@@ -324,33 +341,34 @@ body{font-size: 1rem;}
     float: right;
     width: 100%;
     height: 4vh;
-    padding: 2.5rem 1.9rem 1.5rem 1.9rem;
+    margin-bottom: 1vh;
     display: flex;
     justify-content: space-between;
     text-align: center;
     align-items: center;
+    font-size: .8rem;
 }
 
 .CommitmsgSelectBox {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    width: 17%;
+    width: 15%;
     text-align: center;
     padding: 3px;
-
 }
 .CommitMsgSearchBox {
     border: 1px solid #D6D6D6;
-    width: 66%;
+    width: 70%;
     padding: 5px;
 }
 .CommitMsgSearchBtn {
-    width: 12%;
+    width: 13%;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     border-radius: 3px;
-    background-color: #00A3FF;
+    background-color: #a8a8a8;
     border: none;
     color: white;
-    box-shadow: 0 3px 3px #BCBCBC;
+    /*box-shadow: 0 3px 3px #BCBCBC;*/
+    font-size: 1rem;
 }
 
 /*모달창*/

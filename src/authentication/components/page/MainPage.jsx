@@ -7,7 +7,6 @@ export default function MainPage(){
     return(
         <div className={styles.mainPage}>
             <div className={styles.mainPageBackground}>
-                {/*<Header/>*/}
                 <MainTopLayout/>
                 <MainBottomLayout/>
             </div>
