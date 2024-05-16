@@ -28,7 +28,7 @@ export default function ChangeTableLayout({ tableId, commitId}) {
     }, [tableId]);
 
     return (
-        <div>
+        <div className={styles.changeTableLayout}>
             <table>
                 <thead>
                 <tr className={styles.columnNames}>

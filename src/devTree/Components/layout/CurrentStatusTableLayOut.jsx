@@ -1,7 +1,7 @@
 import SmallSizeTitleUI from "../ui/SmallSizeTitleUI";
 import styles from "../../styles/styles.module.css"
 import {useEffect, useState} from "react";
-import CommitInformationUI from "../ui/CommitInformationUI"
+import CommitInformationProjectIdUI from "../ui/CommitInformationProjectIdUI"
 import SelectionChangeTableUI from "../ui/SelectionChangeTableUI";
 import ChangeDataUI from "../ui/ChageDataUI";
 
@@ -44,18 +44,16 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
 
     return(
         <div className={styles.CurrentStatusTableLayOut}>
-            <h5 className={styles.noCommitMessage}>커밋되지 않은 변경사항</h5>
             <div className={styles.changeCommitBox}>
                 <div>
                     <div className={styles.currentSelectBox}>
-                        <SelectionChangeTableUI title={"Back Data"} data={changeData} onSelect={handleSelectTable}/>
+                        <SelectionChangeTableUI title={"커밋되지 않은 변경사항"} data={changeData} onSelect={handleSelectTable}/>
                     </div>
                 </div>
                 <div className={styles.changeCommitBoxUnder}>
-                    <SmallSizeTitleUI smailTitle={"현재 커밋 정보"}/>
                     <div>
                         <div className={styles.currentSelectBox}>
-                            <CommitInformationUI projectId={projectId}/>
+                            <CommitInformationProjectIdUI projectId={projectId}/>
                         </div>
                     </div>
                 </div>
@@ -64,7 +62,6 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
             <div className={styles.changeTableBoxBig}>
                 <ChangeDataUI data={changeData} index={selectedTableId}/>
             </div>
-
         </div>
     )
 }

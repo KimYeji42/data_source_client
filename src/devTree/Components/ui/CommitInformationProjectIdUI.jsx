@@ -1,7 +1,7 @@
 import styles from "../../styles/styles.module.css";
 import {useEffect, useState} from "react";
 
-export default function CommitInformationUI({projectId}){
+export default function CommitInformationProjectIdUI({projectId}){
     const [commit, setCommit] = useState(null);
 
     const checkoutCommit = async () => {
@@ -37,7 +37,7 @@ export default function CommitInformationUI({projectId}){
     return (
         <div>
             <div className={styles.smailSelectBox}>
-                <h5 className={styles.selectTitleBox}>Information</h5>
+                <h5 className={styles.selectTitleBox}>현재 커밋 정보</h5>
                     {commit && (
                         <ul className={styles.informationData} style={{paddingLeft: '10px'}}>
                             <li>커밋 해시코드 : {commit.commitHashCode}</li>

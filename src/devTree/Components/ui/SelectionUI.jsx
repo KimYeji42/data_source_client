@@ -8,7 +8,7 @@ export default function SelectionUI({title , data, onSelect}){
     };
 
     return(
-        <div>
+        <>
             <div className={styles.smailSelectBox}>
                 <h5 className={styles.selectTitleBox}>{title}</h5>
                 <ul className={styles.selectData}>
@@ -22,6 +22,6 @@ export default function SelectionUI({title , data, onSelect}){
                     ))}
                 </ul>
             </div>
-        </div>
+        </>
     )
 }

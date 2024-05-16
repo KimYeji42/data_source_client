@@ -140,14 +140,9 @@ export default function HistoryButtonLayOut({ selectedCommitId, token, onSelect 
                     ))}
                 </select>
                 <div className={styles.buttonContainer}>
-                    <div className={styles.buttonContainerF}>
-                        <HistoryButtonUI title={"Commit"} clickLink={'/status'}/>
-                    </div>
-
-                    <div className={styles.buttonContainerT}>
-                        <HistoryButtonUI title={"Reset"} clickLink={'/history'} onClick={() => setIsResetModalOpen(true)}/>
-                        <HistoryButtonUI title={"Merge"} clickLink={'/history'} onClick={() => setIsSendModalOpen(true)}/>
-                    </div>
+                    <HistoryButtonUI title={"커밋"} imgLink={"image/commit.png"} clickLink={'/status'}/>
+                    <HistoryButtonUI title={"리셋"} imgLink={"image/reset.png"} clickLink={'/history'} onClick={() => setIsResetModalOpen(true)}/>
+                    <HistoryButtonUI title={"병합"} imgLink={"image/merge.png"} clickLink={'/history'} onClick={() => setIsSendModalOpen(true)}/>
                 </div>
             </div>
             <MergeGuidePopupUI

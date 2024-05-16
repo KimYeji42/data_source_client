@@ -101,13 +101,13 @@ export default function CommitChartUI({ projectId, onSelect, Search }){
                 <div className={`${Search ? styles.CommitChartBackSearch : styles.CommitChartBack}`}>
                     <table className={styles.CommitChart}>
                         <thead>
-                        <tr className={styles.CommitChartTitle}>
-                            <th scope="col" className={styles.CommitChartTitleNow} style={{fontSize: '.6rem'}}>체크<br/>아웃</th>
-                            <th scope="col" className={styles.CommitChartTitleMsg}>커밋 메세지</th>
-                            <th scope="col" className={styles.CommitChartTitleDate}>날짜</th>
-                            <th scope="col" className={styles.CommitChartTitleWriter}>작성자</th>
-                            <th scope="col" className={styles.CommitChartTitleNum}>해시값</th>
-                        </tr>
+                            <tr className={styles.CommitChartTitle}>
+                                <th scope="col" className={styles.CommitChartTitleNow}>체크<br/>아웃</th>
+                                <th scope="col" className={styles.CommitChartTitleMsg}>커밋 메세지</th>
+                                <th scope="col" className={styles.CommitChartTitleDate}>날짜</th>
+                                <th scope="col" className={styles.CommitChartTitleWriter}>작성자</th>
+                                <th scope="col" className={styles.CommitChartTitleNum}>해시값</th>
+                            </tr>
                         </thead>
                         <tbody>
                         {commits && commits.length > 0 && commits.map((data, index) => (
@@ -121,7 +121,7 @@ export default function CommitChartUI({ projectId, onSelect, Search }){
                                 onDoubleClick={() => handleRowDoubleClick(index)}
                             >
                                 <td>{index === doubleClickRowIndex ? '●' : ''}</td>
-                                <td>{data.comment}</td>
+                                <td>{data.comment.length > 45 ? data.comment.slice(0, 45) + "..." : data.comment}</td>
                                 <td>{formatDate(data.createTime)}</td>
                                 <td>{data.createUsername}</td>
                                 <td>{data.commitHashCode}</td>

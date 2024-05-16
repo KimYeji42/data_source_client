@@ -43,14 +43,17 @@ export default function HistoryViewPage(){
                     token={token}
                 />
 
+                {/*사이드바*/}
                 <HistorySideBarUI selected={1}/>
 
                 <div className={styles.HistoryCanverBack} >
                     <div className={styles.HistoryCanver}>
+                        {/*히스토리 표*/}
                         <CommitChartUI
                             projectId={selectedProjectId}
                             onSelect={handleSelectCommit}
                         />
+                        {/*현재 커밋 정보, 변경 사항*/}
                         <ChangeCommitLayOut
                             commitId={selectedCommitId}
                         />

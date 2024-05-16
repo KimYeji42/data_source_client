@@ -222,13 +222,13 @@
 
 }
 
-.modal-overlay {
+.modalOverlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* 배경에 어둡게 투명한 효과 */
+    /*background-color: rgba(0, 0, 0, 0.5); !* 배경에 어둡게 투명한 효과 *!*/
     display: flex;
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
