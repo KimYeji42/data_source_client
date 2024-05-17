@@ -11,8 +11,9 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
     return(
         <div>
             <div className={`${styles.dataBaseBox} ${activeTable === item ? styles.activeBox : ''}`} onClick={() => handleClick(item)}>
-                <h3 className={styles.dataBaseBoxTitle}>{header}</h3>
                 <Image src={imageSrc} alt="Search Database" className={styles.dataBaseBoxImage}/>
+
+                <h3 className={styles.dataBaseBoxTitle}>{header}</h3>
 
                 <div className={styles.description}>
                     <small>{comment}</small>

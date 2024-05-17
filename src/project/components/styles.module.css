@@ -349,7 +349,6 @@
 
 .dataBaseBox{
     width: 320px;
-    height: 320px;
     padding: 15px;
     border: 4px solid #777777;
     background-color: white;
@@ -357,21 +356,43 @@
     text-align: center; /* 이미지를 가운데 정렬 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    transition: transform 0.1s ease-in-out;
+}
+.dataBaseBox:hover{
+    width: 320px;
+    padding: 15px;
+    border: 4px solid #777777;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center; /* 이미지를 가운데 정렬 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    transform: translateX(-10px);
 }
 
 .activeBox{
     width: 320px;
-    height: 320px;
     border: 4px solid #00A3FF;
     background-color: white;
     border-radius: 8px;
     text-align: center; /* 이미지를 가운데 정렬 */
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
+.activeBox:hover{
+    width: 320px;
+    padding: 15px;
+    border: 4px solid #00A3FF;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center; /* 이미지를 가운데 정렬 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    transform: translateX(-10px);
+}
+
 .dataBaseBoxTitle{
     width: 100%;
     margin: 0 auto;
-    text-align: center;
     padding: 10px;
 }
 .dataBaseBoxImage {

@@ -5,7 +5,6 @@ import TitleUI from "../uI/TitleUI";
 
 
 export default function TableListLayout({data}){
-
     return(
         <div className={styles.dataBaseMenuBox}>
             <div className={styles.tableTitleContainer}>

@@ -129,6 +129,18 @@ export default function DataBaseBoxLayOut() {
         getDatabaseTables()
     }, []);
 
+
+    function extractDate(dateString) {
+        const date = new Date(dateString);
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // 월
+        const day = String(date.getDate()).padStart(2, '0'); // 일
+
+
+        return `${year}-${month}-${day}일`;
+    }
+
     return (
         <div>
             <div className={styles.dataBaseContentBox}>
@@ -138,7 +150,7 @@ export default function DataBaseBoxLayOut() {
                         imageSrc={"../image/dataBase.png"}
                         comment={item.comment}
                         item = {item}
-                        date={item.updateTime}
+                        date={extractDate(item.updateTime)}
                         setActiveTable = {setActiveTable}
                         activeTable={activeTable}
                         starBtnClickHandler = {starBtnClickHandler}
