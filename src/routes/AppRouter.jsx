@@ -1,5 +1,5 @@
-import { BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
-
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import {useState, useEffect} from "react";
 import MainPage from '../authentication/components/page/MainPage'
 import CreateProjectPage from '../project/components/page/CreateProjectPage'
 import DataBaseShowCasePage from '../project/components/page/DataBaseShowCasePage'
@@ -23,15 +23,21 @@ import ERDPage from "../ERD/components/page/ERDPage";
 
 
 export default function AppRouter() {
+    const [isMain, setIsMain] = useState(false);
+
+    const onIsMain = () => {
+        setIsMain(true)
+    }
+
     return (
         <div className="AppRouter">
-            <BrowserRouter  >
-                <Header/>  {/*/Router 사용응 위해 Header가지고오기*/}
+            <BrowserRouter>
+                <Header isMain={isMain}/>  {/*/Router 사용응 위해 Header가지고오기*/}
                 <Routes>
                     {/* 루트 경로에 대한 리디렉션 */}
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
-                    <Route path='/main' element={<MainPage />} />
+                    <Route path='/main' element={<MainPage onIsMain={onIsMain}/>} />
                     <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />

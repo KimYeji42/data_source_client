@@ -14,7 +14,6 @@ body{font-size: 1rem;}
 .changeCommitBox {
     font-family: "KoPubWorld Dotum Bold", serif;
     margin: 0 auto 0 auto;
-    /*padding-top: 3vh;*/
     width: 100%;
 }
 
@@ -30,12 +29,13 @@ body{font-size: 1rem;}
     overflow: auto;
 }
 .selectTitleBox{
+    font-family: "GmarketSansTTFBold", serif;
     background-color: #00A3FF;
     height: 4vh;
     color: white;
-    padding: 10px;
+    padding: .5rem;
     margin: 0;
-    font-size: 90%;
+    font-size: 85%;
 }
 .selectData{
     margin-bottom: 0;
@@ -96,7 +96,7 @@ body{font-size: 1rem;}
 
 .HistorySideBarMenu {
     width: 100%;
-    height: 76.5vh;
+    height: 100%;
     min-width: 14rem;
     border-radius : 3px;
     display: flex;
@@ -172,68 +172,64 @@ body{font-size: 1rem;}
     text-align: center;
     width: 77%;
 }
-/*.buttonContainerF {*/
-/*    width: 10rem;*/
-/*}*/
-/*.buttonContainerT {*/
-/*    width: 25rem;*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    text-align: center;*/
-/*}*/
 
 /*캔버스*/
 .HistoryCanverBack {
+    min-height: 450px;
     width: 100%;
     margin: 0 auto;
 }
 .HistoryCanver {
+    height: 100%;
     padding: 30px;
-    height: 76.5vh;
     border-radius : 3px;
     background: #E6E6E6;
 }
 
 /*페이지 전체*/
 .HistoryPage {
-    min-width: 1100px; min-height: 700px;
+    min-width: 800px; min-height: 600px;
     width: 85%;
     margin: 3vh auto 0 auto;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: .47fr 2fr; /* 2개의 열 */
-    grid-template-rows: 3.8vh 78vh; /* 2개의 행 */
+    grid-template-rows: 3.8vh 77vh; /* 2개의 행 */
 }
 
 /*테이블 표 UI*/
 .CommitChartUI {
     /*padding-top: 3vh;*/
-    padding-bottom: 30px;
+    padding-bottom: 3vh;
 }
 .CommitChartBack {
     overflow: auto;
     scroll-snap-type: both mandatory;
-    width: 100%; height: 36vh;
+    width: 100%; height: 35vh;
     margin: 0 auto;
     border: 1px solid #9b9b9b;
+    background: white;
 }
 .CommitChartBackSearch {
     overflow: auto;
     scroll-snap-type: both mandatory;
     width: 100%; height: 31vh;
+    background: white;
     margin: 0 auto;
     border: 1px solid #9b9b9b;
 }
 .CommitChart {
-    width: 100%; height: 100%;
+    width: 100%;
     margin: 0 auto;
     background-color: #ffffff;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     text-align: center;
 }
 .CommitChartTitle {
+    font-family: 'GmarketSansTTFBold', sans-serif;
     background: red;
     height: 2.5rem;
+    font-size: 90%;
     position: sticky;
     top: 0;
     z-index: 1; /* 다른 요소 위로 표시되도록 z-index 설정 */
@@ -255,19 +251,19 @@ body{font-size: 1rem;}
     font-size: 90%;
 }
 
-.CommitChartTitleNow { width: 5%; font-size: .6rem; }
-.CommitChartTitleMsg { width: 40%; }
+.CommitChartTitleNow { width: 5%; padding: .3rem; font-size: .6rem; }
+.CommitChartTitleMsg { width: 40%;}
 .CommitChartTitleDate { width: 20%; }
 .CommitChartTitleWriter { width: 15%; }
 .CommitChartTitleNum { width: 15%; }
 
 .CommitChartContent {
-    height: 2rem;
+    height: 2.5rem;
     border-bottom: #B2B2B2 solid 1px;
     cursor: pointer;
 }
 .CommitChartContentActive {
-    height: 2rem;
+    height: 2.5rem;
     background-color: #BFE8FF;
     border-bottom: #B2B2B2 solid 1px;
     cursor: pointer;
@@ -280,10 +276,10 @@ body{font-size: 1rem;}
     grid-gap: 20px;
     display: grid;
     grid-template-columns: .7fr 2fr; /* 2개의 열 */
-    grid-template-rows: 50.5vh; /* 2개의 행 */
+    grid-template-rows: 23vh 23vh; /* 2개의 행 */
 }
 .currentSelectBox {
-    width: 100%; height: 24vh;
+    width: 100%; height: 100%;
     border: 1px solid #B2B2B2;
     border-right: none;
     background-color: #FFFFFF;
@@ -291,21 +287,28 @@ body{font-size: 1rem;}
     overflow-x: hidden;
 }
 .changeCommitBoxUnder{
-    margin-top: 3vh;
+    width: 100%; height: 100%;
+    /*margin-top: 3vh;*/
 }
 .smallselectData{
     font-size: 90%;
 }
 .informationData{
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
     list-style: none;
     padding-top: 10px;
     font-size: 80%;
 }
 .changeTableBoxBig{
     width: 100%;
-    height: 51vh;
+    height: 100%;
     border: 1px solid #CDCDCD;
     background: white;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row: 1;
+    grid-row-end: 3;
+
 }
 .CommitMs {
     font-family: koko, serif;
@@ -329,7 +332,7 @@ body{font-size: 1rem;}
 }
 
 .commitBox {
-    margin: 30px auto 0 auto;
+    margin: 20px auto 0 auto;
 
 }
 .commitSuccess {

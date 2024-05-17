@@ -3,7 +3,7 @@ import styles from './headerStyle.module.css';
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-function Header() {
+function Header({isMain}) {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
     // const [activeItem, setActiveItem] = useState(null);
@@ -36,9 +36,8 @@ function Header() {
         getTokenUser()
     }, []);
     return (
-        <div className={styles.All}>
+        <div className={isMain ? styles.All1 : styles.All2}>
                 <div className={styles.container}>
-                    {/*<div className={styles.logo} >No DB Service</div>*/}
                     <Link to={'/'} >
                         <img src='/image/로고3.png' className={styles.logo}/>
                     </Link>
@@ -62,7 +61,7 @@ function Header() {
 
                     <div className={styles.info}>
                         {currentUser && <div>{currentUser} 님</div>}
-                        <div>{isLoggedIn ?
+                        <div className={styles.loginLogout}>{isLoggedIn ?
                             <Link to={'/'} onClick={logoutHandler}>로그아웃</Link> :
                             <Link to={'/auth/login'}>로그인</Link>}
                         </div>

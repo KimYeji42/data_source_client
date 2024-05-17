@@ -44,21 +44,14 @@ export default function CurrentStatusTableLayOut({ projectId, handleChangData })
 
     return(
         <div className={styles.CurrentStatusTableLayOut}>
-            <div className={styles.changeCommitBox}>
-                <div>
-                    <div className={styles.currentSelectBox}>
-                        <SelectionChangeTableUI title={"커밋되지 않은 변경사항"} data={changeData} onSelect={handleSelectTable}/>
-                    </div>
-                </div>
-                <div className={styles.changeCommitBoxUnder}>
-                    <div>
-                        <div className={styles.currentSelectBox}>
-                            <CommitInformationProjectIdUI projectId={projectId}/>
-                        </div>
-                    </div>
+            <div className={styles.currentSelectBox}>
+                <SelectionChangeTableUI title={"커밋되지 않은 변경사항"} data={changeData} onSelect={handleSelectTable}/>
+            </div>
+            <div className={styles.changeCommitBoxUnder}>
+                <div className={styles.currentSelectBox}>
+                    <CommitInformationProjectIdUI projectId={projectId}/>
                 </div>
             </div>
-
             <div className={styles.changeTableBoxBig}>
                 <ChangeDataUI data={changeData} index={selectedTableId}/>
             </div>
