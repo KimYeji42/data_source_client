@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes} from "react-router-dom";
+
 import MainPage from '../authentication/components/page/MainPage'
 import CreateProjectPage from '../project/components/page/CreateProjectPage'
 import DataBaseShowCasePage from '../project/components/page/DataBaseShowCasePage'
@@ -24,7 +25,7 @@ import ERDPage from "../ERD/components/page/ERDPage";
 export default function AppRouter() {
     return (
         <div className="AppRouter">
-            <BrowserRouter>
+            <BrowserRouter  >
                 <Header/>  {/*/Router 사용응 위해 Header가지고오기*/}
                 <Routes>
                     {/* 루트 경로에 대한 리디렉션 */}
