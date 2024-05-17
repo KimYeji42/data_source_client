@@ -46,11 +46,6 @@ export default function ProjectViewPage(){
                 <ProjectCollaborativeLayOut project={data}/>
                 <ProjectTablesLayOut project={data}/>
             </div>
-
-            <div className={styles.PageFooterBtn}>
-                <Image src="../image/star.png" className={styles.BottomStar}/>
-                <Image src="../image/trash.png" className={styles.BottomTrash}/>
-            </div>
         </div>
     )
 }
