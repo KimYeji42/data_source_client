@@ -3,38 +3,8 @@ import styles from './headerStyle.module.css';
 import React, {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-function Header({isMain}) {
-    const [currentUser, setCurrentUser] = useState("")
-    const [isLoggedIn , setIsLoggedIn] = useState("")
-    // const [activeItem, setActiveItem] = useState(null);
+function Header({isMain , currentUser , isLoggedIn , setCurrentUser , setIsLoggedIn , logoutHandler}) {
 
-    // const handleClick = (itemId) => {
-    //     setActiveItem(itemId);
-    // };
-    const getCurrentUser = () =>{
-        const username = localStorage.getItem("username")
-        setCurrentUser(username)
-        console.log(currentUser)
-    }
-    const getTokenUser = () =>{
-        const token = localStorage.getItem("token")
-        if (token !== null){
-            setIsLoggedIn(true)
-            getCurrentUser()
-        }
-    }
-    const logoutHandler = () =>{
-        setIsLoggedIn(false)
-        setCurrentUser("")
-
-        localStorage.removeItem("token")
-        localStorage.removeItem("email")
-        localStorage.removeItem("username")
-        sessionStorage.removeItem("selectedProjectId")
-    }
-    useEffect(() => {
-        getTokenUser()
-    }, []);
     return (
         <div className={isMain ? styles.All1 : styles.All2}>
                 <div className={styles.container}>

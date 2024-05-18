@@ -65,7 +65,9 @@ export default function LoginPage() {
             setIsErrorModalOpen(true)
         }
     };
-
+    const loginLocation =() => {
+        window.location.href="/"
+    }
     return (
         <div>
             <div className={styles.LoginContainer}>
@@ -87,7 +89,7 @@ export default function LoginPage() {
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
-                clickLink={`/`}
+                onClickEvent={loginLocation}
             />
             <
                 ErrorModal

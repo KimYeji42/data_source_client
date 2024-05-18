@@ -24,6 +24,33 @@ import ERDPage from "../ERD/components/page/ERDPage";
 
 export default function AppRouter() {
     const [isMain, setIsMain] = useState(false);
+    const [currentUser, setCurrentUser] = useState("")
+    const [isLoggedIn , setIsLoggedIn] = useState("")
+
+    const getCurrentUser = () =>{
+        const username = localStorage.getItem("username")
+        setCurrentUser(username)
+        console.log(currentUser)
+    }
+    const getTokenUser = () =>{
+        const token = localStorage.getItem("token")
+        if (token !== null){
+            setIsLoggedIn(true)
+            getCurrentUser()
+        }
+    }
+    const logoutHandler = () =>{
+        setIsLoggedIn(false)
+        setCurrentUser("")
+
+        localStorage.removeItem("token")
+        localStorage.removeItem("email")
+        localStorage.removeItem("username")
+        sessionStorage.removeItem("selectedProjectId")
+    }
+    useEffect(() => {
+        getTokenUser()
+    }, []);
 
     const onIsMain = () => {
         setIsMain(true)
@@ -32,7 +59,14 @@ export default function AppRouter() {
     return (
         <div className="AppRouter">
             <BrowserRouter>
-                <Header isMain={isMain}/>  {/*/Router 사용응 위해 Header가지고오기*/}
+                <Header isMain={isMain}
+                        currentUser={currentUser}
+                        isLoggedIn={isLoggedIn}
+                        setIsLoggedIn={setIsLoggedIn}
+                        setCurrentUser={setCurrentUser}
+                        logoutHandler={logoutHandler}
+                />  {/*/Router 사용응 위해 Header가지고오기*/}
+
                 <Routes>
                     {/* 루트 경로에 대한 리디렉션 */}
                     <Route path='/' element={<Navigate to="/main" />} />
