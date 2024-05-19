@@ -1,7 +1,7 @@
 import styles from "../../styles/styles.module.css";
 import {useEffect, useState} from "react";
 
-export default function CommitInformationProjectIdUI({projectId}){
+export default function CommitInformationProjectIdUI({projectId, Status}){
     const [commit, setCommit] = useState(null);
 
     const checkoutCommit = async () => {
@@ -35,18 +35,18 @@ export default function CommitInformationProjectIdUI({projectId}){
     };
 
     return (
-        <div>
-            <div className={styles.smailSelectBox}>
+        <>
+            <div className={Status ? styles.smailSelectBoxStatus : styles.smailSelectBox}>
                 <h5 className={styles.selectTitleBox}>현재 커밋 정보</h5>
-                    {commit && (
-                        <ul className={styles.informationData} style={{paddingLeft: '10px'}}>
-                            <li>커밋 해시코드 : {commit.commitHashCode}</li>
-                            <li>작성자 : {commit.createUsername}</li>
-                            <li>날짜 : {formatDate(commit.createTime)}</li>
-                            <li>커밋 메세지 : {commit.comment}</li>
-                        </ul>
-                    )}
+                {commit && (
+                    <ul className={`${styles.informationData} ${styles.scrollbar}`}>
+                        <li>커밋 해시코드 : {commit.commitHashCode}</li>
+                        <li>작성자 : {commit.createUsername}</li>
+                        <li>날짜 : {formatDate(commit.createTime)}</li>
+                        <li>커밋 메세지 : {commit.comment}</li>
+                    </ul>
+                )}
             </div>
-        </div>
+        </>
     )
 }

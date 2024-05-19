@@ -97,8 +97,8 @@ export default function CommitChartUI({ projectId, onSelect, Search }){
 
     return(
         <>
-            <div className={styles.CommitChartUI}>
-                <div className={`${Search ? styles.CommitChartBackSearch : styles.CommitChartBack}`}>
+            <div className={`${Search ? styles.CommitChartUISearch : styles.CommitChartUI}`}>
+                <div className={`${styles.CommitChartBack} ${styles.scrollbar}`}>
                     <table className={styles.CommitChart}>
                         <thead>
                             <tr className={styles.CommitChartTitle}>
@@ -120,11 +120,11 @@ export default function CommitChartUI({ projectId, onSelect, Search }){
                                 onClick={() => handleRowClick(data.commitID, index)}
                                 onDoubleClick={() => handleRowDoubleClick(index)}
                             >
-                                <td>{index === doubleClickRowIndex ? '●' : ''}</td>
-                                <td>{data.comment.length > 45 ? data.comment.slice(0, 45) + "..." : data.comment}</td>
-                                <td>{formatDate(data.createTime)}</td>
-                                <td>{data.createUsername}</td>
-                                <td>{data.commitHashCode}</td>
+                                <td className={styles.CommitChartTitleNow}>{index === doubleClickRowIndex ? '●' : ''}</td>
+                                <td className={styles.CommitChartTitleMsg}>{data.comment.length > 30 ? data.comment.slice(0, 30) + "..." : data.comment}</td>
+                                <td className={styles.CommitChartTitleDate}>{formatDate(data.createTime)}</td>
+                                <td className={styles.CommitChartTitleWriter}>{data.createUsername}</td>
+                                <td className={styles.CommitChartTitleNum}>{data.commitHashCode}</td>
                             </tr>
                         ))}
                         </tbody>

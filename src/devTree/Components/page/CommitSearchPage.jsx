@@ -28,27 +28,31 @@ export default function CommitSearchPage(){
     }, []);
 
     return (
-        <div className={styles.HistoryPage}>
-            <HistoryButtonLayOut
-                onSelect={handleSelectProject}
-                selectedCommitId={selectedCommitId}
-                token={token}
-            />
+        <div className={styles.HistoryViewPage}>
+            <div className={styles.HistoryPage}>
+                <HistoryButtonLayOut
+                    onSelect={handleSelectProject}
+                    selectedCommitId={selectedCommitId}
+                    token={token}
+                />
 
-            <HistorySideBarUI selected={2}/>
+                <HistorySideBarUI selected={2}/>
 
-            <div className={styles.HistoryCanverBack}>
-                <div className={styles.HistoryCanver}>
-                    {/*커밋 검색 컴포넌트*/}
-                    <CommitSearchUI/>
-                    <CommitChartUI
-                        projectId={selectedProjectId}
-                        onSelect={handleSelectCommit}
-                        Search={true}
-                    />
-                    <ChangeCommitLayOut
-                        commitId={selectedCommitId}
-                    />
+                <div className={styles.HistoryCanverBack}>
+                    <div className={styles.HistoryCanver}>
+                        {/*커밋 검색 컴포넌트*/}
+                        <CommitSearchUI/>
+                        {/*커밋 히스토리 표*/}
+                        <CommitChartUI
+                            projectId={selectedProjectId}
+                            onSelect={handleSelectCommit}
+                            Search={true}
+                        />
+                        {/*커밋 정보*/}
+                        <ChangeCommitLayOut
+                            commitId={selectedCommitId}
+                        />
+                    </div>
                 </div>
             </div>
         </div>

@@ -34,17 +34,17 @@ export default function CommitInformationProjectIdUI({commitId}){
     };
 
     return (
-        <div>
+        <div className={styles.CommitInformationProjectIdUI}>
             <h5 className={styles.selectTitleBox}>현재 커밋 정보</h5>
             <div className={styles.commitInformationBox}>
-                    {commit && (
-                        <ul className={styles.informationData} style={{paddingLeft: '10px'}}>
-                            <li>커밋 해시코드 : {commit.commitHashCode}</li>
-                            <li>작성자 : {commit.createUsername}</li>
-                            <li>날짜 : {formatDate(commit.createTime)}</li>
-                            <li>커밋 메세지 : {commit.comment}</li>
-                        </ul>
-                    )}
+            {commit && (
+                <ul className={`${styles.informationData} ${styles.scrollbar}`}>
+                    <li>커밋 해시코드 : {commit.commitHashCode}</li>
+                    <li>작성자 : {commit.createUsername}</li>
+                    <li>날짜 : {formatDate(commit.createTime)}</li>
+                    <li>커밋 메세지 : {commit.comment}</li>
+                </ul>
+            )}
             </div>
         </div>
     )

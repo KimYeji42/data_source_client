@@ -2,6 +2,7 @@ import React from "react";
 import styles from "../../styles/styles.module.css";
 import {useState, useEffect} from "react";
 
+// 충돌 해결 컴포넌트
 const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => {
     const [targetValues, setTargetValues] = useState([]);
     const [checkValues, setCheckValues] = useState([]);
@@ -66,7 +67,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
             <div className={styles.modalOverlay}>
                 <div className={styles.mergeModal}>
                     <p className={styles.mergeGuideTxt}>병합하려는 커밋과 현재 커밋의 테이블에 <span className={styles.mergeGuideTxtBold}>충돌하는 PK</span>가 존재합니다.<br/>사용할 데이터를 선택한 후 다시 시도해 주세요.</p>
-                    <p>※ 기존 데이터를 사용할지, 선택한 분기의 변경 사항 데이터를 사용할지 선택해주세요. (↑ 체크아웃 데이터, ↓ 선택분기 데이터)</p>
+                    <p className={styles.mergeGuideTxt2}>※ 사용할 데이터를 선택해주세요. (↑ 체크아웃 데이터, ↓ 선택분기 데이터)</p>
                     <div className={styles.madalLayout}>
                         {crashData && crashData.map((mergeCrashResponse, index) => (
                             <div key={index}>
@@ -75,7 +76,7 @@ const MergeCrashModalLayout =({crashData, isOpen, onClose, setCrashRequest}) => 
                                     <thead>
                                         <tr className={styles.columnNames}>
                                             {mergeCrashResponse.data.map((mergeCrashColumn, columnIndex) => (
-                                                <th key={columnIndex} className={styles.changeColumnName}>
+                                                <th key={columnIndex} className={styles.changeColumnName} style={{background:'#4EBFFF'}}>
                                                     {mergeCrashColumn.columnName}
                                                 </th>
                                             ))}
