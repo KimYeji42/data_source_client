@@ -37,14 +37,14 @@ export default function ProjectViewPage(){
     return(
         <div className={styles.ProjectViewCardPage}>
             <div className={styles.ProjectViewCardPageHeader}>
-                <Image src={"../image/webSite.png"} className={styles.WebSiteIcon}/>
+                {/*<Image src={"../image/webSite.png"} className={styles.WebSiteIcon}/>*/}
                 <div className={styles.ProjectTitle}><TitleUI title={data.name}/></div>
             </div>
 
             <div className={styles.ProjectViewCards}>
                 <ProjectInformationLayOut project={data} />
-                <ProjectCollaborativeLayOut project={data}/>
-                <ProjectTablesLayOut project={data}/>
+                <ProjectCollaborativeLayOut project={data} />
+                <ProjectTablesLayOut project={data} />
             </div>
         </div>
     )

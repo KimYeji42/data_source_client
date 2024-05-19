@@ -11,7 +11,7 @@ export default function SelectionUI({title , data, onSelect}){
         <>
             <div className={styles.smailSelectBox}>
                 <h5 className={styles.selectTitleBox}>{title}</h5>
-                <ul className={styles.selectData}>
+                <ul className={`${styles.selectData} ${styles.scrollbar}`}>
                     {data && data.length > 0 && data.map((data, index) => (
                         <li key={index}
                             className={styles.DataList}

@@ -11,7 +11,6 @@ export default function({cardTitle, iconImage, buttonTitle , link}){
             <Link to={link}>
                 <button className={styles.ViewCardBtn}>{buttonTitle}</button>
             </Link>
-
         </div>
 
     )

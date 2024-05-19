@@ -4,6 +4,7 @@ import InputBoxUI from "../uI/InputBoxUI";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import {Link} from "react-router-dom";
+
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -65,19 +66,23 @@ export default function LoginPage() {
             setIsErrorModalOpen(true)
         }
     };
+
     const loginLocation =() => {
         window.location.href="/"
     }
+
     return (
         <div>
-            <div className={styles.LoginContainer}>
+            <div className={styles.LoginContainer} onKeyPress={(e) => {
+                if (e.key === "Enter") sendAuthData();
+            }}>
                 <h1 className={styles.LoginTitle}>로그인</h1>
                 <div className={styles.loginBox}>
                     <InputBoxUI type={"text"} onChange={setEmail} value={email} label={"Email"}/>
                 </div>
 
                 <div className={styles.loginBox}>
-                    <InputBoxUI type={"password"} onChange={setPassword} value={password} label={"Password"}/>
+                    <InputBoxUI type={"password"} onChange={setPassword} value={password} label={"Password"} />
                 </div>
 
                 <button className={styles.LoginBtn} onClick={sendAuthData}>Login</button>

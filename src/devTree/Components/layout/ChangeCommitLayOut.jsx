@@ -42,22 +42,20 @@ export default function ChangeCommitLayOut({ commitId }){
     }, [commitId]);
 
     return(
-        <div>
+        <>
             <div className={styles.changeCommitBox}>
-                <div style={{display : "flex" , justifyContent : "left"}}>
-                    <div className={styles.selectBox}>
-                        <CommitInformationProjectIdUI commitId={commitId}/>
-                        <SelectionUI title={"변경된 테이블"} data={changeTables} onSelect={handleSelectTable}/>
-                    </div>
-                    <div className={styles.changeTableBox}>
-                        {/*변경 사항 테이블 클릭 시*/}
-                        <ChangeTableLayout
-                            tableId={selectedTableId}
-                            commitId={selectedCommitId}
-                        />
-                    </div>
+                <div className={styles.selectBox}>
+                    <CommitInformationProjectIdUI commitId={commitId}/>
+                    <SelectionUI title={"변경된 테이블"} data={changeTables} onSelect={handleSelectTable}/>
+                </div>
+                <div className={styles.changeTableBox}>
+                    {/*변경 사항 테이블 클릭 시*/}
+                    <ChangeTableLayout
+                        tableId={selectedTableId}
+                        commitId={selectedCommitId}
+                    />
                 </div>
             </div>
-        </div>
+        </>
     )
 }
