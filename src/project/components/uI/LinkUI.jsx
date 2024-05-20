@@ -5,7 +5,7 @@ export default function LinkUI({text , redirect}){
     return(
         <div className={styles.linkUI}>
             <Link to={redirect} className={styles.link} >
-                <p>{text}</p>
+                <button className={styles.linkBut}>{text}</button>
             </Link>
             {/*LinkTag 변경 필요*/}
         </div>

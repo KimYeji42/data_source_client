@@ -11,8 +11,8 @@ export default function ProjectTeamUI({ membersData, deleteUserHandler, createEm
                 ) : (
                     <button onClick={() => deleteUserHandler(index)} className={styles.customButton}> </button>
                 )}
-                <Image src={"image/user.png"} />
-                <div>
+                <Image className={styles.ProjectTeamUiImg} src={"image/user.png"} />
+                <div className={styles.memberInformation}>
                     <h4>{user.name}</h4>
                     <p>{user.email}</p>
                 </div>

@@ -35,10 +35,10 @@ function SidebarBox({ title }) {
     };
 
     return (
-        <div>
+        <>
             <div className={styles.sideBarBox}>
                 <Accordion defaultActiveKey="0">
-                    <Accordion.Item style={{ height: "70px" }}>
+                    <Accordion.Item className={styles.highList}  eventKey={"0"}>
                         <div className={styles.titleBox} onClick={handleToggleMenu}>
                             {title}
                             <button type="button">{isOpen ? '▼' : '▶'}</button>
@@ -66,7 +66,7 @@ function SidebarBox({ title }) {
                     )}
                 </Accordion>
             </div>
-        </div>
+        </>
     );
 }
 

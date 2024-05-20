@@ -213,12 +213,12 @@ body{font-size: 1rem;}
 /*페이지 전체*/
 .HistoryViewPage {
     min-width: 1100px; min-height: 600px;
-    width: 100%; height: 89vh;
-    padding-top: 2%;
+    width: 85%; height: 88vh;
+    padding-top: 1.5%;
+    margin: 0 auto;
 }
 .HistoryPage {
-    margin: 0 auto;
-    width: 85%; height: 100%;
+    width: 100%; height: 100%;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: .47fr 2fr; /* 2개의 열 */
@@ -275,7 +275,7 @@ body{font-size: 1rem;}
     font-size: 85%;
 }
 
-.CommitChartTitleNow { width: .5rem; font-size: 6%; }
+.CommitChartTitleNow { width: .5rem; font-size: 65%; }
 .CommitChartTitleMsg { width: 10rem; font-size: 90%; }
 .CommitChartTitleDate { width: 5rem; font-size: 90%; }
 .CommitChartTitleWriter { width: 1rem; font-size: 90%; }
