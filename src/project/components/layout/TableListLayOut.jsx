@@ -2,7 +2,7 @@ import styles from "../styles.module.css";
 import LinkUI from "../uI/LinkUI";
 import DataBaseBoxLayOut from "./DataBaseBoxLayOut";
 import TitleUI from "../uI/TitleUI";
-
+import {Link} from "react-router-dom";
 
 export default function TableListLayout({data}){
     return(
@@ -11,7 +11,11 @@ export default function TableListLayout({data}){
                 <TitleUI title={data.projectName}/>
             </div>
             <div>
-                <LinkUI text={"테이블 추가하기"} redirect={`/createTable/${data.id}`}/>
+                <div className={styles.tableLinkUI}>
+                    <Link to={`/createTable/${data.id}`} className={styles.link} >
+                        <button className={styles.tableLinkBut}>테이블 추가하기</button>
+                    </Link>
+                </div>
                 <DataBaseBoxLayOut/>
             </div>
 

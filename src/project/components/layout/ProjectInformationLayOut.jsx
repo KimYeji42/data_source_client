@@ -3,23 +3,19 @@ import ProjectViewCardUI from "../uI/ProjectViewCardUI";
 import {Image} from "react-bootstrap";
 import {useEffect} from "react";
 import {Link} from "react-router-dom";
+import ViewCardIcon from "../uI/ViewCardIcon";
+import ViewCardTitle from "../uI/ViewCardTitle";
 
 export default function ProjectInformationLayOut({project}) {
 
     return(
         <>
             <div className={styles.InformationInput}>
-                <Link to={`/history`} className={styles.ViewCardTitle}>
-                    <button className={styles.ViewCardBtn}>
-                        히스토리 접속하기 &nbsp;
-                        <img src="../image/arrow.png" className={styles.ViewCardBtnImg}/>
-                    </button>
-                </Link>
-                <div className={styles.ViewCardIconBox}>
-                    <div className={styles.ViewCardIcon}>
-                        <Image src="../image/Information.png" className={styles.InformationIcon}/>
-                    </div>
-                </div>
+                {/*상단*/}
+                <ViewCardTitle link={`/history`} title={"히스토리 접속하기"}/>
+                {/*아이콘*/}
+                <ViewCardIcon src={"../image/Information.png"} />
+                {/*내용*/}
                 <div className={styles.ProjectViewCard}>
                     <div className={styles.projectInformationBox}>
                         <label className={styles.ProjectViewCardLabel}>
@@ -28,7 +24,7 @@ export default function ProjectInformationLayOut({project}) {
                         </label> <br/>
                         <label className={styles.ProjectViewCardLabel}>
                             <span className={styles.ProjectViewCardSpan}>설 명</span>
-                            <input type="text" readOnly value={project.comment} className={styles.ProjectViewCardInput}/>
+                            <textarea type="text" readOnly value={project.comment} className={styles.ProjectViewCardInput}/>
                         </label><br/>
                         <label className={styles.ProjectViewCardLabel}>
                             <span className={styles.ProjectViewCardSpan}>생성 날짜</span>

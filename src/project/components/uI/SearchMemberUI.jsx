@@ -9,7 +9,7 @@ export default function SearchMemberUI({ members , onClickMember}) {
         <div>
             {members.map((member, index) => (
                 <div key={index} className={styles.searchGroup} onClick={() => handleClick(member)}>
-                    <small>{member.name}</small><br/>
+                    {member.name}<br/>
                     <small>{member.email}</small>
                 </div>
             ))}

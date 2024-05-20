@@ -1,6 +1,8 @@
 import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import ViewCardIcon from "../uI/ViewCardIcon";
+import ViewCardTitle from "../uI/ViewCardTitle";
 
 export default function ProjectCollaborativeLayOut ({project}){
 
@@ -8,18 +10,9 @@ export default function ProjectCollaborativeLayOut ({project}){
         <>
             <div className={styles.InformationInput}>
                 {/*상단*/}
-                <Link to={`/project/teamProfile/${project.dataBaseID}`} className={styles.ViewCardTitle}>
-                    <button className={styles.ViewCardBtn}>
-                        협업 관리하기 &nbsp;
-                        <img src="../image/arrow.png" className={styles.ViewCardBtnImg}/>
-                    </button>
-                </Link>
+                <ViewCardTitle link={`/project/teamProfile/${project.dataBaseID}`} title={"협업 관리하기"}/>
                 {/*아이콘*/}
-                <div className={styles.ViewCardIconBox}>
-                    <div className={styles.ViewCardIcon}>
-                        <Image src="../image/Collaborative.png" className={styles.InformationIcon}/>
-                    </div>
-                </div>
+                <ViewCardIcon src={"../image/Collaborative.png"} />
                 {/*내용*/}
                 <div className={styles.ProjectViewCard} >
                     <ul className={`${styles.collaborateUl} ${styles.scrollbar}`}>

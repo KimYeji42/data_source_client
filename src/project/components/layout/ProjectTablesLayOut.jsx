@@ -1,6 +1,8 @@
 import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import ViewCardIcon from "../uI/ViewCardIcon";
+import ViewCardTitle from "../uI/ViewCardTitle";
 
 export default function ProjectTablesLayOut({project}){
 
@@ -10,18 +12,9 @@ export default function ProjectTablesLayOut({project}){
         <>
             <div className={styles.InformationInput}>
                 {/*상단*/}
-                <Link to={`/tables/${project.dataBaseID}`} className={styles.ViewCardTitle}>
-                    <button className={styles.ViewCardBtn}>
-                        데이터베이스 접속하기 &nbsp;
-                        <img src="../image/arrow.png" className={styles.ViewCardBtnImg}/>
-                    </button>
-                </Link>
+                <ViewCardTitle link={`/tables/${project.dataBaseID}`} title={"데이터베이스 접속하기"}/>
                 {/*아이콘*/}
-                <div className={styles.ViewCardIconBox}>
-                    <div className={styles.ViewCardIcon}>
-                        <Image src="../image/Tables.png" className={styles.InformationIcon}/>
-                    </div>
-                </div>
+                <ViewCardIcon src={"../image/Tables.png"} />
                 {/*내용*/}
                 <div className={styles.ProjectViewCard} >
                     <ul className={`${styles.collaborateUl} ${styles.scrollbar}`} >

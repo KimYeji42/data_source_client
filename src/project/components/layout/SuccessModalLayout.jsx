@@ -1,12 +1,22 @@
 import styles from "../styles.module.css";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 
 export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, onClickEvent}){
+    const btuRef = useRef(null);
+
     const successHandler = () =>{
         onClickEvent?.();
         onClose();
     }
+
+    useEffect(() => {
+        if (isOpen && btuRef.current) {
+            setTimeout(() => {
+                btuRef.current.focus();
+            }, 0);
+        }
+    }, [isOpen]);
 
     // isOpen이 false이면 모달을 렌더링하지 않음
     if (!isOpen) return null;
@@ -24,7 +34,7 @@ export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, o
 
                 <div className={styles.modalBtnBox}>
                     <Link to={clickLink}>
-                        <button onClick={successHandler} className={styles.modalConfirmBtn}> 확인 </button>
+                        <button onClick={successHandler} className={styles.modalConfirmBtn} ref={btuRef}> 확인 </button>
                     </Link>
                 </div>
             </div>

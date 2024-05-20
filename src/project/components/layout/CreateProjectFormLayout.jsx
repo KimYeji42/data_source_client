@@ -12,7 +12,7 @@ export default function CreateProjectFormLayout() {
     const [comment, setComment] = useState("");
     const [dataBaseName , setDataBaseName] = useState(" ");
     const [teamList, setTeamList] = useState(new Set([])); // Set으로 초기화
-    const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(true);
+    const [showMemberGroupSearchBar, setShowMemberGroupSearchBar] = useState(false);
     const [isSendModalOpen , setIsSendModalOpen] = useState(false)
     const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
@@ -140,12 +140,6 @@ export default function CreateProjectFormLayout() {
                 clickLink={"/projects"}
             />
 
-            {
-                showMemberGroupSearchBar &&
-                currentProfile !== null &&
-                <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers} currentUser={currentProfile}/>
-            }
-
             <div>
                 <div className={styles.titleGroup}>
                     <div className={`"form-group" ${styles.customFormGroup}`}>
@@ -160,20 +154,24 @@ export default function CreateProjectFormLayout() {
                 </div>
             </div>
 
-
             <div className={`"form-group" ${styles.customFormGroup}`}>
                 <label htmlFor="inputField2" ><h4 className={styles.formTitle} >설명<small>(선택 사항)</small></h4></label>
                 <input onChange={onCommentChange} type="text" className={`form-control ${styles.inputForm}`}  id="inputField2" />
             </div>
 
-            <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>협업자 추가</button>
+            <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>
+                {showMemberGroupSearchBar &&
+                    currentProfile !== null &&
+                    <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers} currentUser={currentProfile}/>
+                }
+                협업자 추가
+            </button>
 
             {currentProfile !== null && (
                 <ProjectTeamLayOut membersData={[...teamList]} deleteUserHandler={deleteUserHandler} currentUser={currentProfile}/>
             )}
 
-
-            <button type="button" onClick={modalOpenHandler} className={`btn btn-primary ${styles.createButton}` }>프로젝트 생성</button>
+            <button type="button" onClick={modalOpenHandler} className={styles.createButton}>프로젝트 생성</button>
         </div>
     );
 }

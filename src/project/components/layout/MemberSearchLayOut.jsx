@@ -36,11 +36,11 @@ export default function MemberSearchLayout({ searchTitle , teamMemberAddHandler 
     };
 
     return(
-        <div className={`${styles.searchComponent} `}>
+        <div className={styles.searchComponent}>
             <div className={`"form-group"`}>
                 <label htmlFor="projectNameForm"><h4 className={styles.formTitle}>{searchTitle}</h4></label>
                 <input placeholder={"이름 또는 이메일을 검색하세요"} type="text" className={`form-control ${styles.inputForm}`} id={styles} />
-                <div className={styles.searchMembers}>
+                <div className={`${styles.searchMembers} ${styles.scrollbar}`}>
                     {/* 클릭한 멤버를 SearchMemberUI 컴포넌트에 전달 */}
                     <SearchMemberUI members={profiles} onClickMember={handleMemberClick} />
                 </div>

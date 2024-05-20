@@ -1,10 +1,10 @@
 import styles from "../styles.module.css";
 import BoxUI from "../uI/BoxUI";
-import {useEffect, useState} from "react";
-import ButtonUI from "../uI/ButtonUI";
+import React, {useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import SendModalLayOut from "./SendModalLayOut";
 import SuccessModalLayout from "./SuccessModalLayout";
+
 export default function DataBaseBoxLayOut() {
     const [sendModalMessage , setSendModalMessage] = useState()
     const [isSendModalOpen , setSendModalOpen] = useState(false)
@@ -142,8 +142,22 @@ export default function DataBaseBoxLayOut() {
     }
 
     return (
-        <div>
-            <div className={styles.dataBaseContentBox}>
+        <>
+            <div className={styles.dataBaseBoxButton}>
+                {activeTable ? (
+                    <Link to={`/table/${activeTable.id}`}>
+                        <button className={styles.blueButton} onClick={handleClick}>
+                            테이블 데이터 관리하기
+                        </button>
+                    </Link>
+                ) : (
+                    <button className={styles.inactiveButton} disabled>
+                        테이블 데이터 관리하기
+                    </button>
+                )}
+            </div>
+
+            <div className={`${styles.dataBaseContentBox} ${styles.scrollbar}`}>
                 {dataBaseTables.map((item , index) => (
                     <BoxUI
                         header={item.name}
@@ -157,15 +171,6 @@ export default function DataBaseBoxLayOut() {
                         deleteBtnClickHandler = {deleteBtnClickHandler}
                     />
                 ))}
-            </div>
-            <div className={styles.dataBaseBoxButton}>
-                {activeTable && (
-                    <Link to={`/table/${activeTable.id}`}>
-                        <ButtonUI className={styles.blueButton} onClick={handleClick}>
-                            데이터 관리
-                        </ButtonUI>
-                    </Link>
-                )}
             </div>
 
             <SendModalLayOut
@@ -181,6 +186,6 @@ export default function DataBaseBoxLayOut() {
                 isOpen={successModalOpen}
                 onClickEvent={reloadPage}
             />
-        </div>
+        </>
     );
 }
