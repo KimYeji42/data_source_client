@@ -392,7 +392,6 @@
     width: 100%;
     margin: 5% auto;
 }
-
 .dataBaseContentBox > * {
     justify-self: center; /* 수평 가운데 정렬 */
 }
@@ -454,6 +453,9 @@
     border: none;
     cursor: pointer;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+}
+.blueButton:hover {
+    background-color: #007dc4;
 }
 .dataBaseBoxButton{
     float: right;
