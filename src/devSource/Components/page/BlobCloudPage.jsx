@@ -103,7 +103,7 @@ export default function BlobCloudPage() {
                         className={styles.fileUploadForm}
                     />
                 </div>
-                <TitleUI title={"[ Photo Cloud ]"} />
+                <TitleUI title={"[ Media Files ]"} />
             </div>
             {/* 이미지 목록을 전달하여 이미지 레이아웃 컴포넌트 호출 */}
             {images.length > 0 && <BlobCloudImageLayout images={images} onDelete={handleDelete} setUrl={setUrl}/>}

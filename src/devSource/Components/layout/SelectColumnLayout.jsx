@@ -117,6 +117,7 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                                 <option value="TEXT">TEXT</option>
                                 <option value="INTEGER">INTEGER</option>
                                 <option value="REAL">REAL</option>
+                                <option value="MediaFile">MediaFile</option>
                             </select>
                         </td>
                         <td style={{width: '50px'}}>

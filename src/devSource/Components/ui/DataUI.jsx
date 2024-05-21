@@ -42,6 +42,11 @@ export default function DataUI({
             alert("해당 행은 수정이 불가능 합니다 삭제후 데이터 를 넣어주세요.")
             return
         }
+        if (type === "MediaFile"){
+            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터 를 넣어주세요.")
+            return
+        }
+
         setEditingIndex(index); // 행을 더블 클릭하여 입력창으로 변경
     };
 

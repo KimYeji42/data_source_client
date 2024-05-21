@@ -30,10 +30,12 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
                         <Image src={"/image/trash.png"} onClick={() => deleteBtnClickHandler(item)}/>
                     </div>
                 </div>
+                <div className={styles.dataBaseBoxTime}>
+                    <h6>{date} 접속</h6>
+                </div>
+
             </div>
-            <div className={styles.dataBaseBoxTime}>
-                <h6>{date} 접속</h6>
-            </div>
+
 
         </div>
     )

@@ -3,7 +3,6 @@ import ProjectInformationLayOut from "../layout/ProjectInformationLayOut";
 import ProjectCollaborativeLayOut from "../layout/ProjectCollaborativeLayOut";
 import ProjectTablesLayOut from "../layout/ProjectTablesLayOut";
 import TitleUI from "../uI/TitleUI";
-import {Image} from "react-bootstrap";
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom";
 

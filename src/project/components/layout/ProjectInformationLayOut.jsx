@@ -1,20 +1,15 @@
 import styles from "../styles.module.css";
-import ProjectViewCardUI from "../uI/ProjectViewCardUI";
-import {Image} from "react-bootstrap";
-import {useEffect} from "react";
-import {Link} from "react-router-dom";
 import ViewCardIcon from "../uI/ViewCardIcon";
 import ViewCardTitle from "../uI/ViewCardTitle";
 
 export default function ProjectInformationLayOut({project}) {
-
     return(
         <>
             <div className={styles.InformationInput}>
                 {/*상단*/}
                 <ViewCardTitle link={`/history`} title={"히스토리 접속하기"}/>
                 {/*아이콘*/}
-                <ViewCardIcon src={"../image/Information.png"} />
+                <ViewCardIcon src={"../image/history_icon.png"} />
                 {/*내용*/}
                 <div className={styles.ProjectViewCard}>
                     <div className={styles.projectInformationBox}>

@@ -14,14 +14,14 @@ export default function ProjectTablesLayOut({project}){
                 {/*상단*/}
                 <ViewCardTitle link={`/tables/${project.dataBaseID}`} title={"데이터베이스 접속하기"}/>
                 {/*아이콘*/}
-                <ViewCardIcon src={"../image/Tables.png"} />
+                <ViewCardIcon src={"../image/tables_icon.png"} />
                 {/*내용*/}
                 <div className={styles.ProjectViewCard} >
                     <ul className={`${styles.collaborateUl} ${styles.scrollbar}`} >
                         {project.tables && project.tables.map((member) => (
                             <li key={member.id} style={{ listStyleType: "none" }}>
                                 <div className={styles.Table}>
-                                    <Image src="../image/Database.png" className={styles.TableIcon} />
+                                    <Image src="../image/db_icon.png" className={styles.TableIcon} />
                                     <small className={styles.CollaborativeUserName}>{member.name}</small>
                                 </div>
                             </li>

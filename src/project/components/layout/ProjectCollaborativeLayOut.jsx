@@ -12,7 +12,7 @@ export default function ProjectCollaborativeLayOut ({project}){
                 {/*상단*/}
                 <ViewCardTitle link={`/project/teamProfile/${project.dataBaseID}`} title={"협업 관리하기"}/>
                 {/*아이콘*/}
-                <ViewCardIcon src={"../image/Collaborative.png"} />
+                <ViewCardIcon src={"../image/Team_Icon.png"} />
                 {/*내용*/}
                 <div className={styles.ProjectViewCard} >
                     <ul className={`${styles.collaborateUl} ${styles.scrollbar}`}>

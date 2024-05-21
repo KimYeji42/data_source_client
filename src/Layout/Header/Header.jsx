@@ -15,13 +15,13 @@ function Header({isMain , currentUser , isLoggedIn , setCurrentUser , setIsLogge
                     <div className={styles.bar}>
                         <div className={styles.navLink}>
                             <li>
-                                <Link to={'/projects'} >Project</Link>
+                                <Link to={'/projects'} >DATA</Link>
                             </li>
                             <li>
-                                <Link to={'/history'} >History</Link>
+                                <Link to={'/history'} >VERSION</Link>
                             </li>
                             <li>
-                                <Link to={'/blob/cloud'} >Resource</Link>
+                                <Link to={'/blob/cloud'} >IMAGES</Link>
                             </li>
                             <li>
                                 <Link to={'/erd'} >ERD</Link>
