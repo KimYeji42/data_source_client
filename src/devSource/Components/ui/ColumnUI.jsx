@@ -1,4 +1,4 @@
-import React, {Children, useRef, useState} from "react";
+import React, {useState} from "react";
 import DataUI from "./DataUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import up from '../../Image/upButton.png';
@@ -79,16 +79,10 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         }
     }
 
-    const handleRollBackData = () => {
+    const handleImportCsvData = () => {
         console.log(deleteData);
-
-        if (selectedRowIndex !== -1) {
-            if (deleteRowIndex.includes(selectedRowIndex)) {
-                const updatedDeleteRow
-                    = deleteRowIndex.filter(index => index !== selectedRowIndex);
-                setDeleteRowIndex(updatedDeleteRow);
-            }
-        }
+        //파일 처리
+        alert("파일 처리")
     };
 
     // 선택된 행의 인덱스를 설정하는 함수
@@ -122,7 +116,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                             )
                         }
                         <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} />
-                        <Button_UI image={Button[5].image} onClick={handleRollBackData}/>
+                        <Button_UI image={Button[5].image} onClick={handleImportCsvData}/>
                     </div>
                 </ul>
                 <table className={styles.table}>

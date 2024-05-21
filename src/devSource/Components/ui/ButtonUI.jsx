@@ -3,7 +3,7 @@ import add from '../../Image/add.png';
 import remove from '../../Image/delete.png';
 import save from '../../Image/save.png';
 import search from '../../Image/search.png';
-import back from '../../Image/goBack.png';
+import importCSV from '../../Image/import.png';
 import update from '../../Image/updateBtn.png'
 export const Button = [
     {image:refresh},
@@ -11,6 +11,6 @@ export const Button = [
     {image:remove},
     {image:save},
     {image:search},
-    {image:back},
+    {image:importCSV},
     {image: update}
 ]

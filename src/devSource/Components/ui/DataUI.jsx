@@ -10,7 +10,7 @@ export default function DataUI({
     const [data, setData] = useState([]);
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
     const [type , setType] = useState("none")
-
+    const [isHovered, setIsHovered] = useState(false);
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:8080/api/column/comment/${column}/${tableID}`);
@@ -74,7 +74,6 @@ export default function DataUI({
         setData([...data, {id: data.length + 1, data: newData}]);
     };
 
-
     return (
         <div>
             <table>
@@ -100,7 +99,9 @@ export default function DataUI({
                                     onChange={(event) => handleInputChange(event, index,item)} // 입력값이 변경되면 핸들러 호출
                                 />
                             ) : (
-                                <span>{item.data || " NULL "}</span>
+                                <span
+                                    onClick={() => setIsHovered(prevState => !prevState)}
+                                >{!isHovered && type === "MediaFile" ? "Media_File_[Click]" : item.data  || " NULL "}</span>
                             )}
                         </td>
                     </tr>

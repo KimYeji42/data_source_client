@@ -34,7 +34,7 @@ export default function TablePage() {
         <div>
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
-                    {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"-" +tableInfo.tableName}/>}
+                    {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " +tableInfo.tableName}/>}
                </div>
                 <div className={styles.linkContainer}>
                     <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${tableID}`}/>

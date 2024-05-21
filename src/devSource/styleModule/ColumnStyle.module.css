@@ -39,12 +39,15 @@
     height: 60px;
     padding: 0;
 }
+
 .table tr:nth-child(even){
     background-color: #F9FAFC;
 }
 .table tr{
     width: 100%;
+    max-height: 60px;
 }
+
 .imageContainer {
     display: flex;
     flex-direction: column;
