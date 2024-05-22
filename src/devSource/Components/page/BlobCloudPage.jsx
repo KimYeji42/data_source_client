@@ -62,6 +62,19 @@ export default function BlobCloudPage() {
     // 파일을 업로드하는 함수
     const fileUpload = (event) => {
         const file = event.target.files[0]; // 첫 번째 파일만 선택
+        const maxFileSize = 50 * 1024 * 1024; // 50MB 제한
+        if (file.size > maxFileSize) {
+            alert("파일 크기가 너무 큽니다. 50MB 이하의 파일을 업로드해주세요.");
+            return;
+        }
+        const allowedExtensions = [".jpg", ".jpeg", ".png", ".mp4"];
+        const fileExtension = file.name.slice(file.name.lastIndexOf(".")); // 파일의 확장자 추출
+        // 확장자 검사
+        if (!allowedExtensions.includes(fileExtension.toLowerCase())) {
+            alert("지원되지 않는 파일 형식입니다. .jpg, .jpeg, .png, .mp4 파일만 업로드 가능합니다.");
+            return;
+        }
+
         const formData = new FormData();
         const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -97,7 +110,7 @@ export default function BlobCloudPage() {
                     <input
                         type="file"
                         id="fileUpload"
-                        accept="image/*"
+                        accept=".jpg,.jpeg,.png,.mp4"
                         onChange={fileUpload}
                         multiple
                         className={styles.fileUploadForm}
