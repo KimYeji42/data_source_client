@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styleModule/Import.module.css'
 import TitleUI from "../../../project/components/uI/TitleUI";
 import * as XLSX from 'xlsx';
+import {json} from "react-router-dom";
 
 export default function DataImportModalUI({ onClose, tableID }) {
     const [file, setFile] = useState(null);
@@ -16,11 +17,15 @@ export default function DataImportModalUI({ onClose, tableID }) {
 
         try {
             const excelData = await excelParse(file);
-            const excelJson = JSON.stringify(excelData);
-            console.log(excelJson)
+            const excelJsonString = JSON.stringify(excelData);
+            const csvDataOBJ = {
+                excelJson : excelJsonString,
+                tableID : tableID
+            }
+
             const response = await fetch(`${process.env.REACT_APP_API_URL}/api/table/import/csv`, {
                 method: 'POST',
-                body: excelJson,
+                body: JSON.stringify(csvDataOBJ),
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -61,8 +66,6 @@ export default function DataImportModalUI({ onClose, tableID }) {
     }
 
 
-
-
     return (
         <div>
             <div className={styles.DataImportContainer}>
@@ -72,6 +75,7 @@ export default function DataImportModalUI({ onClose, tableID }) {
                     <p>예시:</p>
                     <p>[ 컬럼 이름 1 ] [ 컬럼 이름 2 ] [ 컬럼 이름 3 ]</p>
                     <p>[ 추가 데이터 ] [ 추가 데이터 ] [ 추가 데이터 ]</p>
+                    <p> 해당 시트의 이름은 항상  <strong className={styles.comment}>"Sheet1"</strong> 으로 해주세요.</p>
                     <p className={styles.comment}>선택을 누르고 추가할 EXCEL 데이터를 첨부 후 추가 버튼을 눌러주세요.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
