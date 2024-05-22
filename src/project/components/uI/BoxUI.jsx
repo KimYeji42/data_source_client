@@ -23,11 +23,11 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
                     <div className={styles.tableIcon}>
                         {
                             item.isFavorite === 1 ?
-                                <Image src={"/image/starOn.png"} onClick={() => starBtnClickHandler(item)}/> :
-                                <Image src={"/image/star.png"} onClick={() => starBtnClickHandler(item)}/>
+                                <Image height={20} width={20} src={"/image/starOn.png"} onClick={() => starBtnClickHandler(item)}/> :
+                                <Image height={20} width={20} src={"/image/star.png"} onClick={() => starBtnClickHandler(item)}/>
                         }
 
-                        <Image src={"/image/trash.png"} onClick={() => deleteBtnClickHandler(item)}/>
+                        <Image height={20} width={20} src={"/image/trash.png"} onClick={() => deleteBtnClickHandler(item)}/>
                     </div>
                 </div>
                 <div className={styles.dataBaseBoxTime}>

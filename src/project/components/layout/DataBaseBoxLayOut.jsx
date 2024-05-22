@@ -27,7 +27,7 @@ export default function DataBaseBoxLayOut() {
         if (item.isFavorite === 1)
             setSendModalMessage(`${item.name} 테이블을 즐겨찾기를 해제 하시겠습니까?`)
         else
-            setSendModalMessage(`${item.name} 테이블을 즐겨찾기 하시겠습니까?`)
+            setSendModalMessage(`${item.name} 테이블을 즐겨찾기 하   시겠습니까?`)
         setSendModalOpen(true)
     }
 
@@ -172,7 +172,6 @@ export default function DataBaseBoxLayOut() {
                     />
                 ))}
             </div>
-
             <SendModalLayOut
                 data={sendModalMessage}
                 onClose={() => setSendModalOpen(false)}

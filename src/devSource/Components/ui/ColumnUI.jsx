@@ -10,6 +10,7 @@ import SendModalLayOut from "../../../project/components/layout/SendModalLayOut"
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import SearchModal from "./SearchModal";
+import DataImportModalUI from "./DataImportModalUI";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
     const [clickCount, setClickCount] = useState(0);
@@ -22,9 +23,10 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [success , setSuccess] = useState("")
     const [deleteData , setDeleteData] = useState([])
     const [isSearchModalOpen , setSearchModalOpen] = useState(false)
+    const [isDataImportModalOpen , setIsDataModalOpen] = useState(false)
+
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
-
         let obj = {
             tableID: tableID,
             createData: createData,
@@ -80,9 +82,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     }
 
     const handleImportCsvData = () => {
-        console.log(deleteData);
-        //파일 처리
-        alert("파일 처리")
+        setIsDataModalOpen(true)
+
     };
 
     // 선택된 행의 인덱스를 설정하는 함수
@@ -190,6 +191,12 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 closeModal={() => setSearchModalOpen(false)}
                 tableID={tableID}
             />
+            {isDataImportModalOpen &&
+                <DataImportModalUI
+                    tableID={tableID}
+                    onClose={() => setIsDataModalOpen(false)}
+                />
+            }
         </div>
     );
 }

@@ -21,7 +21,7 @@ function Header({isMain , currentUser , isLoggedIn , setCurrentUser , setIsLogge
                                 <Link to={'/history'} >VERSION</Link>
                             </li>
                             <li>
-                                <Link to={'/blob/cloud'} >IMAGES</Link>
+                                <Link to={'/blob/cloud'} >MEDIA</Link>
                             </li>
                             <li>
                                 <Link to={'/erd'} >ERD</Link>

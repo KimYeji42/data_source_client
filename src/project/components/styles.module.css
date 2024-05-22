@@ -379,13 +379,12 @@
 
 .dataBaseContentBox {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(31.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
+    grid-template-columns: repeat(auto-fill, minmax(25.99%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
     padding: 10px;
-    gap: 30px; /* 그리드 간격 설정 */
+    gap: 20px; /* 그리드 간격 설정 */
     justify-content: center; /* 수평 가운데 정렬 */
     align-items: center; /* 수직 가운데 정렬 */
     overflow-y : scroll;
-    max-height: 450px;
     width: 100%;
     margin: 5% auto;
 }
@@ -401,14 +400,17 @@
     text-align: center;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     transition: transform 0.1s ease-in-out;
-    width: 400px;
+    border: 3px solid #505050;
+    width: 270px;
+    height: 250px;
+    border-radius: 10px;
     padding: 3% 10px 10px 10px;
 }
 .dataBaseBox:hover{
     transform: translateX(-10px);
 }
 .activeBox{
-    border-left: 5px solid #00A3FF;
+    border: 5px solid #00A3FF;
     padding: 10px;
 }
 .activeBox:hover{
@@ -423,15 +425,16 @@
     text-align: center;
 }
 .dataBaseBoxImage {
-    padding: 3px;
+    padding: 20px;
     width: 6.5rem
 }
 .dataBaseBoxTime{
-    padding: 3px;
+    padding: 2px;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     text-align: center;
     background: #00A3FF;
     color: white;
+    border-radius: 3px;
 }
 
 .inactiveButton {
