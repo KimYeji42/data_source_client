@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import styles from '../../styleModule/Import.module.css'
 import TitleUI from "../../../project/components/uI/TitleUI";
 import * as XLSX from 'xlsx';
-import {json} from "react-router-dom";
+import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function DataImportModalUI({ onClose, tableID }) {
     const [file, setFile] = useState(null);
-
+    const [modalMessage , setModalMessage] = useState("")
+    const [isErrorModalOpen , setIsErrorModalOpen] = useState(false)
+    const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false)
     const handleFileChange = (event) => {
         setFile(event.target.files[0]);
     };
@@ -30,15 +33,21 @@ export default function DataImportModalUI({ onClose, tableID }) {
                     'Content-Type': 'application/json'
                 }
             });
+            const data = await response.json();
 
             if (!response.ok) {
-                throw new Error('File upload failed');
+                setModalMessage(data.message)
+                setIsErrorModalOpen(true)
+                return
             }
 
-            const data = await response.json();
-            console.log('File uploaded successfully:', data);
+            setModalMessage(data.message)
+            setIsSuccessModalOpen(true)
+
         } catch (error) {
-            console.error('Error uploading file:', error);
+            console.log(error)
+            setModalMessage(error.message)
+            setIsErrorModalOpen(true)
         }
     };
 
@@ -94,6 +103,18 @@ export default function DataImportModalUI({ onClose, tableID }) {
                     </div>
                 </form>
             </div>
+            <SuccessModalLayout
+                data={modalMessage}
+                onClose={()=>setIsSuccessModalOpen(false)}
+                onClickEvent={onClose}
+                isOpen={isSuccessModalOpen}
+            />
+
+            <ErrorModal
+                error={modalMessage}
+                onClose={()=>setIsErrorModalOpen(false)}
+                isOpen={isErrorModalOpen}
+            />
         </div>
     );
 }

@@ -3,14 +3,16 @@
     src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
 }
 .tableBox {
-    overflow-y: auto; /* 수직 스크롤 적용 */
-    overflow-x: auto; /* 수평 스크롤 적용 */
     width: 90%;
-    height: 500px;
+    height: 100%;
     margin: 0 auto;
     border-bottom: 3px solid #a0a0a0;
 }
-
+.dataContainer{
+    overflow-y: auto; /* 수직 스크롤 적용 */
+    overflow-x: auto; /* 수평 스크롤 적용 */
+    height: 300px;
+}
 .table {
     margin-top: 1%;
     float: left;

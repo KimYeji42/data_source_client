@@ -120,25 +120,26 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                         <Button_UI image={Button[5].image} onClick={handleImportCsvData}/>
                     </div>
                 </ul>
-                <table className={styles.table}>
-                    <thead>
-                    <tr>
-                        {[...columns.keys()].map((columnName) => (
-                            <th key={columnName}>
-                                <div className={styles.columnContainer}>
-                                    <div style={{ display: 'flex', paddingLeft: '10px' }}>
-                                        {columnName} {/* 열의 이름 */}
-                                        <div className={styles.imageContainer}>
-                                            <Image src={up} />
-                                            <Image src={down} />
+                <div className={styles.dataContainer}>
+                    <table className={styles.table}>
+                        <thead>
+                        <tr>
+                            {[...columns.keys()].map((columnName) => (
+                                <th key={columnName}>
+                                    <div className={styles.columnContainer}>
+                                        <div style={{ display: 'flex', paddingLeft: '10px' }}>
+                                            {columnName} {/* 열의 이름 */}
+                                            <div className={styles.imageContainer}>
+                                                <Image src={up} />
+                                                <Image src={down} />
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </th>
-                        ))}
-                    </tr>
-                    </thead>
-                    <tbody>
+                                </th>
+                            ))}
+                        </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             {[...columns.keys()].map((columnName, index) => (
                                 <td key={index}>
@@ -160,8 +161,10 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                             ))}
                         </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
+
 
             </div>
             <

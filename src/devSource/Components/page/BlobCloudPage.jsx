@@ -13,13 +13,16 @@ export default function BlobCloudPage() {
     const [url , setUrl] = useState()
     const [isErrorModal , setIsErrorModal] = useState(false)
     const [errorMessage , setErrorMessage] = useState("")
+
     const fetchProfileData = async () => {
         const token = localStorage.getItem("token")
+
         if (token == null){
             setErrorMessage("로그인을 진행 해주세요.")
             setIsErrorModal(true)
             return
         }
+
         const apiUrl = process.env.REACT_APP_API_URL;
         try {
             const response = await fetch(`${apiUrl}/api/profile/current`, {
@@ -51,6 +54,8 @@ export default function BlobCloudPage() {
             return data;
         } catch (error) {
             console.error("데이터를 불러오는 중에 오류가 발생했습니다:", error);
+            setIsErrorModal(true)
+            setErrorMessage(error)
             throw error;
         }
     };
@@ -90,9 +95,12 @@ export default function BlobCloudPage() {
             .then((data) => {
                 console.log("파일 업로드 성공:", data);
                 setImages((prevImages) => [...prevImages, data]); // 이전 데이터를 유지한 채로 새로운 데이터 추가
+
             })
             .catch((error) => {
                 console.error("파일 업로드 실패:", error);
+                setIsErrorModal(true)
+                setErrorMessage(error.message)
             });
     };
 
@@ -121,6 +129,7 @@ export default function BlobCloudPage() {
             {/* 이미지 목록을 전달하여 이미지 레이아웃 컴포넌트 호출 */}
             {images.length > 0 && <BlobCloudImageLayout images={images} onDelete={handleDelete} setUrl={setUrl}/>}
             <BlobCloudURLLayout url={url}/>
+
             <ErrorModal
                 isOpen={isErrorModal}
                 error={errorMessage}

@@ -58,6 +58,7 @@ const NetworkGraph = ({ selectedProjectId }) => {
                 id: diagram.id,
                 label: diagram.label
             }));
+
             const edges = responseData.flatMap(diagram =>
                 Array.isArray(diagram.edges) ? // diagram.edges가 배열인지 확인
                     diagram.edges.map(edge => ({
