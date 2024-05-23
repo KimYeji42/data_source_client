@@ -91,17 +91,25 @@ export default function BlobCloudPage() {
             method: "POST",
             body: formData,
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("파일 업로드 성공:", data);
-                setImages((prevImages) => [...prevImages, data]); // 이전 데이터를 유지한 채로 새로운 데이터 추가
-
+            .then(response => {
+                if (!response.ok) {
+                    // 응답이 성공하지 않으면 에러를 발생시킴
+                    return response.json().then(errorResponse => {
+                        throw new Error(errorResponse.message || "파일 업로드에 실패하였습니다.");
+                    });
+                }
+                return response.json();
             })
-            .catch((error) => {
+            .then(data => {
+                console.log("파일 업로드 성공:", data);
+                setImages(prevImages => [...prevImages, data]); // 이전 데이터를 유지한 채로 새로운 데이터 추가
+            })
+            .catch(error => {
                 console.error("파일 업로드 실패:", error);
-                setIsErrorModal(true)
-                setErrorMessage(error.message)
+                setIsErrorModal(true);
+                setErrorMessage(error.message);
             });
+
     };
 
 
