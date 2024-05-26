@@ -1,9 +1,10 @@
 import styles from "../../styleModule/styles.module.css";
 import ERDSidebarUi from "../ui/ERDSidebarUi";
 import {useState} from "react";
+import ERDiagram from "../ui/ERDiagram";
 import NetworkGraph from "../ui/NetworkGraph";
 
-export default function ERDSidebarLayout(){
+export default function ERDiagramLayout(){
     const [selectProjectId, setSelectProjectId] = useState(null);
 
     const selectedProjectId = (projectId) => {
@@ -14,7 +15,8 @@ export default function ERDSidebarLayout(){
     return (
         <div className={styles.ERDSidebarLayout}>
             <ERDSidebarUi onSelect={selectedProjectId}/>
-            <NetworkGraph selectedProjectId={selectProjectId}/>
+            <ERDiagram />
+            {/*<NetworkGraph selectedProjectId={selectProjectId}/>*/}
         </div>
     )
 }
