@@ -1,14 +1,8 @@
 import MainBottomLayout from "../layout/MainBottomLayout";
 import MainTopLayout from "../layout/MainTopLayout";
 import styles from "../styleModule/mainStyles.module.css";
-import {useEffect} from "react";
 
-export default function MainPage({onIsMain}){
-
-    useEffect(() => {
-        onIsMain()
-    }, []);
-
+export default function MainPage(){
     return(
         <div className={styles.mainPage}>
             <div className={styles.mainPageBackground}>

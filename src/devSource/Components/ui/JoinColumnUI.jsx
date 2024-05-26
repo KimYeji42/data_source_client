@@ -16,19 +16,21 @@ export default function JoinColumnUI({ row, index, handleSelectChange }) {
     };
 
     return (
-        <div>
+        <div className={styles.joinRow}>
             <input value={joinTable?.tableName || ''} onChange={(e) => handleSelectChange(e, index)} readOnly />
-            <button onClick={renderSearch} className={styles.searchButton}>
-                검색 ▼
-            </button>
 
-            <div className={styles.searchBox}>
-                {showSearch && (
-                    <TableSearchLayout
-                        handleJoinTableSelect={handleJoinTableSelect}
-                        setShowSearch={setShowSearch}
-                    />
-                )}
+            <div className={styles.searchButtonBox}>
+                <button onClick={renderSearch} className={styles.searchButton}>
+                    검색 ▼
+                    <div className={styles.searchBox}>
+                        {showSearch && (
+                            <TableSearchLayout
+                                handleJoinTableSelect={handleJoinTableSelect}
+                                setShowSearch={setShowSearch}
+                            />
+                        )}
+                    </div>
+                </button>
             </div>
         </div>
     );

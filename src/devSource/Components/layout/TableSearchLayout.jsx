@@ -38,7 +38,7 @@ export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch
     };
 
     return (
-        <div>
+        <>
             <div className={styles.searchContainer}>
                 <div className={styles.searchTitle}>
                     조인할 테이블 PK 검색
@@ -56,7 +56,7 @@ export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch
                         {joinTableData && joinTableData.map((item, index) => (
                             <div key={item.id} onClick={() => handleRowClick(item)}>
                                 <div>
-                                    <p className={styles.joinData}>{item.tableName}/{item.pkColumnName}/{item.joinColumnDataType}</p>
+                                    <p className={styles.joinData}>{item.tableName} / {item.pkColumnName} / {item.joinColumnDataType}</p>
                                 </div>
                                 {index !== joinTableData.length - 1 && <hr />}
                             </div>
@@ -65,7 +65,7 @@ export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch
 
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
