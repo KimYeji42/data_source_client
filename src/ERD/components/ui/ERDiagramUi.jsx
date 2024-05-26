@@ -2,12 +2,12 @@ import React, {useEffect, useRef, useState} from 'react';
 import styles from "../../styleModule/styles.module.css";
 import * as go from 'gojs';
 
-const ERDiagram = ({jsonData}) => {
+const ERDiagramUi = ({ jsonData }) => {
     const diagramRef = useRef(null);
 
     useEffect(() => {
-
         const $ = go.GraphObject.make;
+
         const initDiagram = () => {
             const diagram = $(go.Diagram, diagramRef.current, {
                 initialAutoScale: go.Diagram.Uniform,
@@ -79,7 +79,7 @@ const ERDiagram = ({jsonData}) => {
                                         margin: new go.Margin(5, 10, 5, 10),
                                         font: '10pt KoPubWorld Dotum Bold',
                                         stroke: '#595959',
-                                        width: 100,
+                                        width: 120,
                                         alignment: go.Spot.Left
                                     },
                                     new go.Binding('text', 'name')
@@ -104,7 +104,7 @@ const ERDiagram = ({jsonData}) => {
                                         width: 70,
                                         alignment: go.Spot.Left
                                     },
-                                    new go.Binding('text', 'nullable', (nullable) => (nullable ? 'NULL' : 'NOT NULL'))
+                                    new go.Binding('text', 'nullLabel', (nullable) => (nullable ? 'NULL' : 'NOT NULL'))
                                 )
                             )
                         }
@@ -118,40 +118,6 @@ const ERDiagram = ({jsonData}) => {
                 $(go.Shape),
             );
 
-            const nodeDataArray = [
-                {
-                    key: 1,
-                    name: '테이블1',
-                    columns: [
-                        { name: 'id', type: 'int', keyName: 'PK', nullable: false },
-                        { name: 'name', type: 'varchar', keyName: '', nullable: true }
-                    ],
-                },
-                {
-                    key: 2,
-                    name: '테이블2',
-                    columns: [
-                        { name: 'id', type: 'int', keyName: 'PK', nullable: false },
-                        { name: 'description', type: 'text', keyName: '', nullable: true },
-                        { name: 'table1_id', type: 'int', keyName: 'FK', nullable: false }
-                    ],
-                },
-                {
-                    key: 3,
-                    name: '테이블3',
-                    columns: [
-                        { name: 'id', type: 'int', keyName: 'PK', nullable: false },
-                        { name: 'description', type: 'text', keyName: '', nullable: true },
-                        { name: 'table1_id', type: 'int', keyName: 'FK', nullable: false }
-                    ],
-                }
-            ];
-
-            const linkDataArray = [
-                { from: 1, to: 2 },
-                // { from: 2, to: 3 },
-            ];
-
             diagram.model = new go.GraphLinksModel(jsonData.node, jsonData.linkData);
 
             return diagram;
@@ -160,13 +126,13 @@ const ERDiagram = ({jsonData}) => {
         let diagramInstance = initDiagram();
 
         return () => {
-            if (diagramInstance) {
-                diagramInstance.div = null; // Clean up diagram instance
+            if (diagramInstance) { // 기존 다이어그램 지우기
+                diagramInstance.div = null;
             }
         };
-    }, []);
+    }, [jsonData]);
 
     return <div ref={diagramRef} className={styles.ERDiagram} />;
 };
 
-export default ERDiagram;
+export default ERDiagramUi;

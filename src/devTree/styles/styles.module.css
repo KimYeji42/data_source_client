@@ -7,9 +7,6 @@
     src: url("../../default/font/GmarketSansTTFBold.ttf");
 }
 
-html{font-size: 20px;}
-body{font-size: 1rem;}
-
 /*테이블 변경사항 조회*/
 .changeCommitBox {
     font-family: "KoPubWorld Dotum Bold", serif;
@@ -624,14 +621,4 @@ body{font-size: 1rem;}
 }
 .scrollbar::-webkit-scrollbar-track {
     background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
-}
-
-@media screen and (max-width:1840px) {
-    html{font-size: 19px;}
-    body{font-size: 1rem;}
-}
-
-@media screen and (max-width:1340px) {
-    html{font-size: 15px;}
-    body{font-size: 1rem;}
 }
