@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styles from "../../styleModule/styles.module.css";
 import * as go from 'gojs';
 
-const ERDiagram = () => {
+const ERDiagram = ({jsonData}) => {
     const diagramRef = useRef(null);
 
     useEffect(() => {
-        const $ = go.GraphObject.make;
 
+        const $ = go.GraphObject.make;
         const initDiagram = () => {
             const diagram = $(go.Diagram, diagramRef.current, {
                 initialAutoScale: go.Diagram.Uniform,
@@ -152,7 +152,7 @@ const ERDiagram = () => {
                 // { from: 2, to: 3 },
             ];
 
-            diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+            diagram.model = new go.GraphLinksModel(jsonData.node, jsonData.linkData);
 
             return diagram;
         };

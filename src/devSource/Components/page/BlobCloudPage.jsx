@@ -109,7 +109,6 @@ export default function BlobCloudPage() {
                 setIsErrorModal(true);
                 setErrorMessage(error.message);
             });
-
     };
 
 

@@ -73,7 +73,6 @@ export default function NewDataUI({ column, createData, setCreateData, newDataCo
 
     return (
         <tr>
-
             {type === 'JOIN_Column' ? (
                 newDataValues.map((value, index) => (
                     <td key={index} className={styles.newDataClass}>
