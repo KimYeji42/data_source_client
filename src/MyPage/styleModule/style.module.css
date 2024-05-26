@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../default/font/GmarketSansTTFBold.ttf");
+}
+
+html {
+    font-size: 20px;
+}
+body {
+    font-size: 1rem;
+}
+
+/* 페이지 */
+.mypage {
+    background-color: #FF7777;
+    width: 80%;
+    height: 82vh;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    column-gap: 3rem;
+}
+
+/* 프로필칸 레이아웃 */
+.profilelatout {
+    background-color: #FFF;
+    border: #505050 1px solid;
+    display: grid;
+    column-gap: 10px;
+    grid-template-rows: repeat(6, minmax(2rem, auto));
+}
+
+/* 콘텐츠칸 레이아웃 */
+.contentslayout {
+    background-color: #8ae88a;
+    border: #505050 1px solid;
+}
+
+/* 프로필 사진 */
+.ProfilePhotoTool {
+    margin: 1rem auto;
+    width: 50%;
+    height: 8rem;
+}
+.ProfilePhoto {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+/* 유저 이름 --님 */
+.UserNameTool {
+    /* background-color: #8ae88a; */
+}
+.UserName {
+    margin: 0 auto;
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+}
+/* 유저 정보 (이름, 전화번호) */
+.UserInforTool {
+    width: 80%;
+    margin: 1rem auto;
+}
+.UserInputBox {
+    width: 100%;
+    margin: 0 auto;
+    outline: none;
+}
+/* 콘텐츠 상단 메뉴바 */
+.MenuBar {
+    width: 100%;
+    height: 3.7rem;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: #505050 1px solid;
+    position: relative;
+}
+.MenuList {
+    display: contents;
+}
+
+.ContentMenuItem {
+    list-style: none;
+    width: 100%; /* 각 메뉴 항목의 너비를 100%로 설정 */
+    text-align: center;
+}
+/*메뉴 탭들*/
+.ContentMenuItem a {
+    display: block;
+    height: 3.7rem;
+    color: #666;
+    font-family: 'hh_r';
+    font-size: 1rem;
+    padding-top: 1rem;
+    text-decoration: none;
+    position: relative;
+}
+.ContentMenuItem a.on, .ContentMenuItem a:hover {
+    color: #007fa8;
+}
+/*하단 슬라이스 메뉴바*/
+.Line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #007fa8;
+    transition: all 0.5s ease-out;
+    width: calc(100% / 6); /* 너비를 1/6로 설정하여 절반으로 줄임 */
+    margin: 0  0 0 3.5rem;
+}
+
+

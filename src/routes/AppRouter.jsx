@@ -20,7 +20,7 @@ import BlobCloudPage from "../devSource/Components/page/BlobCloudPage";
 import Header from "../Layout/Header/Header";
 import LoginPage from "../authentication/components/page/LoginPage";
 import ERDPage from "../ERD/components/page/ERDPage";
-
+import MyPage from "../MyPage/components/page/MyPage";
 
 export default function AppRouter() {
     const [isMain, setIsMain] = useState(false);
@@ -91,6 +91,7 @@ export default function AppRouter() {
                     <Route path='/erd' element={<ERDPage/>}/>
                     <Route path='/auth/join' element={<JoinPage/>}/>
                     <Route path='/auth/login' element={<LoginPage/>}/>
+                    <Route path='/mypage' element={<MyPage/>}/>
 
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
