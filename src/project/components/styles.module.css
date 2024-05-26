@@ -380,7 +380,7 @@
 
 .dataBaseContentBox {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(31.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
+    grid-template-columns: repeat(auto-fill, minmax(21.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
     padding: 10px;
     gap: 20px; /* 그리드 간격 설정 */
     justify-content: center; /* 수평 가운데 정렬 */
@@ -407,6 +407,7 @@
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     transition: transform 0.1s ease-in-out;
 }
+
 .dataBaseBox:hover{
     transform: translateX(-10px);
 }
@@ -420,12 +421,12 @@
 .dataBaseBoxTitle{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     width: 100%;
-    padding: 1rem 0 .3rem 0;
+    padding: 0.3rem 0 .3rem 0;
     text-align: center;
 }
 .dataBaseBoxImage {
     padding: 20px;
-    width: 6.5rem
+    width: 6.5rem;
 }
 .dataBaseBoxTime{
     padding: 5px;
