@@ -1,6 +1,6 @@
 import styles from "../../styleModule/styles.module.css";
 import {useEffect, useState} from "react";
-import ERDiagram from "../ui/ERDiagram";
+import ERDiagramUi from "../ui/ERDiagramUi";
 import ERDSidebarUi from "../ui/ERDSidebarUi";
 
 export default function ERDiagramLayout(){
@@ -37,7 +37,7 @@ export default function ERDiagramLayout(){
     return (
         <div className={styles.ERDSidebarLayout}>
             <ERDSidebarUi onSelect={selectedProjectId}/>
-            {erdJsonData && <ERDiagram jsonData={erdJsonData} />}
+            {erdJsonData && <ERDiagramUi jsonData={erdJsonData} />}
         </div>
     )
 }

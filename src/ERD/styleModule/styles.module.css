@@ -18,7 +18,7 @@ body {
     width: 260px;
     /*height: 100%;*/
     padding: 20px 10px 10px 10px;
-    height: 90vh;
+    height: 80vh;
 
 }
 
@@ -149,6 +149,6 @@ body {
 /*다이어그램 스타일*/
 .ERDiagram {
     width: 100%;
-    height: 90vh;
+    height: 80vh;
     background: #eff2f3;
 }
