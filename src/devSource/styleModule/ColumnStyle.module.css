@@ -22,10 +22,14 @@
 
 }
 .table thead{
+    width: 220px;
     background-color: #00A3FF;
     border: 1px solid #ffffff;
     color: white;
     text-align: center;
+    word-wrap: break-word; /* 긴 단어가 있을 경우 줄 바꿈 */
+    word-break: break-all; /* 긴 단어가 있을 경우 줄 바꿈 */
+    white-space: normal; /* 기본 줄바꿈을 활성화 */
 }
 .tableContainer{
     width: 90%;
@@ -37,9 +41,12 @@
 .table td
 {
     text-align: center;
-    width: 230px;
+    width: 220px;
     height: 60px;
     padding: 0;
+    word-wrap: break-word; /* 긴 단어가 있을 경우 줄 바꿈 */
+    word-break: break-all; /* 긴 단어가 있을 경우 줄 바꿈 */
+    white-space: normal; /* 기본 줄바꿈을 활성화 */
 }
 
 .table tr:nth-child(even){
