@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+@font-face {
+    font-family: "GmarketSansTTFBold";
+    src: url("../../../default/font/GmarketSansTTFBold.ttf");
+}
+
+html {font-size: 20px;}
+body {font-size: 1rem;}
+
+/* 페이지 레이아웃 */
+.mypage {
+    width: 80%;
+    height: 82vh;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    column-gap: 3rem;
+}
+
+/* 프로필칸 레이아웃 */
+.profilelatout {
+    background-color: #FFF;
+    border: #D0D0D0 1px solid;
+    display: grid;
+    column-gap: 10px;
+    grid-template-rows: repeat(6, minmax(2rem, auto));
+}
+
+/* 콘텐츠칸 레이아웃 */
+.contentslayout {
+    background-color: #fff;
+    border: #D0D0D0 1px solid;
+}
+
+/* 프로필 사진 */
+.ProfilePhotoTool {
+    margin: 1rem auto;
+    width: 50%;
+    height: 8rem;
+}
+.ProfilePhoto {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* 유저 이름 --님 */
+.UserName {
+    margin: 0 auto;
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+}
+
+/* 유저 정보 (이름, 전화번호) */
+.UserInforTool {
+    width: 80%;
+    margin: 1rem auto;
+
+}
+.UserInputBox {
+    width: 100%;
+    margin: 0 auto;
+    outline: none;
+    border: #D0D0D0 1px solid;
+
+}
+
+/* 콘텐츠 상단 메뉴바 */
+.MenuBar {
+    width: 100%;
+    height: 3.7rem;
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: #D0D0D0 1px solid;
+    position: relative;
+}
+.MenuList {
+    display: contents;
+}
+
+.ContentMenuItem {
+    list-style: none;
+    width: 100%; /* 각 메뉴 항목의 너비를 100%로 설정 */
+    text-align: center;
+}
+/* 메뉴 탭들 */
+.ContentMenuItem a {
+    display: block;
+    height: 3.7rem;
+    color: #666;
+    font-family: 'hh_r';
+    font-size: 1rem;
+    padding-top: 1rem;
+    text-decoration: none;
+    position: relative;
+}
+.ContentMenuItem a.on, .ContentMenuItem a:hover {
+    color: #00A3FF;
+}
+/*하단 슬라이스 메뉴바*/
+.Line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #00A3FF;
+    transition: all 0.5s ease-out;
+    width: calc(100% / 6); /* 너비를 1/6로 설정하여 절반으로 줄임 */
+}
+
+/* 컨텐츠 박스 */
+.ContextBox {
+    width: 100%;
+    height: 87.6%;
+    padding: 2rem 0 2rem 0;
+}
+.liStyle {
+    list-style: none;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+/*프로젝트 아이콘 */
+.ListItemIcon {
+    background-image: url('../../image/projectIcon.png');
+    background-size: 3rem 3rem; /* 이미지 크기 조절 */
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem; /* 텍스트와의 간격 조절 */
+}
+/*테이블 아이콘*/
+.TableIcon {
+    background-image: url('../../image/database-table-icon.png');
+    background-size: 3rem 3rem; /* 이미지 크기 조절 */
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem; /* 텍스트와의 간격 조절 */
+}
+
