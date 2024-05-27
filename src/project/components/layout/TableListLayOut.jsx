@@ -1,5 +1,4 @@
 import styles from "../styles.module.css";
-import LinkUI from "../uI/LinkUI";
 import DataBaseBoxLayOut from "./DataBaseBoxLayOut";
 import TitleUI from "../uI/TitleUI";
 import {Link} from "react-router-dom";

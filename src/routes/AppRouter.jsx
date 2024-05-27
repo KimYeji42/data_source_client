@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, Navigate, useLocation} from 'react-router-dom'
 import {useState, useEffect} from "react";
 import MainPage from '../authentication/components/page/MainPage'
 import CreateProjectPage from '../project/components/page/CreateProjectPage'
@@ -23,14 +23,13 @@ import ERDPage from "../ERD/components/page/ERDPage";
 import MyPage from "../authentication/components/page/MyPage";
 
 export default function AppRouter() {
-    const [isMain, setIsMain] = useState(false);
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
 
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
         setCurrentUser(username)
-        console.log(currentUser)
+        // console.log(currentUser)
     }
     const getTokenUser = () =>{
         const token = localStorage.getItem("token")
@@ -52,18 +51,12 @@ export default function AppRouter() {
         getTokenUser()
     }, []);
 
-    const onIsMain = () => {
-        setIsMain(true)
-    }
-
     return (
         <div className="AppRouter">
             <BrowserRouter>
-                <Header isMain={isMain}
+                <Header
                         currentUser={currentUser}
                         isLoggedIn={isLoggedIn}
-                        setIsLoggedIn={setIsLoggedIn}
-                        setCurrentUser={setCurrentUser}
                         logoutHandler={logoutHandler}
                 />  {/*/Router 사용응 위해 Header가지고오기*/}
 
@@ -71,7 +64,7 @@ export default function AppRouter() {
                     {/* 루트 경로에 대한 리디렉션 */}
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
-                    <Route path='/main' element={<MainPage onIsMain={onIsMain}/>} />
+                    <Route path='/main' element={<MainPage />} />
                     <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />

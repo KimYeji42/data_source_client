@@ -25,8 +25,7 @@ export default function BoxUI({ header, date, comment, imageSrc, item, setActive
                             item.isFavorite === 1 ?
                                 <Image height={20} width={20} src={"/image/starOn.png"} onClick={() => starBtnClickHandler(item)}/> :
                                 <Image height={20} width={20} src={"/image/star.png"} onClick={() => starBtnClickHandler(item)}/>
-                        }
-
+                        } &nbsp;
                         <Image height={20} width={20} src={"/image/trash.png"} onClick={() => deleteBtnClickHandler(item)}/>
                     </div>
                 </div>
