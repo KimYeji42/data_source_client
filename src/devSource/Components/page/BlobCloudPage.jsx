@@ -121,7 +121,7 @@ export default function BlobCloudPage() {
         <div>
             <div className={styles.centerContainer}>
                 <div className={stylesRest.toggleContainer}>
-                    <label htmlFor="fileUpload">내 파일 선택하기</label>
+                    <label htmlFor="fileUpload" className={styles.fileUpload}>내 파일 선택하기</label>
                     <input
                         type="file"
                         id="fileUpload"

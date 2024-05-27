@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "GmarketSansTTFBold";
-    src: url("../../default/font/GmarketSansTTFBold.ttf");
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
 }
 @font-face {
     font-family: "GmarketSansTTFBold";
@@ -51,6 +51,11 @@ body{font-size: 1rem;}
     justify-content: center;
     display: flex;
     margin-right: 1rem;
+}
+
+.currentUserText {
+    color: #2f2f2f;
+    text-decoration: none;
 }
 
 .loginLogout > a {

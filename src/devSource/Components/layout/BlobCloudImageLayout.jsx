@@ -33,7 +33,7 @@ export default function BlobCloudImageLayout({ images, onDelete, setUrl }) {
 
     return (
         <div>
-            <div className={styles.imageBoxList}>
+            <div className={`${styles.imageBoxList} ${styles.scrollbar}`}>
                 {images.map((item, index) => (
                     <div key={index} className={styles.imageBox} onClick={() => handleSetUrl(item)}>
                         {item.url.endsWith('.mp4') ? (

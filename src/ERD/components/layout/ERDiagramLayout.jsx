@@ -37,6 +37,8 @@ export default function ERDiagramLayout(){
     return (
         <div className={styles.ERDSidebarLayout}>
             <ERDSidebarUi onSelect={selectedProjectId}/>
+            <div className={styles.erdBox} />
+            <div className={styles.erdProjectViewBox} />
             {erdJsonData && <ERDiagramUi jsonData={erdJsonData} />}
         </div>
     )

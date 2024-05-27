@@ -3,6 +3,9 @@
     margin: 8% auto 0;
     font-family: "KoPubWorld Dotum Bold", serif;
 }
+.fileUpload {
+    cursor: pointer;
+}
 /* ImageBoxList.module.css */
 .imageBoxList {
     font-family: "KoPubWorld Dotum Bold", serif;
@@ -68,3 +71,14 @@
     display: none;
 }
 
+/* 스크롤바의 폭 너비 */
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(192, 192, 192); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.scrollbar::-webkit-scrollbar-track {
+    background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
+}

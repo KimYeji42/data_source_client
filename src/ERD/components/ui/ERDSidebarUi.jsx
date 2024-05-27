@@ -57,18 +57,17 @@ export default function ERDSidebarUi({ onSelect }) {
 
     return(
         <div className={styles.erdSidebarUi}>
-            <h3 className={styles.erdSidebarTitle}>나의 프로젝트</h3>
-            <div className={styles.projectSearchbarBox}>
-                <input
-                    type="text"
-                    placeholder={"내 프로젝트 검색하기"}
-                    className={styles.projectSearchbar}
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-                <img src='../../image/Search.png'/>
-            </div>
-
+            <p className={styles.erdSidebarTitle}>My Projects</p>
+            {/*<div className={styles.projectSearchbarBox}>*/}
+            {/*    <input*/}
+            {/*        type="text"*/}
+            {/*        placeholder={"내 프로젝트 검색하기"}*/}
+            {/*        className={styles.projectSearchbar}*/}
+            {/*        value={searchTerm}*/}
+            {/*        onChange={(e) => setSearchTerm(e.target.value)}*/}
+            {/*    />*/}
+            {/*    <img src='../../image/Search.png'/>*/}
+            {/*</div>*/}
             <div>
                 <ul className={styles.selectedProjectUl}>
                     {filteredProjects.map((project, index) => (
