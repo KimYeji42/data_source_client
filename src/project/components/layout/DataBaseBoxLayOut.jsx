@@ -161,7 +161,7 @@ export default function DataBaseBoxLayOut() {
                 {dataBaseTables.map((item , index) => (
                     <BoxUI
                         header={item.name}
-                        imageSrc={"../image/table_icon.png"}
+                        imageSrc={"../image/DB_icon.png"}
                         comment={item.comment}
                         item = {item}
                         date={extractDate(item.updateTime)}
