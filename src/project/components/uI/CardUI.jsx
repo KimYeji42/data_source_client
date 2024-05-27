@@ -22,9 +22,9 @@ export default function CardUI({ name , comment , projectID ,dataBaseName , item
         <div className={styles.cardBox}>
             <div className={styles.cardLogo}>
                 <div className={styles.projectInfoContainer}>
-                    <h3 className={styles.cardTitle}>{name}</h3>
-                    <p className={styles.cardComment}>{comment}</p>
-                    <p className={styles.creatDBName}><Image src={"/image/dataBase.png"} width={'30px'}/> {dataBaseName}</p>
+                    <h3 className={styles.cardTitle}>[ {name} ]</h3>
+                    <p className={styles.cardComment}><small className={styles.strong}>Comment:</small> {comment}</p>
+                    <p className={styles.creatDBName}><small className={styles.strong}>DB Name:</small> {dataBaseName}</p>
                 </div>
                 <div className={styles.cardIcon}>
                     <div>

@@ -57,7 +57,7 @@ export default function ERDSidebarUi({ onSelect }) {
 
     return(
         <div className={styles.erdSidebarUi}>
-            <p className={styles.erdSidebarTitle}>My Projects</p>
+            <p className={styles.erdSidebarTitle}>프로젝트 목록</p>
             {/*<div className={styles.projectSearchbarBox}>*/}
             {/*    <input*/}
             {/*        type="text"*/}

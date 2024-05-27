@@ -213,7 +213,8 @@
 }
 .cardComment{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
-    margin: 10px 50px 10px 30px;
+    margin: 20px 50px 10px 30px;
+
 }
 .creatDBName{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
@@ -258,8 +259,13 @@
     display: flex;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     padding: 5% 1% 5% 1%;
-
+    width: 80%;
+    margin: 0 auto;
 }
+.strong{
+    color: #00a3ff;
+}
+
 .modalOverlay {
     position: fixed;
     top: 0;
