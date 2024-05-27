@@ -1,4 +1,4 @@
-import styles from "../styleModule/MypageStyle.module.css";
+import styles from "../../styleModule/MypageStyle.module.css";
 import profileImg from '../../image/pngwing.com.png';
 
 export default function ProfilePhoto(){

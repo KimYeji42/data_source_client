@@ -20,7 +20,7 @@ import BlobCloudPage from "../devSource/Components/page/BlobCloudPage";
 import Header from "../Layout/Header/Header";
 import LoginPage from "../authentication/components/page/LoginPage";
 import ERDPage from "../ERD/components/page/ERDPage";
-import MyPage from "../authentication/components/page/MyPage";
+import MyPage from "../MyPage/components/page/MyPage";
 
 export default function AppRouter() {
     const [currentUser, setCurrentUser] = useState("")

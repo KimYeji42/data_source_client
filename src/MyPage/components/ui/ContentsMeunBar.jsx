@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../styleModule/MypageStyle.module.css";
+import styles from "../../styleModule/MypageStyle.module.css";
 import ContentMenu from "./ContentMenu";
 import { motion } from "framer-motion";
 

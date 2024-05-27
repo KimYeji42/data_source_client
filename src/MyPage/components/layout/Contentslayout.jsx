@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import styles from "../styleModule/MypageStyle.module.css";
-import ProjectList from "../uI/ProjectList";
-import ProjectBookMark from "../uI/ProjectBookMark";
-import TableBookMark from "../uI/TableBookMark";
-import ContentsMenuBar from "../uI/ContentsMeunBar";
+import styles from "../../styleModule/MypageStyle.module.css";
+import ProjectList from "../ui/ProjectList";
+import ProjectBookMark from "../ui/ProjectBookMark";
+import TableBookMark from "../ui/TableBookMark";
+import ContentsMenuBar from "../ui/ContentsMeunBar";
 
 export default function ContentsLayout() {
     const [activeIndex, setActiveIndex] = useState(0); // 활성화된 탭을 추적하는 상태
