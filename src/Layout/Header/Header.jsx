@@ -65,7 +65,7 @@ function Header({currentUser , isLoggedIn , logoutHandler}) {
                     </div>
 
                     <div className={styles.info}>
-                        {currentUser && <div>{currentUser} 님</div>}
+                        {currentUser && <Link to={'/mypage'} className={styles.currentUserText}>{currentUser} 님</Link>}
                         <div className={styles.loginLogout}>{isLoggedIn ?
                             <Link to={'/'} onClick={logoutHandler}>로그아웃</Link> :
                             <Link to={'/auth/login'}>로그인</Link>}

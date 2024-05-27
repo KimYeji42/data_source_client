@@ -53,6 +53,11 @@ body{font-size: 1rem;}
     margin-right: 1rem;
 }
 
+.currentUserText {
+    color: #2f2f2f;
+    text-decoration: none;
+}
+
 .loginLogout > a {
     text-decoration: none;
     font-family: "GmarketSansTTFBold", serif;
