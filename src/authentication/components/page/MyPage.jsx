@@ -1,4 +1,4 @@
-import styles from "../../styleModule/style.module.css";
+import styles from "../styleModule/MypageStyle.module.css";
 import Profilelayout from "../layout/Profilelayout";
 import Contentslayout from "../layout/Contentslayout";
 

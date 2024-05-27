@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import styles from "../../styleModule/style.module.css";
+import React from "react";
+import styles from "../styleModule/MypageStyle.module.css";
 import ContentMenu from "./ContentMenu";
 import { motion } from "framer-motion";
 
-
-export default function ContentsMenuBar() {
-    const [activeIndex, setActiveIndex] = useState(0);
+export default function ContentsMenuBar({ activeIndex, setActiveIndex }) {
     const menuItems = ["내 프로젝트 목록", "내 프로젝트 즐겨찾기", "테이블 즐겨찾기"];
 
     const handleClick = (index) => {
@@ -28,11 +26,10 @@ export default function ContentsMenuBar() {
                 className={styles.Line}
                 animate={{
                     left: `${(activeIndex * 100) / menuItems.length}%`,
-                    width: `${50 / menuItems.length}%` // 너비를 절반으로 설정
+                    width: `${100 / menuItems.length}%` // 각 메뉴 항목 너비를 설정
                 }}
                 transition={{ duration: 0.5 }}
             />
         </div>
     );
-
 }

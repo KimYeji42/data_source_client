@@ -1,4 +1,4 @@
-import styles from "../../styleModule/style.module.css";
+import styles from "../styleModule/MypageStyle.module.css";
 
 export default function UserName({Name}){
     return (

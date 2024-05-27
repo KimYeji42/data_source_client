@@ -1,7 +1,7 @@
-import styles from "../../styleModule/style.module.css";
-import ProfilePhoto from "../ui/ProfilePhoto";
-import UserName from "../ui/UserName";
-import UserInformation from "../ui/UserInformation"
+import styles from "../styleModule/MypageStyle.module.css";
+import ProfilePhoto from "../uI/ProfilePhoto";
+import UserName from "../uI/UserName";
+import UserInformation from "../uI/UserInformation"
 
 export default function ProfileLayout(){
     return(
