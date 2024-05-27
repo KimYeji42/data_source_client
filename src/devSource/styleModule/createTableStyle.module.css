@@ -36,7 +36,7 @@
 
 .tableName{
     height: 43%;
-    font-size: 22px;
+    font-size: 1.4rem;
     width: 100%;
     margin-left: 2px;
 }
@@ -90,7 +90,7 @@
 }
 
 .explanationBox{
-    font-size: 22px;
+    font-size: 1.4rem;
     display: flex;
     width: 200px;
     margin-left: 2px;
@@ -131,6 +131,7 @@
 }
 
 .inputColumnName{
+    width: 100%;
     border:none;
 }
 
@@ -241,17 +242,34 @@
     height: auto;
     margin-left: auto;
     position: absolute;
-    bottom: 300px;
-    right: 130px;
+    bottom: 1.7rem;
+    right: 0px;
+}
+
+.joinRow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.joinRow > input {
+    width: 65%;
+}
+.searchButtonBox {
+    width: 25%;
 }
 
 .searchButton{
+    position: relative;
+    width: 100%;
+    font-size: 1rem;
     border-radius: 5px;
     background-color: #F3F3F3;
     border-color: #B5B5B5;
     color: #707070;
     float: right;
-    margin-right: 10px;
 }
 .buttonBig{
     text-align: right;

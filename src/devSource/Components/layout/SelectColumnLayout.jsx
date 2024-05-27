@@ -96,8 +96,8 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
             <table className={styles.selectHeaderTable}>
                 <thead>
                 <tr>
-                    <th>컬럼이름</th>
-                    <th>데이터타입</th>
+                    <th>컬럼 이름</th>
+                    <th>데이터 타입</th>
                     <th>PK</th>
                     <th>FK</th>
                     <th>UK</th>
@@ -108,7 +108,8 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                 <tbody id="tableBody">
                 {rows.map((row, index) => (
                     <tr key={index}>
-                        <td><input type="text" name="columnName" value={row.columnName}
+                        <td style={{width: '250px'}}>
+                            <input type="text" name="columnName" value={row.columnName}
                                    onChange={(e) => handleSelectChange(e, index)} className={styles.inputColumnName}/>
                         </td>
                         <td style={{width: '200px'}}>

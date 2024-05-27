@@ -89,18 +89,17 @@ body{font-size: 1rem;}
 
 .navLink a{
     text-decoration: none;
-    color: #000;
+}
+
+.link {
+    color: black;
 }
 
 .active {
     background-color: #00A3FF;
-    align-items: center;
-    text-align: center;
-    color:white;
-    padding: 0.2rem;
-    width: 5em;
-    height: 2rem;
-    border-radius: 15px;
+    color : white;
+    border-radius: 100px;
+    padding: 1px .8rem;
 }
 
 /*스크롤바 디자인*/
@@ -112,7 +111,7 @@ body{font-size: 1rem;}
 
 /*반응형*/
 @media screen and (max-width:1840px) {
-    html{font-size: 19px;}
+    html{font-size: 18px;}
     body{font-size: 1rem;}
 }
 
