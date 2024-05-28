@@ -43,7 +43,7 @@ export default function RestApiUrlLayout({isExpanded , localPort , endpoint}) {
                             <button className={stylesRest.copyButton} onClick={() => handleCopyClick(url)}>Copy</button>
                             <h5>UPDATE URL</h5>
                             <p>
-                                {url}
+                                {url}/<strong style={{color : '#00A3FF'}}>[PK]</strong>
                             </p>
                             <hr/>
                         </div>
@@ -55,7 +55,7 @@ export default function RestApiUrlLayout({isExpanded , localPort , endpoint}) {
                             <button className={stylesRest.copyButton} onClick={() => handleCopyClick(url)}>Copy</button>
                             <h5>DELETE URL</h5>
                             <p>
-                                {url}/[PK]
+                                {url}/<strong style={{color : '#00A3FF'}}>[PK]</strong>
                             </p>
                             <hr/>
                         </div>

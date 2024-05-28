@@ -4,9 +4,12 @@ import Contentslayout from "../layout/Contentslayout";
 
 export default function MyPage(){
     return(
-        <div className={styles.mypage}>
-            <Profilelayout/>
-            <Contentslayout/>
+        <div >
+            <div className={styles.pageContainer}>
+                <Profilelayout/>
+                <Contentslayout/>
+            </div>
+
         </div>
     )
 }

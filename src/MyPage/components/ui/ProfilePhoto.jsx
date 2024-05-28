@@ -1,11 +1,10 @@
 import styles from "../../styleModule/MypageStyle.module.css";
-import profileImg from '../../image/pngwing.com.png';
+import {Image} from "react-bootstrap";
 
 export default function ProfilePhoto(){
     return(
         <div className={styles.ProfilePhotoTool}>
-            <img src={profileImg} className={styles.ProfilePhoto}/>
-
+            <Image src={"/image/pngwing.com.png"} className={styles.ProfilePhoto}/>
         </div>
     )
 }

@@ -8,43 +8,46 @@
 }
 
 /* 페이지 레이아웃 */
-.mypage {
-    width: 80%;
-    height: 82vh;
-    margin: 2rem auto;
+.pageContainer {
+    border-radius: 3px;
+    width: 70%;
+    margin: 4rem auto;
     display: grid;
     grid-template-columns: 1fr 2.5fr;
     column-gap: 3rem;
 }
 
 /* 프로필칸 레이아웃 */
-.profilelatout {
+.profileContainer {
     background-color: #FFF;
-    border: #D0D0D0 1.5px solid;
     display: grid;
     column-gap: 10px;
     grid-template-rows: repeat(6, minmax(2rem, auto));
-    border-radius: 8px 8px 8px 8px ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    border-radius: 4px;
 }
 
 /* 콘텐츠칸 레이아웃 */
 .contentslayout {
     background-color: #fff;
-    border: #D0D0D0 1.5px solid;
-    border-radius: 8px 8px 8px 8px ;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
 }
 
 /* 프로필 사진 */
 .ProfilePhotoTool {
     margin: 1rem auto;
     width: 50%;
-    height: 10rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .ProfilePhoto {
     width: 100%;
     height: 100%;
-    margin: 2rem auto;
-    font-family: "KoPubWorld Dotum Bold";
 
 }
 
@@ -55,24 +58,38 @@
     height: 2rem;
     text-align: center;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 1.5rem;
 }
-.InforTitle{
-    font-family: 'KoPubWorld Dotum Bold', sans-serif;
 
+/* 유저 정보 제목 */
+.InforTitle {
+    font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
 }
+
 /* 유저 정보 (이름, 전화번호) */
-.UserInforTool {
+.UserInfoTool {
     width: 80%;
     margin: 1rem auto;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .UserInputBox {
     width: 100%;
     margin: 0 auto;
     outline: none;
-    border: #D0D0D0 1.5px solid;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    font-size: 1.1rem;
+    border: none;
+    border-bottom: 2px solid #777777;
+    padding: 0.5rem;
+    font-size: 0.9rem;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+    transition: border-color 0.3s;
+}
+.UserInputBox:focus {
+    border-bottom: 2px solid #00a3ff;
 }
 
 /* 콘텐츠 상단 메뉴바 */
@@ -80,9 +97,11 @@
     width: 100%;
     height: 3.7rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     border-bottom: #D0D0D0 1.5px solid;
     position: relative;
+    background-color: #fff;
+    border-radius: 8px 8px 0 0;
 }
 .MenuList {
     display: contents;
@@ -90,10 +109,11 @@
 
 .ContentMenuItem {
     list-style: none;
-    width: 100%; /* 각 메뉴 항목의 너비를 100%로 설정 */
+    width: 100%;
     text-align: center;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
 }
+
 /* 메뉴 탭들 */
 .ContentMenuItem a {
     display: block;
@@ -103,11 +123,12 @@
     padding-top: 1rem;
     text-decoration: none;
     position: relative;
+    transition: color 0.3s;
 }
 .ContentMenuItem a.on, .ContentMenuItem a:hover {
     color: #00A3FF;
 }
-/*하단 슬라이스 메뉴바*/
+/* 하단 슬라이스 메뉴바 */
 .Line {
     position: absolute;
     bottom: 0;
@@ -115,40 +136,56 @@
     height: 3px;
     background: #00A3FF;
     transition: all 0.5s ease-out;
-    width: calc(100% / 6); /* 너비를 1/6로 설정하여 절반으로 줄임 */
+    width: calc(100% / 3);
 }
 
 /* 컨텐츠 박스 */
 .ContextBox {
     width: 100%;
     height: 87.6%;
-    padding: 2rem 0 2rem 0;
+    padding: 2rem 0;
 }
 .liStyle {
     list-style: none;
-    width: 90%;
+    width: 80%;
     display: flex;
     align-items: center;
     font-size: 1.2rem;
-    /*background-color: #FF7777;*/
-    padding:0.5rem 2rem 0.5rem 2rem;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+
+    border-left: 10px solid #00A3FF;
+    margin: 10px ;
+    padding: 20px;
 }
 
-/*프로젝트 아이콘 */
+/* 프로젝트 아이콘 */
 .ListItemIcon {
-    background-image: url('../image/projectIcon.png');
-    background-size: 4rem 4rem; /* 이미지 크기 조절 */
     width: 4rem;
     height: 4rem;
     margin-right: 2rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: center; /* 수평 중앙 정렬 */
+    overflow: hidden; /* 이미지가 부모 컨테이너를 벗어나지 않도록 함 */
 }
-/*테이블 아이콘*/
+/* 테이블 아이콘 */
 .TableIcon {
-    background-image: url('../image/database-table-icon.png');
-    background-size: 4rem 4rem; /* 이미지 크기 조절 */
+    background-size: cover;
     width: 4rem;
     height: 4rem;
-    margin-right: 2rem; /* 텍스트와의 간격 조절 */
+    margin-right: 2rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
+.imageLogo{
+    width: 55px;
+    height: 55px;
+}
+.textContainer {
+    padding-top: 20px;
+    display: flex;
+    align-items: center; /* 수직 중앙 정렬 */
+    text-align: center;
+}

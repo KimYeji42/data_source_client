@@ -26,6 +26,31 @@ export default function AppRouter() {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
 
+    const clearLocalStorage = () => {
+        localStorage.clear();
+        setCurrentUser("")
+        setIsLoggedIn("")
+    };
+
+
+    // const checkServerStatus = async () => {
+    //     try {
+    //         const apiUrl = process.env.REACT_APP_API_URL;
+    //         const response = await fetch(`${apiUrl}/api/ping`, {
+    //             method: 'GET', // 변경된 부분: GET 요청으로 변경
+    //         });
+    //         console.log(response);
+    //         if (!response.ok) {
+    //             clearLocalStorage();
+    //             setIsLoggedIn(false)
+    //         }
+    //     } catch (error) {
+    //         clearLocalStorage();
+    //         setIsLoggedIn(false)
+    //     }
+    // };
+
+
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
         setCurrentUser(username)
@@ -41,15 +66,16 @@ export default function AppRouter() {
     const logoutHandler = () =>{
         setIsLoggedIn(false)
         setCurrentUser("")
-
         localStorage.removeItem("token")
         localStorage.removeItem("email")
         localStorage.removeItem("username")
         sessionStorage.removeItem("selectedProjectId")
     }
     useEffect(() => {
+        //checkServerStatus()
         getTokenUser()
     }, []);
+
 
     return (
         <div className="AppRouter">
@@ -59,7 +85,6 @@ export default function AppRouter() {
                         isLoggedIn={isLoggedIn}
                         logoutHandler={logoutHandler}
                 />  {/*/Router 사용응 위해 Header가지고오기*/}
-
                 <Routes>
                     {/* 루트 경로에 대한 리디렉션 */}
                     <Route path='/' element={<Navigate to="/main" />} />
