@@ -30,7 +30,7 @@ export default function DataBaseShowCasePage() {
 
     return (
         <div className={styles.DataBaseShowCasePage}>
-            <SidebarLayout/>
+            {/*<SidebarLayout/>*/}
             {dataBaseData && <DataBaseListLayOut data={dataBaseData} />} {/* 데이터가 존재할 때만 렌더링 */}
         </div>
     );

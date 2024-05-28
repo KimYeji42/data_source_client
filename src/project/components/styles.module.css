@@ -368,6 +368,7 @@
 }
 .dataBaseMenuBox{
     width: 80%;
+    margin: 0 auto;
     padding: 1rem 2rem;
     min-width: 360px;
     /*background: #f3f3f3;*/

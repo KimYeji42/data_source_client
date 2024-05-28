@@ -14,7 +14,7 @@ export default function DataBaseBoxLayOut() {
     const [deleteItem , setDeleteItem] = useState()
     const { dataBaseID } = useParams();
     const [activeTable, setActiveTable] = useState(null); // 선택된 테이블을 저장하는 상태 변수
-    const [dataBaseTables , setDataBaseTables] = useState([])
+    const [dataBaseTables , setDataBaseTables] = useState(null)
     const handleClick = () => {
         alert(activeTable.id)
     };
@@ -27,7 +27,7 @@ export default function DataBaseBoxLayOut() {
         if (item.isFavorite === 1)
             setSendModalMessage(`${item.name} 테이블을 즐겨찾기를 해제 하시겠습니까?`)
         else
-            setSendModalMessage(`${item.name} 테이블을 즐겨찾기 하   시겠습니까?`)
+            setSendModalMessage(`${item.name} 테이블을 즐겨찾기 하시겠습니까?`)
         setSendModalOpen(true)
     }
 
@@ -109,6 +109,7 @@ export default function DataBaseBoxLayOut() {
         }
     }
 
+
     const getDatabaseTables = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
         try {
@@ -128,6 +129,7 @@ export default function DataBaseBoxLayOut() {
     useEffect(() => {
         getDatabaseTables()
     }, []);
+
 
 
     function extractDate(dateString) {
@@ -156,8 +158,8 @@ export default function DataBaseBoxLayOut() {
                     </button>
                 )}
             </div>
-
-            <div className={`${styles.dataBaseContentBox} ${styles.scrollbar}`}>
+            {dataBaseTables &&
+                <div className={`${styles.dataBaseContentBox} ${styles.scrollbar}`}>
                 {dataBaseTables.map((item , index) => (
                     <BoxUI
                         header={item.name}
@@ -172,6 +174,8 @@ export default function DataBaseBoxLayOut() {
                     />
                 ))}
             </div>
+            }
+
             <SendModalLayOut
                 data={sendModalMessage}
                 onClose={() => setSendModalOpen(false)}

@@ -37,6 +37,30 @@ export default function RestApiUrlLayout({isExpanded , localPort , endpoint}) {
                         </div>
                     )}
                 </div>
+                <div>
+                    {isExpanded && (
+                        <div>
+                            <button className={stylesRest.copyButton} onClick={() => handleCopyClick(url)}>Copy</button>
+                            <h5>UPDATE URL</h5>
+                            <p>
+                                {url}
+                            </p>
+                            <hr/>
+                        </div>
+                    )}
+                </div>
+                <div>
+                    {isExpanded && (
+                        <div>
+                            <button className={stylesRest.copyButton} onClick={() => handleCopyClick(url)}>Copy</button>
+                            <h5>DELETE URL</h5>
+                            <p>
+                                {url}/[PK]
+                            </p>
+                            <hr/>
+                        </div>
+                    )}
+                </div>
             </div>
         </div>
     );
