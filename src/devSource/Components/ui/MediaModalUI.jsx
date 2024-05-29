@@ -1,4 +1,3 @@
-import {Image} from "react-bootstrap";
 import styles from "../../styleModule/Media.module.css"
 import {useEffect, useState} from "react";
 export default function MediaModalUI({setMediaOpen , handleMediaSelect}){

@@ -21,8 +21,8 @@ const ErrorModal = ({ isOpen, onClose, error, clickLink }) => {
 
     return (
         <div className={styles.modalOverlay} >
-            <div className={styles.modal}>
-                <h2>Error</h2>
+            <div className={styles.errorModal}>
+                <h2 className={styles.errorModalTitle}>Error</h2>
                 <div className={styles.commentBox}>
                     <p className={styles.error}>{error}</p>
                 </div>

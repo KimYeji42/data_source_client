@@ -15,7 +15,7 @@ const Modal = ({ isOpen, onClose, data , onClickEvent}) => {
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
-                <h2>{data}</h2>
+                <h2 className={styles.modalTitle}>Submit Data</h2>
                 {/* 프로젝트 정보 표시 */}
 
                 {data && (

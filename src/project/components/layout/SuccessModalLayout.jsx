@@ -24,7 +24,7 @@ export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, o
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.modal}>
-                <h2>{data}</h2>
+                <h2 className={styles.modalTitle}>Success</h2>
                 {/* 프로젝트 정보 표시 */}
                 {data && (
                     <div className={styles.commentBox}>

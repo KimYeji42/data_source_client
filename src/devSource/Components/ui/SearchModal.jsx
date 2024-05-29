@@ -63,7 +63,7 @@ export default function SearchModal({isOpen , closeModal , columns , tableID}){
     if (!isOpen) return null;
 
     return(
-        <div>
+        <div className={styles.modalOverlay}>
             <div className={styles.searchModalBox}>
 
                 <div className={styles.inputContainer}>

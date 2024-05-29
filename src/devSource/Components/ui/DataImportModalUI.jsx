@@ -76,7 +76,7 @@ export default function DataImportModalUI({ onClose, tableID }) {
 
 
     return (
-        <div>
+        <div className={styles.modalOverlay}>
             <div className={styles.DataImportContainer}>
                 <TitleUI title={"CSV DATA IMPORT"}/>
                 <div className={styles.description}>
