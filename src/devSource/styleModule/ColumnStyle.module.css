@@ -11,7 +11,7 @@
 .dataContainer{
     overflow-y: auto; /* 수직 스크롤 적용 */
     overflow-x: auto; /* 수평 스크롤 적용 */
-    height: 300px;
+    height: 20rem;
 }
 .table {
     margin-top: 1%;
@@ -19,7 +19,6 @@
     font-family: "koko", serif;
     border: 1px solid #f0e8ff;
     background-color: #ffffff;
-
 }
 .table thead{
     width: 220px;
