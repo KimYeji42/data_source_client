@@ -21,7 +21,7 @@ export default function ProjectTablesLayOut({project}){
                         {project.tables && project.tables.map((member) => (
                             <li key={member.id} style={{ listStyleType: "none" }}>
                                 <div className={styles.Table}>
-                                    <Image src="../image/db_icon.png" className={styles.TableIcon} />
+                                    <Image src="../image/db_black_logo.png" className={styles.TableIcon} />
                                     <small className={styles.CollaborativeUserName}>{member.name}</small>
                                 </div>
                             </li>
