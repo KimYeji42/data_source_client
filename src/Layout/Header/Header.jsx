@@ -5,6 +5,7 @@ import {Link, useLocation} from "react-router-dom";
 
 function Header({currentUser , isLoggedIn , logoutHandler}) {
     const [selectedIndex , setSelectedIndex] = useState(0);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
 
     const location = useLocation();
 
@@ -24,54 +25,67 @@ function Header({currentUser , isLoggedIn , logoutHandler}) {
 
     },[location])
 
+    const toggleDropdown = () => {
+        setDropdownVisible(!dropdownVisible);
+    };
+
     return (
         <div className={styles.All1}>
-                <div className={styles.container}>
-                    <Link to={'/'} >
-                        <img src='/image/로고3.png' className={styles.logo}/>
-                    </Link>
+            <div className={styles.container}>
+                <Link to={'/'} >
+                    <img src='/image/로고3.png' className={styles.logo}/>
+                </Link>
 
-                    <div className={styles.bar}>
-                        <div className={styles.navLink}>
-                            <li>
-                                <Link to={'/projects'}
-                                      className={ selectedIndex === 1 ? styles.active : styles.link }
-                                >
-                                    DATA
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={'/history'}
-                                      className={ selectedIndex === 2 ? styles.active : styles.link }
-                                >
-                                    VERSION
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={'/blob/cloud'}
-                                      className={ selectedIndex === 3 ? styles.active : styles.link }
-                                >
-                                    MEDIA
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={'/erd'}
-                                      className={ selectedIndex === 4 ? styles.active : styles.link }
-                                >
-                                    ERD
-                                </Link>
-                            </li>
-                        </div>
-                    </div>
-
-                    <div className={styles.info}>
-                        {currentUser && <Link to={'/mypage'} className={styles.currentUserText}>{currentUser} 님</Link>}
-                        <div className={styles.loginLogout}>{isLoggedIn ?
-                            <Link to={'/'} onClick={logoutHandler}>로그아웃</Link> :
-                            <Link to={'/auth/login'}>로그인</Link>}
-                        </div>
+                <div className={styles.bar}>
+                    <div className={styles.navLink}>
+                        <li>
+                            <Link to={'/projects'}
+                                  className={ selectedIndex === 1 ? styles.active : styles.link }
+                            >
+                                DATA
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/history'}
+                                  className={ selectedIndex === 2 ? styles.active : styles.link }
+                            >
+                                VERSION
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/blob/cloud'}
+                                  className={ selectedIndex === 3 ? styles.active : styles.link }
+                            >
+                                MEDIA
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/erd'}
+                                  className={ selectedIndex === 4 ? styles.active : styles.link }
+                            >
+                                ERD
+                            </Link>
+                        </li>
                     </div>
                 </div>
+
+                <div className={styles.info}>
+                    {currentUser && (
+                        <div className={styles.currentUserText} onClick={toggleDropdown}>
+                            {currentUser} 님 ▼
+                            {dropdownVisible && (
+                                <div className={styles.dropdown}>
+                                    <Link to={'/mypage'}>마이 페이지</Link>
+                                    <Link to={'/'} onClick={logoutHandler}>로그아웃</Link>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                    <div className={styles.loginLogout}>
+                        {isLoggedIn ? "" : <Link to={'/auth/login'}>로그인</Link>}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

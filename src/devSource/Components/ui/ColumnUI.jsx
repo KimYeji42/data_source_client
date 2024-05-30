@@ -104,20 +104,20 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             <div className={styles.button}>
                 <ul className={styles.menuIconBox}>
                     <div className={styles.leftIcon}>
-                        <Button_UI image={Button[0].image} onClick={handleReload} />
+                        <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
                     </div>
                     <div className={styles.rightIcon}>
-                        <Button_UI image={Button[1].image} onClick={handlePushData}/>
-                        <Button_UI image={Button[2].image} onClick={handleDeleteData}/>
+                        <Button_UI image={Button[1].image} onClick={handlePushData} title={"행 추가"}/>
+                        <Button_UI image={Button[2].image} onClick={handleDeleteData} title={"행 삭제"}/>
                         {
                             deleteData.length === 0 && createData.length === 0  && updateData.length === 0?(
-                                <Button_UI image={Button[3].image}/>
+                                <Button_UI image={Button[3].image} title={"저장"}/>
                             ) : (
-                                <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)}/>
+                                <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)} title={"저장"}/>
                             )
                         }
-                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} />
-                        <Button_UI image={Button[5].image} onClick={handleImportCsvData}/>
+                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} title={"행 데이터 찾기"}/>
+                        <Button_UI image={Button[5].image} onClick={handleImportCsvData} title={"CSV 데이터 불러오기"}/>
                     </div>
                 </ul>
                 <div className={styles.dataContainer}>

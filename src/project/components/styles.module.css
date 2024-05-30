@@ -247,6 +247,7 @@
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     position: relative;
     float: right; /* 오른쪽으로 이동 */
+    width: 100%;
     margin: 0 30px;
 }
 .cardLayOutBox{
@@ -261,6 +262,7 @@
     padding: 5% 1% 5% 1%;
     width: 80%;
     margin: 0 auto;
+    min-width: 600px;
 }
 .strong{
     color: #00a3ff;
@@ -414,21 +416,17 @@
 
 .dataBaseContentBox {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(31.33%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
-    padding: 10px;
-    gap: 20px; /* 그리드 간격 설정 */
+    grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
+    padding: 20px 0;
+    gap: 50px; /* 그리드 간격 설정 */
     justify-content: center; /* 수평 가운데 정렬 */
-    align-items: center; /* 수직 가운데 정렬 */
-    overflow-y : scroll;
     width: 100%;
-    margin: 5% auto;
-    height: 68vh;
 }
 .dataBaseContentBox > * {
     justify-self: center; /* 수평 가운데 정렬 */
 }
 .BoxUI {
-    width: 80%; height: 80%;
+    width: 100%; height: 80%;
     cursor: pointer;
 }
 .dataBaseBox{
@@ -523,6 +521,7 @@
     border-radius: 5px;
     border: 1px solid black;
     resize: none;
+    padding: 5px 10px;
 }
 .ProjectViewCard label:nth-of-type(2) input {
     height: 5rem;
@@ -771,32 +770,20 @@
     background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
 }
 
-/*grid 반응형*/
-@media (max-width: 660px) {
+@media screen and (max-width: 1240px) {
     .dataBaseContentBox {
-        grid-template-columns: 1fr;
-        min-width: 230px;
+        grid-template-columns: repeat(3, 1fr); /* 화면 크기가 768px 이하일 때 2열로 설정 */
     }
 }
 
-/*@media screen and (max-width: 1280px) {*/
-/*    .dataBaseBox{*/
-/*        width: 280px;*/
-/*        padding: 15px;*/
-/*        border: 4px solid #777777;*/
-/*        background-color: white;*/
-/*        border-radius: 8px;*/
-/*        text-align: center; !* 이미지를 가운데 정렬 *!*/
-/*        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
-/*        font-family: 'KoPubWorld Dotum Bold', sans-serif;*/
-/*    }*/
+@media screen and (max-width: 1020px) {
+    .dataBaseContentBox {
+        grid-template-columns: repeat(2, 1fr); /* 화면 크기가 768px 이하일 때 2열로 설정 */
+    }
+}
 
-/*    .activeBox{*/
-/*        width: 280px;*/
-/*        border: 4px solid #00A3FF;*/
-/*        background-color: white;*/
-/*        border-radius: 8px;*/
-/*        text-align: center; !* 이미지를 가운데 정렬 *!*/
-/*        font-family: 'KoPubWorld Dotum Bold', sans-serif;*/
-/*    }*/
-/*}*/
+@media screen and (max-width: 600px) {
+    .dataBaseContentBox {
+        grid-template-columns: repeat(1, 1fr); /* 화면 크기가 400px 이하일 때 1열로 설정 */
+    }
+}

@@ -31,7 +31,7 @@ export default function TablePage() {
         findTableInfo()
     }, []);
     return(
-        <div>
+        <>
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " +tableInfo.tableName}/>}
@@ -43,7 +43,7 @@ export default function TablePage() {
                 <DownloadUI tableID={tableID}/>
                 <TableLayout tableID={tableID}/>
             </div>
-        </div>
+        </>
 
     )
 }

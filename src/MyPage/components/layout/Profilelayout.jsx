@@ -9,6 +9,7 @@ export default function ProfileLayout(){
             <ProfilePhoto/>
             <UserName Name="주동호"/>
             <UserInformation title="이름" value="주동호"/>
+            <UserInformation title="이메일" value="abc@naver.com"/>
             <UserInformation title="전화번호" value="010-1234-1234"/>
         </div>
     )

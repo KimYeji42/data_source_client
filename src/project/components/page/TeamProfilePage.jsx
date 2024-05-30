@@ -1,6 +1,7 @@
 import MemberBoxLayout from "../layout/MemberBoxLayout";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import styles from '../memberManagementStyle.module.css';
 
 export default function TeamProfilePage() {
     const { projectId } = useParams();
@@ -30,8 +31,8 @@ export default function TeamProfilePage() {
     }, []);
 
     return (
-        <div>
+        <>
             {teamProfiles && <MemberBoxLayout data={teamProfiles} projectID={projectId} />}
-        </div>
+        </>
     );
 }

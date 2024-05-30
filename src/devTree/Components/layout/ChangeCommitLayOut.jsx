@@ -48,7 +48,7 @@ export default function ChangeCommitLayOut({ commitId }){
                     <CommitInformationProjectIdUI commitId={commitId}/>
                     <SelectionUI title={"변경된 테이블"} data={changeTables} onSelect={handleSelectTable}/>
                 </div>
-                <div className={styles.changeTableBox}>
+                <div className={`${styles.changeTableBox} ${styles.scrollbar}`}>
                     {/*변경 사항 테이블 클릭 시*/}
                     <ChangeTableLayout
                         tableId={selectedTableId}
