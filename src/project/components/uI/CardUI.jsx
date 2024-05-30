@@ -3,11 +3,13 @@ import styles from "../styles.module.css";
 import {Link} from "react-router-dom";
 
 export default function CardUI({ name , comment , projectID ,dataBaseName , item , setModalMessage , setIsDeleteModalOpen , setIsFavoriteOpen , setItem}){
+
     const deleteIconClickHandler = () =>{
         setItem(item)
         setModalMessage("을 삭제 하시겠습니까?")
         setIsDeleteModalOpen(true)
     }
+
     const favoriteIconClickHandler = (status) => {
         setItem(item)
         const message = status === 1
@@ -41,9 +43,6 @@ export default function CardUI({ name , comment , projectID ,dataBaseName , item
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     )
 }

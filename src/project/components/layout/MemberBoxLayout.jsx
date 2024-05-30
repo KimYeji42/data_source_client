@@ -8,12 +8,16 @@ import minus from '../../image/redMinus.png';
 import plus from '../../image/bluePlus.png';
 import SearchUserNameUI from "../uI/SearchUserNameUI";
 import SendModalLayOut from "./SendModalLayOut";
+import SuccessModalLayout from "./SuccessModalLayout";
+import {useParams} from "react-router-dom";
 
 export default function MemberBoxLayout({data , projectID}) {
     const [teamProfile , setTeamProfile] = useState(data)
     const [allProfiles , setAllProfiles] = useState([])
     const [sendMessage , setSendMessage] = useState("")
     const [isSendModalOpen , setIsSendModalOpen] = useState(false)
+    const [isSuccessModalOpen , setIsSuccessModalOpen] = useState(false);
+
     const handleClick = (item) => {
         const newMembers = new Set([...teamProfile]);
 
@@ -34,7 +38,7 @@ export default function MemberBoxLayout({data , projectID}) {
         setTeamProfile([...newMembers]);
     }
 
-    const updateTeamProfile = () =>{
+    const updateTeamProfile = () => {
         var team = ""
 
         teamProfile.forEach(function(element) {
@@ -81,7 +85,8 @@ export default function MemberBoxLayout({data , projectID}) {
                 const responseData = await response.text();
                 console.log('Data sent successfully:', responseData);
                 console.log(responseData)
-
+                // 성공 메세지
+                setIsSuccessModalOpen(true);
             } else {
                 const errorData = await response.json();
                 console.log(errorData)
@@ -91,21 +96,23 @@ export default function MemberBoxLayout({data , projectID}) {
             console.error('Error sending data:', error);
         }
     };
+
     useEffect(() => {
         fetchData()
     }, []);
+
     return (
-        <div>
+        <>
             <div className={styles.memberBox}>
                 <div className={styles.titleBox}>
-                    <MemberTitleUi text="[프로젝트 이름] 협업자 관리"/>
+                    <MemberTitleUi text="협업자 관리"/>
                 </div>
 
                 <div className={styles.memberContainer}>
                     <div className={styles.memberSmallBox}>
                         <SmallTitleUI title="현재 참여자" className={styles.smallTitle} teamMemberCount={teamProfile.length}/>
                         <hr className={styles.hrStyle}/>
-                        <div className={styles.profileBigBox}>
+                        <div className={`${styles.profileBigBox} ${styles.scrollbar}`}>
                             {teamProfile.map((item , index) => (
                                 <div className={styles.profileBox}>
                                     <ProfileUI
@@ -158,12 +165,20 @@ export default function MemberBoxLayout({data , projectID}) {
                     <ButtonUI onClick={updateTeamProfile} children={"저장하기"} className={styles.button}/>
                 </div>
             </div>
+
             <SendModalLayOut
                 data={sendMessage}
                 isOpen={isSendModalOpen}
                 onClose={() => setIsSendModalOpen(false)}
                 onClickEvent={sendToUpdateTeamProfile}
             />
-        </div>
+
+            <SuccessModalLayout
+                isOpen={isSuccessModalOpen}
+                onClose={()=>setIsSuccessModalOpen(false)}
+                data={"협업 변경에 성공하셨습니다."}
+                clickLink={`/project/${projectID}`}
+            />
+        </>
     );
 }

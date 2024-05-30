@@ -11,7 +11,9 @@
 .pageContainer {
     border-radius: 3px;
     width: 70%;
-    margin: 4rem auto;
+    height: 80vh;
+    min-width: 650px;
+    margin: 3vh auto;
     display: grid;
     grid-template-columns: 1fr 2.5fr;
     column-gap: 3rem;
@@ -39,8 +41,8 @@
 /* 프로필 사진 */
 .ProfilePhotoTool {
     margin: 1rem auto;
-    width: 50%;
-    height: 8rem;
+    width: 7rem;
+    height: 7rem;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -180,8 +182,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .imageLogo{
-    width: 55px;
-    height: 55px;
+    width: 2rem;
+    height: 2rem;
 }
 .textContainer {
     padding-top: 20px;

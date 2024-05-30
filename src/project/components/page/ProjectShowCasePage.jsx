@@ -65,7 +65,7 @@ export default function ProjectShowCasePage() {
     }, []); // 팀장 모드가 변경될 때마다 데이터를 다시 가져옴
 
     return (
-        <div>
+        <>
             <HeaderBottom title={"디브 툴 ＞ 프로젝트"}/>
             <div className={styles.projectShowCasePage}>
                 <div className={styles.showCase}>
@@ -87,7 +87,7 @@ export default function ProjectShowCasePage() {
                     isOpen={isErrorModalOpen}
                 />
             </div>
-        </div>
+        </>
 
     );
 }

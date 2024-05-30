@@ -112,10 +112,36 @@ const ERDiagramUi = ({ jsonData }) => {
                 )
             );
 
+            // 선 모양 커스텀
             diagram.linkTemplate = $(
                 go.Link,
-                { routing: go.Link.Orthogonal, corner: 5 },
-                $(go.Shape),
+                {
+                    routing: go.Link.Orthogonal,
+                    corner: 5,
+                },
+                $(go.Shape), // 선을 그립니다.
+                // from 노드에 대한 텍스트
+                $(go.TextBlock,
+                    {
+                        textAlign: "center",
+                        font: "10pt sans-serif",
+                        segmentIndex: 0, // 시작 부분에 배치
+                        segmentOrientation: go.Link.OrientUpright,
+                        segmentOffset: new go.Point(10, -10),
+                    },
+                    new go.Binding("text", "from", (from) => (from ? 'N' : ''))
+                ),
+                // to 노드에 대한 텍스트
+                $(go.TextBlock,
+                    {
+                        textAlign: "center",
+                        font: "10pt sans-serif",
+                        segmentIndex: -1, // 끝 부분에 배치
+                        segmentOrientation: go.Link.OrientUpright,
+                        segmentOffset: new go.Point(-8, -10),
+                    },
+                    new go.Binding("text", "to", (to) => (to ? '1' : ''))
+                )
             );
 
             diagram.model = new go.GraphLinksModel(jsonData.node, jsonData.linkData);

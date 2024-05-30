@@ -9,7 +9,6 @@ export default function MyPage(){
                 <Profilelayout/>
                 <Contentslayout/>
             </div>
-
         </div>
     )
 }
