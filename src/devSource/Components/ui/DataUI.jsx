@@ -4,10 +4,12 @@ import NewDataUI from "./NewDataUI";
 
 export default function DataUI({
                                    column, newDataCount, selectedRowIndex, onRowClick, deleteRow ,
-                                   tableMap , updateData , setUpdateData ,createData , setCreateData , tableID
+                                   tableMap , updateData , setUpdateData ,createData , setCreateData ,
+                                   tableID
                               })
 {
     const [data, setData] = useState([]);
+
     const [editingIndex, setEditingIndex] = useState(-1); // 편집중인 데이터 인덱스
     const [type , setType] = useState("none")
     const [isHovered, setIsHovered] = useState(false);
@@ -73,6 +75,7 @@ export default function DataUI({
     const handleAddData = (newData) => {
         setData([...data, {id: data.length + 1, data: newData}]);
     };
+
 
     return (
         <div>

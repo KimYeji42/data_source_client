@@ -34,8 +34,62 @@
     width: 90%;
     margin: 5% auto 0;
 }
-.linkContainer{
-    padding-right: 5%;
+
+.dropdown {
+    font-family: "KoPubWorld Dotum Bold", serif;
+    background-color: white;
+    border-radius: 5px;
+    width: 90%;
+    padding-bottom: 20px;
+    margin: 0 auto;
+
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropbtn {
+    background-color: #00a3ff;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 40px;
+}
+.dropdownContainer{
+    float : left;
+    height: 50px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    top: 50px; /* 원하는 위치로 지정 */
+    left: 0; /* 원하는 위치로 지정 */
+}
+.dropdownContent {
+    padding: 10px;
+    list-style: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    transition: max-height 0.3s ease; /* max-height를 변경하는 트랜지션 효과를 추가합니다. */
+}
+/* 드롭다운 버튼 위에 마우스를 올렸을 때 스타일 */
+.dropbtn:hover {
+    background-color: rgba(0, 162, 254, 0.42);
+}
+
+
+.toggleTitle{
+    float: right;
+    border: 1px solid red;
 }
 .table td
 {

@@ -12,7 +12,7 @@ import SuccessModalLayout from "../../../project/components/layout/SuccessModalL
 import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 
-export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID ,blobData ,setBlobData }) {
+export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
@@ -24,7 +24,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [deleteData , setDeleteData] = useState([])
     const [isSearchModalOpen , setSearchModalOpen] = useState(false)
     const [isDataImportModalOpen , setIsDataModalOpen] = useState(false)
-
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
         let obj = {
@@ -98,6 +97,15 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const handlePushData = () =>{
         setClickCount(clickCount +1)
     }
+    const sortAscending = (columnName) => {
+        const sortedData = [...columns.get(columnName)].sort();
+        console.log(sortedData)
+    };
+
+    const sortDescending = (columnName) => {
+        const sortedData = [...columns.get(columnName)].sort().reverse();
+        console.log(sortedData)
+    };
 
     return (
         <div>
@@ -130,8 +138,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                         <div style={{ display: 'flex', paddingLeft: '10px' }}>
                                             {columnName} {/* 열의 이름 */}
                                             <div className={styles.imageContainer}>
-                                                <Image src={up} />
-                                                <Image src={down} />
+                                                <Image src={up} onClick={() => sortAscending(columnName)}/>
+                                                <Image src={down} onClick={() => sortDescending(columnName)}/>
                                             </div>
                                         </div>
                                     </div>
@@ -160,7 +168,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                 </td>
                             ))}
                         </tr>
-
                         </tbody>
                     </table>
                 </div>

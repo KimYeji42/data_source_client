@@ -1,11 +1,9 @@
 .downloadBox{
-    margin: 0 auto;
-    text-align: left;
-    width: 90%;
     padding: 10px;
+    float: right;
 }
 .downloadText{
-    padding-right: 2%;
+    padding: 1px 10px;
     font-family: "KoPubWorld Dotum Bold", serif ;
     cursor: pointer;
 }
