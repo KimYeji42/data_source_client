@@ -2,13 +2,16 @@ import React, {useEffect, useState} from "react";
 import styles from "../../styles/styles.module.css";
 import MergeGuidePopupUI from "./GuidePopupUI";
 
-export default function CommitChartUI({ projectId, onSelect }){
+export default function CommitSearchChartUI({ projectId, onSelect }){
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 초기 값으로 첫 번째 행 선택
     const [doubleClickRowIndex, setDoubleClickRowIndex] = useState(0); // 초기 값으로 첫 번째 행 선택
     const [commits, setCommits] = useState([]); // 초기값을 일반 객체로 설정
     const [isCheckoutModalOpen , setIsCheckoutModalOpen] = useState(false);
     const [nowCheckoutCommitId , setNowCheckoutCommitId] = useState(null);
     const [checkoutCommitId , setCheckoutCommitId] = useState(null);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedCategory, setSelectedCategory] = useState("commitMessage");
+    const [searchCommits, setSearchCommits] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleRefresh = () => { window.location.reload(); };
@@ -88,6 +91,7 @@ export default function CommitChartUI({ projectId, onSelect }){
             const defaultCommitId = commits[0].commitId;
             onSelect(defaultCommitId);
         }
+        setSearchCommits(commits)
     }, [commits]);
 
     // 날짜
@@ -96,11 +100,63 @@ export default function CommitChartUI({ projectId, onSelect }){
         return `${dateObject.getFullYear()}-${(dateObject.getMonth() + 1).toString().padStart(2, '0')}-${dateObject.getDate().toString().padStart(2, '0')} 오후 ${dateObject.getHours()}:${dateObject.getMinutes().toString().padStart(2, '0')}`;
     };
 
-
+    // 검색 기능
+    const handleSearchTermChange = (event) => {
+        setSearchTerm(event.target.value);
+    };
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+    const handleSearch = () => {
+        filterCommits(selectedCategory, searchTerm);
+    };
+    const filterCommits = (category, searchTerm) => {
+        const filteredCommits = commits.filter(commit => {
+            if (category === "commitMessage") {
+                return commit.comment.includes(searchTerm);
+            } else if (category === "commitHash") {
+                return commit.commitHashCode.toString().includes(searchTerm);
+            } else if (category === "author") {
+                return commit.createUsername.includes(searchTerm);
+            } else {
+                return commit
+            }
+        });
+        setSearchCommits(filteredCommits);
+    };
 
     return(
         <>
-            <div className={styles.CommitChartUI}>
+            <div className={styles.SearchUI}>
+                {/*커밋 메세지 선택 박스*/}
+                <select className={styles.CommitmsgSelectBox}
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                >
+                    <option value="commitMessage">커밋 메시지</option>
+                    <option value="commitHash">해시값</option>
+                    <option value="author">작성자</option>
+                </select>
+                <input type={"text"}
+                       placeholder={"검색어를 입력하세요."}
+                       className={styles.CommitMsgSearchBox}
+                       value={searchTerm}
+                       onChange={handleSearchTermChange}
+                       onKeyDown={handleKeyDown}
+                />
+                <button className={styles.CommitMsgSearchBtn}
+                        onClick={handleSearch}
+                >
+                    검 색
+                </button>
+            </div>
+
+            <div className={styles.CommitChartUISearch}>
                 <div className={`${styles.CommitChartBack} ${styles.scrollbar}`}>
                     <table className={styles.CommitChart}>
                         <thead>
@@ -113,7 +169,7 @@ export default function CommitChartUI({ projectId, onSelect }){
                         </tr>
                         </thead>
                         <tbody>
-                        {commits && commits.length > 0 && commits.map((data, index) => (
+                        {searchCommits && searchCommits.length > 0 && searchCommits.map((data, index) => (
                             <tr key={index}
                                 className={
                                     index === selectedRowIndex
