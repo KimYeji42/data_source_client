@@ -159,6 +159,7 @@
 
 .leftIcon{
     margin: 0;
+    display: flex;
 }
 .rightIcon{
     margin: 0;

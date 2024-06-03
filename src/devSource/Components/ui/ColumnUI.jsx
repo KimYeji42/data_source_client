@@ -11,6 +11,7 @@ import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
+import ColumnAppendModalUI from "./ColumnAppendModalUI";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
     const [clickCount, setClickCount] = useState(0);
@@ -24,6 +25,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [deleteData , setDeleteData] = useState([])
     const [isSearchModalOpen , setSearchModalOpen] = useState(false)
     const [isDataImportModalOpen , setIsDataModalOpen] = useState(false)
+    const [isColumnAppendModalOpen, setIsColumnAppendModalOpen] = useState(false)
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
         let obj = {
@@ -106,13 +108,16 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         const sortedData = [...columns.get(columnName)].sort().reverse();
         console.log(sortedData)
     };
-
+    const columnPlus = () =>{
+        setIsColumnAppendModalOpen(true)
+    }
     return (
         <div>
             <div className={styles.button}>
                 <ul className={styles.menuIconBox}>
                     <div className={styles.leftIcon}>
                         <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
+                        <Button_UI image={Button[0].image} onClick={columnPlus} title={"컬럼 추가"}/>
                     </div>
                     <div className={styles.rightIcon}>
                         <Button_UI image={Button[1].image} onClick={handlePushData} title={"행 추가"}/>
@@ -171,9 +176,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
+
             <
                 SuccessModalLayout
                 isOpen={isSuccessModalOpen}
@@ -201,6 +205,13 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 closeModal={() => setSearchModalOpen(false)}
                 tableID={tableID}
             />
+            {isColumnAppendModalOpen &&
+                <ColumnAppendModalUI
+                    isOpen={isColumnAppendModalOpen}
+                    closeModal={() => setIsColumnAppendModalOpen(false)}
+                    tableID = {tableID}
+                />
+            }
             {isDataImportModalOpen &&
                 <DataImportModalUI
                     tableID={tableID}
