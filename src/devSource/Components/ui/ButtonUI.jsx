@@ -5,6 +5,7 @@ import save from '../../Image/save.png';
 import search from '../../Image/search.png';
 import importCSV from '../../Image/import.png';
 import update from '../../Image/updateBtn.png'
+import appendColumn from '../../Image/appendColumn_icon.png'
 export const Button = [
     {image:refresh},
     {image:add},
@@ -12,5 +13,6 @@ export const Button = [
     {image:save},
     {image:search},
     {image:importCSV},
-    {image: update}
+    {image: update},
+    {image: appendColumn}
 ]

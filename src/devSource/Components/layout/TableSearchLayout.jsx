@@ -54,15 +54,14 @@ export default function TableSearchLayout({ handleJoinTableSelect, setShowSearch
                             <p className={styles.cancelBtn}>Cancel</p>
                         </div>
                         {joinTableData && joinTableData.map((item, index) => (
-                            <div key={item.id} onClick={() => handleRowClick(item)}>
-                                <div>
+                            <div key={item.id} >
+                                <div onClick={() => handleRowClick(item)}>
                                     <p className={styles.joinData}>{item.tableName} / {item.pkColumnName} / {item.joinColumnDataType}</p>
                                 </div>
                                 {index !== joinTableData.length - 1 && <hr />}
                             </div>
                         ))}
                     </div>
-
                 </div>
             </div>
         </>
