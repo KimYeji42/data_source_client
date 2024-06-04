@@ -6,7 +6,7 @@ export default function SearchMemberUI({ members , onClickMember}) {
     };
 
     return (
-        <div>
+        <div className={styles.searchMemberUI}>
             {members.map((member, index) => (
                 <div key={index} className={styles.searchGroup} onClick={() => handleClick(member)}>
                     {member.name}<br/>

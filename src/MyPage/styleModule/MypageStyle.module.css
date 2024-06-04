@@ -31,11 +31,12 @@
 }
 
 /* 콘텐츠칸 레이아웃 */
-.contentslayout {
+.contentsLayout {
     background-color: #fff;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 1rem;
+    height: 100%;
 }
 
 /* 프로필 사진 */
@@ -144,8 +145,9 @@
 /* 컨텐츠 박스 */
 .ContextBox {
     width: 100%;
-    height: 87.6%;
+    height: 88%;
     padding: 2rem 0;
+    overflow-y: auto;
 }
 .liStyle {
     list-style: none;
@@ -197,4 +199,16 @@
     display: flex;
     align-items: center; /* 수직 중앙 정렬 */
     text-align: center;
+}
+
+/* 스크롤바*/
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(192, 192, 192); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.scrollbar::-webkit-scrollbar-track {
+    background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
 }

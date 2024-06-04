@@ -237,13 +237,11 @@
 
 }
 .searchBox{
-   /* border:1px solid red;*/
     width: 260px;
     height: auto;
-    margin-left: auto;
     position: absolute;
-    bottom: 1.7rem;
-    right: 0px;
+    bottom: 100%;
+    right: 0;
 }
 
 .joinRow {
@@ -258,11 +256,11 @@
     width: 65%;
 }
 .searchButtonBox {
+    position: relative;
     width: 25%;
 }
 
 .searchButton{
-    position: relative;
     width: 100%;
     font-size: 1rem;
     border-radius: 5px;

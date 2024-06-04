@@ -11,7 +11,7 @@ export default function ContentsLayout({data}) {
     if (!data) return null;
 
     return (
-        <div className={styles.contentslayout}>
+        <div className={styles.contentsLayout}>
             <ContentsMenuBar activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
             {activeIndex === 0 && <ProjectList userProjects={data[0].userProjects}/>}
             {activeIndex === 1 && <ProjectBookMark favoriteProjects={data[0].favoriteProjects}/>}

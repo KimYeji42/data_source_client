@@ -129,7 +129,7 @@ const ERDiagramUi = ({ jsonData }) => {
                         segmentOrientation: go.Link.OrientUpright,
                         segmentOffset: new go.Point(10, -10),
                     },
-                    new go.Binding("text", "from", (from) => (from ? 'N' : ''))
+                    new go.Binding("text", "from", (from) => (from ? '1' : ''))
                 ),
                 // to 노드에 대한 텍스트
                 $(go.TextBlock,
@@ -140,7 +140,7 @@ const ERDiagramUi = ({ jsonData }) => {
                         segmentOrientation: go.Link.OrientUpright,
                         segmentOffset: new go.Point(-8, -10),
                     },
-                    new go.Binding("text", "to", (to) => (to ? '1' : ''))
+                    new go.Binding("text", "to", (to) => (to ? 'N' : ''))
                 )
             );
 

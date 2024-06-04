@@ -130,7 +130,6 @@ export default function CreateProjectFormLayout() {
                 isOpen={isErrorModalOpen}
                 onClose={() => setIsErrorModalOpen(false)}
                 error={error}
-
             />
 
             <SuccessModalLayout
@@ -159,13 +158,15 @@ export default function CreateProjectFormLayout() {
                 <input onChange={onCommentChange} type="text" className={`form-control ${styles.inputForm}`}  id="inputField2" />
             </div>
 
-            <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>
+            <div className={styles.collaborateButtonBox}>
+                <button type="button" className={` ${styles.addButton}`} onClick={toggleMemberGroupSearchBar}>
+                    협업자 추가
+                </button>
                 {showMemberGroupSearchBar &&
                     currentProfile !== null &&
                     <MemberSearchLayOut searchTitle={"협업자 검색"} teamMemberAddHandler={addTeamMembers} currentUser={currentProfile}/>
                 }
-                협업자 추가
-            </button>
+            </div>
 
             {currentProfile !== null && (
                 <ProjectTeamLayOut membersData={[...teamList]} deleteUserHandler={deleteUserHandler} currentUser={currentProfile}/>

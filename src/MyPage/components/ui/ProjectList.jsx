@@ -6,7 +6,7 @@ export default function ProjectList({userProjects}) {
     if (!userProjects) return null;
 
     return (
-        <div className={styles.ContextBox}>
+        <div className={`${styles.ContextBox} ${styles.scrollbar}`}>
             <ul className={styles.ContextBoxProject}>
                 {userProjects && userProjects.map((data, index) => (
                     <li className={styles.liStyle}>

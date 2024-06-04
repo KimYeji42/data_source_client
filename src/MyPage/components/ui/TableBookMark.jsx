@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export default function TableBookMark({favoriteTableResponses}) {
     return (
-        <div className={styles.ContextBox}>
+        <div className={`${styles.ContextBox} ${styles.scrollbar}`}>
             <ul className={styles.ContextBoxProject}>
                 {favoriteTableResponses && favoriteTableResponses.map((data, index) => (
                     <li className={styles.liStyle}>

@@ -5,7 +5,9 @@ export default function ProjectTeamLayOut ({membersData , deleteUserHandler , cu
     return(
         <div>
             <div className={`"form-group" ${styles.customFormGroup} `}>
-                <label htmlFor="inputField2" ><h4 className={styles.formTitle} >협업자</h4></label>
+                <label htmlFor="inputField2" >
+                    <h4 className={styles.formTitle} >협업자</h4>
+                </label>
                 <div className={`"form-group" ${styles.memberGroupBox} ${styles.scrollbar}`}>
                     <ProjectTeamUI membersData={membersData} deleteUserHandler={deleteUserHandler} createEmail={currentUser.email}/>
                 </div>

@@ -44,16 +44,17 @@ export default function MyPage(){
         setErrorModalOpen(true);
     }, []);
     return(
-        <div>
+        <>
             <div className={styles.pageContainer}>
                 {data && data[0].profileInfo && <Profilelayout profileInfo={data[0].profileInfo} />}
                 {data && <Contentslayout data={data}/>}
             </div>
+
             <ErrorModal
                 error={error}
                 onClose={() => setErrorModalOpen(false)}
                 isOpen={isErrorModalOpen}
             />
-        </div>
+        </>
     )
 }
