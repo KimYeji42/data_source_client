@@ -22,15 +22,15 @@ export default function JoinColumnUI({ row, index, handleSelectChange }) {
             <div className={styles.searchButtonBox}>
                 <button onClick={renderSearch} className={styles.searchButton}>
                     검색 ▼
-                    <div className={styles.searchBox}>
-                        {showSearch && (
-                            <TableSearchLayout
-                                handleJoinTableSelect={handleJoinTableSelect}
-                                setShowSearch={setShowSearch}
-                            />
-                        )}
-                    </div>
                 </button>
+                <div className={styles.searchBox}>
+                    {showSearch && (
+                        <TableSearchLayout
+                            handleJoinTableSelect={handleJoinTableSelect}
+                            setShowSearch={setShowSearch}
+                        />
+                    )}
+                </div>
             </div>
         </div>
     );

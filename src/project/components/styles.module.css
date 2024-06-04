@@ -76,6 +76,9 @@
     border-radius: 8px;
     float: right;
 }
+.collaborateButtonBox {
+    position: relative;
+}
 .addButton {
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     margin-top: 3%;
@@ -90,7 +93,6 @@
     cursor: pointer;
     border-radius: 8px;
     float: right;
-    position: relative;
 }
 .projectNameForm{
     width: 100%;
@@ -125,6 +127,7 @@
     margin: 0; padding: 0;
 }
 .searchComponent {
+    margin-top: 3%;
     width: 20rem; height: 21rem;
     border-radius: 10px;
     border: 1px solid #D0D0D0;
@@ -132,12 +135,14 @@
     position: absolute; /* 상대적 위치 설정 */
     z-index: 1;
     right: 0;
-    bottom: 100%;
+    bottom: 0;
     background-color: #FFFFFF;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
 }
 
+.searchMemberUI {
+    cursor: pointer;
+}
 
 .searchGroup{
     height: 100%; width: 100%;

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 export default function ProjectBookMark({favoriteProjects}) {
     return (
-        <div className={styles.ContextBox}>
+        <div className={`${styles.ContextBox} ${styles.scrollbar}`}>
             <ul className={styles.ContextBoxProject}>
                 {favoriteProjects && favoriteProjects.map((data, index) => (
                     <li className={styles.liStyle}>
