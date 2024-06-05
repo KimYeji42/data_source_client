@@ -5,7 +5,7 @@ import save from '../../Image/save.png';
 import search from '../../Image/search.png';
 import importCSV from '../../Image/import.png';
 import update from '../../Image/updateBtn.png'
-import appendColumn from '../../Image/appendColumn_icon.png'
+import appendColumn from '../../Image/append_column_icon.png'
 export const Button = [
     {image:refresh},
     {image:add},

@@ -160,6 +160,8 @@
 .leftIcon{
     margin: 0;
     display: flex;
+    width: 100px;
+    justify-content: space-between;
 }
 .rightIcon{
     margin: 0;

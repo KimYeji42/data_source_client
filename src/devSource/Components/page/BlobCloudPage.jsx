@@ -67,6 +67,7 @@ export default function BlobCloudPage() {
     // 파일을 업로드하는 함수
     const fileUpload = (event) => {
         const file = event.target.files[0]; // 첫 번째 파일만 선택
+
         const maxFileSize = 50 * 1024 * 1024; // 50MB 제한
         if (file.size > maxFileSize) {
             alert("파일 크기가 너무 큽니다. 50MB 이하의 파일을 업로드해주세요.");

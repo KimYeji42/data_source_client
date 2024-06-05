@@ -70,8 +70,6 @@ export default function TablePage() {
                         </ul>
                     )}
                 </div>
-
-
                 <TableLayout tableID={tableID} />
             </div>
         </>

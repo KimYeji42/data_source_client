@@ -15,9 +15,7 @@ export default function DataBaseBoxLayOut() {
     const { dataBaseID } = useParams();
     const [activeTable, setActiveTable] = useState(null); // 선택된 테이블을 저장하는 상태 변수
     const [dataBaseTables , setDataBaseTables] = useState(null)
-    const handleClick = () => {
-        alert(activeTable.id)
-    };
+
     const reloadPage = () =>{
         window.location.reload()
     }
@@ -148,7 +146,7 @@ export default function DataBaseBoxLayOut() {
             <div className={styles.dataBaseBoxButton}>
                 {activeTable ? (
                     <Link to={`/table/${activeTable.id}`}>
-                        <button className={styles.blueButton} onClick={handleClick}>
+                        <button className={styles.blueButton}>
                             테이블 데이터 관리하기
                         </button>
                     </Link>

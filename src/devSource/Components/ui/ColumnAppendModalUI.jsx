@@ -28,6 +28,11 @@ export default function ColumnAppendModalUI({ isOpen, closeModal, tableID }) {
             fk: appendColumnFk,
             uk: appendColumnUk
         };
+        if (appendColumnName.trim.length === 0){
+            setMessage("컬럼 이름을 작성해주세요")
+            setIsErrorModalOpen(true)
+            return
+        }
         console.log('New Column:', newColumn);
         appendColumnDataSend(newColumn);
     };
