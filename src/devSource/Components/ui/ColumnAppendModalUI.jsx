@@ -28,16 +28,15 @@ export default function ColumnAppendModalUI({ isOpen, closeModal, tableID }) {
             fk: appendColumnFk,
             uk: appendColumnUk
         };
-        if (appendColumnName.trim.length === 0){
-            setMessage("컬럼 이름을 작성해주세요")
-            setIsErrorModalOpen(true)
-            return
-        }
         console.log('New Column:', newColumn);
         appendColumnDataSend(newColumn);
     };
 
     const appendColumnDataSend = async (obj) => {
+        if (obj.columnName.trim().length === 0){
+            setMessage("컬럼 이름을 작성해주세요")
+            setIsErrorModalOpen(true)
+        }
         try {
             const apiUrl = process.env.REACT_APP_API_URL;
             const response = await fetch(`${apiUrl}/api/column/append`, {

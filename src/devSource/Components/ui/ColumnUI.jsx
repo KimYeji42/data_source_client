@@ -115,7 +115,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         <div>
             <div className={styles.button}>
                 <ul className={styles.menuIconBox}>
-                    <div className={styles.leftIcon}>
+                    <div className={styles.lemnftIcon}>
                         <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
                         <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 추가"}/>
                     </div>
