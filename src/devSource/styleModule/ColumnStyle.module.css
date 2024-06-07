@@ -9,9 +9,9 @@
     border-bottom: 3px solid #a0a0a0;
 }
 .dataContainer{
-    overflow-y: auto; /* 수직 스크롤 적용 */
-    overflow-x: auto; /* 수평 스크롤 적용 */
-    height: 20rem;
+    height: 82%;
+    overflow-y: auto;
+    overflow-x: auto;
 }
 .table {
     margin-top: 1%;
@@ -32,6 +32,7 @@
 }
 .tableContainer{
     width: 90%;
+    height: 20%;
     margin: 5% auto 0;
 }
 
@@ -39,7 +40,7 @@
     font-family: "KoPubWorld Dotum Bold", serif;
     background-color: white;
     border-radius: 5px;
-    width: 90%;
+    width: 90%; height: 10%;
     padding-bottom: 20px;
     margin: 0 auto;
 
@@ -128,6 +129,9 @@
     text-align: center;
     margin: 0 auto;
 }
+.button {
+    height: 100%;
+}
 
 .button ul{
     list-style: none;
@@ -152,6 +156,7 @@
 
 .menuIconBox {
     width: auto; /* 부모 크기에 맞게 자동으로 조절 */
+    height: 18%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -161,9 +166,11 @@
     margin: 0;
     display: flex;
     width: 100px;
+    height: 100%;
     justify-content: space-between;
 }
 .rightIcon{
+    height: 100%;
     margin: 0;
     padding: 0;
     display: flex;
@@ -201,8 +208,21 @@
 .tablePage{
     width: 95%;
     height: 55vh;
+    min-height: 500px;
     margin: 0 auto;
 }
 .selectedRow{
     background-color: #00A3FF;
+}
+
+/* 스크롤바의 폭 너비 */
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+    background: rgb(192, 192, 192); /* 스크롤바 색상 */
+    border-radius: 10px; /* 스크롤바 둥근 테두리 */
+}
+.scrollbar::-webkit-scrollbar-track {
+    background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
 }

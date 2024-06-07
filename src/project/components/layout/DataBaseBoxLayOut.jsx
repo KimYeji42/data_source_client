@@ -183,7 +183,7 @@ export default function DataBaseBoxLayOut() {
 
             <SuccessModalLayout
                 data={successMessage}
-                onClose={() => setSuccessMessage(false)}
+                onClose={() => setSuccessModalOpen(false)}
                 isOpen={successModalOpen}
                 onClickEvent={reloadPage}
             />
