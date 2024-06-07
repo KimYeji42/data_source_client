@@ -31,8 +31,6 @@ export default function TableLayout({tableID}){
         fetchColumData(); // 컴포넌트가 처음 렌더링될 때 열 데이터를 가져오도록 호출
     }, [tableID]); // tableID가 변경될 때마다 호출되도록 설정
 
-
-
     return (
         <div className={styles.tableBox}>
             <ColumnUI   

@@ -26,6 +26,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
     const [isSearchModalOpen , setSearchModalOpen] = useState(false)
     const [isDataImportModalOpen , setIsDataModalOpen] = useState(false)
     const [isColumnAppendModalOpen, setIsColumnAppendModalOpen] = useState(false)
+
     //해당 목록들을 보내는 함수
     const submitModifiedTable = async () => {
         let obj = {
@@ -112,10 +113,10 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         setIsColumnAppendModalOpen(true)
     }
     return (
-        <div>
+        <>
             <div className={styles.button}>
                 <ul className={styles.menuIconBox}>
-                    <div className={styles.lemnftIcon}>
+                    <div className={styles.leftIcon}>
                         <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
                         <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 추가"}/>
                     </div>
@@ -133,7 +134,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                         <Button_UI image={Button[5].image} onClick={handleImportCsvData} title={"CSV 데이터 불러오기"}/>
                     </div>
                 </ul>
-                <div className={styles.dataContainer}>
+                <div className={`${styles.dataContainer} ${styles.scrollbar}`}>
                     <table className={styles.table}>
                         <thead>
                         <tr>
@@ -218,6 +219,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                     onClose={() => setIsDataModalOpen(false)}
                 />
             }
-        </div>
+        </>
     );
 }

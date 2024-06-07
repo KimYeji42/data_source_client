@@ -63,6 +63,11 @@ export default function ColumnAppendModalUI({ isOpen, closeModal, tableID }) {
         }
     };
 
+    const handleModalClose = () => {
+        closeModal(false)
+        window.location.reload();
+    }
+
     return (
         <div className={styles.modalOverlay}>
             <div className={styles.columnAppendContainer}>
@@ -138,7 +143,7 @@ export default function ColumnAppendModalUI({ isOpen, closeModal, tableID }) {
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={message}
-                onClickEvent={() => closeModal(false)}
+                onClickEvent={handleModalClose}
             />
             <ErrorModal
                 isOpen={isErrorModalOpen}

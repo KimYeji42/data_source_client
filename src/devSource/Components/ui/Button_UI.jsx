@@ -5,7 +5,6 @@ export default function Button_UI ({image, onClick, title }) {
         <button onClick={onClick} title={title}>
             <img src={image} alt="Button"/>
         </button>
-
     </li>
 
 }
