@@ -5,17 +5,15 @@ import ProjectBookMark from "../ui/ProjectBookMark";
 import TableBookMark from "../ui/TableBookMark";
 import ContentsMenuBar from "../ui/ContentsMeunBar";
 
-export default function ContentsLayout({data}) {
+export default function ContentsLayout() {
     const [activeIndex, setActiveIndex] = useState(0); // 활성화된 탭을 추적하는 상태
-
-    if (!data) return null;
 
     return (
         <div className={styles.contentsLayout}>
             <ContentsMenuBar activeIndex={activeIndex} setActiveIndex={setActiveIndex} />
-            {activeIndex === 0 && <ProjectList userProjects={data[0].userProjects}/>}
-            {activeIndex === 1 && <ProjectBookMark favoriteProjects={data[0].favoriteProjects}/>}
-            {activeIndex === 2 && <TableBookMark favoriteTableResponses={data[0].favoriteTableResponses}/>}
+            {activeIndex === 0 && <ProjectList />}
+            {activeIndex === 1 && <ProjectBookMark />}
+            {activeIndex === 2 && <TableBookMark />}
         </div>
     );
 }

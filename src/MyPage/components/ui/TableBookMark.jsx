@@ -1,22 +1,30 @@
 import styles from "../../styleModule/MypageStyle.module.css";
 import {Image} from "react-bootstrap";
-import {Link} from "react-router-dom";
 
-export default function TableBookMark({favoriteTableResponses}) {
+export default function TableBookMark() {
     return (
         <div className={`${styles.ContextBox} ${styles.scrollbar}`}>
             <ul className={styles.ContextBoxProject}>
-                {favoriteTableResponses && favoriteTableResponses.map((data, index) => (
-                    <li className={styles.liStyle}>
-                        <Link to={`/table/${data.id}`} className={styles.linkStyle}>
-                            <div className={styles.ListItemIcon}>
-                                <Image src={"image/database-table-icon.png"} className={styles.imageLogo}></Image>
-                            </div>
-                            <p className={styles.textContainer}>{data.name}</p>
-                        </Link>
-                    </li>
-                ))}
+                <li className={styles.liStyle}>
+                    <div className={styles.ListItemIcon}>
+                        <Image src={"image/database-table-icon.png"} className={styles.imageLogo}></Image>
+                    </div>
+                    <p className={styles.textContainer}>첫번째 프로젝트 즐찾</p>
+                </li>
+                <li className={styles.liStyle}>
+                    <div className={styles.ListItemIcon}>
+                        <Image src={"image/database-table-icon.png"} className={styles.imageLogo}></Image>
+                    </div>
+                    <p className={styles.textContainer}>첫번째 프로젝트 즐찾</p>
+                </li>
+                <li className={styles.liStyle}>
+                    <div className={styles.ListItemIcon}>
+                        <Image src={"image/database-table-icon.png"} className={styles.imageLogo}></Image>
+                    </div>
+                    <p className={styles.textContainer}>첫번째 프로젝트 즐찾</p>
+                </li>
             </ul>
+
         </div>
     );
 }

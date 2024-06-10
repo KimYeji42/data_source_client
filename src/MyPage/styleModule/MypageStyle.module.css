@@ -138,7 +138,7 @@
     left: 0;
     height: 3px;
     background: #00A3FF;
-    transition: all 0.3s ease-out;
+    transition: all 0.5s ease-out;
     width: calc(100% / 3);
 }
 
@@ -152,21 +152,14 @@
 .liStyle {
     list-style: none;
     width: 80%;
+    display: flex;
+    align-items: center;
     font-size: 1.2rem;
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
+
     border-left: 10px solid #00A3FF;
     margin: 10px ;
     padding: 20px;
-    transition: border-left 0.3s ease;
-}
-.liStyle:hover {
-    border-left: 13px solid #00A3FF;
-}
-.linkStyle {
-    display: flex;
-    align-items: center;
-    color: black;
-    text-decoration: none;
 }
 
 /* 프로젝트 아이콘 */

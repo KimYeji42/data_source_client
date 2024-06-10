@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function MyPage(){
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [error, setError] = useState(null);
     const [isErrorModalOpen, setErrorModalOpen] = useState(false);
 
@@ -37,7 +37,7 @@ export default function MyPage(){
         const token = localStorage.getItem('token');
         const endpoint = '/api/auth/collections';
         if (token !== null) {
-            fetchProjectData(token, endpoint);
+            fetchProjectData(token,endpoint);
             return;
         }
         setError("로그인 후 진행해주세요!");
@@ -46,8 +46,8 @@ export default function MyPage(){
     return(
         <>
             <div className={styles.pageContainer}>
-                {data && data[0].profileInfo && <Profilelayout profileInfo={data[0].profileInfo} />}
-                {data && <Contentslayout data={data}/>}
+                <Profilelayout/>
+                <Contentslayout/>
             </div>
 
             <ErrorModal
