@@ -73,9 +73,9 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
 
     const handleDeleteRow = () => {
         if (rows.length > 1) {
-            const updatedRows = [...rows.slice(1)];
+            const updatedRows = [...rows.slice(0, -1)];
             setRows(updatedRows);
-            const updatedCreationTimes = [...creationTimes.slice(1)];
+            const updatedCreationTimes = [...creationTimes.slice(0, -1)];
             setCreationTimes(updatedCreationTimes);
         }
     };

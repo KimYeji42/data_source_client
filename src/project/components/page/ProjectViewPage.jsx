@@ -3,8 +3,9 @@ import ProjectInformationLayOut from "../layout/ProjectInformationLayOut";
 import ProjectCollaborativeLayOut from "../layout/ProjectCollaborativeLayOut";
 import ProjectTablesLayOut from "../layout/ProjectTablesLayOut";
 import TitleUI from "../uI/TitleUI";
-import { useEffect, useState } from "react";
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {Link, useParams} from "react-router-dom";
+import stylesRest from "../../../devSource/styleModule/restAPIBuilder.module.css";
 
 export default function ProjectViewPage(){
     const { projectId } = useParams();
@@ -38,6 +39,10 @@ export default function ProjectViewPage(){
             <div className={styles.ProjectViewCardPageHeader}>
                 {/*<Image src={"../image/webSite.png"} className={styles.WebSiteIcon}/>*/}
                 <div className={styles.ProjectTitle}><TitleUI title={data.name}/></div>
+                <Link to={`/projects`} className={stylesRest.backArrowIcon}>
+                    돌아가기
+                    {/*<img src="/image/backArrow.png" alt="돌아가기" />*/}
+                </Link>
             </div>
 
             <div className={styles.ProjectViewCards}>

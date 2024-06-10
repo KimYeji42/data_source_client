@@ -1,13 +1,14 @@
 import styles from '../../styleModule/cardDesignStyle.module.css'
+import tableStyles from '../../styleModule/tableStyle.module.css';
 import {Image} from "react-bootstrap";
+
 export default function TemplatePreViewLayout({ templateName  , selectInputData , checkBoxData , tableID}) {
     let templateDesign = null;
-
 
     switch (templateName.toUpperCase()) {
         case "CARD TEMPLATE": {
             templateDesign = (
-                <div className={styles.cardContainer}>
+                <div className={`${styles.cardContainer} ${styles.scrollbar}`}>
                     {selectInputData.map((card, index) => (
                         <div key={index} className={styles.card}>
                             <div className={styles.cardImageContainer}>
@@ -23,7 +24,6 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
                         </div>
                     ))}
                 </div>
-
             );
             break;
         }
@@ -61,12 +61,34 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
             break;
         }
         case "TABLE TEMPLATE": {
-            // Table Template에 대한 처리
+            if (selectInputData === null) return null;
+            const rowCount = Math.max(...selectInputData.map(column => column.data.length));
             templateDesign = (
                 <div>
-                    {/* Table Template의 디자인 */}
-                    <h2>Table Template Design</h2>
-                    {/* 추가적인 UI 요소들 */}
+                    <table className={tableStyles.table}>
+                        <thead>
+                        <tr>
+                            <th className={tableStyles.th}><input type="checkbox"/></th>
+                            {selectInputData.map((column) => (
+                                <th className={tableStyles.th} key={column.id}>
+                                    {column.columnName}
+                                </th>
+                            ))}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {Array.from({ length: rowCount }).map((_, rowIndex) => (
+                            <tr key={rowIndex}>
+                                <td className={tableStyles.td}><input type="checkbox"/></td>
+                                {selectInputData.map((column) => (
+                                    <td className={tableStyles.td} key={`${column.id}-${rowIndex}`}>
+                                        {column.data[rowIndex] || ''}
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
                 </div>
             );
             break;
@@ -82,7 +104,6 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
             break;
         }
     }
-
 
     return (
         <div className={styles.templateDraw}>

@@ -1,19 +1,14 @@
 import TitleUI from "../../../project/components/uI/TitleUI";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css"
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import RestApiUrlLayout from "../layout/RestApiUrlLayout";
 import RestApiProjectInfoLayout from "../layout/RestApiProjectInfoLayout";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 export default function RestAPIBuilderPage(){
-    const { tableID } = useParams();
+    const { dataBaseID, tableID } = useParams()
     const [tableApiData , setTableApiData] = useState(null)
-    const [isExpanded, setIsExpanded] = useState(false); // 토글 상태를 관리하는 state
-    const handleToggle = () => {
-        fetchData()
-        setIsExpanded(!isExpanded); // 토글 상태 변경
-    };
-
+    
     const fetchData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -32,19 +27,21 @@ export default function RestAPIBuilderPage(){
         }
     };
 
+    useEffect(() => {
+        fetchData()
+    }, []);
 
     return (
         <div>
             <div className={stylesRest.centerContainer}>
-                <div className={stylesRest.toggleContainer}>
-                    <p onClick={handleToggle}>{isExpanded ? 'URL 숨기기' : 'URL 보기'}</p>
-                </div>
+                <Link to={`/table/${dataBaseID}/${tableID}`} className={stylesRest.toggleContainer}>
+                    돌아가기
+                </Link>
                 <TitleUI title={"[REST API Builder]"} />
                 {tableApiData && (
                     <>
                         <RestApiProjectInfoLayout data={tableApiData} />
                         <RestApiUrlLayout
-                            isExpanded={isExpanded}
                             localPort={tableApiData.localPort}
                             endpoint={tableApiData.endpoint}
                         />
