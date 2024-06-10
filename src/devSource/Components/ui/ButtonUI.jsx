@@ -6,6 +6,8 @@ import search from '../../Image/search.png';
 import importCSV from '../../Image/import.png';
 import update from '../../Image/updateBtn.png'
 import appendColumn from '../../Image/append_column_icon.png'
+import list from '../../Image/list.png'
+
 export const Button = [
     {image:refresh},
     {image:add},
@@ -14,5 +16,6 @@ export const Button = [
     {image:search},
     {image:importCSV},
     {image: update},
-    {image: appendColumn}
+    {image: appendColumn},
+    {image: list}
 ]

@@ -5,6 +5,7 @@ import TemplatePreViewLayout from "./TemplatePreViewLayout";
 import {useEffect, useState} from "react";
 
 export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID }){
+    const apiUrl = process.env.REACT_APP_API_URL;
     const [columnsData , setColumnsData] = useState(null)
 
     const [selectedOptions, setSelectedOptions] = useState({
@@ -14,18 +15,17 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
     });
     const [selectedResultInputData , setSelectedResultInputData] = useState(null)
 
-    const [selectedCheckBoxNames, setSelectedCheckBoxNames] = useState([]);
-
-
+    // 템플릿 행 데이터 선택
     const setSelectedColumns = (selectedOptions) => {
         fetchInputTemplateData()
         console.log("Selected options:", selectedOptions);
     };
-    const handleSelectedCheckBoxNames = (selectedNames) => {
-        setSelectedCheckBoxNames(selectedNames);
+    const handleSelectedChecks = async (selectedNames) => {
         console.log("Selected checkbox names:", selectedNames);
+        fetchCheckTemplateData(selectedNames)
     };
 
+    // 컬럼 데이터
     const fetchColumnData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
         try {
@@ -43,16 +43,13 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
         }
     };
 
-    useEffect(() => {
-        fetchColumnData()
-    }, []);
-
+    // 콤보박스 데이터
     const fetchInputTemplateData = async () => {
         let data = {
             tableID: tableID,
             selectInputData: selectedOptions
         }
-        const apiUrl = process.env.REACT_APP_API_URL;
+
         try {
             const response = await fetch(`${apiUrl}/api/template/card`, {
                 method: 'POST',
@@ -66,7 +63,7 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
                 // 응답을 JSON 형식으로 변환
                 const responseData = await response.json();
                 // responseData에 서버로부터 받은 데이터가 포함되어 있음
-                console.log('Received data:', responseData);
+                console.log('콤보 박스 데이터:', responseData);
                 setSelectedResultInputData(responseData)
             } else {
                 console.error('Failed to fetch data:', response.status);
@@ -77,11 +74,44 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
         }
     };
 
+    // 체크박스 데이터
+    const fetchCheckTemplateData = async (selectedNames) => {
+        const data  = {
+            tableID: tableID,
+            menuColumns: selectedNames
+        }
+
+        try {
+            const response = await fetch(`${apiUrl}/api/template/tree`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                const responseData = await response.json();
+                console.log('체크박스 데이터 :', responseData);
+                setSelectedResultInputData(responseData)
+            } else {
+                console.error('Failed to fetch data:', response.status);
+                //여기서 컬럼 이름 알맞게 수정해달라구 바꾸기
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchColumnData()
+    }, []);
+
     return(
         <div className={styles.modalOverlay}>
             <div className={styles.templateDisplayContainer} >
                 <div className={styles.templateContainer}>
-                    <div className={styles.templatePreView}>
+                    <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
                         {(!choiceInputContainerOpen || selectedResultInputData) &&
                             <TemplatePreViewLayout
                                 templateName={templateLabel}
@@ -101,7 +131,7 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
                     }
                     {(!choiceInputContainerOpen && columnsData) &&
                         <TemplateCheckBoxUI checkboxData={columnsData}
-                                            onSaveButtonClick={handleSelectedCheckBoxNames}
+                                            onSaveButtonClick={handleSelectedChecks}
                         />
                 }
                 </div>

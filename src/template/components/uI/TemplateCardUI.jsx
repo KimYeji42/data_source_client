@@ -22,7 +22,7 @@ export default function TemplateCardUI({imageURL , templateTitle , tableID}){
                 <Image className={styles.inBoxImage} src={imageURL} />
                 <p>{templateTitle}</p>
             </div>
-            {isTemplateDisPlayOpen&&
+            {isTemplateDisPlayOpen &&
                 <TemplateDisPlay
                     setDisplayOpen={setIsTemplateDisPlayOpen}
                     choiceInputContainerOpen={choiceInputContainerOpen}

@@ -80,12 +80,13 @@ export default function DataImportModalUI({ onClose, tableID }) {
             <div className={styles.DataImportContainer}>
                 <TitleUI title={"CSV DATA IMPORT"}/>
                 <div className={styles.description}>
-                    <p className={styles.comment}>데이터를 추가하기 전에 가장 상단의 행의 이름은 컬럼의 이름과 동일하여야 합니다.</p>
-                    <p>예시:</p>
-                    <p>[ 컬럼 이름 1 ] [ 컬럼 이름 2 ] [ 컬럼 이름 3 ]</p>
-                    <p>[ 추가 데이터 ] [ 추가 데이터 ] [ 추가 데이터 ]</p>
-                    <p> 해당 시트의 이름은 항상  <strong className={styles.comment}>"Sheet1"</strong> 으로 해주세요.</p>
-                    <p className={styles.comment}>선택을 누르고 추가할 EXCEL 데이터를 첨부 후 추가 버튼을 눌러주세요.</p>
+                    <p>1. 엑셀 가장 상단 행은 데이터베이스 <strong className={styles.comment}>행 이름과 동일</strong>하여야 합니다.</p>
+                    <p>ex) </p>
+                    <div className={styles.csvImgBox}>
+                        <img src="/image/CSV.png" alt="CSV" className={styles.csvImg}/>
+                    </div>
+                    <p> 2. 해당 시트의 이름은 항상  <strong className={styles.comment}>"Sheet1"</strong>으로 해주세요.</p>
+                    <p>3. 파일 선택을 누르고 추가할 EXCEL 데이터를 첨부 후 추가 버튼을 눌러주세요.</p>
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className={styles.fileInputWrapper}>
@@ -94,7 +95,7 @@ export default function DataImportModalUI({ onClose, tableID }) {
                             accept=".xls,.xlsx"
                             onChange={handleFileChange}
                         />
-                        <button type="button" className={styles.chooseFileButton}>선택</button>
+                        <button type="button" className={styles.chooseFileButton}>파일 선택</button>
                     </div>
                     {file && <div className={styles.selectedFileName}>파일 이름: {file.name}</div>}
                     <div className={styles.buttonContainer}>
