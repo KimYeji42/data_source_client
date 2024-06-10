@@ -1,5 +1,5 @@
 import styles from '../../styleModule/DownloadStyle.module.css'
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function DownloadUI({ tableID }) {
@@ -7,15 +7,17 @@ export default function DownloadUI({ tableID }) {
     const [isErrorModalOpen , setIsErrorModalOpen] = useState(false)
 
     const excelDataDownload = async () =>{
-        await fetchTableExcelData()
-
         if (excelData == null){
             setIsErrorModalOpen(true)
             return
         }
-
         downloadExcel()
     }
+
+    useEffect(() => {
+        fetchTableExcelData()
+    }, [tableID]);
+
     const fetchTableExcelData = async () => {
         const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -28,6 +30,7 @@ export default function DownloadUI({ tableID }) {
             });
             const responseData = await response.json();
             setExcelData(responseData)
+            console.log("엑셀 데이터 실행 :" + responseData)
             //받은 데이터를 자바스크립트 Map객체로 변환
         } catch (error) {
             console.error('Error fetching data:', error);

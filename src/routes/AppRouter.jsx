@@ -7,7 +7,6 @@ import ProjectShowCasePage from '../project/components/page/ProjectShowCasePage'
 import TemplatePage from '../template/components/page/TemplatePage'
 import ErrorPage from "./ErrorPage";
 import ProjectViewPage from "../project/components/page/ProjectViewPage";
-import TemplateShowCasePage from "../project/components/page/TemplateShowCasePage";
 import TablePage from "../devSource/Components/page/TablePage";
 import TeamProfilePage from "../project/components/page/TeamProfilePage";
 import CommitSearchPage from "../devTree/Components/page/CommitSearchPage";

@@ -1,11 +1,29 @@
 import styles from '../../styleModule/cardDesignStyle.module.css'
 import tableStyles from '../../styleModule/tableStyle.module.css';
-import {Image} from "react-bootstrap";
 import cardStyles from '../../styleModule/cardDesignStyle.module.css'
 import barStyles from '../../styleModule/barDesignStyle.module.css'
+import listStyles from '../../styleModule/listDesginStyle.module.css'
+import treeStyles from '../../styleModule/treeDesginStyle.module.css'
+import {Image} from "react-bootstrap";
+import searchIcon from '../../image/glass.png'
+import houseIcon from '../../image/house.png'
+import downClickIcon from '../../image/click.png'
+import upClickIcon from '../../image/clickBefore.png'
 
-export default function TemplatePreViewLayout({ templateName  , selectInputData , checkBoxData , tableID}) {
+import {useState} from "react";
+export default function TemplatePreViewLayout({ templateName  , selectInputData , checkBoxData }) {
+    const [openColumns, setOpenColumns] = useState({}); // 각 컬럼의 토글 상태를 관리하기 위한 상태
+
+    // 이미지 클릭 이벤트 핸들러
+    const toggleOpen = (index) => {
+        setOpenColumns(prevState => ({
+            ...prevState,
+            [index]: !prevState[index], // 해당 컬럼의 토글 상태를 반전
+        }));
+    };
+
     let templateDesign = null;
+
 
     switch (templateName.toUpperCase()) {
         case "CARD TEMPLATE": {
@@ -49,23 +67,77 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
             break;
         }
         case "LIST TEMPLATE": {
+            if (selectInputData === null) return null;
+
             // List Template에 대한 처리
             templateDesign = (
-                <div>
-                    {/* List Template의 디자인 */}
-                    <h2>List Template Design</h2>
-                    {/* 추가적인 UI 요소들 */}
+                <div style={{ padding: "20px" }}>
+                    <div className={listStyles.menuContainer}>
+                        <h6 className={listStyles.menuTitle}>List Template Design</h6>
+                        <div className={listStyles.menuValues}>
+                            {selectInputData.map((column, index) => (
+                                <div key={index} className={listStyles.menuInbox}>
+                                    {column.data.map((data, idx) => (
+                                        <div key={idx} className={listStyles.menu}>
+                                            <input type="checkbox" style={{ width: '17px', height: '17px' }} />
+                                            <small>{data}</small>
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             );
             break;
         }
         case "TREE TEMPLATE": {
+            if (selectInputData === null) return null;
             // Tree Template에 대한 처리
             templateDesign = (
-                <div>
-                    {/* Tree Template의 디자인 */}
-                    <h2>Tree Template Design</h2>
-                    {/* 추가적인 UI 요소들 */}
+                <div style={{ padding: "20px" }}>
+                    <div className={treeStyles.treeContainer}>
+                        <h6 className={treeStyles.treeTitle}>List Template Design</h6>
+                        <div className={treeStyles.inputBox}>
+                            <Image src={searchIcon} style={{ width: "40px", height: "40px" }} />
+                            <input className={treeStyles.searchBar} placeholder={"Search"} />
+                        </div>
+                        <hr/>
+
+                        {selectInputData.map((column, index) => (
+                            <div key={index}>
+                                <div className={treeStyles.treeColumnsTitle}>
+                                    <Image src={houseIcon} style={{ width: "40px", height: "40px" }} />
+                                    <h6>{column.columnName}</h6>
+                                    {
+                                        openColumns[index] && (
+                                            <Image
+                                                className={treeStyles.clickIcon}
+                                                src={downClickIcon}
+                                                style={{ width: "20px", height: "10px", cursor: 'pointer' }}
+                                                onClick={() => toggleOpen(index)} // 해당 컬럼의 토글 상태를 변경하는 함수 호출
+                                            />
+                                        )
+                                    }
+                                    {
+                                        !openColumns[index] && (
+                                            <Image
+                                                className={treeStyles.clickIcon}
+                                                src={upClickIcon}
+                                                style={{ width: "10px", height: "20px", cursor: 'pointer' }}
+                                                onClick={() => toggleOpen(index)} // 해당 컬럼의 토글 상태를 변경하는 함수 호출
+                                            />
+                                        )
+                                    }
+                                </div>
+                                {openColumns[index] && column.data.map((data, idx) => (
+                                    <li className={treeStyles.columnValues} key={idx}>
+                                        <small>{data}</small>
+                                    </li>
+                                ))}
+                            </div>
+                        ))}
+                    </div>
                 </div>
             );
             break;
@@ -74,7 +146,7 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
             if (selectInputData === null) return null;
             const rowCount = Math.max(...selectInputData.map(column => column.data.length));
             templateDesign = (
-                <div>
+                <div style={{padding : "20px"}}>
                     <table className={tableStyles.table}>
                         <thead>
                         <tr>

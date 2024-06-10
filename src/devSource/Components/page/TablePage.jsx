@@ -45,10 +45,7 @@ export default function TablePage() {
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
-                    <Link to={`/project/${dataBaseID}`} className={stylesRest.backArrowIcon}>
-                        돌아가기
-                        {/*<img src="/image/backArrow.png" alt="돌아가기" />*/}
-                    </Link>
+
                 </div>
 
                 {/* 드롭다운 버튼 */}
