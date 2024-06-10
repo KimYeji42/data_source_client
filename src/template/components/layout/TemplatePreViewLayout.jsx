@@ -1,5 +1,5 @@
-import styles from '../../styleModule/cardDesignStyle.module.css'
-import {Image} from "react-bootstrap";
+import cardStyles from '../../styleModule/cardDesignStyle.module.css'
+import barStyles from '../../styleModule/barDesignStyle.module.css'
 export default function TemplatePreViewLayout({ templateName  , selectInputData , checkBoxData , tableID}) {
     let templateDesign = null;
 
@@ -7,23 +7,22 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
     switch (templateName.toUpperCase()) {
         case "CARD TEMPLATE": {
             templateDesign = (
-                <div className={styles.cardContainer}>
+                <div className={cardStyles.cardContainer}>
                     {selectInputData.map((card, index) => (
-                        <div key={index} className={styles.card}>
-                            <div className={styles.cardImageContainer}>
+                        <div key={index} className={cardStyles.card}>
+                            <div className={cardStyles.cardImageContainer}>
                                 <img src={card.image} alt={card.title} />
                             </div>
-                            <div className={styles.cardContent}>
-                                <h2 className={styles.cardTitle}>{card.title}</h2>
-                                <p className={styles.cardDescription}>{card.description}</p>
+                            <div className={cardStyles.cardContent}>
+                                <h2 className={cardStyles.cardTitle}>{card.title}</h2>
+                                <p className={cardStyles.cardDescription}>{card.description}</p>
                             </div>
-                            <div className={styles.cardButtonContainer}>
-                                <button className={styles.cardButton}>버튼</button>
+                            <div className={cardStyles.cardButtonContainer}>
+                                <button className={cardStyles.cardButton}>버튼</button>
                             </div>
                         </div>
                     ))}
                 </div>
-
             );
             break;
         }
@@ -31,9 +30,17 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
             // Bar Template에 대한 처리
             templateDesign = (
                 <div>
-                    {/* Bar Template의 디자인 */}
-                    <h2>Bar Template Design</h2>
-                    {/* 추가적인 UI 요소들 */}
+                    {selectInputData.map((bar, index) => (
+                        <div key={index} className={barStyles.bar}>
+                            <div className={barStyles.barImage}>
+                                <img src={bar.image} alt={bar.title} />
+                            </div>
+                            <div className={barStyles.barContainer}>
+                                <h2 className={barStyles.barTitle}>{bar.title}</h2>
+                                <p className={barStyles.barDescription}>{bar.description}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
             );
             break;
@@ -85,7 +92,7 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
 
 
     return (
-        <div className={styles.templateDraw}>
+        <div>
             {templateDesign}
         </div>
     );
