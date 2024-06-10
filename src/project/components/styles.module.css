@@ -237,7 +237,7 @@
     padding: 10px;
     cursor: pointer;
     text-align: right;
-}
+ }
 
 .linkContainer{
     margin-top: 4rem;
@@ -462,7 +462,7 @@
 }
 .dataBaseBoxImage {
     padding: 20px;
-    width: 6.5rem
+    width: 6.5rem;
 }
 .dataBaseBoxTime{
     padding: 5px;
