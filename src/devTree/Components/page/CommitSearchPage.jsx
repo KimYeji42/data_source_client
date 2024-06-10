@@ -2,8 +2,9 @@ import styles from "../../styles/styles.module.css";
 import HistoryButtonLayOut from "../layout/HistoryButtonLayOut";
 import HistorySideBarUI from "../ui/HistorySideBarUI";
 import React, {useState, useEffect} from "react";
+import CommitChartUI from "../ui/CommitChartUI";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
-import CommitSearchChartUI from "../ui/CommitSearchChartUI";
+import CommitSearchUI from "../ui/CommitSearchUI";
 
 export default function CommitSearchPage(){
     const [token, setToken] = useState(null);
@@ -39,8 +40,10 @@ export default function CommitSearchPage(){
 
                 <div className={styles.HistoryCanverBack}>
                     <div className={styles.HistoryCanver}>
-                        {/*커밋 검색 히스토리 표*/}
-                        <CommitSearchChartUI
+                        {/*커밋 검색 컴포넌트*/}
+                        <CommitSearchUI/>
+                        {/*커밋 히스토리 표*/}
+                        <CommitChartUI
                             projectId={selectedProjectId}
                             onSelect={handleSelectCommit}
                             Search={true}

@@ -18,7 +18,7 @@ export default function HistorySideBarUI({ selected }) {
                         <Link className={selected === 0 ? `${styles.SideMenu} ${styles.selectedMenuItem}` : styles.SideMenu}
                               onClick={() => handleClick(0)} to="/status" >현재 상태</Link>
                         <Link className={selected === 1 ? `${styles.SideMenu} ${styles.selectedMenuItem}` : styles.SideMenu}
-                              onClick={() => handleClick(1)} to="/history" >히스토리</Link>
+                              onClick={() => handleClick(1)} to="/History" >히스토리</Link>
                         <Link className={selected === 2 ? `${styles.SideMenu} ${styles.selectedMenuItem}` : styles.SideMenu}
                               onClick={() => handleClick(2)} to="/commit">커밋 검색</Link>
                     </div>
