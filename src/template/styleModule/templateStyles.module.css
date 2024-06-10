@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "KoPubWorld Dotum Bold";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+.toggleStatus{
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
+}
+.templateTitle{
+    width: 60%;
+    margin: 5% auto 3%;
+}
+
+.toggleBtn {
+    width: 130px;
+    height: 50px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.toggleBtnOff {
+    background-color: #00a3ff;
+}
+
+.toggleBtnOn {
+    background-color: #000000;
+}
+
+.circle {
+    background-color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    position: absolute;
+    left: 5%;
+    transition: all 0.5s ease-in-out;
+}
+
+.circleOn {
+    transform: translateX(80px);
+}
+.toggleContainer{
+    width: 60%;
+    margin: 0 auto;
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
+}
+.templateContainer {
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
+    width: 60%;
+    margin: 0 auto;
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
+    padding: 5px;
+    text-align: center;
+}
+
+
+.templateContainer img{
+    width: 500px;
+    height: 300px;
+}
+
+.templateContainer h4{
+    padding: 10px;
+
+}
+.inBox {
+    color: #00a3ff;
+    padding: 3px;
+}
+.inBox p{
+    padding-top: 10px;
+}
+.inBox .inBoxImage{
+    padding: 10px;
+    border-bottom: 3px solid #a2a2a2;
+}
+.inBox{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+    0 6px 20px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 5px;
+}
+.inBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+    0 12px 40px rgba(0, 0, 0, 0.2);
+}
