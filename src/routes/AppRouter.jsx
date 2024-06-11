@@ -20,12 +20,11 @@ import Header from "../Layout/Header/Header";
 import LoginPage from "../authentication/components/page/LoginPage";
 import ERDPage from "../ERD/components/page/ERDPage";
 import MyPage from "../MyPage/components/page/MyPage";
-import Guide from "../Layout/Gudie/Guide";
-import GuideOnOffButton from "../Layout/Gudie/GuideOnOffButton";
+import GuideLayout from "../Layout/Gudie/GuideLayout";
+
 export default function AppRouter() {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
-    const [isGuideOpen, setIsGuideOpen] = useState(false)
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
         setCurrentUser(username)
@@ -55,9 +54,7 @@ export default function AppRouter() {
     return (
         <div className="AppRouter">
             <BrowserRouter>
-                {isGuideOpen &&
-                    <Guide closeButtonClick={() => setIsGuideOpen(false)}/>
-                }
+
                 <Header
                         currentUser={currentUser}
                         isLoggedIn={isLoggedIn}
@@ -93,9 +90,7 @@ export default function AppRouter() {
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
-                <GuideOnOffButton
-                    onClick={() => setIsGuideOpen(true)}
-                />
+                <GuideLayout/>
             </BrowserRouter>
         </div>
     )
