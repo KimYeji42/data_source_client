@@ -4,6 +4,7 @@ import HistorySideBarUI from "../ui/HistorySideBarUI";
 import React, {useState, useEffect} from "react";
 import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import CommitSearchChartUI from "../ui/CommitSearchChartUI";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function CommitSearchPage(){
     const [token, setToken] = useState(null);
@@ -27,31 +28,35 @@ export default function CommitSearchPage(){
     }, []);
 
     return (
-        <div className={styles.HistoryViewPage}>
-            <div className={styles.HistoryPage}>
-                <HistoryButtonLayOut
-                    onSelect={handleSelectProject}
-                    selectedCommitId={selectedCommitId}
-                    token={token}
-                />
+        <>
+            <HeaderBottom title={"버전 관리"} titleList={["프로젝트 목록", "프로젝트"]} linkList={["/projects", `/project/${selectedProjectId}`]}/>
+            <div className={styles.HistoryViewPage}>
+                <div className={styles.HistoryPage}>
+                    <HistoryButtonLayOut
+                        onSelect={handleSelectProject}
+                        selectedCommitId={selectedCommitId}
+                        token={token}
+                    />
 
-                <HistorySideBarUI selected={2}/>
+                    <HistorySideBarUI selected={2}/>
 
-                <div className={styles.HistoryCanverBack}>
-                    <div className={styles.HistoryCanver}>
-                        {/*커밋 검색 히스토리 표*/}
-                        <CommitSearchChartUI
-                            projectId={selectedProjectId}
-                            onSelect={handleSelectCommit}
-                            Search={true}
-                        />
-                        {/*커밋 정보*/}
-                        <ChangeCommitLayOut
-                            commitId={selectedCommitId}
-                        />
+                    <div className={styles.HistoryCanverBack}>
+                        <div className={styles.HistoryCanver}>
+                            {/*커밋 검색 히스토리 표*/}
+                            <CommitSearchChartUI
+                                projectId={selectedProjectId}
+                                onSelect={handleSelectCommit}
+                                Search={true}
+                            />
+                            {/*커밋 정보*/}
+                            <ChangeCommitLayOut
+                                commitId={selectedCommitId}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
+
     );
 }

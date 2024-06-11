@@ -6,9 +6,10 @@ import React, { useEffect, useState } from "react";
 import LinkUI from "../../../project/components/uI/LinkUI";
 import {Link, useParams} from "react-router-dom";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function TablePage() {
-    const { tableID } = useParams()
+    const { dataBaseID, tableID } = useParams()
     const [tableInfo, setTableInfo] = useState(null)
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
 
@@ -42,6 +43,7 @@ export default function TablePage() {
 
     return (
         <>
+            <HeaderBottom title={"테이블"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`]}/>
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
@@ -55,12 +57,12 @@ export default function TablePage() {
                         <ul className={styles.dropdownContent}>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${tableID}`} />
+                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${dataBaseID}/${tableID}`} />
                                 </div>
                             </li>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`} />
+                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${dataBaseID}/${tableID}`} />
                                 </div>
                             </li>
                             <li>

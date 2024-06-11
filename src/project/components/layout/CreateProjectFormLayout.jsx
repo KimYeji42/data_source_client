@@ -18,6 +18,9 @@ export default function CreateProjectFormLayout() {
     const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
     const [error, setError] = useState("");
     const [success , setSuccess] = useState("")
+    const [createDataBase, setCreateDataBase] = useState(null);
+
+
     const getCreateUser = async () => {
         const token = localStorage.getItem('token');
         const apiUrl = process.env.REACT_APP_API_URL;
@@ -100,18 +103,19 @@ export default function CreateProjectFormLayout() {
             });
             const responseData = await response.json();
             if (response.ok) {
-                console.log('Data sent successfully:', responseData);
-                console.log(responseData.message);
-                setSuccess(responseData.message)
-                setIsSuccessModalOpen(true)
-            } else {
-                throw new Error(responseData.message); // 에러를 던져서 catch 블록에서 처리하도록 함
+                if (responseData !== null) {
+                    setCreateDataBase(responseData)
+                    console.log('Data sent successfully:', responseData);
+                    setSuccess("프로젝트 생성에 성공하였습니다.");
+                    setIsSuccessModalOpen(true);
+                } else {
+                    setError("새로운 프로젝트를 생성할 수 없습니다. 프로젝트는 최대 4개까지 생성할 수 있습니다.");
+                    setIsErrorModalOpen(true);
+                }
             }
             console.log(obj);
         } catch (error) {
-            console.error('Error sending data:', error);
-            setError(error.message);
-            setIsErrorModalOpen(true);
+            console.error('Error fetching data:', error.message);
         }
     };
 
@@ -132,12 +136,12 @@ export default function CreateProjectFormLayout() {
                 error={error}
             />
 
-            <SuccessModalLayout
+            {createDataBase && <SuccessModalLayout
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
-                clickLink={"/projects"}
-            />
+                clickLink={`/project/${createDataBase.projectID}`}
+            />}
 
             <div>
                 <div className={styles.titleGroup}>

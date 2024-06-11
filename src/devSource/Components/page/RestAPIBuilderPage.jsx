@@ -4,9 +4,10 @@ import React, { useState, useEffect } from "react";
 import RestApiUrlLayout from "../layout/RestApiUrlLayout";
 import RestApiProjectInfoLayout from "../layout/RestApiProjectInfoLayout";
 import {Link, useParams} from "react-router-dom";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function RestAPIBuilderPage(){
-    const { tableID } = useParams()
+    const {dataBaseID, tableID} = useParams()
     const [tableApiData , setTableApiData] = useState(null)
     
     const fetchData = async () => {
@@ -33,10 +34,11 @@ export default function RestAPIBuilderPage(){
 
     return (
         <div>
+            <HeaderBottom title={"REST API"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스", "테이블"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`, `/table/${dataBaseID}/${tableID}`]}/>
             <div className={stylesRest.centerContainer}>
-                <Link to={`/table/${tableID}`} className={stylesRest.toggleContainer}>
-                    돌아가기
-                </Link>
+                {/*<Link to={`/table/${dataBaseID}/${tableID}`} className={stylesRest.toggleContainer}>*/}
+                {/*    돌아가기*/}
+                {/*</Link>*/}
                 <TitleUI title={"[REST API Builder]"} />
                 {tableApiData && (
                     <>

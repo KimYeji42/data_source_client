@@ -7,7 +7,7 @@ export default function GuideLayout(){
     const [isGuideOpen, setIsGuideOpen] = useState(false)
 
     return(
-        <div>
+        <div className={styles.GuideLayout}>
             <div className={isGuideOpen ? '' : styles.hidden}>
                  <Guide closeButtonClick={() => (setIsGuideOpen(false))}/>
             </div>

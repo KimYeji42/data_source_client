@@ -1,16 +1,27 @@
 import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
+import {useEffect, useState} from "react";
 
 
 export default function BoxUI({ header, date, comment, imageSrc, item, setActiveTable, activeTable , starBtnClickHandler , deleteBtnClickHandler }) {
+    const [isActiveItem , setIsActiveItem] = useState(false)
 
     const handleClick = (item) => {
         setActiveTable(item);
     };
 
+    useEffect(() => {
+        if (activeTable === item) {
+            setIsActiveItem(true)
+            sessionStorage.removeItem("newTableAction");
+        } else {
+            setIsActiveItem(false)
+        }
+    }, [activeTable]);
+
     return(
         <div className={styles.BoxUI}>
-            <div className={`${styles.dataBaseBox} ${activeTable === item ? styles.activeBox : ''}`} onClick={() => handleClick(item)}>
+            <div className={`${styles.dataBaseBox} ${isActiveItem ? styles.activeBox : ''}`} onClick={() => handleClick(item)}>
                 <Image src={imageSrc} alt="Search Database" className={styles.dataBaseBoxImage}/>
 
                 <h3 className={styles.dataBaseBoxTitle}>{header}</h3>

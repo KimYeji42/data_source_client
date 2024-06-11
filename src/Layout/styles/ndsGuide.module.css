@@ -1,5 +1,9 @@
 /* ndsGuide.module.css */
-
+.GuideLayout{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
 .box {
     font-family: "KoPubWorld Dotum Bold.ttf", serif;
     position: absolute;
@@ -41,7 +45,6 @@ small {
 }
 
 .guideButton {
-    float: right;
     font-size: 12px;
     margin-top: 10px;
     padding: 10px 15px;
@@ -52,16 +55,20 @@ small {
     cursor: pointer;
     transition: background-color 0.3s ease-in-out; /* 트랜지션 효과 */
 }
+.guideButtonLeft {
+    float: left;
+}
+.guideButtonRight {
+    float: right;
+}
 
 .guideButton:hover {
     background-color: #0056b3;
     border: none;
 }
 .buttonContainer{
-    display: flex;
-    justify-content: space-between;
+    margin-top: 15px;
 }
-
 .guideToggleButton {
     font-family: "KoPubWorld Dotum Bold.ttf", serif;
     position: absolute;

@@ -105,7 +105,7 @@ export default function MemberBoxLayout({data , projectID}) {
         <>
             <div className={styles.memberBox}>
                 <div className={styles.titleBox}>
-                    <MemberTitleUi text="협업자 관리"/>
+                    <MemberTitleUi text="협업 관리"/>
                 </div>
 
                 <div className={styles.memberContainer}>

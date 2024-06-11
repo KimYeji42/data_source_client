@@ -7,10 +7,11 @@ import ComponentTemplateData from "../data/ComponentTemplateData";
 import WebTemplateData from "../data/WebTemplateData";
 import {Link, useParams} from "react-router-dom";
 import stylesRest from "../../../devSource/styleModule/restAPIBuilder.module.css";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 // 새로운 데이터 파일 임포트
 
 export default function TemplatePage() {
-    const {tableID} = useParams()
+    const {dataBaseID, tableID} = useParams()
     const [templateStatus, setTemplateStatus] = useState(false);
 
     // templateStatus에 따라 사용할 데이터를 선택
@@ -18,10 +19,8 @@ export default function TemplatePage() {
 
     return (
         <div>
+            <HeaderBottom title={"템플릿"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스", "테이블"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`, `/table/${dataBaseID}/${tableID}`]}/>
             <div className={styles.templateTitle}>
-                <Link to={`/table/${tableID}`} className={stylesRest.toggleContainer}>
-                    돌아가기
-                </Link>
                 <TitleUI title={"NDS Template"}/>
                 <Toggle templateStatus={templateStatus} setTemplateStatus={setTemplateStatus} />
             </div>

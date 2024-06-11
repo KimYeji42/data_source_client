@@ -7,7 +7,7 @@ export default function ProjectInformationLayOut({project}) {
         <>
             <div className={styles.InformationInput}>
                 {/*상단*/}
-                <ViewCardTitle link={`/history`} title={"히스토리 접속하기"}/>
+                <ViewCardTitle link={`/history`} title={"버전 관리 접속하기"}/>
                 {/*아이콘*/}
                 <ViewCardIcon src={"../image/history_icon.png"} />
                 {/*내용*/}
