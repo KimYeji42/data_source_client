@@ -145,7 +145,7 @@ export default function DataBaseBoxLayOut() {
         <>
             <div className={styles.dataBaseBoxButton}>
                 {activeTable ? (
-                    <Link to={`/table/${dataBaseID}/${activeTable.id}`}>
+                    <Link to={`/table/${activeTable.id}`}>
                         <button className={styles.blueButton}>
                             테이블 데이터 관리하기
                         </button>

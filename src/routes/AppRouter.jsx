@@ -92,17 +92,20 @@ export default function AppRouter() {
                     <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
-                    <Route path='/template/:dataBaseID/:tableID' element={<TemplatePage />} />
+                    <Route path='/template/:tableID' element={<TemplatePage />} />
+                    {/*<Route path='/template/:dataBaseID/:tableID' element={<TemplatePage />} />*/}
                     <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
                     <Route path='/template' element={<TemplatePage />} />\
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
-                    <Route path='/table/:dataBaseID/:tableID' element={<TablePage />} />
+                    <Route path='/table/:tableID' element={<TablePage />} />
+                    {/*<Route path='/table/:dataBaseID/:tableID' element={<TablePage />} />*/}
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/status' element={<CurrentStatusPage />} />
                     <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
-                    <Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage/>}/>
+                    <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
+                    {/*<Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage/>}/>*/}
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
                     <Route path='/erd' element={<ERDPage/>}/>
                     <Route path='/auth/join' element={<JoinPage/>}/>
