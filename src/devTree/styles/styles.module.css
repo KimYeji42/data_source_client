@@ -348,7 +348,8 @@
     grid-column-end: 3;
     grid-row: 1;
     grid-row-end: 3;
-
+    overflow-x: auto;
+    overflow-y: auto;
 }
 .CommitMs {
     font-family: koko, serif;
