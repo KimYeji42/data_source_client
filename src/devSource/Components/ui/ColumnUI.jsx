@@ -12,8 +12,11 @@ import SuccessModalLayout from "../../../project/components/layout/SuccessModalL
 import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 import ColumnAppendModalUI from "./ColumnAppendModalUI";
+import {Link, useParams} from "react-router-dom";
+import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
+    const { dataBaseID, tableId } = useParams();
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])

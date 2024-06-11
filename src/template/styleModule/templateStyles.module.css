@@ -52,7 +52,8 @@
 .templateContainer {
     font-family: "KoPubWorld Dotum Bold.ttf", serif;
     width: 60%;
-    margin: 0 auto;
+    min-width: 400px;
+    margin: 0 auto 3%;
     display: grid;
     gap: 10px;
     justify-content: center;
@@ -75,11 +76,13 @@
 .inBox {
     color: #00a3ff;
     padding: 3px;
+    cursor: pointer;
 }
 .inBox p{
     padding-top: 10px;
 }
 .inBox .inBoxImage{
+    width: 98%;
     padding: 10px;
     border-bottom: 3px solid #a2a2a2;
 }

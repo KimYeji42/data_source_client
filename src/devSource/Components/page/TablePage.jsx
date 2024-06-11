@@ -4,10 +4,11 @@ import styles from '../../styleModule/ColumnStyle.module.css';
 import DownloadUI from "../ui/DownloadUI";
 import React, { useEffect, useState } from "react";
 import LinkUI from "../../../project/components/uI/LinkUI";
-import { useParams } from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 
 export default function TablePage() {
-    const { tableID } = useParams()
+    const { dataBaseID, tableID } = useParams()
     const [tableInfo, setTableInfo] = useState(null)
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
 
@@ -44,6 +45,7 @@ export default function TablePage() {
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
+
                 </div>
 
                 {/* 드롭다운 버튼 */}
@@ -54,12 +56,12 @@ export default function TablePage() {
                         <ul className={styles.dropdownContent}>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${tableID}`} />
+                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${dataBaseID}/${tableID}`} />
                                 </div>
                             </li>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`} />
+                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${dataBaseID}/${tableID}`} />
                                 </div>
                             </li>
                             <li>

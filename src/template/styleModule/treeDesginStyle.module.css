@@ -1,0 +1,105 @@
+@font-face {
+    font-family: "koko";
+    src: url("../../default/font/KoPubWorld Dotum Bold.ttf");
+}
+
+.treeContainer {
+    font-family: "koko", serif;
+    width: 260px;
+    height: auto;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 3px 3px 10px #e3e3e3;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    overflow-x: auto;
+}
+.inputBox{
+    display: flex;
+    background: #D0D0D0;
+    border-radius: 3px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.treeContainer input{
+    width: 80%;
+    border: none;
+    margin: 0 auto;
+    background-color: #D0D0D0;
+    border-radius: 3px;
+    height: 40px;
+}
+
+.searchBar:focus{
+    border: none;
+    outline: none; /* 기본 포커스 아웃라인 제거 */
+}
+
+.treeTitle {
+    margin-top: 20px;
+    margin-right: 60px;
+    width: 100%;
+    text-align: center;
+}
+
+.inputContainer input[type="text"] {
+    width: 90%;
+    margin-left: 10px;
+    padding: 5px 5px 5px 30px;
+    border: none;
+    border-radius: 4px;
+    background-color: #F6F8FA;
+
+}
+.treeColumnsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 240px; /* 부모 요소의 너비에 맞추기 위해 */
+    padding: 10px; /* 필요한 경우 간격을 추가 */
+}
+.treeColumnsTitle h6{
+    width: 150px;
+    text-align: left;
+}
+.clickIcon{
+}
+.treeColumnsTitle h6 {
+    margin: 0 10px; /* 텍스트와 아이콘 사이에 여백 추가 */
+}
+.columnValues{
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+.columnValues {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.columnValues::before {
+    content: '•';
+    margin-right: 10px;
+}
+/* 홀수 번째 아이템 */
+.columnValues:nth-child(odd)::before {
+    color: #F2994A;
+}
+
+/* 짝수 번째 아이템 */
+.columnValues:nth-child(even)::before {
+    color: #EB5757;
+}
+
+/* 3의 배수 아이템 */
+.columnValues:nth-child(3n)::before {
+    color: #219653;
+}
+
+/* 4의 배수 아이템 */
+.columnValues:nth-child(4n)::before {
+    color: #2D9CDB;
+}

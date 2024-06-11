@@ -12,7 +12,9 @@ function Header({currentUser , isLoggedIn , logoutHandler}) {
     useEffect(() =>{
         const path = location.pathname;
 
-        if (path === '/projects' || path.includes('/project/') || path.includes('/table/') || path.includes('/tables/') || path.includes('/createTable/') ||  path.includes('/createProject'))
+        if (path === '/projects' || path.includes('/project/') || path.includes('/table/') ||
+            path.includes('/tables/') || path.includes('/createTable/') ||  path.includes('/createProject') ||
+            path.includes('/apiBuilder/') || path.includes('/template/'))
             setSelectedIndex(1)
         else if(path === '/history' || path === '/status' || path === '/commit')
             setSelectedIndex(2)

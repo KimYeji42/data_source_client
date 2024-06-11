@@ -37,6 +37,10 @@
     text-transform: uppercase;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* 텍스트 그림자 추가 */
 }
+.titleBox {
+    display: flex;
+    justify-content: space-between;
+}
 .formTitle{
     font-family: 'KoPubWorld Dotum Bold', sans-serif;
     color: black;
@@ -708,6 +712,7 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .WebSiteIcon{
     width: 6rem;
