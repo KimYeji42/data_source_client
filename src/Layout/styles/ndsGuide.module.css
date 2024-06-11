@@ -3,8 +3,8 @@
 .box {
     font-family: "KoPubWorld Dotum Bold.ttf", serif;
     position: absolute;
-    top: 30px;
-    right: 20px;
+    bottom: 100px;
+    right: 50px;
     width: 300px;
     padding: 20px;
     height: auto;
@@ -63,6 +63,7 @@ small {
 }
 
 .guideToggleButton {
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
     position: absolute;
     bottom: 50px;
     right: 50px;
@@ -79,4 +80,7 @@ small {
 
 .guideToggleButton:hover {
     background-color: #0078c1;
+}
+.hidden {
+    display: none;
 }
