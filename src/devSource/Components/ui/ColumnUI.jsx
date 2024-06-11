@@ -121,11 +121,11 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 <ul className={styles.menuIconBox}>
                     <div className={styles.leftIcon}>
                         <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
-                        <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 추가"}/>
+                        <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 확장"}/>
                     </div>
                     <div className={styles.rightIcon}>
-                        <Button_UI image={Button[1].image} onClick={handlePushData} title={"행 추가"}/>
-                        <Button_UI image={Button[2].image} onClick={handleDeleteData} title={"행 삭제"}/>
+                        <Button_UI image={Button[1].image} onClick={handlePushData} title={"데이터 추가"}/>
+                        <Button_UI image={Button[2].image} onClick={handleDeleteData} title={"데이터 삭제"}/>
                         {
                             deleteData.length === 0 && createData.length === 0  && updateData.length === 0?(
                                 <Button_UI image={Button[3].image} title={"저장"}/>
@@ -133,7 +133,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                 <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)} title={"저장"}/>
                             )
                         }
-                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} title={"행 데이터 찾기"}/>
+                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} title={"행 데이터 검색"}/>
                         <Button_UI image={Button[5].image} onClick={handleImportCsvData} title={"CSV 데이터 불러오기"}/>
                     </div>
                 </ul>

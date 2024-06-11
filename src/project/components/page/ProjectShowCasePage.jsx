@@ -66,7 +66,7 @@ export default function ProjectShowCasePage() {
 
     return (
         <>
-            <HeaderBottom title={"디브 툴 ＞ 프로젝트"}/>
+            <HeaderBottom title={"프로젝트 목록"}/>
             <div className={styles.projectShowCasePage}>
                 <div className={styles.showCase}>
                     <div className={styles.projectTitleContainer}>

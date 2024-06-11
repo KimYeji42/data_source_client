@@ -25,6 +25,7 @@ import GuideLayout from "../Layout/Gudie/GuideLayout";
 export default function AppRouter() {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
+
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
         setCurrentUser(username)
@@ -44,6 +45,7 @@ export default function AppRouter() {
         localStorage.removeItem("email")
         localStorage.removeItem("username")
         sessionStorage.removeItem("selectedProjectId")
+        sessionStorage.removeItem("newTableAction")
     }
     useEffect(() => {
         //checkServerStatus()
@@ -65,23 +67,18 @@ export default function AppRouter() {
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
                     <Route path='/main' element={<MainPage />} />
-                    <Route path='/createProject' element={<CreateProjectPage />} />
-                    <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
-                    <Route path='/template/:tableID' element={<TemplatePage />} />
-                    {/*<Route path='/template/:dataBaseID/:tableID' element={<TemplatePage />} />*/}
-                    <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
-                    <Route path='/template' element={<TemplatePage />} />\
+                    <Route path='/template/:dataBaseID/:tableID' element={<TemplatePage />} />
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
-                    <Route path='/table/:tableID' element={<TablePage />} />
-                    {/*<Route path='/table/:dataBaseID/:tableID' element={<TablePage />} />*/}
+                    <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
+                    <Route path='/table/:dataBaseID/:tableID' element={<TablePage />} />
+                    <Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage />}/>
+                    <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
+                    <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/status' element={<CurrentStatusPage />} />
-                    <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
-                    <Route path='/apiBuilder/:tableID' element={<RestAPIBuilderPage/>}/>
-                    {/*<Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage/>}/>*/}
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
                     <Route path='/erd' element={<ERDPage/>}/>
                     <Route path='/auth/join' element={<JoinPage/>}/>

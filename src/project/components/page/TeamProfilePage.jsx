@@ -1,7 +1,8 @@
 import MemberBoxLayout from "../layout/MemberBoxLayout";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from '../memberManagementStyle.module.css';
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function TeamProfilePage() {
     const { projectId } = useParams();
@@ -32,6 +33,7 @@ export default function TeamProfilePage() {
 
     return (
         <>
+            <HeaderBottom title={"협업 관리"} titleList={["프로젝트 목록", "프로젝트"]} linkList={["/projects", `/project/${projectId}`]}/>
             {teamProfiles && <MemberBoxLayout data={teamProfiles} projectID={projectId} />}
         </>
     );

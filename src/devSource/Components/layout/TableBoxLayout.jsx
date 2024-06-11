@@ -45,6 +45,7 @@ export default function TableBoxLayout({data}) {
                 console.log(responseData.message);
                 setSuccess(responseData.message)
                 setIsSuccessModalOpen(true)
+                sessionStorage.setItem("newTableAction", true)
             } else {
                 throw new Error(responseData.message); // 에러를 던져서 catch 블록에서 처리하도록 함
             }
@@ -87,15 +88,13 @@ export default function TableBoxLayout({data}) {
                     </div>
                 </div>
             </div>
-            <
-                SuccessModalLayout
+            <SuccessModalLayout
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
                 clickLink={`/tables/${data.id}`}
             />
-            <
-                ErrorModal
+            <ErrorModal
                 isOpen={isErrorModalOpen}
                 onClose={() => setIsErrorModalOpen(false)}
                 error={error}

@@ -5,6 +5,7 @@ import HistoryButtonLayOut from "../layout/HistoryButtonLayOut";
 import CurrentStatusTableLayOut from "../layout/CurrentStatusTableLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function CurrentStatusPage() {
     const [token, setToken] = useState(null);
@@ -64,39 +65,42 @@ export default function CurrentStatusPage() {
     }, []);
 
     return (
-        <div className={styles.HistoryViewPage}>
-            <div className={styles.HistoryPage}>
-                <HistoryButtonLayOut
-                    onSelect={handleSelectProject}
-                    token={token}
-                />
+        <>
+            <HeaderBottom title={"버전 관리"} titleList={["프로젝트 목록", "프로젝트"]} linkList={["/projects", `/project/${selectedProjectId}`]}/>
+            <div className={styles.HistoryViewPage}>
+                <div className={styles.HistoryPage}>
+                    <HistoryButtonLayOut
+                        onSelect={handleSelectProject}
+                        token={token}
+                    />
 
-                <HistorySideBarUI selected={0}/>
+                    <HistorySideBarUI selected={0}/>
 
-                <div className={styles.HistoryCanverBack}>
-                    <div className={styles.HistoryCanver}>
-                        {/*변경 사항, 정보*/}
-                        <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
-                        {/*커밋 메세지*/}
-                        <div className={styles.commitBox}>
-                            <textarea placeholder={"커밋 메시지를 입력해주세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
-                            <button className={styles.CommitBtn} onClick={() => commitData(token)}>커 밋</button>
+                    <div className={styles.HistoryCanverBack}>
+                        <div className={styles.HistoryCanver}>
+                            {/*변경 사항, 정보*/}
+                            <CurrentStatusTableLayOut projectId={selectedProjectId} handleChangData={handleChangData}/>
+                            {/*커밋 메세지*/}
+                            <div className={styles.commitBox}>
+                                <textarea placeholder={"커밋 메시지를 입력해주세요."} className={styles.CommitMs} ref={commitMessageRef}></textarea>
+                                <button className={styles.CommitBtn} onClick={() => commitData(token)}>커 밋</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <ErrorModal
-                isOpen={isErrorModalOpen}
-                onClose={()=>setIsErrorModalOpen(false)}
-                error={"커밋할 변경 사항 내역이 없습니다."}
-            />
-            <SuccessModalLayout
-                isOpen={isSuccessModalOpen}
-                onClose={()=>setIsSuccessModalOpen(false)}
-                data={"커밋에 성공하셨습니다."}
-                clickLink={'/History'}
-            />
-        </div>
+                <ErrorModal
+                    isOpen={isErrorModalOpen}
+                    onClose={()=>setIsErrorModalOpen(false)}
+                    error={"커밋할 변경 사항 내역이 없습니다."}
+                />
+                <SuccessModalLayout
+                    isOpen={isSuccessModalOpen}
+                    onClose={()=>setIsSuccessModalOpen(false)}
+                    data={"커밋에 성공하셨습니다."}
+                    clickLink={'/History'}
+                />
+            </div>
+        </>
     )
 }

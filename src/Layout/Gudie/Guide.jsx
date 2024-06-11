@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/ndsGuide.module.css';
+import { Button} from "../../devSource/Components/ui/ButtonUI";
 
 export default function Guide({closeButtonClick}) {
     const [clickCount, setClickCount] = useState(0);
@@ -20,25 +21,40 @@ export default function Guide({closeButtonClick}) {
                     <h4 className={styles.closeButton} onClick={closeButtonClick}>x</h4>
                 </div>
 
-                {clickCount === 0 && <small>1. 메인 페이지에서 프로젝트 생성하기를 클릭합니다.</small>}
-                {clickCount === 1 && <small>2. 프로젝트 생성하기를 통하여 프로젝트 생성란으로 이동합니다.</small>}
-                {clickCount === 2 && <small>3. 프로젝트 명과 데이터베이스 명 설명 협업자를 입력 합니다.</small>}
-                {clickCount === 3 && <small>4. 데이터 베이스 접속하기 버튼을 눌러 데이터 베이스 페이지로으로 이동합니다.</small>}
-                {clickCount === 4 && <small>5. 테이블명 설명을 입력 후 컬럼명을 입력합니다. 타입에는 <br/>TEXT( 문자 )<br/> INTEGER ( 정수 ) <br/>REAL ( 소수 ) <br/>MEDIA FILE (동영상 , 사진 ) 중 선택할수 있습니다.
-                    <br/>MEDIA FILE 가이드는 17번 마지막 Guide에서 확인 할수 있습니다.<br/></small>}
-                {clickCount === 5 && <small>5 - 1.선택 사항으로는 <br/>PK) 대표키 <br/>FK) 조인키 <br/>UK) 고유키 <br/>NOTNULL 을 선택할 수있습니다.</small>}
-                {clickCount === 6 && (<small>5 - 2. 조인을 선택할 경우, FK(조인키)를 선택하고 다른 테이블의 PK 값을 통해 연결할 수 있습니다. PK 값이 2개 이상 인 테이블은 조인 테이블에서 제외됩니다.</small>)}
-                {clickCount === 7 && (<small>6. 해당 테이블을 클릭 후 데이터 관리하기 버튼을 눌러 데이터 관리 페이지로 이동합니다.</small>)}
-                {clickCount === 8 && (<small>7. 다음과 같은 아이콘을 클릭하여 데이터를 관리합니다. <br/>플러스 데이터 추가<br/>마이너스 데이터 삭제 <br/>윗 화살표 업로드 <br/>검색 컬럼 검색 <br/>다운로드 엑셀 다운로드 <br/>새고로침 컬럼확장</small>)}
-                {clickCount === 9 && (<small>8. 활용하기 버튼을 눌러 엑셀 다운로드를 통하여 엑셀을 다운 받습니다.</small>)}
-                {clickCount === 10 && (<small>9. 템플릿 보기를 눌러 템플릿 페이지로 이동합니다. 원하는 디자인을 선택한 후 자신의 컬럼을 입력하여 템플릿의 형태를 미리 확인할 수 있습니다.</small>)}
-                {clickCount === 11 && (<small>10. 활용하기 버튼을 눌러 REST API 로 이동합니다. 해당 테이블의 접근할수 있는 <br/> GET POST UPDATE DELETE URL이 제공됩니다.</small>)}
-                {clickCount === 12 && (<small>11 . 헤더바에 ERD 클릭 하여 자신의 테이블들의 연관관계를 ER 다이어그램으로 확인 할 수 있습니다.</small>)}
-                {clickCount === 13 && (<small>12 . 헤더바 VERSION을 클릭 후 현재상태를 누르면 프로젝트 단위로 테이블의 상태를 분기별 로 관리 할수 있습니다.</small>)}
-                {clickCount === 14 && (<small>13 . 히스토리를 눌러 분기로별로 저장된 테이블을 확인 할수 있으며 리셋 버튼을 눌러 해당 시점으로 이동 할 수 있습니다.</small>)}
-                {clickCount === 15 && (<small>14 . 커밋 검색을 통하여 분기별로 저장된 테이블을 검색 할수 있습니다.</small>)}
-                {clickCount === 16 && (<small>15 . 병합 버튼을 클릭하여 커밋의 변경사항을 현재 분기로 합칠 수 있습니다.</small>)}
-                {clickCount === 17 && (<small>16 . 상단에 MEDIA를 클릭하여 테이블에 들어갈 사진을 관리 할수 있습니다.</small>)}
+                {clickCount === 0 && <small>1. 메인 페이지에서 '프로젝트 생성하기' 버튼을 클릭합니다.</small>}
+                {clickCount === 1 && <small>2. '프로젝트 생성하기' 버튼을 클릭하여 프로젝트 생성 페이지로 이동합니다.</small>}
+                {clickCount === 2 && <small>3. 입력란에 정보를 작성하고, 협업자를 추가하여 '프로젝트 생성' 버튼을 클릭합니다.</small>}
+                {clickCount === 3 && <small>4. '데이터 베이스 접속하기' 버튼을 클릭하여 데이터베이스 페이지로 이동합니다.</small>}
+                {clickCount === 4 && <small>5. '새로운 테이블 생성' 버튼을 클릭하여 테이블 생성 페이지로 이동합니다.<br/></small>}
+                {clickCount === 5 && <small>6. 입력란에 정보를 작성하고, '+', '-' 아이콘을 클릭하여 컬럼을 추가 및 삭제합니다. <br/><br/> 타입 종류는 아래와 같습니다. <br/><br/>TEXT ( 문자 )<br/> INTEGER ( 정수 ) <br/>REAL ( 소수 ) <br/>MEDIA FILE ( 동영상 , 사진 )
+                    <br/><br/>※ MEDIA FILE 가이드는 17번 마지막 Guide에서 확인 하실 수 있습니다.<br/></small>}
+                {clickCount === 6 && <small>6 - 1. 선택 사항 <br/><br/>PK) 대표키 <br/>FK) 조인키 <br/>UK) 고유키 <br/>NOTNULL<br/><br/>을 선택 할 수 있습니다.</small>}
+                {clickCount === 7 && (<small>6 - 2. 조인<br/><br/> FK를 체크한 후 '검색' 버튼을 눌러 조인 하고자 하는 테이블을 찾아 기능을 수행할 수 있습니다.<br/><br/> ※ PK 값이 2개 이상인 테이블은 조인 테이블에서 제외 됩니다.</small>)}
+                {clickCount === 8 && (<small>7. 테이블 카드를 클릭 후 '테이블 조회하기' 버튼을 클릭하여 테이블 조회 페이지로 이동 합니다.</small>)}
+                {clickCount === 9 && (<small>8. 다음과 같은 아이콘을 클릭하여 데이터를 관리할 수 있습니다. <br/><br/>
+                                                - <img src={Button[1].image} style={{width: '28px'}}/> : 데이터 추가<br/>
+                                                - <img src={Button[2].image} style={{width: '28px'}}/> : 데이터 삭제 <br/>
+                                                - <img src={Button[3].image} style={{width: '28px'}}/> : 변경 사항 저장 <br/>
+                                                - <img src={Button[4].image} style={{width: '28px'}}/> : 행 데이터 검색 <br/>
+                                                - <img src={Button[5].image} style={{width: '28px'}}/> : CSV 데이터 불러오기 <br/>
+                                                - <img src={Button[0].image} style={{width: '28px'}}/> : 새고로침 <br/>
+                                                - <img src={Button[7].image} style={{width: '28px'}}/> : 컬럼 확장
+                </small>)}
+                {clickCount === 10 && (<small>9. '활용하기' 버튼을 클릭하여 다양한 기능을 사용할 수 있습니다.</small>)}
+                {clickCount === 11 && (<small>9-1. 템플릿 보기 <br/><br/>원하는 디자인 카드를 클릭한 후 컬럼을 선택하여 템플릿 미리보기, 코드 보기를 사용 할 수 있습니다.</small>)}
+                {clickCount === 12 && (<small>9-2. REST API 활용하기<br/><br/> 해당 테이블에 접근 할 수 있는 URL (GET, POST, UPDATE, DELETE)이 제공 됩니다.</small>)}
+                {clickCount === 13 && (<small>10. 헤더바의 'ERD'를 클릭하면, <br/> 테이블들의 연관관계를 ER 다이어그램으로 <br/>확인 할 수 있습니다.</small>)}
+                {clickCount === 14 && (<small>11. 헤더바의 'VERSION'을 클릭하여 <br/>프로젝트 단위로 테이블의 상태를 분기 별로 <br/>관리할 수 있습니다.</small>)}
+                {clickCount === 15 && (<small>11-1. 히스토리 탭
+                                                <br/><br/> 커밋을 클릭하여 변경 사항과 커밋 정보를 조회할 수 있습니다. 기능 설명과 사용 방법은 아래와 같습니다.
+                                                <br/><br/> - 체크아웃 : 커밋을 더블 클릭하여 현재 데이터베이스 작업 공간을 변경 시킬 수 있습니다.
+                                                <br/><br/> - 리셋 버튼 : 선택한 분기의 생성 날짜 이후에 만들어진 커밋을 모두 삭제하고, 선택한 분기로 체크아웃 합니다.
+                                                <br/><br/> - 병합 버튼 : 체크아웃 분기에 선택한 분기의 변경 사항을 가져와 병합할 수 있습니다. <br/><br/>※ 만약, 병합 시에 두 분기의 병합 테이블에 같은 값을 가지는 PK가 존재 한다면 충돌이 일어나며, 이를 해결한 후에 기능을 수행할 수 있습니다.
+                </small>)}
+                {clickCount === 16 && (<small>11-2. 현재 상태 탭
+                                                <br/><br/> 변경 사항을 확인한 후 커밋 메세지를 작성하여 '커밋' 버튼을 누릅니다.<br/>데이터베이스 테이블의 변경 사항을 저장하여 이력을 남길 수 있습니다.  </small>)}
+                {clickCount === 17 && (<small>12-3. 커밋 검색 탭 <br/><br/>검색어를 입력하여 원하는 커밋을 검색 할 수 있습니다.</small>)}
+                {clickCount === 18 && (<small>13. 헤더바의 'MEDIA'를 클릭하여 테이블에 들어갈 사진 및 동영상 파일을 관리할 수 있습니다.</small>)}
 
                 {/* 필요한 단계만큼 조건부 렌더링 추가 가능 */}
 
@@ -46,15 +62,15 @@ export default function Guide({closeButtonClick}) {
                     {clickCount !== 0 && (
                         <button
                             onClick={prevPageAction}
-                            className={styles.guideButton}
+                            className={`${styles.guideButton} ${styles.guideButtonLeft}`}
                         >
                             이전
                         </button>
                     )}
-                    {clickCount !== 17 && (
+                    {clickCount !== 18 && (
                         <button
                             onClick={nextPageAction}
-                            className={styles.guideButton}
+                            className={`${styles.guideButton} ${styles.guideButtonRight}`}
                         >
                             다음
                         </button>

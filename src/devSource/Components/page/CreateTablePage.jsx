@@ -1,6 +1,7 @@
 import TableBoxLayout from "../layout/TableBoxLayout";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function CreateTablePage(){
     const { dataBaseID } = useParams();
@@ -29,6 +30,7 @@ export default function CreateTablePage(){
 
     return(
         <div>
+            <HeaderBottom title={"테이블 생성"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`]}/>
             {dataBaseData &&  <TableBoxLayout data={dataBaseData}/>} {/* 데이터가 존재할 때만 렌더링 */}
         </div>
     )
