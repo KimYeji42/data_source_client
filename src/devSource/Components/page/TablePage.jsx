@@ -8,7 +8,7 @@ import {Link, useParams} from "react-router-dom";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 
 export default function TablePage() {
-    const { dataBaseID, tableID } = useParams()
+    const { tableID } = useParams()
     const [tableInfo, setTableInfo] = useState(null)
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
 
@@ -45,7 +45,6 @@ export default function TablePage() {
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
-
                 </div>
 
                 {/* 드롭다운 버튼 */}
@@ -56,12 +55,12 @@ export default function TablePage() {
                         <ul className={styles.dropdownContent}>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${dataBaseID}/${tableID}`} />
+                                    <LinkUI text={"REST API 활용하기"} redirect={`/apiBuilder/${tableID}`} />
                                 </div>
                             </li>
                             <li>
                                 <div className={styles.dropdownContainer}>
-                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${dataBaseID}/${tableID}`} />
+                                    <LinkUI text={"템플릿 보기"} redirect={`/template/${tableID}`} />
                                 </div>
                             </li>
                             <li>

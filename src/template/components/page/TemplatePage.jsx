@@ -10,7 +10,7 @@ import stylesRest from "../../../devSource/styleModule/restAPIBuilder.module.css
 // 새로운 데이터 파일 임포트
 
 export default function TemplatePage() {
-    const {dataBaseID, tableID} = useParams()
+    const {tableID} = useParams()
     const [templateStatus, setTemplateStatus] = useState(false);
 
     // templateStatus에 따라 사용할 데이터를 선택
@@ -19,10 +19,10 @@ export default function TemplatePage() {
     return (
         <div>
             <div className={styles.templateTitle}>
-                <Link to={`/table/${dataBaseID}/${tableID}`} className={stylesRest.toggleContainer}>
+                <Link to={`/table/${tableID}`} className={stylesRest.toggleContainer}>
                     돌아가기
                 </Link>
-                <TitleUI title={"NDS Template"} backLink={`/table/${tableID}`}/>
+                <TitleUI title={"NDS Template"}/>
                 <Toggle templateStatus={templateStatus} setTemplateStatus={setTemplateStatus} />
             </div>
             <div className={styles.templateContainer}>
