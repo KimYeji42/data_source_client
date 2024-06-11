@@ -1,6 +1,6 @@
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 
-export default function RestApiUrlLayout({isExpanded , localPort , endpoint}) {
+export default function RestApiUrlLayout({isExpanded=true , localPort , endpoint}) {
     let url = localPort + endpoint
     const handleCopyClick = (url) => {
         navigator.clipboard.writeText(url); // 클립보드에 URL 복사

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from "../../styleModule/templateDisplay.module.css";
 
 export default function TemplateCheckBoxUI({ checkboxData, onSaveButtonClick }) {
@@ -17,8 +17,12 @@ export default function TemplateCheckBoxUI({ checkboxData, onSaveButtonClick }) 
         onSaveButtonClick(checkedNames);
     };
 
+    useEffect(() => {
+        console.log(checkedNames)
+    }, [checkedNames]);
+
     return (
-        <div>
+        <div className={styles.templateBoxUI}>
             <div className={styles.templateCheckBox}>
                 {checkboxData.map((checkbox, index) => (
                     <div key={index} className={styles.checkBoxInputGroup}>

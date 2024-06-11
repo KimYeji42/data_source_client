@@ -1,0 +1,48 @@
+.bar {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+    background-color: #fff;
+    border-left: 10px solid #00a3ff;
+    margin: 20px;
+}
+
+.bar:hover {
+    transform: scale(1.05);
+}
+
+.barImage {
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 20px;
+}
+
+.barImage img {
+    width: 100%;
+    height: auto;
+
+}
+
+.barContainer {
+    padding: 16px;
+    flex: 1;
+}
+
+.barTitle {
+    font-size: 1.5em;
+    margin: 0;
+    color: #00a3ff;
+}
+
+.barDescription {
+    font-size: 1em;
+    color: #666;
+    margin-top: 8px;
+}

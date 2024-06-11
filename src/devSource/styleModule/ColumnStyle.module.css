@@ -31,6 +31,7 @@
     white-space: normal; /* 기본 줄바꿈을 활성화 */
 }
 .tableContainer{
+    position: relative;
     width: 90%;
     height: 20%;
     margin: 5% auto 0;
@@ -169,6 +170,11 @@
     height: 100%;
     justify-content: space-between;
 }
+.buttonContainer a {
+    border: none;
+    background-color: transparent; /* 배경색을 투명으로 설정 */
+    padding: 0;
+}
 .rightIcon{
     height: 100%;
     margin: 0;
@@ -209,6 +215,7 @@
     width: 95%;
     height: 55vh;
     min-height: 500px;
+    min-width: 500px;
     margin: 0 auto;
 }
 .selectedRow{
