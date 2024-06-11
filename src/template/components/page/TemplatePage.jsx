@@ -33,6 +33,7 @@ export default function TemplatePage() {
                         imageURL={template.image}
                         templateClickLink={template.title}
                         tableID = {tableID}
+                        templateStatus = {templateStatus}
                     />
                 ))}
             </div>
