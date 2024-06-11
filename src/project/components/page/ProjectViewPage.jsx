@@ -39,10 +39,6 @@ export default function ProjectViewPage(){
             <div className={styles.ProjectViewCardPageHeader}>
                 {/*<Image src={"../image/webSite.png"} className={styles.WebSiteIcon}/>*/}
                 <div className={styles.ProjectTitle}><TitleUI title={data.name}/></div>
-                <Link to={`/projects`} className={stylesRest.backArrowIcon}>
-                    돌아가기
-                    {/*<img src="/image/backArrow.png" alt="돌아가기" />*/}
-                </Link>
             </div>
 
             <div className={styles.ProjectViewCards}>
