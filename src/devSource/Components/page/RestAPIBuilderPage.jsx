@@ -6,7 +6,7 @@ import RestApiProjectInfoLayout from "../layout/RestApiProjectInfoLayout";
 import {Link, useParams} from "react-router-dom";
 
 export default function RestAPIBuilderPage(){
-    const { dataBaseID, tableID } = useParams()
+    const { tableID } = useParams()
     const [tableApiData , setTableApiData] = useState(null)
     
     const fetchData = async () => {
@@ -34,7 +34,7 @@ export default function RestAPIBuilderPage(){
     return (
         <div>
             <div className={stylesRest.centerContainer}>
-                <Link to={`/table/${dataBaseID}/${tableID}`} className={stylesRest.toggleContainer}>
+                <Link to={`/table/${tableID}`} className={stylesRest.toggleContainer}>
                     돌아가기
                 </Link>
                 <TitleUI title={"[REST API Builder]"} />

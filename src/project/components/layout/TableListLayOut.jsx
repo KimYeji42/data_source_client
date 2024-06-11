@@ -11,9 +11,6 @@ export default function TableListLayout({data}){
 
     return(
         <div className={styles.dataBaseMenuBox}>
-            <Link to={`/project/${dataBaseID}`} className={stylesRest.toggleContainer}>
-                돌아가기
-            </Link>
             <div className={styles.tableTitleContainer}>
                 <TitleUI title={data.projectName}/>
             </div>
