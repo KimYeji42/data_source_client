@@ -2,12 +2,13 @@ import styles from '../../styleModule/templateDisplay.module.css'
 import TemplateInputUI from "../uI/TemplateInputUI";
 import TemplateCheckBoxUI from "../uI/TermplateCheckBoxUI";
 import TemplatePreViewLayout from "./TemplatePreViewLayout";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 
 export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID , templateStatus }){
     const apiUrl = process.env.REACT_APP_API_URL;
     const [columnsData , setColumnsData] = useState(null)
+    const [templateCodeOpen  , setTemplateCodeOpen] = useState(false)
 
     const [selectedOptions, setSelectedOptions] = useState({
         title: "",
@@ -81,7 +82,6 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
             tableID: tableID,
             menuColumns: selectedNames
         }
-
         try {
             const response = await fetch(`${apiUrl}/api/template/tree`, {
                 method: 'POST',
@@ -110,8 +110,8 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
 
     return(
         <div className={styles.modalOverlay}>
-            <div className={styles.templateDisplayContainer} >
 
+            <div className={styles.templateDisplayContainer} >
                     {!templateStatus && //Component
                         <div className={styles.templateContainer}>
                             <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
@@ -121,6 +121,8 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
                                         selectInputData={selectedResultInputData}
                                         checkBoxData={selectedOptions}
                                         tableID={tableID}
+                                        templateCodeOpen={templateCodeOpen}
+                                        setTemplateCodeOpen={setTemplateCodeOpen}
                                     />
                                 }
 
@@ -166,10 +168,11 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
                 }
 
                 <div className={styles.closeButtonContainer}>
-                    <button className={styles.downloadButton} onClick={() => setDisplayOpen(false)}> 다운로드 </button>
+                    <button className={styles.downloadButton} onClick={() => setTemplateCodeOpen(true) }> 코드보기 </button>
                     <button className={styles.closeButton} onClick={() => setDisplayOpen(false)}> 닫기 </button>
                 </div>
             </div>
+
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from "../../styleModule/templateDisplay.module.css";
+import TemplateCodeEditorModalUI from "./TemplateCodeEditorModalUI";
 
 export default function TemplateInputUI({ optionBoxData, selectedOptions, setSelectedOptions, setSelectedColumns }) {
 
