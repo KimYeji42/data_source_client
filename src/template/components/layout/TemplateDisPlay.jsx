@@ -3,8 +3,9 @@ import TemplateInputUI from "../uI/TemplateInputUI";
 import TemplateCheckBoxUI from "../uI/TermplateCheckBoxUI";
 import TemplatePreViewLayout from "./TemplatePreViewLayout";
 import {useEffect, useState} from "react";
+import {Image} from "react-bootstrap";
 
-export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID }){
+export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID , templateStatus }){
     const apiUrl = process.env.REACT_APP_API_URL;
     const [columnsData , setColumnsData] = useState(null)
 
@@ -110,31 +111,60 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
     return(
         <div className={styles.modalOverlay}>
             <div className={styles.templateDisplayContainer} >
-                <div className={styles.templateContainer}>
-                    <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
-                        {(!choiceInputContainerOpen || selectedResultInputData) &&
-                            <TemplatePreViewLayout
-                                templateName={templateLabel}
-                                selectInputData={selectedResultInputData}
-                                checkBoxData={selectedOptions}
-                                tableID={tableID}
+
+                    {!templateStatus && //Component
+                        <div className={styles.templateContainer}>
+                            <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
+                                {(!choiceInputContainerOpen || selectedResultInputData) &&
+                                    <TemplatePreViewLayout
+                                        templateName={templateLabel}
+                                        selectInputData={selectedResultInputData}
+                                        checkBoxData={selectedOptions}
+                                        tableID={tableID}
+                                    />
+                                }
+
+                            </div>
+                            {(choiceInputContainerOpen && columnsData)&&
+                                <TemplateInputUI optionBoxData ={columnsData}
+                                                 selectedOptions={selectedOptions} // 선택된 값
+                                                 setSelectedOptions={setSelectedOptions} // 선택된 값을 업데이트하는 함수
+                                                 setSelectedColumns={setSelectedColumns} // 선택된 값들을 처리하는 함수
+                                />
+                            }
+                            {(!choiceInputContainerOpen && columnsData) &&
+                                <TemplateCheckBoxUI checkboxData={columnsData}
+                                                    onSaveButtonClick={handleSelectedChecks}
+                                />
+                            }
+                        </div>
+                    }
+                {templateStatus && //web
+                    <div>
+                        {(templateLabel === "SHOP Template") &&
+                            <Image
+                                src={"/template/image/web_photo/shop_templatePhoto.png"}
+                                style={
+                                { width: "80%" ,
+                                    height :"auto" ,
+                                    boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)"
+                                }}
+                            />
+
+                        }
+                        {(templateLabel === "Board Template") &&
+                            <Image
+                                src={"/template/image/web_photo/board_templatePhoto.png"}
+                                style={
+                                    { width: "80%" ,
+                                        height :"auto" ,
+                                        boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)"
+                                    }}
                             />
                         }
-
                     </div>
-                    {(choiceInputContainerOpen && columnsData)&&
-                        <TemplateInputUI optionBoxData ={columnsData}
-                                         selectedOptions={selectedOptions} // 선택된 값
-                                         setSelectedOptions={setSelectedOptions} // 선택된 값을 업데이트하는 함수
-                                         setSelectedColumns={setSelectedColumns} // 선택된 값들을 처리하는 함수
-                        />
-                    }
-                    {(!choiceInputContainerOpen && columnsData) &&
-                        <TemplateCheckBoxUI checkboxData={columnsData}
-                                            onSaveButtonClick={handleSelectedChecks}
-                        />
                 }
-                </div>
+
                 <div className={styles.closeButtonContainer}>
                     <button className={styles.downloadButton} onClick={() => setDisplayOpen(false)}> 다운로드 </button>
                     <button className={styles.closeButton} onClick={() => setDisplayOpen(false)}> 닫기 </button>
