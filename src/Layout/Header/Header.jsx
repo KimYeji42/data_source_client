@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './headerStyle.module.css';
 import React, {useEffect, useState} from "react";
 import {Link, useLocation} from "react-router-dom";
+import {Image} from "react-bootstrap";
 
 function Header({currentUser , isLoggedIn , logoutHandler}) {
     const [selectedIndex , setSelectedIndex] = useState(0);
@@ -35,7 +36,7 @@ function Header({currentUser , isLoggedIn , logoutHandler}) {
         <div className={styles.All1}>
             <div className={styles.container}>
                 <Link to={'/'} >
-                    <img src='/image/로고3.png' className={styles.logo}/>
+                    <Image src='/image/main_icon.png' className={styles.logo}/>
                 </Link>
 
                 <div className={styles.bar}>

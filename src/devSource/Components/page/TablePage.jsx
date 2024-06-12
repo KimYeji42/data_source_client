@@ -38,26 +38,27 @@ export default function TablePage() {
 
 
     useEffect(() => {
-        findTableInfo()
+        findTableInfo();
 
         const socket = new SockJS(`${apiUrl}/websocket-endpoint`);
         const client = Stomp.over(socket);
 
         client.connect({}, () => {
-            client.subscribe('/topic/messages', (message) => {
-                const receivedMessage = JSON.parse(message.body);
-                setMessages((prevMessages) => [...prevMessages, receivedMessage]);
+            client.subscribe('/topic/notifications', (message) => {
+                setMessages((prevMessages) => [...prevMessages, message.body]);
+                alert(message.body)
             });
-
-            setStompClient(client);
         });
 
+        setStompClient(client);
+
         return () => {
-            if (stompClient) {
-                stompClient.disconnect();
+            if (client) {
+                client.disconnect();
             }
         };
     }, []);
+
 
     // 드롭다운 토글 함수
     const toggleDropdown = () => {
@@ -67,9 +68,7 @@ export default function TablePage() {
     return (
         <>
             <HeaderBottom title={"테이블"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`]}/>
-            {messages.map((message, index) => (
-                <li key={index}>{message}</li>
-            ))}
+
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
