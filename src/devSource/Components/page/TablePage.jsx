@@ -8,14 +8,19 @@ import {Link, useParams} from "react-router-dom";
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 import SockJS from 'sockjs-client';
 import {Stomp} from "@stomp/stompjs";
+import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 
 export default function TablePage() {
-    const { dataBaseID, tableID } = useParams()
-    const [tableInfo, setTableInfo] = useState(null)
+    const { dataBaseID, tableID } = useParams();
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const [tableInfo, setTableInfo] = useState(null);
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
     const [messages, setMessages] = useState([]);
     const [stompClient, setStompClient] = useState(null);
-    const apiUrl = process.env.REACT_APP_API_URL;
+    // 에러 모달
+    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+    const [error, setError] = useState("");
+
 
     const findTableInfo = async () => {
         try {
@@ -45,10 +50,11 @@ export default function TablePage() {
             client.subscribe('/topic/notifications', (message) => {
                 setMessages((prevMessages) => [...prevMessages, message.body]);
 
-                const updateTableId =  message.body.split(":");
+                const updateTableMessage =  message.body.split(":");
 
-                if (tableID.toString() === updateTableId[1]) {
-                    alert(updateTableId[0])
+                if (tableID.toString() === updateTableMessage[1]) {
+                    setIsErrorModalOpen(true)
+                    setError("팀원이 데이터를 수정하였습니다.")
                 }
             });
         });
@@ -103,6 +109,12 @@ export default function TablePage() {
                 </div>
                 <TableLayout tableID={tableID} />
             </div>
+
+            <ErrorModal
+                isOpen={isErrorModalOpen}
+                onClose={() => setIsErrorModalOpen(false)}
+                error={error}
+            />
         </>
     )
 }

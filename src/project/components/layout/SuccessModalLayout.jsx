@@ -2,7 +2,7 @@ import styles from "../styles.module.css";
 import React, {useEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 
-export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, onClickEvent}){
+export default function SuccessModalLayout({ isOpen, onClose, data, onClickEvent}){
     const btuRef = useRef(null);
 
     const successHandler = () =>{
@@ -33,9 +33,9 @@ export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, o
                 )}
 
                 <div className={styles.modalBtnBox}>
-                    <Link to={clickLink}>
+                    <div>
                         <button onClick={successHandler} className={styles.modalConfirmBtn} ref={btuRef}> 확인 </button>
-                    </Link>
+                    </div>
                 </div>
             </div>
         </div>

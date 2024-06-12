@@ -57,17 +57,13 @@ export default function TemplateCodeEditorModalUI({onClose}) {
 
     return (
         <div className={styles.container}>
-            <div className={styles.top}>
-                <h3>TEMPLATE CODE</h3>
-                <button className={styles.copyButton} onClick={copyToClipboard}>Copy</button>
-            </div>
-            <hr/>
+            <button className={styles.copyButton} onClick={copyToClipboard}>Copy</button>
             <AceEditor
                   setOptions={{ useWorker: false }}
                   mode="html"
                   theme="monokai" // 어두운 테마 선택
-                  width="550px"
-                  height="600px"
+                  width="100%"
+                  height="100%"
                   readOnly={true}
                   value={code}
             />
