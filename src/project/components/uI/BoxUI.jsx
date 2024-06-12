@@ -2,7 +2,6 @@ import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
 import {useEffect, useState} from "react";
 
-
 export default function BoxUI({ header, date, comment, imageSrc, item, setActiveTable, activeTable , starBtnClickHandler , deleteBtnClickHandler }) {
     const [isActiveItem , setIsActiveItem] = useState(false)
 

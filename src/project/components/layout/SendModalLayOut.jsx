@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from '../styles.module.css';
-
 const Modal = ({ isOpen, onClose, data , onClickEvent}) => {
     const cancelHandler = () => {
         onClose();

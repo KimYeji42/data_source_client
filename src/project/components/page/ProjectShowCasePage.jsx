@@ -1,6 +1,5 @@
 import styles from "../styles.module.css";
 import ProjectCardLayOut from "../layout/ProjectCardLayOut";
-import ProjectSideBarLayOut from "../layout/ProjectSideBarLayOut";
 import LinkUI from "../uI/LinkUI";
 import TitleUI from "../uI/TitleUI";
 import ToggleButton from "../uI/ToggleButton";

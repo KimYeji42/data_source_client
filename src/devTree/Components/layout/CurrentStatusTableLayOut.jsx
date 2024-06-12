@@ -1,4 +1,3 @@
-import SmallSizeTitleUI from "../ui/SmallSizeTitleUI";
 import styles from "../../styles/styles.module.css"
 import {useEffect, useState} from "react";
 import CommitInformationProjectIdUI from "../ui/CommitInformationProjectIdUI"

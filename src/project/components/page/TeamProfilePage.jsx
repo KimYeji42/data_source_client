@@ -1,7 +1,6 @@
 import MemberBoxLayout from "../layout/MemberBoxLayout";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import styles from '../memberManagementStyle.module.css';
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function TeamProfilePage() {

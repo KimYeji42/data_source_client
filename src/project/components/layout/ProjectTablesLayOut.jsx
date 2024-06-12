@@ -1,6 +1,5 @@
 import styles from "../styles.module.css";
 import {Image} from "react-bootstrap";
-import {Link} from "react-router-dom";
 import ViewCardIcon from "../uI/ViewCardIcon";
 import ViewCardTitle from "../uI/ViewCardTitle";
 

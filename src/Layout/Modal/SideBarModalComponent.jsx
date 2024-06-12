@@ -1,7 +1,5 @@
 import React from 'react';
 import styles from '../../project/components/styles.module.css'; // 스타일 파일 import
-
-
 const SideBarModal = ({ isOpen, onClose, header, data ,onClick}) => {
     const handleCreate = () => {
         onClose(); // 모달을 닫음

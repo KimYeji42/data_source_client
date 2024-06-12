@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import styles from "../../styles/styles.module.css";
-import MergeCrashModalLayout from "../layout/MergeCrashModalLayout";
-import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
+
 
 const MergeGuidePopupUI = ({ isOpen, onClose, onRequest, message1, message2, button}) => {
 

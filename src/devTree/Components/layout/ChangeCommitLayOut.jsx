@@ -1,7 +1,5 @@
-import SmallSizeTitleUI from "../ui/SmallSizeTitleUI";
 import styles from "../../styles/styles.module.css"
 import SelectionUI from "../ui/SelectionUI";
-import membersData from "../../../project/components/data/MembersData";
 import ChangeTableLayout from "./ChangeTableLayout";
 import {useEffect, useState} from "react";
 import CommitInformationProjectIdUI from "../ui/CommitInformationCommitIdUI";
