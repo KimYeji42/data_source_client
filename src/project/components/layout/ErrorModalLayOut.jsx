@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import styles from '../styles.module.css';
+import {Link} from "react-router-dom";
 
-const ErrorModal = ({ isOpen, onClose, error, clickLink }) => {
+const ErrorModal = ({ isOpen, onClose, error, onClickEvent }) => {
     const btuRef = useRef(null);
 
     const handleConfirm = () => {
+        onClickEvent?.()
         onClose(); // 모달을 닫음
     };
 

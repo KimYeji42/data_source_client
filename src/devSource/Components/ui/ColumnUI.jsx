@@ -3,19 +3,19 @@ import DataUI from "./DataUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import up from '../../Image/upButton.png';
 import down from '../../Image/downButton.png';
-import { Button } from "./ButtonUI";
+import {Button} from "./ButtonUI";
 import Button_UI from "./Button_UI";
-import { Image } from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 import ColumnAppendModalUI from "./ColumnAppendModalUI";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
-export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
-    const { dataBaseID, tableId } = useParams();
+export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData }) {
+    const { dataBaseID, tableID } = useParams();
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
@@ -181,20 +181,16 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 </div>
             </div>
 
-            <
-                SuccessModalLayout
+            <SuccessModalLayout
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
-                clickLink={`/table/${tableID}`}
                 onClickEvent={handleReload}
             />
-            <
-                ErrorModal
+            <ErrorModal
                 isOpen={isErrorModalOpen}
                 onClose={() => setIsErrorModalOpen(false)}
                 error={error}
-                clickLink={`/table/${tableID}`}
             />
             <SendModalLayOut
                 data={"데이터를 변경 하시겠습니까?"}

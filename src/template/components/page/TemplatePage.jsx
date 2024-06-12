@@ -5,8 +5,7 @@ import TemplateCardUI from "../uI/TemplateCardUI";
 import React, { useState } from "react";
 import ComponentTemplateData from "../data/ComponentTemplateData";
 import WebTemplateData from "../data/WebTemplateData";
-import {Link, useParams} from "react-router-dom";
-import stylesRest from "../../../devSource/styleModule/restAPIBuilder.module.css";
+import {useParams} from "react-router-dom";
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 // 새로운 데이터 파일 임포트
 

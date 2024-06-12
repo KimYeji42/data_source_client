@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import ColumnUI from "../ui/ColumnUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
+
 export default function TableLayout({tableID}){
     const [tableData, setTable] = useState(new Map());
     const [createData , setCreateData] = useState([]) //추가 부분 리스트
