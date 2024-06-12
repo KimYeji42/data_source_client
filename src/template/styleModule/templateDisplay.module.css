@@ -89,7 +89,7 @@
     padding: 20px;
 }
 .templateBoxUI {
-    width: 40%; height: 97%;
+    width: 20%; height: 97%;
 }
 .templateCheckBox {
     display: grid;
@@ -131,9 +131,20 @@ select, input[type="checkbox"] {
     margin-right: 10px; /* 체크박스와 텍스트 사이 간격 설정 */
 }
 .templatePreView{
-    border: 1px solid #777777;
-    height: 97%; width: 100%;
+    width: 550px;
+    height: 600px;
     overflow-y: auto;
+}
+.previewTitle{
+    color: #00a3ff;
+    font-family: "KoPubWorld Dotum Bold.ttf", serif;
+    text-align: left;
+    display: flex;
+    width: 600px;
+}
+.previewContainer{
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 쉐도우 추가 */
+    padding: 20px;
 }
 
 /* 스크롤바 */

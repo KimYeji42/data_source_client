@@ -4,6 +4,7 @@ import TemplateCheckBoxUI from "../uI/TermplateCheckBoxUI";
 import TemplatePreViewLayout from "./TemplatePreViewLayout";
 import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
+import TemplateCodeEditorModalUI from "../uI/TemplateCodeEditorModalUI";
 
 export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID , templateStatus }){
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -110,23 +111,35 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
 
     return(
         <div className={styles.modalOverlay}>
-
             <div className={styles.templateDisplayContainer} >
                     {!templateStatus && //Component
                         <div className={styles.templateContainer}>
-                            <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
-                                {(!choiceInputContainerOpen || selectedResultInputData) &&
-                                    <TemplatePreViewLayout
-                                        templateName={templateLabel}
-                                        selectInputData={selectedResultInputData}
-                                        checkBoxData={selectedOptions}
-                                        tableID={tableID}
-                                        templateCodeOpen={templateCodeOpen}
-                                        setTemplateCodeOpen={setTemplateCodeOpen}
-                                    />
-                                }
+                                <div className={styles.previewContainer}>
+                                    <div className={styles.previewTitle}>
+                                        <h3>PREVIEW</h3>
+                                    </div>
+                                    <hr/>
+                                    {(!choiceInputContainerOpen || selectedResultInputData) &&
 
+                                    <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
+                                        <TemplatePreViewLayout
+                                            templateName={templateLabel}
+                                            selectInputData={selectedResultInputData}
+                                            checkBoxData={selectedOptions}
+                                            tableID={tableID}
+                                            templateCodeOpen={templateCodeOpen}
+                                            setTemplateCodeOpen={setTemplateCodeOpen}
+                                        />
+
+                                    </div>
+                                    }
+                                </div>
+                            <div>
+                                <TemplateCodeEditorModalUI
+                                    onClose={()=>setTemplateCodeOpen(false)}
+                                />
                             </div>
+
                             {(choiceInputContainerOpen && columnsData)&&
                                 <TemplateInputUI optionBoxData ={columnsData}
                                                  selectedOptions={selectedOptions} // 선택된 값

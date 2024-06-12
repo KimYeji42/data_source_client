@@ -57,16 +57,16 @@ export default function TemplateCodeEditorModalUI({onClose}) {
 
     return (
         <div className={styles.container}>
-            <h6 className={styles.closeButton} onClick={onClose}>x</h6>
             <div className={styles.top}>
                 <h3>TEMPLATE CODE</h3>
                 <button className={styles.copyButton} onClick={copyToClipboard}>Copy</button>
             </div>
-              <AceEditor
+            <hr/>
+            <AceEditor
                   setOptions={{ useWorker: false }}
                   mode="html"
                   theme="monokai" // 어두운 테마 선택
-                  width="600px"
+                  width="550px"
                   height="600px"
                   readOnly={true}
                   value={code}

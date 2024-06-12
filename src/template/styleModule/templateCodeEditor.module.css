@@ -1,15 +1,9 @@
 .container {
     padding: 20px;
     border-radius: 5px;
-    z-index: 999;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 쉐도우 추가 */
     background-color: #ffffff;
-    position: absolute;
-    left: 50%; /* 부모 요소의 가운데를 기준으로 */
-    top: 50%; /* 부모 요소의 가운데를 기준으로 */
-    transform: translate(-50%, -50%); /* 부모 요소의 가운데를 기준으로 이동 */
-    transition: left 0.3s ease, top 0.3s ease; /* 부드러운 이동 효과를 설정합니다. */
-
+    height: 100%;
 }
 
 .copyButton {

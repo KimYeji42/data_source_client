@@ -27,7 +27,7 @@
     overflow: hidden; /* 이미지가 테두리를 넘어가지 않도록 합니다. */
 }
 .cardImageContainer img{
-    width: 330px;
+    width: 320px;
     border-radius: 3px;
 }
 
@@ -47,7 +47,7 @@
 }
 
 .cardButtonContainer {
-    margin: 10px;
+    margin: 5px;
     float: right;
 }
 
@@ -80,4 +80,13 @@
 }
 .scrollbar::-webkit-scrollbar-track {
     background: rgb(240, 240, 240);  /*스크롤바 뒷 배경 색상*/
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    color: #00a3ff;
+}
+
+.previewContainer{
+    padding: 10px;
 }

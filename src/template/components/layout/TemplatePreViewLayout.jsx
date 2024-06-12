@@ -11,7 +11,6 @@ import downClickIcon from '../../image/click.png'
 import upClickIcon from '../../image/clickBefore.png'
 
 import React, {useState} from "react";
-import TemplateCodeEditorModalUI from "../uI/TemplateCodeEditorModalUI";
 export default function TemplatePreViewLayout({ templateName  , selectInputData , templateCodeOpen , setTemplateCodeOpen}) {
     const [openColumns, setOpenColumns] = useState({}); // 각 컬럼의 토글 상태를 관리하기 위한 상태
 
@@ -24,7 +23,6 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
     };
 
     let templateDesign = null;
-
 
     switch (templateName.toUpperCase()) {
         case "CARD TEMPLATE": {
@@ -189,14 +187,8 @@ export default function TemplatePreViewLayout({ templateName  , selectInputData 
     }
 
     return (
-        <div>
+        <div className={styles.body}>
             {templateDesign}
-
-            {templateCodeOpen &&
-                <TemplateCodeEditorModalUI
-                    onClose={()=>setTemplateCodeOpen(false)}
-                />
-            }
         </div>
     );
 }

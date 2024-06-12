@@ -25,6 +25,7 @@ export default function HeaderBottom({ title, titleList, linkList }) {
 
     const listItemStyle = {
         display: 'inline-block',
+        cursor : 'pointer'
     };
 
     return (

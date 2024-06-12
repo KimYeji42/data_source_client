@@ -36,9 +36,6 @@ export default function RestAPIBuilderPage(){
         <div>
             <HeaderBottom title={"REST API"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스", "테이블"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`, `/table/${dataBaseID}/${tableID}`]}/>
             <div className={stylesRest.centerContainer}>
-                {/*<Link to={`/table/${dataBaseID}/${tableID}`} className={stylesRest.toggleContainer}>*/}
-                {/*    돌아가기*/}
-                {/*</Link>*/}
                 <TitleUI title={"[REST API Builder]"} />
                 {tableApiData && (
                     <>
