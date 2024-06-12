@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import TitleUI from "../../../project/components/uI/TitleUI";
 import styles from "../../styleModule/BlobCloud.module.css";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 import BlobCloudURLLayout from "../layout/BlobCloudURLLayout";
 import BlobCloudImageLayout from "../layout/BlobCloudImageLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import TitleUI from "../../../project/components/uI/TitleUI";
 
 export default function BlobCloudPage() {
     // 이미지 목록을 관리하는 상태

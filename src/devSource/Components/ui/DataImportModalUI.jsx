@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styles from '../../styleModule/Import.module.css'
-import TitleUI from "../../../project/components/uI/TitleUI";
 import * as XLSX from 'xlsx';
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import TitleUI from "../../../project/components/uI/TitleUI";
 
 export default function DataImportModalUI({ onClose, tableID }) {
     const [file, setFile] = useState(null);

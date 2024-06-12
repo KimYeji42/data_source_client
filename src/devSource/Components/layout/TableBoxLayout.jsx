@@ -6,10 +6,10 @@ import InsertExplanationUI from "../ui/InsertExplanationUI";
 import ExplanationTitleUI from "../ui/ExplanationTitleUI";
 import SelectColumnLayout from "./SelectColumnLayout";
 import React, { useState } from "react";
-import TitleUI from "../../../project/components/uI/TitleUI";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
+import TitleUI from "../../../project/components/uI/TitleUI";
 
 export default function TableBoxLayout({data}) {
     const [tableName , setTableName] = useState(" "); //TableName을 저장할 변수

@@ -1,10 +1,10 @@
-import TitleUI from "../../../project/components/uI/TitleUI";
 import stylesRest from "../../styleModule/restAPIBuilder.module.css"
 import React, { useState, useEffect } from "react";
 import RestApiUrlLayout from "../layout/RestApiUrlLayout";
 import RestApiProjectInfoLayout from "../layout/RestApiProjectInfoLayout";
 import {Link, useParams} from "react-router-dom";
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
+import TitleUI from "../../../project/components/uI/TitleUI";
 
 export default function RestAPIBuilderPage(){
     const {dataBaseID, tableID} = useParams()
