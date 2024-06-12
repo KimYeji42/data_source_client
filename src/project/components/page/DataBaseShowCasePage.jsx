@@ -1,7 +1,6 @@
 import DataBaseListLayOut from "../layout/TableListLayOut";
 import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import SidebarLayout from "../../../Layout/Sidebar/SidebarLayout";
 import styles from "../styles.module.css";
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
