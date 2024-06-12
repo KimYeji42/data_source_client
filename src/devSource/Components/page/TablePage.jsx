@@ -47,8 +47,8 @@ export default function TablePage() {
 
                 const updateTableId =  message.body.split(":");
 
-                if (tableID.toString() === updateTableId) {
-                    alert(`다른 팀원이 저장을 진행하였습니다. ${updateTableId}`)
+                if (tableID.toString() === updateTableId[1]) {
+                    alert(updateTableId[0])
                 }
             });
         });
