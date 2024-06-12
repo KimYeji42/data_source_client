@@ -14,7 +14,6 @@ export default function TablePage() {
     const [tableInfo, setTableInfo] = useState(null)
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
     const [messages, setMessages] = useState([]);
-    const [inputValue, setInputValue] = useState('');
     const [stompClient, setStompClient] = useState(null);
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -36,7 +35,6 @@ export default function TablePage() {
     };
 
 
-
     useEffect(() => {
         findTableInfo();
 
@@ -46,7 +44,12 @@ export default function TablePage() {
         client.connect({}, () => {
             client.subscribe('/topic/notifications', (message) => {
                 setMessages((prevMessages) => [...prevMessages, message.body]);
-                alert(message.body)
+
+                const updateTableId =  message.body.split(":");
+
+                if (tableID.toString() === updateTableId) {
+                    alert(`다른 팀원이 저장을 진행하였습니다. ${updateTableId}`)
+                }
             });
         });
 

@@ -13,7 +13,6 @@ import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 import ColumnAppendModalUI from "./ColumnAppendModalUI";
 import {Link, useParams} from "react-router-dom";
-import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
     const { dataBaseID, tableId } = useParams();
