@@ -46,7 +46,8 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             const response = await fetch(`${apiUrl}/api/data`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify(obj)
             });
@@ -118,8 +119,9 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             client.subscribe('/topic/notifications', (message) => {
 
                 const updateTableMessage =  message.body.split(":");
-
-                if (tableID.toString() === updateTableMessage[1]) {
+                console.log(updateTableMessage[2])
+                console.log(localStorage.getItem("email"))
+                if (tableID.toString() === updateTableMessage[1]  && updateTableMessage[2] !== localStorage.getItem("email")) {
                     setError("팀원이 데이터를 수정하였습니다.")
                     setIsErrorModalOpen(true)
                 }

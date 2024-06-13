@@ -6,9 +6,7 @@ import React, { useEffect, useState } from "react";
 import LinkUI from "../../../project/components/uI/LinkUI";
 import {Link, useParams} from "react-router-dom";
 import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
-import SockJS from 'sockjs-client';
-import {Stomp} from "@stomp/stompjs";
-import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+
 
 export default function TablePage() {
     const { dataBaseID, tableID } = useParams();
