@@ -153,6 +153,11 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
                             <div className={styles.templateCodeEditorBox}>
                                 <TemplateCodeEditorModalUI
                                     onClose={()=>setTemplateCodeOpen(false)}
+                                    template={templateLabel}
+                                    tableID={tableID}
+                                    title={selectedOptions.title}
+                                    description={selectedOptions.description}
+                                    image={selectedOptions.image}
                                 />
                             </div>
                         }

@@ -1,54 +1,50 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import AceEditor from 'react-ace';
-
 import 'ace-builds/src-noconflict/mode-html';
 import 'ace-builds/src-noconflict/theme-monokai'; // 어두운 테마 사용
 import styles from "../../styleModule/templateCodeEditor.module.css"
-export default function TemplateCodeEditorModalUI({onClose}) {
-    const code = `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        /* CSS 코드를 보여주는 부분 */
-    </style>
-</head>
-<body>
-    <div>
-        <h1>Hello World</h1>
-    </div>
-       <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>   <div>
-        <h1>Hello World</h1>
-    </div>
-    <script>
-        // JavaScript 코드를 보여주는 부분
-    </script>
-</body>
-</html>`;
+import {CardTemplateCode} from "../code/CardTemplateCode";
+import {BarTemplateCode} from "../code/BarTemplateCode";
+export default function TemplateCodeEditorModalUI({ template , title , description , image , tableID}) {
+    const [code, setCode] = useState('');
+    const [tableDataUrl, setTableDataUrl] = useState(null);
+
+    const getTemplateInfo = async () => {
+        try {
+            const apiUrl = process.env.REACT_APP_API_URL;
+            const response = await fetch(`${apiUrl}/api/builder/tableUrl/${tableID}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const responseData = await response.text();
+            console.log(responseData);
+
+            setTableDataUrl(responseData); // URL 저장
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        getTemplateInfo();
+    }, [tableID]);
+
+    useEffect(() => {
+        if (tableDataUrl && title && description && image) {
+            switch (template) {
+                case 'CARD Template':
+                    setCode(CardTemplateCode({ url: tableDataUrl, title, description, img: image }));
+                    break;
+                case 'Bar Template':
+                    setCode(BarTemplateCode({url:tableDataUrl,title,description,img:image}));
+                    break;
+                default:
+                    setCode('');
+            }
+        }
+    }, [tableDataUrl, template, title, description, image]);
 
     // 클립보드에 코드를 복사하는 함수
     const copyToClipboard = () => {
