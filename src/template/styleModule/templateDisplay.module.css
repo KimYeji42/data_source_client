@@ -120,6 +120,7 @@
 
 .inputGroup > label {
     font-family: "GmarketSansTTFBold", serif;
+    text-align: left;
 }
 
 label {

@@ -15,12 +15,6 @@ export default function TablePage() {
     const apiUrl = process.env.REACT_APP_API_URL;
     const [tableInfo, setTableInfo] = useState(null);
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
-    const [messages, setMessages] = useState([]);
-    const [stompClient, setStompClient] = useState(null);
-    // 에러 모달
-    const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-    const [error, setError] = useState("");
-
 
     const findTableInfo = async () => {
         try {
@@ -42,30 +36,6 @@ export default function TablePage() {
 
     useEffect(() => {
         findTableInfo();
-
-        const socket = new SockJS(`${apiUrl}/websocket-endpoint`);
-        const client = Stomp.over(socket);
-
-        client.connect({}, () => {
-            client.subscribe('/topic/notifications', (message) => {
-                setMessages((prevMessages) => [...prevMessages, message.body]);
-
-                const updateTableMessage =  message.body.split(":");
-
-                if (tableID.toString() === updateTableMessage[1]) {
-                    setIsErrorModalOpen(true)
-                    setError("팀원이 데이터를 수정하였습니다.")
-                }
-            });
-        });
-
-        setStompClient(client);
-
-        return () => {
-            if (client) {
-                client.disconnect();
-            }
-        };
     }, []);
 
 
@@ -109,12 +79,6 @@ export default function TablePage() {
                 </div>
                 <TableLayout tableID={tableID} />
             </div>
-
-            <ErrorModal
-                isOpen={isErrorModalOpen}
-                onClose={() => setIsErrorModalOpen(false)}
-                error={error}
-            />
         </>
     )
 }
