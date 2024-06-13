@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import DataUI from "./DataUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import up from '../../Image/upButton.png';
@@ -13,8 +13,11 @@ import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 import ColumnAppendModalUI from "./ColumnAppendModalUI";
 import {useParams} from "react-router-dom";
+import SockJS from "sockjs-client";
+import {Stomp} from "@stomp/stompjs";
 
 export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData }) {
+    const apiUrl = process.env.REACT_APP_API_URL;
     const { dataBaseID, tableID } = useParams();
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
@@ -39,7 +42,6 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         };
 
         try {
-            const apiUrl = process.env.REACT_APP_API_URL;
             console.log(obj)
             const response = await fetch(`${apiUrl}/api/data`, {
                 method: 'POST',
@@ -50,6 +52,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
             });
 
             if (response.ok) {
+                setIsErrorModalOpen(false);
                 const responseData = await response.json();
                 console.log('Data sent successfully:', responseData);
                 setSuccess(responseData.message);
@@ -85,23 +88,15 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         }
     }
 
-    const handleImportCsvData = () => {
-        setIsDataModalOpen(true)
-
-    };
+    const handleImportCsvData = () => { setIsDataModalOpen(true) };
 
     // 선택된 행의 인덱스를 설정하는 함수
-    const handleRowClick = (index) => {
-        setSelectedRowIndex(index);
-    };
+    const handleRowClick = (index) => { setSelectedRowIndex(index); };
 
-    const handleReload = () => {
-        window.location.reload()
-    };
+    const handleReload = () => { window.location.reload() };
 
-    const handlePushData = () =>{
-        setClickCount(clickCount +1)
-    }
+    const handlePushData = () =>{ setClickCount(clickCount +1) }
+
     const sortAscending = (columnName) => {
         const sortedData = [...columns.get(columnName)].sort();
         console.log(sortedData)
@@ -111,9 +106,33 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         const sortedData = [...columns.get(columnName)].sort().reverse();
         console.log(sortedData)
     };
-    const columnPlus = () =>{
-        setIsColumnAppendModalOpen(true)
-    }
+
+    const columnPlus = () =>{ setIsColumnAppendModalOpen(true) }
+
+    // 네트워크
+    useEffect(() => {
+        const socket = new SockJS(`${apiUrl}/websocket-endpoint`);
+        const client = Stomp.over(socket);
+
+        client.connect({}, () => {
+            client.subscribe('/topic/notifications', (message) => {
+
+                const updateTableMessage =  message.body.split(":");
+
+                if (tableID.toString() === updateTableMessage[1]) {
+                    setError("팀원이 데이터를 수정하였습니다.")
+                    setIsErrorModalOpen(true)
+                }
+            });
+        });
+
+        return () => {
+            if (client) {
+                client.disconnect();
+            }
+        };
+    }, []);
+
     return (
         <>
             <div className={styles.button}>

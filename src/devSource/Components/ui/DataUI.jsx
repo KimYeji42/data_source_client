@@ -41,11 +41,11 @@ export default function DataUI({
     // 행을 클릭할 때 실행되는 함수
     const handleClick = (index) => {
         if (type === "JOIN_Column"){
-            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터 를 넣어주세요.")
+            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터를 넣어주세요.")
             return
         }
         if (type === "MediaFile"){
-            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터 를 넣어주세요.")
+            alert("해당 행은 수정이 불가능 합니다 삭제후 데이터를 넣어주세요.")
             return
         }
 
