@@ -117,12 +117,18 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
 
         client.connect({}, () => {
             client.subscribe('/topic/notifications', (message) => {
-
                 const updateTableMessage =  message.body.split(":");
-                console.log(updateTableMessage[2])
-                console.log(localStorage.getItem("email"))
-                if (tableID.toString() === updateTableMessage[1]  && updateTableMessage[2] !== localStorage.getItem("email")) {
+                const updateTable = updateTableMessage[1]
+                const dataUpdateUser =  updateTableMessage[2]
+                const currentUser = localStorage.getItem("email")
+
+                if (tableID.toString() === updateTable  &&  dataUpdateUser !== currentUser) {
+                    //조건식 1. 실행 현재 테이블 ID가 일치하는 테이블 2. 현재 접속한 유저와 업데이트한 유저가 다를경우
                     setError("팀원이 데이터를 수정하였습니다.")
+                    setIsErrorModalOpen(true)
+                }
+                if (tableID.toString() === updateTable && dataUpdateUser === "APIBuilder"){
+                    setError("데이터베이스의 API 요청이 들어왔습니다.")
                     setIsErrorModalOpen(true)
                 }
             });

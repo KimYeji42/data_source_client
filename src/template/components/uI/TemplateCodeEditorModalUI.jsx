@@ -5,6 +5,9 @@ import 'ace-builds/src-noconflict/theme-monokai'; // 어두운 테마 사용
 import styles from "../../styleModule/templateCodeEditor.module.css"
 import {CardTemplateCode} from "../code/CardTemplateCode";
 import {BarTemplateCode} from "../code/BarTemplateCode";
+import {TreeTemplateCode} from "../code/TreeTemplateCode";
+import {TableTemplateCode} from "../code/TableTemplateCode";
+
 export default function TemplateCodeEditorModalUI({ template , title , description , image , tableID}) {
     const [code, setCode] = useState('');
     const [tableDataUrl, setTableDataUrl] = useState(null);
@@ -32,14 +35,20 @@ export default function TemplateCodeEditorModalUI({ template , title , descripti
     }, [tableID]);
 
     useEffect(() => {
-        if (tableDataUrl && title && description && image) {
+        if (tableDataUrl) {
             switch (template) {
                 case 'CARD Template':
                     setCode(CardTemplateCode({ url: tableDataUrl, title, description, img: image }));
                     break;
                 case 'Bar Template':
-                    setCode(BarTemplateCode({url:tableDataUrl,title,description,img:image}));
+                    setCode(BarTemplateCode({ url: tableDataUrl, title, description, img: image }));
                     break;
+                case 'Tree Template':
+                    setCode(TreeTemplateCode({ url: tableDataUrl}));
+                    break
+                case 'Table Template':
+                    setCode(TableTemplateCode({ url: tableDataUrl}));
+                    break
                 default:
                     setCode('');
             }
