@@ -2,7 +2,7 @@ import styles from "../styles.module.css";
 import React, {useEffect, useRef} from "react";
 import {Link} from "react-router-dom";
 
-export default function SuccessModalLayout({ isOpen, onClose, data, clickLink, onClickEvent}){
+export default function SuccessModalLayout({ isOpen, onClose, data, onClickEvent, clickLink}){
     const btuRef = useRef(null);
 
     const successHandler = () =>{

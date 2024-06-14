@@ -5,16 +5,16 @@ import DownloadUI from "../ui/DownloadUI";
 import React, { useEffect, useState } from "react";
 import LinkUI from "../../../project/components/uI/LinkUI";
 import {Link, useParams} from "react-router-dom";
-import stylesRest from "../../styleModule/restAPIBuilder.module.css";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
+
 
 export default function TablePage() {
-    const { dataBaseID, tableID } = useParams()
-    const [tableInfo, setTableInfo] = useState(null)
+    const { dataBaseID, tableID } = useParams();
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const [tableInfo, setTableInfo] = useState(null);
     const [isOpen, setIsOpen] = useState(false); // 드롭다운 메뉴의 상태
 
     const findTableInfo = async () => {
-        const apiUrl = process.env.REACT_APP_API_URL;
-
         try {
             const response = await fetch(`${apiUrl}/api/database/dataBaseInfo/${tableID}`, {
                 method: 'GET',
@@ -31,9 +31,11 @@ export default function TablePage() {
         }
     };
 
+
     useEffect(() => {
-        findTableInfo()
+        findTableInfo();
     }, []);
+
 
     // 드롭다운 토글 함수
     const toggleDropdown = () => {
@@ -42,10 +44,11 @@ export default function TablePage() {
 
     return (
         <>
+            <HeaderBottom title={"테이블"} titleList={["프로젝트 목록", "프로젝트", "데이터베이스"]} linkList={["/projects", `/project/${dataBaseID}`, `/tables/${dataBaseID}`]}/>
+
             <div className={styles.tablePage}>
                 <div className={styles.tableContainer}>
                     {tableInfo && <TableTitleUI title={"[ " + tableInfo.projectName + " ]"} subTitle={"- " + tableInfo.tableName} />}
-
                 </div>
 
                 {/* 드롭다운 버튼 */}

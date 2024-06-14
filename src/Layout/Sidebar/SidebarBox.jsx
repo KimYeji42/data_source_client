@@ -17,9 +17,10 @@ function SidebarBox({ title }) {
 
     const fetchData = async () => {
         const token = localStorage.getItem('token');
+        const apiUrl = process.env.REACT_APP_API_URL;
 
         try {
-            const response = await fetch(`http://localhost:8080/api/table/status/${dataBaseID}`, {
+            const response = await fetch(`${apiUrl}/api/table/status/${dataBaseID}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

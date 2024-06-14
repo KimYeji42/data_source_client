@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import JoinColumnUI from "../ui/JoinColumnUI";
 import ButtonUI from "../../../project/components/uI/ButtonUI";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import TableNameUI from "../ui/TableNameUI";
 
 const initialRowState = {
     id: 1,
@@ -88,15 +89,18 @@ export default function SelectColumnLayout({ sendColumnData, setColumnList }) {
                 error={error}
 
             />
-            <div className={styles.buttonBig}>
-                <button onClick={handleAddRow} style={{marginRight: '2px'}}>+</button>
-                <button onClick={handleDeleteRow}>-</button>
+            <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <TableNameUI name="데이터베이스 컬럼"/>
+                <div className={styles.buttonBig}>
+                    <button onClick={handleAddRow} style={{marginRight: '2px'}}>+</button>
+                    <button onClick={handleDeleteRow}>-</button>
+                </div>
             </div>
 
             <table className={styles.selectHeaderTable}>
                 <thead>
                 <tr>
-                    <th>컬럼 이름</th>
+                    <th>컬럼명</th>
                     <th>데이터 타입</th>
                     <th>PK</th>
                     <th>FK</th>

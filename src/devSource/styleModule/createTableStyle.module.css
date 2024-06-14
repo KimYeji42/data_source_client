@@ -270,6 +270,7 @@
     float: right;
 }
 .buttonBig{
+    display: flex;
     text-align: right;
     padding: 10px;
 }

@@ -1,10 +1,10 @@
 import styles from "../../styleModule/ColumnAppendModalStyle.module.css";
 import React, { useState } from "react";
 import stylesCreateTable from '../../styleModule/createTableStyle.module.css';
-import TitleUI from "../../../project/components/uI/TitleUI";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
+import TitleUI from "../../../project/components/uI/TitleUI";
 
 export default function ColumnAppendModalUI({ isOpen, closeModal, tableID }) {
     const [appendColumnName, setAppendColumnName] = useState('');

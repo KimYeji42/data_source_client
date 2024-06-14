@@ -6,13 +6,13 @@ import SendModalLayOut from "./SendModalLayOut";
 import SuccessModalLayout from "./SuccessModalLayout";
 
 export default function DataBaseBoxLayOut() {
+    const { dataBaseID } = useParams();
     const [sendModalMessage , setSendModalMessage] = useState()
     const [isSendModalOpen , setSendModalOpen] = useState(false)
     const [successMessage , setSuccessMessage] = useState(false)
     const [successModalOpen , setSuccessModalOpen] = useState(false)
     const [favoriteItem , setFavoriteItem] = useState()
     const [deleteItem , setDeleteItem] = useState()
-    const { dataBaseID } = useParams();
     const [activeTable, setActiveTable] = useState(null); // 선택된 테이블을 저장하는 상태 변수
     const [dataBaseTables , setDataBaseTables] = useState(null)
 
@@ -23,7 +23,7 @@ export default function DataBaseBoxLayOut() {
     const starBtnClickHandler = (item) =>{
         setFavoriteItem(item)
         if (item.isFavorite === 1)
-            setSendModalMessage(`${item.name} 테이블을 즐겨찾기를 해제 하시겠습니까?`)
+            setSendModalMessage(`${item.name} 테이블을 즐겨찾기 해제 하시겠습니까?`)
         else
             setSendModalMessage(`${item.name} 테이블을 즐겨찾기 하시겠습니까?`)
         setSendModalOpen(true)
@@ -99,6 +99,7 @@ export default function DataBaseBoxLayOut() {
                 if (successModalOpen !== true){
                     setSuccessModalOpen(true)
                 }
+                sessionStorage.removeItem("newTableAction")
             } else {
                 throw new Error(responseData.message); // 에러를 던져서 catch 블록에서 처리하도록 함
             }
@@ -119,15 +120,25 @@ export default function DataBaseBoxLayOut() {
             });
             const responseData = await response.json();
             setDataBaseTables(responseData);
+            checkForNewTableAction(responseData);
             console.log(responseData)
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
+
+    // 새로운 테이블이 생성되었는지 확인
+    const checkForNewTableAction = (responseData) => {
+        const newTableAction = sessionStorage.getItem('newTableAction');
+        if (newTableAction) {
+            console.log("새로운 테이블", responseData[responseData.length - 1])
+            setActiveTable(responseData[responseData.length - 1]);
+        }
+    };
+
     useEffect(() => {
         getDatabaseTables()
     }, []);
-
 
 
     function extractDate(dateString) {
@@ -137,22 +148,26 @@ export default function DataBaseBoxLayOut() {
         const month = String(date.getMonth() + 1).padStart(2, '0'); // 월
         const day = String(date.getDate()).padStart(2, '0'); // 일
 
-
         return `${year}-${month}-${day}일`;
     }
 
     return (
         <>
             <div className={styles.dataBaseBoxButton}>
+                <div className={styles.tableLinkUI}>
+                    <Link to={`/createTable/${dataBaseID}`} className={styles.link} >
+                        <button className={styles.tableLinkBut}>새로운 테이블 생성</button>
+                    </Link>
+                </div>
                 {activeTable ? (
                     <Link to={`/table/${dataBaseID}/${activeTable.id}`}>
                         <button className={styles.blueButton}>
-                            테이블 데이터 관리하기
+                            테이블 조회하기
                         </button>
                     </Link>
                 ) : (
                     <button className={styles.inactiveButton} disabled>
-                        테이블 데이터 관리하기
+                        테이블 조회하기
                     </button>
                 )}
             </div>

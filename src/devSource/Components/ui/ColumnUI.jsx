@@ -1,22 +1,24 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import DataUI from "./DataUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
 import up from '../../Image/upButton.png';
 import down from '../../Image/downButton.png';
-import { Button } from "./ButtonUI";
+import {Button} from "./ButtonUI";
 import Button_UI from "./Button_UI";
-import { Image } from "react-bootstrap";
+import {Image} from "react-bootstrap";
 import SendModalLayOut from "../../../project/components/layout/SendModalLayOut";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
 import SuccessModalLayout from "../../../project/components/layout/SuccessModalLayout";
 import SearchModal from "./SearchModal";
 import DataImportModalUI from "./DataImportModalUI";
 import ColumnAppendModalUI from "./ColumnAppendModalUI";
-import {Link, useParams} from "react-router-dom";
-import stylesRest from "../../styleModule/restAPIBuilder.module.css";
+import {useParams} from "react-router-dom";
+import SockJS from "sockjs-client";
+import {Stomp} from "@stomp/stompjs";
 
-export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData, tableID  }) {
-    const { dataBaseID, tableId } = useParams();
+export default function ColumnUI({ columns , updateData , setUpdateData ,createData , setCreateData }) {
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const { dataBaseID, tableID } = useParams();
     const [clickCount, setClickCount] = useState(0);
     const [selectedRowIndex, setSelectedRowIndex] = useState(-1); // 선택된 행 인덱스
     const [deleteRowIndex , setDeleteRowIndex] = useState([])
@@ -40,17 +42,18 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         };
 
         try {
-            const apiUrl = process.env.REACT_APP_API_URL;
             console.log(obj)
             const response = await fetch(`${apiUrl}/api/data`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem("token")}`
                 },
                 body: JSON.stringify(obj)
             });
 
             if (response.ok) {
+                setIsErrorModalOpen(false);
                 const responseData = await response.json();
                 console.log('Data sent successfully:', responseData);
                 setSuccess(responseData.message);
@@ -86,23 +89,15 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         }
     }
 
-    const handleImportCsvData = () => {
-        setIsDataModalOpen(true)
-
-    };
+    const handleImportCsvData = () => { setIsDataModalOpen(true) };
 
     // 선택된 행의 인덱스를 설정하는 함수
-    const handleRowClick = (index) => {
-        setSelectedRowIndex(index);
-    };
+    const handleRowClick = (index) => { setSelectedRowIndex(index); };
 
-    const handleReload = () => {
-        window.location.reload()
-    };
+    const handleReload = () => { window.location.reload() };
 
-    const handlePushData = () =>{
-        setClickCount(clickCount +1)
-    }
+    const handlePushData = () =>{ setClickCount(clickCount +1) }
+
     const sortAscending = (columnName) => {
         const sortedData = [...columns.get(columnName)].sort();
         console.log(sortedData)
@@ -112,20 +107,51 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
         const sortedData = [...columns.get(columnName)].sort().reverse();
         console.log(sortedData)
     };
-    const columnPlus = () =>{
-        setIsColumnAppendModalOpen(true)
-    }
+
+    const columnPlus = () =>{ setIsColumnAppendModalOpen(true) }
+
+    // 네트워크
+    useEffect(() => {
+        const socket = new SockJS(`${apiUrl}/websocket-endpoint`);
+        const client = Stomp.over(socket);
+
+        client.connect({}, () => {
+            client.subscribe('/topic/notifications', (message) => {
+                const updateTableMessage =  message.body.split(":");
+                const updateTable = updateTableMessage[1]
+                const dataUpdateUser =  updateTableMessage[2]
+                const currentUser = localStorage.getItem("email")
+
+                if (tableID.toString() === updateTable  &&  dataUpdateUser !== currentUser) {
+                    //조건식 1. 실행 현재 테이블 ID가 일치하는 테이블 2. 현재 접속한 유저와 업데이트한 유저가 다를경우
+                    setError("팀원이 데이터를 수정하였습니다.")
+                    setIsErrorModalOpen(true)
+                }
+                if (tableID.toString() === updateTable && dataUpdateUser === "APIBuilder"){
+                    setError("데이터베이스의 API 요청이 들어왔습니다.")
+                    setIsErrorModalOpen(true)
+                }
+            });
+        });
+
+        return () => {
+            if (client) {
+                client.disconnect();
+            }
+        };
+    }, []);
+
     return (
         <>
             <div className={styles.button}>
                 <ul className={styles.menuIconBox}>
                     <div className={styles.leftIcon}>
                         <Button_UI image={Button[0].image} onClick={handleReload} title={"새로고침"}/>
-                        <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 추가"}/>
+                        <Button_UI image={Button[7].image} onClick={columnPlus} title={"컬럼 확장"}/>
                     </div>
                     <div className={styles.rightIcon}>
-                        <Button_UI image={Button[1].image} onClick={handlePushData} title={"행 추가"}/>
-                        <Button_UI image={Button[2].image} onClick={handleDeleteData} title={"행 삭제"}/>
+                        <Button_UI image={Button[1].image} onClick={handlePushData} title={"데이터 추가"}/>
+                        <Button_UI image={Button[2].image} onClick={handleDeleteData} title={"데이터 삭제"}/>
                         {
                             deleteData.length === 0 && createData.length === 0  && updateData.length === 0?(
                                 <Button_UI image={Button[3].image} title={"저장"}/>
@@ -133,7 +159,7 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                                 <Button_UI image={Button[6].image} onClick={() => setIsSendModalOpen(true)} title={"저장"}/>
                             )
                         }
-                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} title={"행 데이터 찾기"}/>
+                        <Button_UI image={Button[4].image} onClick={() => setSearchModalOpen(true)} title={"행 데이터 검색"}/>
                         <Button_UI image={Button[5].image} onClick={handleImportCsvData} title={"CSV 데이터 불러오기"}/>
                     </div>
                 </ul>
@@ -182,20 +208,16 @@ export default function ColumnUI({ columns , updateData , setUpdateData ,createD
                 </div>
             </div>
 
-            <
-                SuccessModalLayout
+            <SuccessModalLayout
                 isOpen={isSuccessModalOpen}
                 onClose={() => setIsSuccessModalOpen(false)}
                 data={success}
-                clickLink={`/table/${tableID}`}
                 onClickEvent={handleReload}
             />
-            <
-                ErrorModal
+            <ErrorModal
                 isOpen={isErrorModalOpen}
                 onClose={() => setIsErrorModalOpen(false)}
                 error={error}
-                clickLink={`/table/${tableID}`}
             />
             <SendModalLayOut
                 data={"데이터를 변경 하시겠습니까?"}

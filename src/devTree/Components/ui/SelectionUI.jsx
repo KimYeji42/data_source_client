@@ -1,5 +1,4 @@
 import styles from "../../styles/styles.module.css"
-import {useState, useEffect} from "react";
 
 export default function SelectionUI({title , data, onSelect}){
 

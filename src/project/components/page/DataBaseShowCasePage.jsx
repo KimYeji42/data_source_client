@@ -1,8 +1,8 @@
 import DataBaseListLayOut from "../layout/TableListLayOut";
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import SidebarLayout from "../../../Layout/Sidebar/SidebarLayout";
+import React, { useEffect, useState } from "react";
 import styles from "../styles.module.css";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function DataBaseShowCasePage() {
     const { dataBaseID } = useParams();
@@ -29,9 +29,13 @@ export default function DataBaseShowCasePage() {
     }, []);
 
     return (
-        <div className={styles.DataBaseShowCasePage}>
-            {/*<SidebarLayout/>*/}
-            {dataBaseData && <DataBaseListLayOut data={dataBaseData} />} {/* 데이터가 존재할 때만 렌더링 */}
-        </div>
+        <>
+            <HeaderBottom title={"데이터베이스"} titleList={["프로젝트 목록", "프로젝트"]} linkList={["/projects", `/project/${dataBaseID}`]}/>
+            <div className={styles.DataBaseShowCasePage}>
+                {/*<SidebarLayout/>*/}
+                {dataBaseData && <DataBaseListLayOut data={dataBaseData}/>} {/* 데이터가 존재할 때만 렌더링 */}
+            </div>
+        </>
+
     );
 }

@@ -9,7 +9,6 @@ import plus from '../../image/bluePlus.png';
 import SearchUserNameUI from "../uI/SearchUserNameUI";
 import SendModalLayOut from "./SendModalLayOut";
 import SuccessModalLayout from "./SuccessModalLayout";
-import {useParams} from "react-router-dom";
 
 export default function MemberBoxLayout({data , projectID}) {
     const [teamProfile , setTeamProfile] = useState(data)
@@ -74,7 +73,9 @@ export default function MemberBoxLayout({data , projectID}) {
         };
 
         try {
-            const response = await fetch('http://localhost:8080/api/teamProfile/update', {
+            const apiUrl = process.env.REACT_APP_API_URL;
+
+            const response = await fetch(`${apiUrl}/api/teamProfile/update`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -105,7 +106,7 @@ export default function MemberBoxLayout({data , projectID}) {
         <>
             <div className={styles.memberBox}>
                 <div className={styles.titleBox}>
-                    <MemberTitleUi text="협업자 관리"/>
+                    <MemberTitleUi text="협업 관리"/>
                 </div>
 
                 <div className={styles.memberContainer}>

@@ -1,7 +1,6 @@
 import TitleUI from "../uI/TitleUI";
 import CreateProjectFormLayout from "../layout/CreateProjectFormLayout";
 import styles from "../styles.module.css";
-import {useEffect} from "react";
 
 export default function CreateProjectPage(){
     return(

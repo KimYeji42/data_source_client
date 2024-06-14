@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ColumnUI from "../ui/ColumnUI";
 import styles from '../../styleModule/ColumnStyle.module.css';
-import {Link} from "react-router-dom";
-import {Button} from "../ui/ButtonUI";
 
 export default function TableLayout({tableID}){
     const [tableData, setTable] = useState(new Map());

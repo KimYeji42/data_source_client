@@ -2,11 +2,16 @@ import styles from '../../styleModule/templateDisplay.module.css'
 import TemplateInputUI from "../uI/TemplateInputUI";
 import TemplateCheckBoxUI from "../uI/TermplateCheckBoxUI";
 import TemplatePreViewLayout from "./TemplatePreViewLayout";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {Image} from "react-bootstrap";
+import TemplateCodeEditorModalUI from "../uI/TemplateCodeEditorModalUI";
+import TabButtonBox from "../uI/TabButtonBoxUI";
 
-export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID }){
+export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choiceInputContainerOpen , tableID , templateStatus }){
     const apiUrl = process.env.REACT_APP_API_URL;
-    const [columnsData , setColumnsData] = useState(null)
+    const [columnsData , setColumnsData] = useState(null);
+    const [templateCodeOpen  , setTemplateCodeOpen] = useState(false);
+    const [activeTab, setActiveTab] = useState('PREVIEW');
 
     const [selectedOptions, setSelectedOptions] = useState({
         title: "",
@@ -80,7 +85,6 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
             tableID: tableID,
             menuColumns: selectedNames
         }
-
         try {
             const response = await fetch(`${apiUrl}/api/template/tree`, {
                 method: 'POST',
@@ -102,44 +106,104 @@ export default function TemplateDisPlay( { templateLabel , setDisplayOpen , choi
             console.error('Error fetching data:', error);
         }
     };
+    
+    // 탭 선택
+    const handleTabClick = (tab) => {
+        setActiveTab(tab);
+    };
 
     useEffect(() => {
         fetchColumnData()
     }, []);
 
     return(
-        <div className={styles.modalOverlay}>
+        <>
+            {/* 검정색 투명 배경*/}
+            <div className={styles.modalOverlay} onClick={() => setDisplayOpen(false)} />
+
             <div className={styles.templateDisplayContainer} >
-                <div className={styles.templateContainer}>
-                    <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
-                        {(!choiceInputContainerOpen || selectedResultInputData) &&
-                            <TemplatePreViewLayout
-                                templateName={templateLabel}
-                                selectInputData={selectedResultInputData}
-                                checkBoxData={selectedOptions}
-                                tableID={tableID}
+                {/* 창 닫기 */}
+                <div className={styles.closeButtonContainer}>
+                    <button className={styles.closeButton} onClick={() => setDisplayOpen(false)}>X</button>
+                </div>
+                {!templateStatus && // Component
+                    <div className={styles.templateContainer}>
+                        {/*탭 기능*/}
+                        <TabButtonBox activeTab={activeTab} handleTabClick={handleTabClick} />
+                        {/*프리뷰*/}
+                        { activeTab  === 'PREVIEW' &&
+                            <div className={styles.previewContainer}>
+                                { (!choiceInputContainerOpen || selectedResultInputData) &&
+                                    <div className={`${styles.templatePreView} ${styles.scrollbar}`}>
+                                        <TemplatePreViewLayout
+                                            templateName={templateLabel}
+                                            selectInputData={selectedResultInputData}
+                                            checkBoxData={selectedOptions}
+                                            tableID={tableID}
+                                            templateCodeOpen={templateCodeOpen}
+                                            setTemplateCodeOpen={setTemplateCodeOpen}
+                                        />
+
+                                    </div>
+                                }
+                            </div>
+                        }
+                        {/*코드 뷰*/}
+                        { activeTab  === 'CODE' &&
+                            <div className={styles.templateCodeEditorBox}>
+                                <TemplateCodeEditorModalUI
+                                    onClose={()=>setTemplateCodeOpen(false)}
+                                    template={templateLabel}
+                                    tableID={tableID}
+                                    title={selectedOptions.title}
+                                    description={selectedOptions.description}
+                                    image={selectedOptions.image}
+                                />
+                            </div>
+                        }
+                        {/*데이터 선택 - 드롭 상자*/}
+                        {(choiceInputContainerOpen && columnsData)&&
+                            <TemplateInputUI optionBoxData ={columnsData}
+                                             selectedOptions={selectedOptions} // 선택된 값
+                                             setSelectedOptions={setSelectedOptions} // 선택된 값을 업데이트하는 함수
+                                             setSelectedColumns={setSelectedColumns} // 선택된 값들을 처리하는 함수
                             />
                         }
-
+                        {/*데이터 선택 - 체크 상자*/}
+                        {(!choiceInputContainerOpen && columnsData) &&
+                            <TemplateCheckBoxUI checkboxData={columnsData}
+                                                onSaveButtonClick={handleSelectedChecks}
+                            />
+                        }
                     </div>
-                    {(choiceInputContainerOpen && columnsData)&&
-                        <TemplateInputUI optionBoxData ={columnsData}
-                                         selectedOptions={selectedOptions} // 선택된 값
-                                         setSelectedOptions={setSelectedOptions} // 선택된 값을 업데이트하는 함수
-                                         setSelectedColumns={setSelectedColumns} // 선택된 값들을 처리하는 함수
-                        />
-                    }
-                    {(!choiceInputContainerOpen && columnsData) &&
-                        <TemplateCheckBoxUI checkboxData={columnsData}
-                                            onSaveButtonClick={handleSelectedChecks}
-                        />
                 }
-                </div>
-                <div className={styles.closeButtonContainer}>
-                    <button className={styles.downloadButton} onClick={() => setDisplayOpen(false)}> 다운로드 </button>
-                    <button className={styles.closeButton} onClick={() => setDisplayOpen(false)}> 닫기 </button>
-                </div>
+                {templateStatus && //web
+                    <div>
+                        {(templateLabel === "SHOP Template") &&
+                            <Image
+                                src={"/template/image/web_photo/shop_templatePhoto.png"}
+                                style={
+                                    { width: "80%" ,
+                                        height :"auto" ,
+                                        boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)"
+                                    }}
+                            />
+
+                        }
+                        {(templateLabel === "Board Template") &&
+                            <Image
+                                src={"/template/image/web_photo/board_templatePhoto.png"}
+                                style={
+                                    { width: "80%" ,
+                                        height :"auto" ,
+                                        boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)"
+                                    }}
+                            />
+                        }
+                    </div>
+                }
             </div>
-        </div>
+        </>
+
     )
 }

@@ -20,35 +20,11 @@ import Header from "../Layout/Header/Header";
 import LoginPage from "../authentication/components/page/LoginPage";
 import ERDPage from "../ERD/components/page/ERDPage";
 import MyPage from "../MyPage/components/page/MyPage";
+import GuideLayout from "../Layout/Gudie/GuideLayout";
 
 export default function AppRouter() {
     const [currentUser, setCurrentUser] = useState("")
     const [isLoggedIn , setIsLoggedIn] = useState("")
-
-    const clearLocalStorage = () => {
-        localStorage.clear();
-        setCurrentUser("")
-        setIsLoggedIn("")
-    };
-
-
-    // const checkServerStatus = async () => {
-    //     try {
-    //         const apiUrl = process.env.REACT_APP_API_URL;
-    //         const response = await fetch(`${apiUrl}/api/ping`, {
-    //             method: 'GET', // 변경된 부분: GET 요청으로 변경
-    //         });
-    //         console.log(response);
-    //         if (!response.ok) {
-    //             clearLocalStorage();
-    //             setIsLoggedIn(false)
-    //         }
-    //     } catch (error) {
-    //         clearLocalStorage();
-    //         setIsLoggedIn(false)
-    //     }
-    // };
-
 
     const getCurrentUser = () =>{
         const username = localStorage.getItem("username")
@@ -69,6 +45,7 @@ export default function AppRouter() {
         localStorage.removeItem("email")
         localStorage.removeItem("username")
         sessionStorage.removeItem("selectedProjectId")
+        sessionStorage.removeItem("newTableAction")
     }
     useEffect(() => {
         //checkServerStatus()
@@ -79,6 +56,7 @@ export default function AppRouter() {
     return (
         <div className="AppRouter">
             <BrowserRouter>
+
                 <Header
                         currentUser={currentUser}
                         isLoggedIn={isLoggedIn}
@@ -89,29 +67,27 @@ export default function AppRouter() {
                     <Route path='/' element={<Navigate to="/main" />} />
                     {/* 각 페이지에 대한 Route 정의 */}
                     <Route path='/main' element={<MainPage />} />
-                    <Route path='/createProject' element={<CreateProjectPage />} />
-                    <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/projects' element={<ProjectShowCasePage />} />
                     <Route path='/template/:dataBaseID/:tableID' element={<TemplatePage />} />
-                    <Route path='/projects/ProjectView' element={<ProjectViewPage />} />
-                    <Route path='/template' element={<TemplatePage />} />\
                     <Route path='/project/:projectId' element={<ProjectViewPage />} />
+                    <Route path='/tables/:dataBaseID' element={<DataBaseShowCasePage />} />
                     <Route path='/table/:dataBaseID/:tableID' element={<TablePage />} />
+                    <Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage />}/>
+                    <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
+                    <Route path='/createProject' element={<CreateProjectPage />} />
                     <Route path='/project/teamProfile/:projectId' element={<TeamProfilePage />} />
                     <Route path='/commit' element={<CommitSearchPage />} />
                     <Route path='/history' element={<HistoryViewPage />} />
                     <Route path='/status' element={<CurrentStatusPage />} />
-                    <Route path='/createTable/:dataBaseID' element={<CreateTablePage/>}/>
-                    <Route path='/apiBuilder/:dataBaseID/:tableID' element={<RestAPIBuilderPage/>}/>
                     <Route path='/blob/Cloud' element={<BlobCloudPage/>}/>
                     <Route path='/erd' element={<ERDPage/>}/>
                     <Route path='/auth/join' element={<JoinPage/>}/>
                     <Route path='/auth/login' element={<LoginPage/>}/>
                     <Route path='/mypage' element={<MyPage/>}/>
-
                     {/* 일치하는 경로가 없을 때의 에러 페이지 */}
                     <Route path='*' element={<ErrorPage />} />
                 </Routes>
+                <GuideLayout/>
             </BrowserRouter>
         </div>
     )

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": ".",
   "dependencies": {
+    "@stomp/stompjs": "^7.0.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -16,11 +17,14 @@
     "react": "^18.2.0",
     "react-ace": "^10.1.0",
     "react-bootstrap": "^2.10.1",
+    "react-codemirror2": "^8.0.0",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-monaco-editor": "^0.55.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "sockjs-client": "^1.6.1",
     "vis-network": "^9.1.9",
     "web-vitals": "^2.1.4",
     "xlsx": "^0.18.5"

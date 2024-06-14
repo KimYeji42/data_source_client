@@ -3,7 +3,7 @@ import styles from "../../styleModule/templateStyles.module.css";
 import {useEffect, useState} from "react";
 import TemplateDisPlay from "../layout/TemplateDisPlay";
 
-export default function TemplateCardUI({imageURL , templateTitle , tableID}){
+export default function TemplateCardUI({imageURL , templateTitle , tableID , templateStatus}){
     const [isTemplateDisPlayOpen , setIsTemplateDisPlayOpen] = useState(false)
     const [choiceInputContainerOpen , setChoiceInputContainerOpen] = useState(false)
 
@@ -28,6 +28,7 @@ export default function TemplateCardUI({imageURL , templateTitle , tableID}){
                     choiceInputContainerOpen={choiceInputContainerOpen}
                     templateLabel={templateTitle}
                     tableID = {tableID}
+                    templateStatus = {templateStatus}
                 />
             }
         </div>

@@ -39,7 +39,7 @@ export default function TemplateCheckBoxUI({ checkboxData, onSaveButtonClick }) 
                     </div>
                 ))}
             </div>
-            <button className={styles.buildButton} onClick={handleSaveButtonClick}>보기</button>
+            <button className={styles.buildButton} onClick={handleSaveButtonClick}>데이터 적용하기</button>
         </div>
     );
 }

@@ -166,13 +166,14 @@
     overflow-y: auto; /* 세로 스크롤바 */
 }
 .tableLinkUI {
-    padding: 10px;
-    float: right;
+    /*padding: 10px;*/
+    margin-right: 10px;
+    float: left;
 }
 .tableLinkBut {
     color: white;
     background: #00a2fe;
-    padding: 5px 15px;
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
 }
@@ -381,6 +382,7 @@
 }
 /*데이터베이스 목록 조회*/
 .DataBaseShowCasePage {
+    margin-top: 1rem;
     width: 100%;
     height: 90vh;
     display: flex;
@@ -426,7 +428,7 @@
 .dataBaseContentBox {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr)); /* 자동으로 그리드 생성하고 각 요소의 너비를 조정 */
-    padding: 20px 0;
+    padding: 25px 0;
     gap: 50px; /* 그리드 간격 설정 */
     justify-content: center; /* 수평 가운데 정렬 */
     width: 100%;
@@ -483,7 +485,7 @@
 .blueButton {
     background-color: #00A3FF;
     color: #ffffff;
-    padding: 5px 15px;
+    padding: 6px 15px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
@@ -695,7 +697,7 @@
 }
 .ProjectViewCardPage{
     min-width: 1000px; min-height: 600px;
-    width: 100%; height: 87vh;
+    width: 100%; height: 84vh;
     display: flex;
     flex-direction: column;
     align-items: center;

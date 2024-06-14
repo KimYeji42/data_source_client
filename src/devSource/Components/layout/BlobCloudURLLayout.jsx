@@ -3,7 +3,6 @@ import stylesRest from "../../styleModule/restAPIBuilder.module.css";
 import React, {useState} from "react";
 
 export default function BlobCloudURLLayout({url}){
-
     const handleCopyClick = (url) => {
         navigator.clipboard.writeText(url); // 클립보드에 URL 복사
     };

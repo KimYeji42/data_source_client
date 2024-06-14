@@ -5,6 +5,7 @@ import ChangeCommitLayOut from "../layout/ChangeCommitLayOut";
 import React, {useState, useEffect} from "react";
 import HistorySideBarUI from "../ui/HistorySideBarUI";
 import ErrorModal from "../../../project/components/layout/ErrorModalLayOut";
+import HeaderBottom from "../../../Layout/HeaderBottom/HeaderBottom";
 
 export default function HistoryViewPage(){
 
@@ -35,37 +36,41 @@ export default function HistoryViewPage(){
     }, []);
 
     return(
-        <div className={styles.HistoryViewPage}>
-            <div className={styles.HistoryPage}>
-                <HistoryButtonLayOut
-                    onSelect={handleSelectProject}
-                    selectedCommitId={selectedCommitId}
-                    token={token}
-                />
+        <>
+            <HeaderBottom title={"버전 관리"} titleList={["프로젝트 목록", "프로젝트"]} linkList={["/projects", `/project/${selectedProjectId}`]}/>
+            <div className={styles.HistoryViewPage}>
+                <div className={styles.HistoryPage}>
+                    <HistoryButtonLayOut
+                        onSelect={handleSelectProject}
+                        selectedCommitId={selectedCommitId}
+                        token={token}
+                    />
 
-                {/*사이드바*/}
-                <HistorySideBarUI selected={1}/>
+                    {/*사이드바*/}
+                    <HistorySideBarUI selected={1}/>
 
-                <div className={styles.HistoryCanverBack} >
-                    <div className={styles.HistoryCanver}>
-                        {/*히스토리 표*/}
-                        <CommitChartUI
-                            projectId={selectedProjectId}
-                            onSelect={handleSelectCommit}
-                        />
-                        {/*현재 커밋 정보, 변경 사항*/}
-                        <ChangeCommitLayOut
-                            commitId={selectedCommitId}
-                        />
+                    <div className={styles.HistoryCanverBack} >
+                        <div className={styles.HistoryCanver}>
+                            {/*히스토리 표*/}
+                            <CommitChartUI
+                                projectId={selectedProjectId}
+                                onSelect={handleSelectCommit}
+                            />
+                            {/*현재 커밋 정보, 변경 사항*/}
+                            <ChangeCommitLayOut
+                                commitId={selectedCommitId}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <ErrorModal
-                error={error}
-                onClose={() => setErrorModalOpen(false)}
-                isOpen={isErrorModalOpen}
-            />
-        </div>
+                <ErrorModal
+                    error={error}
+                    onClose={() => setErrorModalOpen(false)}
+                    isOpen={isErrorModalOpen}
+                />
+            </div>
+        </>
+
     )
 }
